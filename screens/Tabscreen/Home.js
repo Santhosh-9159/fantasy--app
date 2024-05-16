@@ -7,25 +7,30 @@ import {
   Text,
   View,
   Platform,
+  Dimensions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function Home({ navigation }) {
+  const { width } = Dimensions.get("window");
+  const height = (width * 5) / 50;
   return (
     <ScrollView>
       <View
         style={{
-          width: "100%",
+          height,
+          width,
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
           marginLeft: 15,
           padding: 5,
+    
         }}
       >
         <Text style={{fontWeight: 'bold',}}>My Matches</Text>
       </View>
-      <View style={{ gap: 10 }}>
+      <View style={{ gap: 10 ,paddingBottom:20}}>
       <View
       style={{
         width: "100%",
@@ -38,7 +43,7 @@ export default function Home({ navigation }) {
       <Pressable
         style={{
           height: 119,
-          borderRadius: 10,
+          borderRadius: 5,
           overflow: "hidden",
           width: "90%",
           backgroundColor: "#fff",
@@ -83,7 +88,7 @@ export default function Home({ navigation }) {
                 borderBottomRightRadius: 50,
               }}
             >
-              <Text style={{ fontSize: 10, padding: 5 }}>
+              <Text style={{ fontSize: 10, padding: 5 ,color:"#fff"}}>
                 INDIAN T20 LEAGUE
               </Text>
             </View>
@@ -184,9 +189,10 @@ export default function Home({ navigation }) {
           }}
         >
           <Pressable
+          onPress={()=>navigation.navigate("ContestScreen")}
             style={{
               height: 119,
-              borderRadius: 10,
+              borderRadius: 5,
               overflow: "hidden",
               width: "90%",
               backgroundColor: "#fff",
@@ -231,7 +237,7 @@ export default function Home({ navigation }) {
                     borderBottomRightRadius: 50,
                   }}
                 >
-                  <Text style={{ fontSize: 10, padding: 5 }}>
+                  <Text style={{ fontSize: 10, padding: 5 ,color:"#fff"}}>
                     INDIAN T20 LEAGUE
                   </Text>
                 </View>

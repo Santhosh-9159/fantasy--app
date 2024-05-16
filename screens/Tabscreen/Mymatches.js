@@ -1,14 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { useEffect } from "react";
+import { useSport } from "../../components/SportContext";
+import { Text, View } from "react-native";
 
-const Mymatches = () => {
+const MyMatches = () => {
+  const { sport } = useSport();
+
+  useEffect(() => {
+    
+  }, [sport]);
+
   return (
     <View>
-      <Text>Mymatches</Text>
+      
+      <Text>{`Showing matches for ${sport}`}</Text>
     </View>
-  )
-}
-
-export default Mymatches
-
-const styles = StyleSheet.create({})
+  );
+};
+export default MyMatches

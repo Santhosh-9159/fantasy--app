@@ -6,7 +6,7 @@ import {
 import Home from "./screens/Tabscreen/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Mymatches from "./screens/Tabscreen/Mymatches";
-import Chat from "./screens/Tabscreen/Chat";
+import Chat from "./screens/Tabscreen/ReferAndEarn";
 import Settings from "./screens/Tabscreen/Settings";
 import { Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -20,69 +20,119 @@ import Football from "./screens/TopTabScreen/Football";
 import { Image, Pressable, Text, View, useColorScheme } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import Svg, { Circle } from 'react-native-svg';
+import Svg, { Circle } from "react-native-svg";
 import LoginScreen from "./screens/Autth/LoginScreen";
-import RegisterScreen from "./screens/Autth/RegisterScreen";
+import LoginWithEmail from "./screens/Autth/LoginWithEmail";
+import OtpScreen from "./screens/Autth/OtpScreen";
 
+import ReferAndEarn from "./screens/Tabscreen/ReferAndEarn";
+import { useSport } from "./components/SportContext";
+import NameRegister from "./screens/Autth/NameRegister";
+import EditEmail from "./screens/Autth/EditEmail";
+import EditPhoneNumber from "./screens/Autth/EditPhoneNumber";
+import OTPHeaderTitle from "./components/OTPHeaderTitle";
+import ContestScreen from "./screens/Matche Screens/ContestScreen/ContestScreen";
+import ContestHeader from "./components/ContestHeader";
+
+import Myteam from "./screens/Matche Screens/ContestScreen/Myteam";
+import MyContests from "./screens/Matche Screens/ContestScreen/MyContests";
+
+const getHeaderRight = (navigation, routeName) => {
+  if (routeName === "Settings") {
+    return null;
+  }
+
+  return (
+    <View style={{ flexDirection: "row", marginRight: 10 }}>
+      <Pressable
+        onPress={() => navigation.navigate("login")}
+        style={{
+          flexDirection: "row",
+          marginRight: 20,
+          alignItems: "center",
+          borderWidth: 2,
+          gap: 10,
+          borderRadius: 5,
+          borderColor: "#fff",
+        }}
+      >
+        <Text style={{ color: "#fff", marginLeft: 5 }}>₹100</Text>
+        <Ionicons name="wallet-outline" size={24} color="white" />
+      </Pressable>
+      <Pressable
+        onPress={() => {
+          // handle notification action
+        }}
+        style={{
+          marginRight: 20,
+        }}
+      >
+        <Ionicons name="notifications-outline" size={24} color="white" />
+      </Pressable>
+    </View>
+  );
+};
 
 //Top Navigation Bar
 
 const Top = createMaterialTopTabNavigator();
 
 function TopScreen({ navigation }) {
-    useEffect(() => {
-      navigation.setOptions({
-        title: "Impact 11",
-      });
-    }, [navigation]);
-  
-    return (
-        <Top.Navigator
-        screenOptions={{
-          tabBarLabelStyle: {
-            textTransform: "capitalize",
-            fontWeight: "bold",
-            color: "white",
-          },
-          tabBarIndicatorStyle: {
-            height: 5,
-            borderRadius: 5,
-            backgroundColor: "white",
-          },
-          tabBarStyle: {
-            backgroundColor: "#3385ff",
-          },
-          tabBarItemStyle: {
-            padding: 0,
-            
-          },
+  const { setSport } = useSport();
+
+  useEffect(() => {
+    navigation.setOptions({ title: "Impact 11" });
+  }, [navigation]);
+
+  return (
+    <Top.Navigator
+      screenOptions={{
+        tabBarLabelStyle: {
+          textTransform: "capitalize",
+          fontWeight: "bold",
+          color: "white",
+        },
+        tabBarIndicatorStyle: {
+          height: 5,
+          borderRadius: 5,
+          backgroundColor: "white",
+        },
+        tabBarStyle: { backgroundColor: "#3385ff" },
+        tabBarItemStyle: { padding: 0 },
+      }}
+      screenListeners={({ route }) => ({
+        focus: () => setSport(route.name.toLowerCase()),
+      })}
+    >
+      <Top.Screen
+        name="Cricket"
+        component={Home}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={require("./assets/cricket-ball.png")}
+              style={{
+                width: 20,
+                height: 20,
+                backgroundColor: "#fff",
+                borderRadius: 10,
+              }}
+            />
+          ),
         }}
-      >
-        <Top.Screen
-          name="cricket"
-          component={Home}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-                <Image source={require("./assets/cricket-ball.png")}
-                style={{width:20,height: 20,backgroundColor:"#fff",borderRadius:10,}}
-                />     
-              ),
-          }}
-        />
-        <Top.Screen
-          name="Football"
-          component={Football}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="football-outline" size={21} color="white" />
-            ),
-          }}
-        />
-      </Top.Navigator>
-      
-    );
-  }
-  
+      />
+      <Top.Screen
+        name="Football"
+        component={Football}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="football-outline" size={21} color="white" />
+          ),
+        }}
+      />
+    </Top.Navigator>
+  );
+}
 
 //  Stack navigator
 
@@ -107,18 +157,98 @@ function StackScreen() {
         name="UpcomeingMatchDetailes"
         component={UpcomeingMatchDetailes}
       />
-      <Stack.Screen options={{headerShown:false}}
-      name="login"
-      component={LoginScreen}
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="login"
+        component={LoginScreen}
       />
-      <Stack.Screen options={{headerShown:false}}
-      name="Register"
-      component={RegisterScreen}
+
+      <Stack.Screen name="Main" component={TopScreen} />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="Email"
+        component={LoginWithEmail}
       />
-      <Stack.Screen 
-      name="Main"
-      component={TopScreen}
+      <Stack.Screen
+        options={{
+          headerTitle: () => <OTPHeaderTitle/>,
+          headerStyle: {
+            backgroundColor: "#3385ff",
+            height: 10,
+          },
+          headerTintColor: "#fff",
+        }}
+        name="OTP"
+        component={OtpScreen}
       />
+      <Stack.Screen
+      options={{
+        headerShown: false,
+      }}
+      name="NameRegister"
+      component={NameRegister}
+    />
+    <Stack.Screen
+    options={{
+      headerTitle:"ENTER NEW EMAIL",
+      headerStyle:{
+        backgroundColor:"#3385ff",
+        
+      },
+      headerTintColor:"#fff"
+      
+    }}
+    name="EditEmail"
+    component={EditEmail}
+    />
+    <Stack.Screen
+    options={{
+      headerTitle:"ENTER NEW NUMBER",
+      headerStyle:{
+        backgroundColor:"#3385ff",
+        
+      },
+      headerTintColor:"#fff"
+      
+    }}
+    name="EditPhoneNumber"
+    component={EditPhoneNumber}
+    />
+    <Stack.Screen
+    options={{
+      headerTitle: () => <ContestHeader/>,
+      headerStyle: {
+        backgroundColor: "#3385ff",
+      },
+      headerTintColor: "#fff",
+    }}
+    name="ContestScreen"
+    component={ContestScreen}
+    />
+    <Stack.Screen
+    options={{
+      headerTitle: () => <ContestHeader/>,
+      headerStyle: {
+        backgroundColor: "#3385ff",
+      },
+      headerTintColor: "#fff",
+    }}
+    name="MYContest"
+    component={MyContests}
+    />
+    <Stack.Screen
+    options={{
+      headerTitle: () => <ContestHeader/>,
+      headerStyle: {
+        backgroundColor: "#3385ff",
+      },
+      headerTintColor: "#fff",
+    }}
+    name="MYTeam"
+    component={Myteam}
+    />
     </Stack.Navigator>
   );
 }
@@ -132,115 +262,39 @@ function TabScreen({ navigation }) {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, focused, size }) => {
           let iconName;
-          if (route.name === "Home") {
-            iconName = focused ? "home" : "home-outline";
-          } else if (route.name === "My Matches") {
-            iconName = focused ? "trophy" : "trophy-outline";
-          } else if (route.name === "Chats") {
-            iconName = focused
-              ? "chatbox-ellipses"
-              : "chatbox-ellipses-outline";
-          } else if (route.name === "Settings") {
-            iconName = focused ? "settings" : "settings-outline";
+          switch (route.name) {
+            case "Home":
+              iconName = focused ? "home" : "home-outline";
+              break;
+            case "My Matches":
+              iconName = focused ? "trophy" : "trophy-outline";
+              break;
+            case "Refer & Earn":
+              iconName = focused ? "person-add" : "person-add-outline";
+              break;
+            case "Profile":
+              iconName = focused ? "person-circle" : "person-circle-outline";
+              break;
+            default:
+              break;
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        headerRight: () => (
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-              gap: 1,
-              width: "80%",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Pressable
-              onPress={() => {
-                /* handle wallet action */
-              }}
-              style={{
-                flexDirection: "row",
-                gap: 10,
-                display: "flex",
-                justifyContent: "space-evenly",
-                borderRadius:7,
-                width: "50%",
-                height: "70%",
-                borderColor: "#fff",
-
-                borderWidth: 2,
-                alignItems: "center",
-                margin: 5,
-                padding: 3,
-              }}
-            >
-              <View>
-                <Text
-                  style={{
-                    textAlign: "center",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    display: "flex",
-                    color: "#fff",
-                    fontSize: 14,
-                    marginTop: 0,
-                    marginLeft:3
-                  }}
-                >
-                  ₹100
-                </Text>
-              </View>
-              <View style={{}}>
-                <Ionicons name="wallet-outline" size={20} color="white" />
-              </View>
-            </Pressable>
-            <Pressable
-              onPress={() => {
-                /* handle notification action */
-              }}
-              style={{ padding: 5 }}
-            >
-              <Ionicons
-                name="notifications-outline"
-                size={25}
-                color="white"
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          </View>
+        headerRight: () => getHeaderRight(navigation, route.name),
+        headerStyle: { backgroundColor: "#3385ff" },
+        headerTintColor: "#fff",
+        headerTitleStyle: { fontWeight: "bold" },
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.openDrawer()}>
+            <Ionicons name="menu" size={30} color="white" style={{ marginLeft: 15 }} />
+          </Pressable>
         ),
       })}
     >
       <Tab.Screen
         name="Home"
         component={TopScreen}
-        options={{
-          tabBarLabel: "Home", // Explicitly setting the tab label to 'Home'
-          headerTitle: "Impact 11",
-          headerStyle: {
-            backgroundColor: "#3385ff",
-            
-          },
-          headerTitleStyle: {
-            color: "#fff",
-            
-          },
-          headerLeft: () => (
-            <Pressable onPress={() => navigation.openDrawer()}>
-              <Image
-                source={require("./assets/profile.png")}
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 100,
-                  marginLeft: 15,
-                }}
-              />
-            </Pressable>
-          ),
-        }}
+        options={{ tabBarLabel: "Home" }}
       />
       <Tab.Screen
         name="My Matches"
@@ -248,18 +302,22 @@ function TabScreen({ navigation }) {
         options={{ tabBarLabel: "My Matches" }}
       />
       <Tab.Screen
-        name="Chats"
-        component={Chat}
-        options={{ tabBarLabel: "Chats" }}
+        name="Refer & Earn"
+        component={ReferAndEarn}
+        options={{ tabBarLabel: "Refer & Earn", headerShown: false }}
       />
       <Tab.Screen
-        name="Settings"
-        component={Settings}
-        options={{ tabBarLabel: "Settings" }}
+        name="Profile"
+        component={Settings} // Assuming Settings is the correct component
+        options={{
+          tabBarLabel: "Profile",
+          headerTitle: "My INFO & SETTING"  // Explicitly set the header title for this tab
+        }}
       />
     </Tab.Navigator>
   );
 }
+
 
 //Drawer Navigation
 

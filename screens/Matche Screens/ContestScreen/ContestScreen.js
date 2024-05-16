@@ -110,6 +110,7 @@ const Contest = () => {
               }}
             >
               <Pressable
+              onPress={()=>navigation.navigate("DetailScreen")}
                 style={{
                   borderRadius: 5,
                   overflow: "hidden",

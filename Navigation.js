@@ -36,6 +36,7 @@ import ContestHeader from "./components/ContestHeader";
 
 import Myteam from "./screens/Matche Screens/ContestScreen/Myteam";
 import MyContests from "./screens/Matche Screens/ContestScreen/MyContests";
+import DetailScreen from "./screens/Matche Screens/ContestDetailScreen/DetailScreen";
 
 const getHeaderRight = (navigation, routeName) => {
   if (routeName === "Settings") {
@@ -248,6 +249,17 @@ function StackScreen() {
     }}
     name="MYTeam"
     component={Myteam}
+    />
+    <Stack.Screen
+    options={{
+      headerTitle: () => <ContestHeader/>,
+      headerStyle: {
+        backgroundColor: "#3385ff",
+      },
+      headerTintColor: "#fff",
+    }}
+    name="DetailScreen"
+    component={DetailScreen}
     />
     </Stack.Navigator>
   );

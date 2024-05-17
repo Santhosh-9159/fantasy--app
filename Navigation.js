@@ -37,6 +37,8 @@ import ContestHeader from "./components/ContestHeader";
 import Myteam from "./screens/Matche Screens/ContestScreen/Myteam";
 import MyContests from "./screens/Matche Screens/ContestScreen/MyContests";
 import DetailScreen from "./screens/Matche Screens/ContestDetailScreen/DetailScreen";
+import HelpAndSuport from "./screens/Drawernavigation/HelpAndSuport";
+import DrawerHeader from "./components/DrawerHeader";
 
 const getHeaderRight = (navigation, routeName) => {
   if (routeName === "Settings") {
@@ -337,7 +339,9 @@ const Drawer = createDrawerNavigator();
 
 function DrawerScreen() {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+    drawerContent={(props) => <DrawerHeader {...props} />}
+    >
       <Drawer.Screen
         name="StackScreen"
         component={StackScreen}
@@ -352,6 +356,13 @@ function DrawerScreen() {
           headerShown: true,
         }}
       />
+      <Drawer.Screen
+      name="HelpAndSuport"
+      component={HelpAndSuport}
+      options={{
+        headerShown: true,
+      }}
+    />
     </Drawer.Navigator>
   );
 }

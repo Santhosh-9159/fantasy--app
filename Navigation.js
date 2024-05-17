@@ -39,6 +39,7 @@ import MyContests from "./screens/Matche Screens/ContestScreen/MyContests";
 import DetailScreen from "./screens/Matche Screens/ContestDetailScreen/DetailScreen";
 import HelpAndSuport from "./screens/Drawernavigation/HelpAndSuport";
 import DrawerHeader from "./components/DrawerHeader";
+import AddCash from "./screens/PaymentScreen/AddCash";
 
 const getHeaderRight = (navigation, routeName) => {
   if (routeName === "Settings") {
@@ -48,7 +49,7 @@ const getHeaderRight = (navigation, routeName) => {
   return (
     <View style={{ flexDirection: "row", marginRight: 10 }}>
       <Pressable
-        onPress={() => navigation.navigate("login")}
+        onPress={() => navigation.navigate("ADD CASH")}
         style={{
           flexDirection: "row",
           marginRight: 20,
@@ -263,6 +264,17 @@ function StackScreen() {
     name="DetailScreen"
     component={DetailScreen}
     />
+    <Stack.Screen
+    options={{
+      headerStyle:{
+        backgroundColor:"#3385ff",
+        borderBottomWidth: 0,
+      },
+      headerTintColor:"#fff"
+    }}
+    name="ADD CASH"
+    component={AddCash}
+    />
     </Stack.Navigator>
   );
 }
@@ -341,9 +353,14 @@ function DrawerScreen() {
   return (
     <Drawer.Navigator
     drawerContent={(props) => <DrawerHeader {...props} />}
+    screenOptions={{
+      drawerStyle:{
+        width:350
+      }
+    }}
     >
       <Drawer.Screen
-        name="StackScreen"
+        name="Home"
         component={StackScreen}
         options={{
           headerShown: false,

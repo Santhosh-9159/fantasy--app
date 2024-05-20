@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/core";
+import { AntDesign } from '@expo/vector-icons';
 
 const LoginWithEmail = () => {
   const navigation = useNavigation();
@@ -72,8 +73,19 @@ const LoginWithEmail = () => {
               paddingBottom: 15,
             }}
           >
+           <View style={{
+              display: "flex",
+              flexDirection: "row",
+              width: "90%",
+              justifyContent: "center",
+              alignItems: "center",
+              borderBottomWidth:1,
+              borderColor:"#fff",
+              gap:2}}>
+            <View><AntDesign name="mail" size={24} color="white" /></View>
             <TextInput
-              placeholder="Email Address"
+            placeholderTextColor="#ababab"
+              placeholder="Email"
               style={{
                 width: "90%",
                 display: "flex",
@@ -81,10 +93,11 @@ const LoginWithEmail = () => {
                 justifyContent: "center",
                 padding: 5,
                 borderRadius: 7,
-                backgroundColor: "#fff",
                 alignItems: "center",
+                color:"#fff"
               }}
             />
+            </View>
             <Pressable
               onPress={() => navigation.navigate("OTP")}
               style={{

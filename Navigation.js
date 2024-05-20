@@ -6,27 +6,22 @@ import {
 import Home from "./screens/Tabscreen/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Mymatches from "./screens/Tabscreen/Mymatches";
-import Chat from "./screens/Tabscreen/ReferAndEarn";
-import Settings from "./screens/Tabscreen/Settings";
 import { Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MymatchDetailes from "./screens/stack navigator/MymatchDetailes";
 import UpcomeingMatchDetailes from "./screens/stack navigator/UpcomeingMatchDetailes";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import Profile from "./screens/Drawernavigation/Profile";
 import MyinfoAndSettings from "./screens/Drawernavigation/MyinfoAndSettings";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Football from "./screens/TopTabScreen/Football";
 import { Image, Pressable, Text, View, useColorScheme } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import Svg, { Circle } from "react-native-svg";
 import LoginScreen from "./screens/Autth/LoginScreen";
 import LoginWithEmail from "./screens/Autth/LoginWithEmail";
 import OtpScreen from "./screens/Autth/OtpScreen";
 
 import ReferAndEarn from "./screens/Tabscreen/ReferAndEarn";
-import { useSport } from "./components/SportContext";
 import NameRegister from "./screens/Autth/NameRegister";
 import EditEmail from "./screens/Autth/EditEmail";
 import EditPhoneNumber from "./screens/Autth/EditPhoneNumber";
@@ -41,6 +36,8 @@ import HelpAndSuport from "./screens/Drawernavigation/HelpAndSuport";
 import DrawerHeader from "./components/DrawerHeader";
 import AddCash from "./screens/PaymentScreen/AddCash";
 import PaymentScreen from "./screens/PaymentScreen/PaymentScreen";
+import TireScreen from "./screens/stack navigator/TireScreen";
+import ProfileScreen from "./screens/Tabscreen/ProfileScreen";
 
 const getHeaderRight = (navigation, routeName) => {
   if (routeName === "Settings") {
@@ -83,7 +80,7 @@ const getHeaderRight = (navigation, routeName) => {
 const Top = createMaterialTopTabNavigator();
 
 function TopScreen({ navigation }) {
-  const { setSport } = useSport();
+  
 
   useEffect(() => {
     navigation.setOptions({ title: "Impact 11" });
@@ -105,9 +102,7 @@ function TopScreen({ navigation }) {
         tabBarStyle: { backgroundColor: "#3385ff" },
         tabBarItemStyle: { padding: 0 },
       }}
-      screenListeners={({ route }) => ({
-        focus: () => setSport(route.name.toLowerCase()),
-      })}
+      
     >
       <Top.Screen
         name="Cricket"
@@ -287,6 +282,13 @@ function StackScreen() {
     name="PAYMENT OPTIONS"
     component={PaymentScreen}
     />
+     <Stack.Screen
+    options={{
+      headerShown:false
+    }}
+    name="Tire Screen"
+    component={TireScreen}
+    />
     </Stack.Navigator>
   );
 }
@@ -346,7 +348,7 @@ function TabScreen({ navigation }) {
       />
       <Tab.Screen
         name="Profile"
-        component={Settings} // Assuming Settings is the correct component
+        component={ProfileScreen} // Assuming Settings is the correct component
         options={{
           tabBarLabel: "Profile",
           headerTitle: "My INFO & SETTING"  // Explicitly set the header title for this tab

@@ -1,15 +1,21 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
+// Create a context for the selected sport
 const SportContext = createContext();
 
-export const useSport = () => useContext(SportContext);
-
+// Create a context provider to manage the selected sport
 export const SportProvider = ({ children }) => {
-  const [sport, setSport] = useState('cricket'); // default sport
+  const [selectedSport, setSelectedSport] = useState('cricket');
+  const [TabName, setTabName] = useState('football')
+  const [Tier, setTier] = useState('')
+  const [ImpactScore, setImpactScore] = useState(1000)
 
   return (
-    <SportContext.Provider value={{ sport, setSport }}>
+    <SportContext.Provider value={{ selectedSport, setSelectedSport,TabName ,setTabName,Tier,setTier,ImpactScore,setImpactScore}}>
       {children}
     </SportContext.Provider>
   );
 };
+
+// Custom hook to access the selected sport
+export const useSport = () => useContext(SportContext);

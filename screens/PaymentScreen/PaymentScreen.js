@@ -9,6 +9,10 @@ import {
   ScrollView,
   Pressable,
   Image,
+  LayoutAnimation,
+  Platform,
+  UIManager,
+  TextInput,
 } from "react-native";
 import {
   FontAwesome,
@@ -17,8 +21,31 @@ import {
   Entypo,
 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+
+if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
+
 const PaymentScreen = () => {
+
+
   const [selectedValue, setSelectedValue] = useState(false);
+  const [cardSelect, setCardSelect] = useState(false);
+  const [cardDetails, setCardDetails] = useState(false);
+
+
+
+  const toggleDropdown = () => {
+    // Animate the layout changes
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setCardSelect(!cardSelect);
+  };
+  const cardDetailsbtn = () => {
+    // Animate the layout changes
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setCardDetails(!cardDetails);
+  };
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.amountText}>AMOUNT TO PAY: ₹100</Text>
@@ -120,20 +147,93 @@ const PaymentScreen = () => {
       <View style={styles.sectionContainer}>
        <View style={{display:"flex",flexDirection: 'row',width:"100%",justifyContent: 'space-between',}}>
        <Text style={styles.sectionTitle}>DEBIT/CREDIT CARDS</Text>
-       <TouchableOpacity style={styles.addButton}>
+       <TouchableOpacity onPress={cardDetailsbtn} style={styles.addButton}>
          <Text style={styles.addButtonText}>ADD</Text>
        </TouchableOpacity>
        </View>
-        <View style={styles.optionRow}>
+
+       {cardDetails && <View style={{backgroundColor:"#fff",padding:5,display:"flex",flexDirection: 'column',gap:5,justifyContent:"center",alignItems:"center"}}>
+            <View style={{width:"100%",padding:2}}>
+            <TextInput placeholderTextColor="#000"  style={{backgroundColor:"#d9d9d9",padding:3,paddingLeft:10,borderRadius:5}}
+               placeholder="NAME ON CARD"/>
+            </View>
+            <View style={{width:"100%",padding:2}}>
+            <TextInput placeholderTextColor="#000"  style={{backgroundColor:"#d9d9d9",padding:3,paddingLeft:10,borderRadius:5}}
+              placeholder="CARD NUMBER"/>
+            </View>
+            <View style={{display:"flex",flexDirection: 'row',justifyContent:"space-between",alignItems:"center",width:"100%",marginBottom:5}}>
+            <View style={{width:"45%",}}>
+            <TextInput placeholderTextColor="#000"  style={{backgroundColor:"#d9d9d9",padding:3,paddingLeft:10,borderRadius:5}}
+              placeholder="EXPIRY (MM/YY)"/>
+            </View>
+            <View style={{width:"45%"}}>
+            <TextInput placeholderTextColor="#000"  style={{backgroundColor:"#d9d9d9",padding:3,paddingLeft:10,borderRadius:5}}
+              placeholder="CVV"/>
+            </View>
+            </View>
+            <Pressable style={{width:"100%",backgroundColor:"#35b267",padding:7,borderRadius:5,display:"flex",flexDirection: 'row',justifyContent:"center",alignItems:"center"}}>
+              <Text style={{color:"#fff",fontWeight:"800",fontSize:14}}>Add 100</Text>
+            </Pressable>
+       </View>}
+       
+       
+        <View style={{}}>
           <TouchableOpacity style={styles.cardOption}>
-            <FontAwesome name="cc-visa" size={24} color="purple" />
+         <View style={{display:"flex",flexDirection: 'row',justifyContent:"center",alignItems:"center"}}>
+         <View style={{width:"10%",backgroundColor:"#fff",}}>
+          <FontAwesome name="cc-visa" size={24} color="purple" />
+          </View>
+
+            <View style={{display:"flex",flexDirection: 'column',justifyContent:"center",alignItems:"center",width:"90%",backgroundColor:"#fff"}}>
+            <View style={{display:"flex",flexDirection: 'row',justifyContent:"space-between",alignItems:"center",width:"100%"}}>
+            <View style={{display:"flex",flexDirection: 'column',gap:0}}>
             <Text style={styles.cardText}>Axis Credit card</Text>
             <Text style={styles.cardText}>xxxx xxxx xxxx 9890</Text>
-            <MaterialIcons
-              name="radio-button-checked"
-              size={24}
-              color="black"
-            />
+            </View>
+            <Pressable
+                     onPress={toggleDropdown}
+
+          >
+            {cardSelect ? (
+              <AntDesign
+                name="checkcircleo"
+                size={18}
+                color="#fff"
+                style={{ backgroundColor: "#196", borderRadius: 40 }}
+              />
+            ) : (
+              <View
+                style={{
+                  width: 15,
+                  height: 15,
+                  backgroundColor: "#fff",
+                  borderRadius: 40,
+                  borderWidth: 1,
+                }}
+              ></View>
+            )}
+          </Pressable>
+            </View>
+            
+            </View>
+           
+         </View>
+         
+         {cardSelect ?  <View style={{display:"flex",flexDirection: 'row',width:"100%",justifyContent:"flex-end",alignItems:"flex-end",padding:5}}>
+             <View style={{display:"flex",flexDirection: 'row',width:"90%",justifyContent:"space-between",alignItems:"center"}}>
+             <Pressable style={{padding:5,backgroundColor:"#d9d9d9",display:"flex",flexDirection: 'row',justifyContent:"flex-start",alignItems:"center",width:"45%",borderRadius:4}}>
+              <View>
+                <Text>CVV</Text>
+              </View>
+              </Pressable>
+              <Pressable style={{padding:5,backgroundColor:"#35b267",display:"flex",flexDirection: 'row',justifyContent:"center",alignItems:"center",width:"45%",borderRadius:4}}>
+              <View>
+                <Text style={{color:"#fff",fontWeight:"700"}}>Add 100</Text>
+              </View>
+              </Pressable>
+             </View>
+            </View>: null}
+            
           </TouchableOpacity>
         </View>
       </View>
@@ -239,16 +339,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   cardOption: {
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     backgroundColor: "#FFFFFF",
     padding: 10,
-    borderRadius: 5,
+    // borderRadius: 5,
     borderWidth: 1,
     borderColor: "#DDDDDD",
     justifyContent: "space-between",
     flex: 1,
-    marginHorizontal: 5,
+    // marginHorizontal: 5,
+    width:"100%"
   },
   cardText: {
     fontSize: 14,

@@ -10,6 +10,7 @@ import {
   Pressable,
 } from "react-native";
 import InviteCode from "../../components/Model/InviteCode";
+import { AntDesign } from '@expo/vector-icons';
 
 
 const LoginScreen = () => {
@@ -81,7 +82,18 @@ const LoginScreen = () => {
               paddingBottom: 15,
             }}
           >
+            <View style={{
+              display: "flex",
+              flexDirection: "row",
+              width: "90%",
+              justifyContent: "center",
+              alignItems: "center",
+              borderBottomWidth:1,
+              borderColor:"#fff",
+              gap:2}}>
+            <View><AntDesign name="mobile1" size={24} color="white" /></View>
             <TextInput
+            placeholderTextColor="#ababab"
               placeholder="Mobile Number"
               style={{
                 width: "90%",
@@ -90,10 +102,11 @@ const LoginScreen = () => {
                 justifyContent: "center",
                 padding: 5,
                 borderRadius: 7,
-                backgroundColor: "#fff",
                 alignItems: "center",
+                color:"#fff"
               }}
             />
+            </View>
             <Pressable
               onPress={() => navigation.navigate("OTP")}
               style={{

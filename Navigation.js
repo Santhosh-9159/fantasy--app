@@ -40,6 +40,7 @@ import DetailScreen from "./screens/Matche Screens/ContestDetailScreen/DetailScr
 import HelpAndSuport from "./screens/Drawernavigation/HelpAndSuport";
 import DrawerHeader from "./components/DrawerHeader";
 import AddCash from "./screens/PaymentScreen/AddCash";
+import PaymentScreen from "./screens/PaymentScreen/PaymentScreen";
 
 const getHeaderRight = (navigation, routeName) => {
   if (routeName === "Settings") {
@@ -275,6 +276,17 @@ function StackScreen() {
     name="ADD CASH"
     component={AddCash}
     />
+    <Stack.Screen
+    options={{
+      headerStyle:{
+        backgroundColor:"#3385ff",
+        borderBottomWidth: 0,
+      },
+      headerTintColor:"#fff"
+    }}
+    name="PAYMENT OPTIONS"
+    component={PaymentScreen}
+    />
     </Stack.Navigator>
   );
 }
@@ -355,7 +367,7 @@ function DrawerScreen() {
     drawerContent={(props) => <DrawerHeader {...props} />}
     screenOptions={{
       drawerStyle:{
-        width:350
+        width:300
       }
     }}
     >

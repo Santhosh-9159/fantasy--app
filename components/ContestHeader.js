@@ -2,8 +2,10 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
 
 const ContestHeader = () => {
+  const navigation = useNavigation()
   return (
     <View style={{display:"flex",flexDirection: 'row',width:"100%",padding:5,justifyContent: 'space-evenly',
     }}>
@@ -14,6 +16,7 @@ const ContestHeader = () => {
      <View style={{display:"flex",flexDirection:"row",justifyContent:"flex-start",width:"65%",justifyContent:"flex-start",alignItems:"center",gap:8}}>
      <MaterialCommunityIcons name="bell-plus-outline" size={24} color="#fff" />
      <Pressable
+     onPress={()=>navigation.navigate("ADD CASH")}
      style={{
        flexDirection: "row",
        marginRight: 20,

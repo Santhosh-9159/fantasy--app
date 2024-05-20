@@ -6,7 +6,9 @@ import {
   DrawerItem,
 } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/core";
 const DrawerHeader = (props) => {
+    const navigation = useNavigation()
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.profileContainer}>
@@ -89,6 +91,7 @@ const DrawerHeader = (props) => {
           <View></View>
           <View style={styles.balanceButtons}>
             <Pressable
+            onPress={()=>navigation.navigate("ADD CASH")}
               style={{
                 display: "flex",
                 flexDirection: "row",

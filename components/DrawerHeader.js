@@ -58,7 +58,10 @@ const DrawerHeader = (props) => {
 
         
 {/* wallet balace show container */}
-        <Pressable style={styles.balanceContainer}>
+        <Pressable style={styles.balanceContainer}
+        onPress={()=>navigation.navigate('MyBalance')}
+        >
+          
           <View
             style={{
               display: "flex",
@@ -80,9 +83,9 @@ const DrawerHeader = (props) => {
               <View>
                 <Ionicons name="wallet-outline" size={24} color="black" />
               </View>
-              <View>
+              <Pressable >
                 <Text style={styles.balanceText}>My Balance</Text>
-              </View>
+              </Pressable>
             </View>
             <View>
               <Text style={styles.balanceAmount}>₹100</Text>

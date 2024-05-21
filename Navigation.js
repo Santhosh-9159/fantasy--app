@@ -40,6 +40,9 @@ import TireScreen from "./screens/stack navigator/TireScreen";
 import ProfileScreen from "./screens/Tabscreen/ProfileScreen";
 import Withdraw from "./screens/PaymentScreen/Withdraw";
 
+import { FontAwesome5 } from '@expo/vector-icons';
+import MyBalance from "./screens/PaymentScreen/MyBalance";
+
 const getHeaderRight = (navigation, routeName) => {
   if (routeName === "Settings") {
     return null;
@@ -301,6 +304,22 @@ function StackScreen() {
     name="WITHDRAW"
     component={Withdraw}
     />
+      <Stack.Screen  options={{headerStyle:{
+        backgroundColor:"#3385ff",
+      },
+      headerTitle:"My Balance",
+      headerTitleStyle:{
+        color:"#fff"
+      },
+      headerTintColor:"#fff",
+      headerRight:()=> 
+        <Pressable>
+          <FontAwesome5 name="question-circle" size={24} color="#fff" />
+        </Pressable>
+    }}
+      name="MyBalance"
+      component={MyBalance}
+      />
     </Stack.Navigator>
   );
 }

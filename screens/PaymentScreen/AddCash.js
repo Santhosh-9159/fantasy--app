@@ -98,7 +98,7 @@ const AddCash = () => {
                 <Text style={{ color: "#FFFFFF", fontSize: 14 }}>
                   Amount unutilised :
                 </Text>
-                <Text style={{ color: "#FFFFFF", fontSize: 14 }}>₹ 0</Text>
+                <Text style={{ color: "#FFFFFF", fontSize: 14 }}>₹0</Text>
               </View>
               <View
                 style={{
@@ -111,7 +111,7 @@ const AddCash = () => {
                 <Text style={{ color: "#FFFFFF", fontSize: 14 }}>
                   Winnings :
                 </Text>
-                <Text style={{ color: "#FFFFFF", fontSize: 14 }}>₹ 0</Text>
+                <Text style={{ color: "#FFFFFF", fontSize: 14 }}>₹0</Text>
               </View>
               <View
                 style={{

@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
@@ -6,12 +6,15 @@ import * as Progress from "react-native-progress";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useSport } from '../../components/SportContext';
 
+import { useNavigation } from '@react-navigation/native';
+
 
 
 
 const TireScreen = () => {
   const { Tier} = useSport();
   const { ImpactScore} = useSport();
+  const navigation = useNavigation();
  
 
   return (
@@ -20,9 +23,9 @@ const TireScreen = () => {
         style={styles.background}
     >
        <View style={{justifyContent:"center",width:"100%",display:"flex",flexDirection:"column",}}>
-       <View style={styles.back}>
+       <Pressable onPress={()=>navigation.goBack()} style={styles.back}>
         <Ionicons name="arrow-back" size={30} color="#fff" />
-        </View>
+        </Pressable>
         <View style={styles.tierBox}>
           <View style={styles.heading}>
              <Text style={{color:"#fff",fontSize:17,fontWeight:"bold"}}>My Tier</Text>

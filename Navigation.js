@@ -38,6 +38,7 @@ import AddCash from "./screens/PaymentScreen/AddCash";
 import PaymentScreen from "./screens/PaymentScreen/PaymentScreen";
 import TireScreen from "./screens/stack navigator/TireScreen";
 import ProfileScreen from "./screens/Tabscreen/ProfileScreen";
+import Withdraw from "./screens/PaymentScreen/Withdraw";
 
 const getHeaderRight = (navigation, routeName) => {
   if (routeName === "Settings") {
@@ -289,6 +290,17 @@ function StackScreen() {
     name="Tire Screen"
     component={TireScreen}
     />
+     <Stack.Screen
+     options={{
+      headerStyle:{
+        backgroundColor:"#3385ff",
+        borderBottomWidth: 0,
+      },
+      headerTintColor:"#fff"
+    }}
+    name="WITHDRAW"
+    component={Withdraw}
+    />
     </Stack.Navigator>
   );
 }
@@ -369,7 +381,7 @@ function DrawerScreen() {
     drawerContent={(props) => <DrawerHeader {...props} />}
     screenOptions={{
       drawerStyle:{
-        width:300
+        width:350
       }
     }}
     >

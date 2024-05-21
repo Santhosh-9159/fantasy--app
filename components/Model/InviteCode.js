@@ -1,85 +1,90 @@
-import { Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
-import React from 'react'
-import { Ionicons } from "@expo/vector-icons";
+import React from 'react';
+import { Modal, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-const InviteCode = ({visible,onClose}) => {
+
+const InviteCode = ({ visible, onClose }) => {
   return (
     <Modal
-    animationType="slide"
-    transparent={true}
-    visible={visible}
-    onRequestClose={onClose}
-   
+      animationType="slide"
+      transparent={true}
+      visible={visible}
+      onRequestClose={onClose}
     >
-    <View style={{  
-    
-    display:"flex",
-    flexDirection:"column",
-    width:"100%",
-    justifyContent: "flex-end",
-    height:"100%"
-}}>
-    <View
+      <Pressable
+        style={{
+          flex: 1,
+          justifyContent: 'flex-end',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        }}
+        onPress={onClose}
+      >
+        <View style={{  justifyContent: 'flex-end' ,width:"100%"}}>
+          <Pressable
             style={{
-                backgroundColor: "#fff",
-              alignItems: "center",
-              borderRadius: 4,
-              borderColor: "rgba(0, 0, 0, 0.1)",
-              height:250,
-              gap:20,
-              borderRadius:15,
-              display:"flex",
-             
+              backgroundColor: '#fff',
+              alignItems: 'center',
+              borderRadius: 15,
+              
+              width:"100%",height: '52%',
+            }}
+            onPress={(e) => {
+              e.stopPropagation(); // Prevent closing when pressing inside the modal
             }}
           >
-         <View style={{display:"flex",flexDirection:"row",justifyContent: 'space-between',alignItems:"center",width:"100%",padding:2,paddingTop:5}}>
-         <View style={{display:"flex",flexDirection:"column",justifyContent: 'center',}}>
-         <Text></Text>
-         </View>
-         <View style={{display:"flex",flexDirection:"column",justifyContent: 'center',}}>
-         <Text style={{fontWeight: 'bold',fontSize:14}}>Enter Invite Code</Text>
-         </View>
-             <Pressable
-               style={{  right: 10,padding:5}}
-               onPress={onClose}
-             >
-             <AntDesign name="close" size={20} color="black" style={{opacity: 0.5,}} />
-             </Pressable>
-         </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                width: '100%',
+                padding: 20,
+              }}
+            >
+              <Text style={{ fontWeight: 'bold', fontSize: 14 }}>
+                Enter Invite Code
+              </Text>
+              <Pressable onPress={onClose}>
+                <AntDesign name="close" size={20} color="black" />
+              </Pressable>
+            </View>
             <TextInput
               placeholder=" Invite code"
               style={{
-                width: "90%",
+                width: '90%',
                 height: 50,
                 padding: 10,
-                
-                backgroundColor: "#fff",
-                borderColor: "#ccc",
+                backgroundColor: '#fff',
+                borderColor: '#ccc',
                 borderWidth: 1,
                 borderRadius: 4,
-                justifyContent:"center",
-                display:"flex",
-                flexDirection:"column"
+                marginBottom: 10,
               }}
             />
-            <View style={{display: 'flex',flexDirection:"column",justifyContent:"flex-start",paddingRight:15}}>
-            <Text style={{fontSize:13,opacity: 0.6,}}>
-            Not applicable to the numbers that are already registered!
+            <Text style={{ fontSize: 13, opacity: 0.6, paddingHorizontal: 20 }}>
+              Not applicable to the numbers that are already registered!
             </Text>
-            </View>
             <Pressable
-            style={{backgroundColor: "#3757E2",width:"90%",padding:10,display:"flex",flexDirection:"column",justifyContent: 'center',alignItems: 'center',borderRadius:4}}
+              style={{
+                backgroundColor: '#3757E2',
+                width: '90%',
+                padding: 10,
+                marginTop: 10,
+                alignItems: 'center',
+                borderRadius: 4,
+              }}
+              onPress={onClose}
             >
-            <Text style={{color:"#fff",fontWeight: 'bold',fontSize:14}}>
-            Apply
-            </Text>
+              <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 14 }}>
+                Apply
+              </Text>
             </Pressable>
-          </View>
-    </View>
+          </Pressable>
+        </View>
+      </Pressable>
     </Modal>
-  )
-}
+  );
+};
 
-export default InviteCode
+export default InviteCode;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

@@ -123,9 +123,13 @@ const DrawerHeader = (props) => {
                   style={{ width: 20, height: 20 }}
                 />
               </View>
-              <View>
+              
+                <Pressable 
+                onPress={()=>navigation.navigate('WITHDRAW')}
+                >
                 <Text style={styles.withdraw}>WITHDRAW</Text>
-              </View>
+                </Pressable>
+              
             </Pressable>
           </View>
         </Pressable>

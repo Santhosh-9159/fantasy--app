@@ -42,6 +42,8 @@ import Withdraw from "./screens/PaymentScreen/Withdraw";
 
 import { FontAwesome5 } from '@expo/vector-icons';
 import MyBalance from "./screens/PaymentScreen/MyBalance";
+import KYC from "./screens/PaymentScreen/KYC";
+import ManagePayments from "./screens/PaymentScreen/ManagePayments";
 
 const getHeaderRight = (navigation, routeName) => {
   if (routeName === "Settings") {
@@ -319,6 +321,29 @@ function StackScreen() {
     }}
       name="MyBalance"
       component={MyBalance}
+      />
+      <Stack.Screen  options={{headerStyle:{
+        backgroundColor:"#3385ff",
+      },
+      headerTitle:"KYC VERIFICATION",
+      headerTitleStyle:{
+        color:"#fff"
+      },
+      headerTintColor:"#fff",
+    }}
+      name="KYC VERIFICATION"
+      component={KYC}
+      />
+      <Stack.Screen
+      options={{
+        headerStyle: {
+          backgroundColor: "#3385ff",
+        },
+        headerTitle:"Manage Payments",
+        headerTintColor: "#fff",
+      }}
+      name="ManagePayments"
+      component={ManagePayments}
       />
     </Stack.Navigator>
   );

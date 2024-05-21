@@ -83,7 +83,9 @@ const DrawerHeader = (props) => {
               <View>
                 <Ionicons name="wallet-outline" size={24} color="black" />
               </View>
-              <Pressable >
+              <Pressable 
+               onPress={()=>navigation.navigate('MyBalance')}
+              >
                 <Text style={styles.balanceText}>My Balance</Text>
               </Pressable>
             </View>
@@ -119,6 +121,7 @@ const DrawerHeader = (props) => {
                 padding: 5,
                 borderRadius:4
               }}
+              onPress={()=>navigation.navigate('WITHDRAW')}
             >
               <View>
                 <Image
@@ -127,10 +130,10 @@ const DrawerHeader = (props) => {
                 />
               </View>
               
-                <Pressable 
-                onPress={()=>navigation.navigate('WITHDRAW')}
+                <Pressable  style={styles.withdraw}
+                
                 >
-                <Text style={styles.withdraw}>WITHDRAW</Text>
+                <Text style={{color:"#fff"}}>WITHDRAW</Text>
                 </Pressable>
               
             </Pressable>

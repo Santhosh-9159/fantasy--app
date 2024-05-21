@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { TextInput } from "react-native-gesture-handler";
@@ -128,14 +128,23 @@ const Withdraw = () => {
             style={{
               flexDirection: "row",
               gap: 20,
+              
+              width: "70%",
             }}
           >
-            <FontAwesome name="bank" size={20} color="black" />
-            <Text>UPI</Text>
+          
+          <View style={{ width: "20%",}}>
+          <Image source={require("../../assets/UPI.png")}
+          style={{width:50,height:20}}
+          />
           </View>
-          <View style={{ flexDirection: "row" }}>
+           <View style={{ width: "80%",}}>
+           <Text>UPI</Text>
+           </View>
+          </View>
+          <View style={{ flexDirection: "row", width: "30%", }}>
             <Pressable style={{ backgroundColor: "#80bfff", padding: 2 }}>
-              <Text>LINK ACCOUNT</Text>
+              <Text style={{color:"#fff"}}>LINK ACCOUNT</Text>
             </Pressable>
           </View>
         </View>
@@ -152,14 +161,19 @@ const Withdraw = () => {
             style={{
               flexDirection: "row",
               gap: 20,
+              width: "70%",
             }}
           >
+            <View style={{width:"20%"}}>
             <FontAwesome name="bank" size={20} color="black" />
+            </View>
+            <View style={{width:"80%"}}>
             <Text>Bank Account</Text>
+            </View>
           </View>
           <View style={{ flexDirection: "row" }}>
             <Pressable style={{ backgroundColor: "#80bfff", padding: 2 }}>
-              <Text>LINK ACCOUNT</Text>
+              <Text style={{color:"#fff"}}>LINK ACCOUNT</Text>
             </Pressable>
           </View>
         </View>

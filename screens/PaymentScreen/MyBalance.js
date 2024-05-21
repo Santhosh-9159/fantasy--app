@@ -72,7 +72,9 @@ const MyBalance = () => {
             <Text style={{fontWeight:"bold"}}>My Transactions</Text>
             </Pressable>
 
-            <Pressable style={{flexDirection:"column",width:"95%",elevation:5,backgroundColor:"#fff",borderRadius:5,padding:10,gap:2}}>
+            <Pressable style={{flexDirection:"column",width:"95%",elevation:5,backgroundColor:"#fff",borderRadius:5,padding:10,gap:2}}
+            onPress={()=>navigation.navigate('ManagePayments')}
+            >
              <View style={{flexDirection:"row",gap:15,alignItems:"center"}}>
              <Ionicons name="card-outline" size={24} color="black" />         
           
@@ -85,7 +87,9 @@ const MyBalance = () => {
             
            
             </Pressable>
-            <Pressable style={{flexDirection:"column",width:"95%",elevation:5,backgroundColor:"#fff",borderRadius:5,padding:10,gap:2}}>
+            <Pressable style={{flexDirection:"column",width:"95%",elevation:5,backgroundColor:"#fff",borderRadius:5,padding:10,gap:2}}
+            onPress={()=> navigation.navigate('KYC VERIFICATION')}
+            >
              <View style={{flexDirection:"row",gap:15,alignItems:"center"}}>
              <FontAwesome5 name="address-card" size={21} color="black" />          
              <Text style={{fontWeight:"bold"}}>My KYC Details</Text>

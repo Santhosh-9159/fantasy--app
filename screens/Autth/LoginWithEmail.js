@@ -1,4 +1,5 @@
 import {
+  Alert,
   ImageBackground,
   Pressable,
   StyleSheet,
@@ -6,12 +7,34 @@ import {
   TextInput,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import { AntDesign } from '@expo/vector-icons';
-
+import axios from "axios";
 const LoginWithEmail = () => {
+  const [email, setEmail] = useState("");
   const navigation = useNavigation();
+
+  const handleLogin = () => {
+    const user = {
+      email: email,
+      
+    };
+
+    axios
+      .post("http://localhost:8080/login", user)
+      .then((response) => {
+        console.log(response);
+        const token = response.data.token;
+        AsyncStorage.setItem("authToken", token);
+        navigation.replace("OTP");
+        Alert.alert("Loged in","you have loged in sucessfully")
+      })
+      .catch((error) => {
+        Alert.alert("Login", "Invalid Email");
+        console.log(error);
+      });
+  };
   return (
     <View
       style={{
@@ -84,6 +107,8 @@ const LoginWithEmail = () => {
               gap:2}}>
             <View><AntDesign name="mail" size={24} color="white" /></View>
             <TextInput
+            value={email}
+            onChangeText={(text) => setEmail(text)}
             placeholderTextColor="#ababab"
               placeholder="Email"
               style={{
@@ -99,7 +124,7 @@ const LoginWithEmail = () => {
             />
             </View>
             <Pressable
-              onPress={() => navigation.navigate("OTP")}
+              onPress={handleLogin}
               style={{
                 display: "flex",
                 flexDirection: "column",

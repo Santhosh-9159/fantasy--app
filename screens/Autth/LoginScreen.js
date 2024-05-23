@@ -109,6 +109,7 @@ const LoginScreen = () => {
             </View>
             <Pressable
               onPress={() => navigation.navigate("OTP")}
+
               style={{
                 display: "flex",
                 flexDirection: "column",

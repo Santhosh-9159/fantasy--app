@@ -1,18 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
 import 'react-native-gesture-handler';
-import { StyleSheet, Text, View } from 'react-native';
-import Navigation from "./Navigation";
+import { StyleSheet, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SportProvider } from './components/SportContext';
-import { TailwindProvider } from 'tailwind-rn';
-import utilities from './tailwind.json';
+import PlayerInfo from './screens/CreateTeam/PlayerInfo';
+import Navigation from './Navigation';
 
 export default function App() {
   return (
-    <TailwindProvider utilities={utilities}>
-    <SportProvider>
-    <Navigation/>
-    </SportProvider>
-    </TailwindProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SportProvider>
+        <Navigation />
+        {/* <PlayerInfo /> */}
+      </SportProvider>
+    </GestureHandlerRootView>
   );
 }
 

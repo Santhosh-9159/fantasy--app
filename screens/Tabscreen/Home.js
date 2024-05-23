@@ -41,6 +41,8 @@ export default function Home({ navigation }) {
           }}
         >
           <Pressable
+                        onPress={() => navigation.navigate("ContestScreen")}
+
             style={{
               borderRadius: 5,
               overflow: "hidden",

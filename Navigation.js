@@ -44,6 +44,13 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import MyBalance from "./screens/PaymentScreen/MyBalance";
 import KYC from "./screens/PaymentScreen/KYC";
 import ManagePayments from "./screens/PaymentScreen/ManagePayments";
+import Wicketerscreen from "./screens/CreateTeam/Wicketerscreen";
+import BatterScreen from "./screens/CreateTeam/BatterScreen";
+import Allrounderscreen from "./screens/CreateTeam/Allrounderscreen";
+import Bowlerscreen from "./screens/CreateTeam/Bowlerscreen";
+import TeamScreen from "./screens/CreateTeam/TeamScreen";
+import TeamScreenHeader from "./components/TeamScreenHeader";
+import PlayerInfo from "./screens/CreateTeam/PlayerInfo";
 
 const getHeaderRight = (navigation, routeName) => {
   if (routeName === "Settings") {
@@ -345,6 +352,65 @@ function StackScreen() {
       name="ManagePayments"
       component={ManagePayments}
       />
+      <Stack.Screen
+      options={{
+        headerStyle: {
+          backgroundColor: "#3385ff",
+        },
+        headerTitle:"Wicketscreen",
+        headerTintColor: "#fff",
+      }}
+      name="Wicketscreen"
+      component={Wicketerscreen}
+      />
+       <Stack.Screen
+      options={{
+        headerStyle: {
+          backgroundColor: "#3385ff",
+        },
+        headerTitle:"BatterScreen",
+        headerTintColor: "#fff",
+      }}
+      name="BatterScreen"
+      component={BatterScreen}
+      />
+       <Stack.Screen
+      options={{
+        headerStyle: {
+          backgroundColor: "#3385ff",
+        },
+        headerTitle:"Allrounderscreen",
+        headerTintColor: "#fff",
+      }}
+      name="Allrounderscreen"
+      component={Allrounderscreen}
+      />
+       <Stack.Screen
+      options={{
+        headerStyle: {
+          backgroundColor: "#3385ff",
+        },
+        headerTitle:"Bowlerscreen",
+        headerTintColor: "#fff",
+      }}
+      name="Bowlerscreen"
+      component={Bowlerscreen}
+      />
+       <Stack.Screen
+       options={{
+        headerShown:false
+      }}
+      name="Teamscreen"
+      component={TeamScreen}
+      />
+      <Stack.Screen
+       options={{
+        headerShown:false
+      }}
+      name="PlayerInfo"
+      component={PlayerInfo}
+      />
+      
     </Stack.Navigator>
   );
 }

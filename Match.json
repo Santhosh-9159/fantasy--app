@@ -1,0 +1,68 @@
+[{
+    "_id": {
+      "$oid": "6650632fc37d9a0029242485"
+    },
+    "teamId1": {
+      "$oid": "664c651e649144415ed228b9"
+    },
+    "teamId2": {
+      "$oid": "664c69ec649144415ed228ba"
+    },
+    "dateAndTime": "2024-05-24T19:00",
+    "matchStatus": true,
+    "tournamentId": {
+      "$oid": "66504475bb7c4725c3c3bcc7"
+    },
+    "sportTypeId": {
+      "$oid": "665037b349e9b4439dcd86c3"
+    },
+    "contestId": {
+      "$oid": "66504f422ce5d94148f9daa3"
+    },
+    "matchTypeId": {
+      "$oid": "6650481fbb7c4725c3c3bccb"
+    },
+    "creator": "rohit123@gmail.com",
+    "status": true,
+    "creationTime": {
+      "$date": "2024-05-23T21:51:04.000Z"
+    },
+    "lastModified": {
+      "$date": "2024-05-24T09:51:43.193Z"
+    },
+    "_class": "com.avitam.fantasy11.model.Matches"
+  },
+  {
+    "_id": {
+      "$oid": "665064a2c37d9a0029242486"
+    },
+    "teamId1": {
+      "$oid": "664c651e649144415ed228b9"
+    },
+    "teamId2": {
+      "$oid": "664c6a4d649144415ed228bb"
+    },
+    "dateAndTime": "2024-05-25T19:00",
+    "matchStatus": false,
+    "tournamentId": {
+      "$oid": "66504475bb7c4725c3c3bcc7"
+    },
+    "sportTypeId": {
+      "$oid": "665037b349e9b4439dcd86c3"
+    },
+    "contestId": {
+      "$oid": "66504f422ce5d94148f9daa3"
+    },
+    "matchTypeId": {
+      "$oid": "6650481fbb7c4725c3c3bccb"
+    },
+    "creator": "rohit123@gmail.com",
+    "status": true,
+    "creationTime": {
+      "$date": "2024-05-23T21:57:06.000Z"
+    },
+    "lastModified": {
+      "$date": "2024-05-24T09:57:54.131Z"
+    },
+    "_class": "com.avitam.fantasy11.model.Matches"
+  }]

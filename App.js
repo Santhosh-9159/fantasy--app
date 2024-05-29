@@ -10,7 +10,7 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SportProvider>
         <Navigation />
-        {/* <PlayerInfo /> */}
+     
       </SportProvider>
     </GestureHandlerRootView>
   );

@@ -15,26 +15,16 @@ const LoginWithEmail = () => {
   const [email, setEmail] = useState("");
   const navigation = useNavigation();
 
-  const handleLogin = () => {
-    const user = {
-      email: email,
-      
-    };
-
-    axios
-      .post("http://localhost:8080/login", user)
-      .then((response) => {
-        console.log(response);
-        const token = response.data.token;
-        AsyncStorage.setItem("authToken", token);
-        navigation.replace("OTP");
-        Alert.alert("Loged in","you have loged in sucessfully")
-      })
-      .catch((error) => {
-        Alert.alert("Login", "Invalid Email");
-        console.log(error);
-      });
+  const sendOtp = async () => {
+    try {
+      await axios.post('http://192.168.0.160:5000/auth/login/email', { email });
+      navigation.navigate('OTP', { email });
+    } catch (error) {
+      console.error("msg",error);
+    }
   };
+  
+  
   return (
     <View
       style={{
@@ -61,7 +51,7 @@ const LoginWithEmail = () => {
             }}
           >
             <Text style={{ fontWeight: "bold", fontSize: 18, color: "#fff" }}>
-              LOGIN
+              LOGIN 
             </Text>
           </View>
           <View
@@ -124,7 +114,7 @@ const LoginWithEmail = () => {
             />
             </View>
             <Pressable
-              onPress={handleLogin}
+              onPress={sendOtp}
               style={{
                 display: "flex",
                 flexDirection: "column",

@@ -50,7 +50,7 @@ const NameRegister = () => {
       alignItems: "center",
       borderRadius: 5,
     }}
-    onPress={()=>navigation.navigate("cricket")}
+    onPress={()=>navigation.navigate("Tab")}
 
     >
       <Text style={{ fontWeight: "900", color: "#fff" }}>

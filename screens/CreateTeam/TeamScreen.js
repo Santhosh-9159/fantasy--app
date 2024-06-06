@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -20,6 +20,9 @@ import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { initializePlayerLists, resetFinalPlayerSelected } from '../../Redux/Slice';
+import { teamsArray } from '../../jsondata/cskjson';
 
 const initialLayout = { width: Dimensions.get('window').width };
 
@@ -71,6 +74,27 @@ const TeamScreen = () => {
 
 
   const totalDots = 11;
+
+  const playercount = useSelector((state) => state.tasks.finalPlayerSelected.length);
+  const Teamcount = useSelector((state) => state.tasks.finalPlayerSelected);
+  const allPlayers = teamsArray.flatMap(team => team.players);
+  const finalPlayerSelected = useSelector((state) => state.tasks.finalPlayerSelected);
+
+  const selectedPlayers = allPlayers.filter(player =>
+    finalPlayerSelected.includes(player.id)
+  );
+
+  const cskPlayersCount = selectedPlayers.filter(player => player.team_short_form === 'CSK').length;
+  const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form === 'RCB').length;
+
+
+  const dispatch = useDispatch();
+  const handleResetSelection = () => {
+    dispatch(resetFinalPlayerSelected());
+  };
+
+  dispatch(initializePlayerLists());
+
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -220,7 +244,7 @@ const TeamScreen = () => {
                   }}
                 >
                   <Text style={{ fontWeight: 'bold' }}>CSK</Text>
-                  <Text style={{ fontWeight: 'bold' }}>0</Text>
+                  <Text style={{ fontWeight: 'bold' }}>{cskPlayersCount}</Text>
                 </View>
               </View>
               <View
@@ -241,7 +265,7 @@ const TeamScreen = () => {
                   }}
                 >
                   <Text style={{ fontWeight: 'bold' }}>RCB</Text>
-                  <Text style={{ fontWeight: 'bold' }}>0</Text>
+                  <Text style={{ fontWeight: 'bold' }}>{rcbPlayersCount}</Text>
                 </View>
                 <View>
                   <Image
@@ -289,7 +313,7 @@ const TeamScreen = () => {
                         width: 22,
                         height: 7,
                         marginHorizontal: 5,
-                        backgroundColor: '#a8b6f4',
+                        backgroundColor:index < playercount ? '#3e57c4' : '#a8b6f4',
                       }}
                     />
                   ))}
@@ -312,11 +336,11 @@ const TeamScreen = () => {
                     <Text style={{ fontWeight: '500' }}>Players</Text>
                   </View>
                   <View>
-                    <Text style={{ fontWeight: '500' }}>0/11</Text>
+                    <Text style={{ fontWeight: '500' }}>{playercount}/11</Text>
                   </View>
                 </View>
                 <View>
-                  <Pressable
+                  <Pressable onPress={handleResetSelection}
                     style={{
                       borderWidth: 1,
                       borderColor: '#4d4d4d',
@@ -385,7 +409,7 @@ const TeamScreen = () => {
             padding: 10,
           }}
         >
-          <Pressable
+          <Pressable onPress={()=>navigation.navigate("TeamPreview")}
             style={{
               backgroundColor: '#000',
               width: '45%',

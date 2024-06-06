@@ -1,4 +1,6 @@
+import React, { useState, useEffect } from "react";
 import {
+  Alert,
   ImageBackground,
   Pressable,
   StyleSheet,
@@ -6,12 +8,24 @@ import {
   TextInput,
   View,
 } from "react-native";
-import React from "react";
 import { useNavigation } from "@react-navigation/core";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
+import axios from "axios";
 
 const LoginWithEmail = () => {
+  const [email, setEmail] = useState("");
   const navigation = useNavigation();
+
+  const sendOtp = async () => {
+    try {
+      await axios.post("http://192.168.0.119:5000/auth/login/email", { email });
+      Alert.alert("OTP Resent", "OTP has been sent to your email.");
+      navigation.navigate("OTP", { email });
+    } catch (error) {
+      console.error("msg", error);
+    }
+  };
+
   return (
     <View
       style={{
@@ -73,33 +87,40 @@ const LoginWithEmail = () => {
               paddingBottom: 15,
             }}
           >
-           <View style={{
-              display: "flex",
-              flexDirection: "row",
-              width: "90%",
-              justifyContent: "center",
-              alignItems: "center",
-              borderBottomWidth:1,
-              borderColor:"#fff",
-              gap:2}}>
-            <View><AntDesign name="mail" size={24} color="white" /></View>
-            <TextInput
-            placeholderTextColor="#ababab"
-              placeholder="Email"
+            <View
               style={{
-                width: "90%",
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: "row",
+                width: "90%",
                 justifyContent: "center",
-                padding: 5,
-                borderRadius: 7,
                 alignItems: "center",
-                color:"#fff"
+                borderBottomWidth: 1,
+                borderColor: "#fff",
+                gap: 2,
               }}
-            />
+            >
+              <View>
+                <AntDesign name="mail" size={24} color="white" />
+              </View>
+              <TextInput
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+                placeholderTextColor="#ababab"
+                placeholder="Email"
+                style={{
+                  width: "90%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  padding: 5,
+                  borderRadius: 7,
+                  alignItems: "center",
+                  color: "#fff",
+                }}
+              />
             </View>
             <Pressable
-              onPress={() => navigation.navigate("OTP")}
+              onPress={sendOtp}
               style={{
                 display: "flex",
                 flexDirection: "column",

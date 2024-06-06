@@ -3,9 +3,7 @@ import {
   DefaultTheme,
   NavigationContainer,
 } from "@react-navigation/native";
-import Home from "./screens/Tabscreen/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Mymatches from "./screens/Tabscreen/Mymatches";
 import { Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MymatchDetailes from "./screens/stack navigator/MymatchDetailes";
@@ -52,77 +50,159 @@ import TeamScreen from "./screens/CreateTeam/TeamScreen";
 import TeamScreenHeader from "./components/TeamScreenHeader";
 import PlayerInfo from "./screens/CreateTeam/PlayerInfo";
 import SelectImpactPlayer from "./screens/CreateTeam/SelectImpactPlayer";
+import TeamPreview from "./screens/CreateTeam/TeamPreview";
+import SelectCaptainandVCaptain from "./screens/CreateTeam/SelectCaptainandVCaptain";
+import CricketLive from "./components/Cricket/Live/LiveTabs/CricketLive";
+import { TransitionPresets } from "@react-navigation/stack";
+import Cricket from "./screens/TopTabScreen/Cricket";
+import { useSport } from "./components/SportContext";
+import CricketHome from "./components/Cricket/CricketHome";
+import MatchReminder from "./components/Model/MatchReminder";
+import CaptainandViceCaptain from "./components/Cricket/CaptainandViceCaptain";
+import CricketCompleted from "./components/Cricket/Completed/CompletedTabs/CricketCompleted";
 
-const getHeaderRight = (navigation, routeName) => {
-  if (routeName === "Settings") {
-    return null;
-  }
-
-  return (
-    <View style={{ flexDirection: "row", marginRight: 10 }}>
+const getHeaderRight = (navigation) => (
+  <View
+    style={{
+      flexDirection: "column",
+      backgroundColor: "#3385ff",
+      height: 100,
+      alignItems: "center",
+      gap: 5,
+    }}
+  >
+    <View style={{ flexDirection: "row", padding: 3, paddingTop: 50, gap: 20 }}>
       <Pressable
-        onPress={() => navigation.navigate("ADD CASH")}
+        style={{ justifyContent: "flex-start" }}
+        onPress={() => navigation.openDrawer()}
+      >
+        <Image
+          source={require("./assets/profile.png")}
+          style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 15 }}
+        />
+      </Pressable>
+      <Text style={{ fontSize: 24, fontWeight: "bold", color: "#fff" }}>IMPACT 11</Text>
+
+      <View
         style={{
+          flex: 1,
           flexDirection: "row",
-          marginRight: 20,
-          alignItems: "center",
-          borderWidth: 2,
+          justifyContent: "flex-end",
           gap: 10,
-          borderRadius: 5,
-          borderColor: "#fff",
         }}
       >
-        <Text style={{ color: "#fff", marginLeft: 5 }}>₹100</Text>
-        <Ionicons name="wallet-outline" size={24} color="white" />
-      </Pressable>
-      <Pressable
-        onPress={() => {
-          // handle notification action
-        }}
-        style={{
-          marginRight: 20,
-        }}
-      >
-        <Ionicons name="notifications-outline" size={24} color="white" />
-      </Pressable>
+        <View
+          style={{
+            borderWidth: 2,
+            borderColor: "#fff",
+            borderRadius: 6,
+            justifyContent: "space-between",
+            flexDirection: "row",
+            display: "flex",
+            width: 81,
+            height: 37,
+            gap: 10,
+          }}
+        >
+          <Pressable
+            onPress={() => navigation.navigate("login")}
+            style={{
+              flexDirection: "row",
+              marginRight: 20, 
+              alignItems: "center",
+              gap: 10,
+            }}
+          >
+            <Text style={{ color: "#fff", marginLeft: 5 }}>₹100</Text>
+            <Ionicons
+              name="wallet-outline"
+              size={24}
+              color="white"
+              style={{}}
+            />
+          </Pressable>
+        </View>
+        <Pressable
+          onPress={() => {
+          }}
+          style={{
+            marginRight: 20,
+            paddingTop: 9,
+          }}
+        >
+          <Ionicons name="notifications-outline" size={24} color="white" />
+        </Pressable>
+      </View>
     </View>
-  );
-};
+
+   
+  </View>
+);
 
 //Top Navigation Bar
 
 const Top = createMaterialTopTabNavigator();
 
 function TopScreen({ navigation }) {
-  
+  const { setSelectedSport, selectedSport, TabName, setTabName } = useSport();
+  let initialRouteName;
 
   useEffect(() => {
-    navigation.setOptions({ title: "Impact 11" });
+    navigation.setOptions({
+      title: "Impact 11",
+    });
   }, [navigation]);
+
+
+    if (selectedSport === "football" && TabName === "matches") {
+      initialRouteName = {selectedSport};
+    } else {
+      initialRouteName = {selectedSport};
+    }
+    
+   
+
+  // Function to handle tab press
+  const handleTabPress = (sport) => {
+    setSelectedSport(sport);
+  };
+
+  console.log("TabName:", TabName);
+  console.log("selectedSport:", selectedSport);
+  console.log(initialRouteName);
 
   return (
     <Top.Navigator
+       initialRouteName={initialRouteName}
       screenOptions={{
         tabBarLabelStyle: {
-          textTransform: "capitalize",
           fontWeight: "bold",
           color: "white",
         },
         tabBarIndicatorStyle: {
           height: 5,
           borderRadius: 5,
-          backgroundColor: "white",
+          backgroundColor: "#fff",
+          
         },
-        tabBarStyle: { backgroundColor: "#3385ff" },
-        tabBarItemStyle: { padding: 0 },
-      }}
       
+        
+        tabBarStyle: {
+          backgroundColor: "#3385ff",
+          
+        },
+        tabBarItemStyle: {
+          padding: 0,
+        },
+        swipeEnabled:false
+        
+      }}
     >
       <Top.Screen
-        name="Cricket"
-        component={Home}
+        name="cricket"
+        component={Cricket}
         options={{
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ focused, color, size }) => (
             <Image
               source={require("./assets/cricket-ball.png")}
               style={{
@@ -134,6 +214,7 @@ function TopScreen({ navigation }) {
             />
           ),
         }}
+        listeners={{ tabPress: () => handleTabPress("cricket") }}
       />
       <Top.Screen
         name="Football"
@@ -143,6 +224,7 @@ function TopScreen({ navigation }) {
             <Ionicons name="football-outline" size={21} color="white" />
           ),
         }}
+        listeners={{ tabPress: () => handleTabPress("football") }}
       />
     </Top.Navigator>
   );
@@ -156,7 +238,7 @@ function StackScreen() {
   return (
     <Stack.Navigator initialRouteName="login">
       <Stack.Screen
-        name="cricket"
+        name="Tab"
         component={TabScreen}
         options={{ headerShown: false }}
       />
@@ -406,19 +488,55 @@ function StackScreen() {
       />
       <Stack.Screen
        options={{
-        headerShown:false
+        headerShown:false,
+        ...TransitionPresets.ModalSlideFromBottomIOS,
+
       }}
       name="PlayerInfo"
       component={PlayerInfo}
       />
       <Stack.Screen
        options={{
-        headerShown:false
+        headerShown:false,
+        ...TransitionPresets.ModalSlideFromBottomIOS
       }}
       name="SelectImpactPlayer"
       component={SelectImpactPlayer}
       />
+      <Stack.Screen
+       options={{
+        headerShown:false
+      }}
+      name="TeamPreview"
+      component={TeamPreview}
+      />
+      <Stack.Screen
+       options={{
+        headerShown:false
+      }}
+      name="SelectCaptainandVCaptain"
+      component={SelectCaptainandVCaptain}
+      />
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="CricketLive" component={CricketLive}/>
+      <Stack.Screen 
       
+      name="MatchReminder" component={MatchReminder}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="CaptainandViceCaptain" component={CaptainandViceCaptain}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="CricketCompleted" component={CricketCompleted}/>
+      
+
     </Stack.Navigator>
   );
 }
@@ -427,6 +545,12 @@ function StackScreen() {
 const Tab = createBottomTabNavigator();
 
 function TabScreen({ navigation }) {
+  const { setTabName } = useSport();
+
+  // Function to handle tab press
+  const handleTab = (tabName) => {
+    setTabName(tabName);
+  };
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -450,26 +574,26 @@ function TabScreen({ navigation }) {
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        headerRight: () => getHeaderRight(navigation, route.name),
-        headerStyle: { backgroundColor: "#3385ff" },
-        headerTintColor: "#fff",
-        headerTitleStyle: { fontWeight: "bold" },
-        headerLeft: () => (
-          <Pressable onPress={() => navigation.openDrawer()}>
-            <Ionicons name="menu" size={30} color="white" style={{ marginLeft: 15 }} />
-          </Pressable>
-        ),
+       
       })}
     >
-      <Tab.Screen
+    <Tab.Screen
         name="Home"
         component={TopScreen}
-        options={{ tabBarLabel: "Home" }}
+        options={{
+          tabBarLabel: "Home",
+          header: () => getHeaderRight(navigation),
+        }}
+        listeners={{ tabPress: () => handleTab("home") }}
       />
       <Tab.Screen
         name="My Matches"
-        component={Mymatches}
-        options={{ tabBarLabel: "My Matches" }}
+        component={TopScreen}
+        options={{
+          tabBarLabel: "My Matches",
+          header: () => getHeaderRight(navigation),
+        }}
+        listeners={{ tabPress: () => handleTab("matches") }}
       />
       <Tab.Screen
         name="Refer & Earn"

@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { useSport } from '../../components/SportContext'
+import MyMatchTab from '../../components/MyMatchTab';
 
 const Football = () => {
+  const { selectedSport, TabName } = useSport();
   return (
-    <View>
-      <Text>Football</Text>
-    </View>
+ <MyMatchTab/>
   )
 }
 

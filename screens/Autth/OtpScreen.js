@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { View, TextInput, StyleSheet, Text, Pressable, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import axios from 'axios';
@@ -17,36 +17,40 @@ const OtpScreen = ({ route }) => {
     if (index === otp.length - 1) {
       inputs.current[index].blur();
     }
-    const otpArray = otp;
+    const otpArray = [...otp];
     otpArray[index] = value;
-    setOtp([...otpArray]);
+    setOtp(otpArray);
   };
 
   const verifyOtp = async () => {
-    const enteredOtp = otp.join('');
     try {
-      const response = await axios.post('http://192.168.0.160:5000/auth/verify-otp', { identifier: email, otp: enteredOtp });
-
-      if (response.data.success) {
-        await AsyncStorage.setItem('isloggedIn', 'true');
-        await AsyncStorage.setItem('userEmail', email); // Save user email if needed
-        Alert.alert("Logged in", "You have logged in successfully");
-        navigation.navigate("NameRegister");
-      } else {
-        Alert.alert("Invalid OTP", "The OTP you entered is incorrect. Please try again.");
-        console.log("Invalid OTP");
-      }
+      const otpString = otp.join('');
+      const response = await axios.post('http://192.168.0.160:5000/auth/verify-Otp', { identifier: email, otp: otpString });
+      const { token } = response.data;
+      
+      await AsyncStorage.setItem('userToken', token);
+      
+      navigation.navigate('NameRegister'); 
     } catch (error) {
       console.error("Error verifying OTP:", error);
-      Alert.alert("Error", "An error occurred while verifying the OTP. Please try again later.");
+      Alert.alert("Verification Failed", "Invalid OTP. Please try again.");
     }
   };
 
+  const checkLoginStatus = async () => {
+    const token = await AsyncStorage.getItem('userToken');
+    if (token) {
+      navigation.navigate('NameRegister'); 
+    }
+  };
+
+  useEffect(() => {
+    checkLoginStatus();
+  }, []);
+
   const resendOtp = async () => {
     try {
-      console.log("Sending OTP...");
       await axios.post('http://192.168.0.160:5000/auth/resend-otp', { identifier: email });
-      console.log("OTP resent");
       Alert.alert("OTP Resent", "A new OTP has been sent to your email.");
     } catch (error) {
       console.error("Error resending OTP:", error);

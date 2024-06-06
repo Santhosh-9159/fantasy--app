@@ -16,12 +16,11 @@ const sendSMS = async (phoneNumber, otp) => {
   };
 
   try {
-    const response = await axios.post(url, data);
-    if (response.data.type === "success") {
-      console.log("OTP sent to Phone successfully");
-    } else {
-      console.error("Error while sending OTP:", response.data);
-    }
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
   } catch (error) {
     console.error("Error sending OTP via SMS:", error);
   }

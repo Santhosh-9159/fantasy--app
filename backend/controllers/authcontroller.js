@@ -1,14 +1,17 @@
+const jwt = require('jsonwebtoken');
 const OtpModel = require('../models/otp');
 const generateOTP = require('../utils/generateOTP');
 const sendEmail = require('../utils/sendEmail');
 const sendSMS = require('../utils/sendsms');
+
+const SECRET_KEY = 'wfgksdfninqkfofnndakfw325';
 
 exports.loginWithEmail = async (req, res) => {
     const { email } = req.body;
     const otp = generateOTP();
 
     try {
-        // Save OTP in database
+        // Save OTP in the database
         await OtpModel.create({ identifier: email, otp });
 
         // Send OTP via Email
@@ -46,7 +49,19 @@ exports.verifyOtp = async (req, res) => {
         const otpDoc = await OtpModel.findOne({ identifier, otp });
 
         if (otpDoc) {
-            res.send({ success: true });
+            // Check if the OTP has expired
+            const currentTime = new Date();
+            if (currentTime - otpDoc.createdAt > 5 * 60 * 1000) { // Assuming 5 minutes expiry
+                return res.status(401).send({ success: false, error: 'OTP expired' });
+            }
+
+            // Generate token (assuming you have a function to generate a token)
+            const token = jwt.sign({ identifier }, 'wfgksdfninqkfofnndakfw325',);
+
+            // Optionally delete the OTP document after successful verification
+            await OtpModel.deleteOne({ _id: otpDoc._id });
+
+            res.send({ success: true, token });
         } else {
             res.status(401).send({ success: false, error: 'Invalid OTP' });
         }
@@ -55,7 +70,6 @@ exports.verifyOtp = async (req, res) => {
         res.status(500).send({ success: false, error: 'Error verifying OTP' });
     }
 };
-
 exports.resendOtp = async (req, res) => {
     const { identifier } = req.body;
     const otp = generateOTP();

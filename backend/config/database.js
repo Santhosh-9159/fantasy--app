@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/', {
+mongoose.connect('mongodb+srv://santhoshgunaseelan8:Fantasy@impact.r5rn2hh.mongodb.net/?retryWrites=true&w=majority&appName=Impact', {
     dbName: 'Fantasy11',
     useNewUrlParser: true,
     useUnifiedTopology: true

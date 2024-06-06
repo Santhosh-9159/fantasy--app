@@ -4,6 +4,7 @@ import { FontAwesome5, Fontisto, Entypo, MaterialIcons, MaterialCommunityIcons, 
 import { RadioButton } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import * as ImagePicker from 'expo-image-picker';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const MyinfoAndSettings = () => {
   const [selectedValue, setSelectedValue] = useState("option1");
@@ -29,7 +30,14 @@ const MyinfoAndSettings = () => {
     }
   };
   
+ 
 
+  const logout = async () => {
+    await AsyncStorage.removeItem('userToken');
+  
+    navigation.navigate('Login');
+  };
+  
 
   return (
     <ScrollView >
@@ -303,7 +311,8 @@ const MyinfoAndSettings = () => {
             paddingTop:10
           }}
         >
-          <View
+          <Pressable
+          onPress={logout}
             style={{
               display: "flex",
               flexDirection: "row",
@@ -315,7 +324,7 @@ const MyinfoAndSettings = () => {
           >
             <MaterialIcons name="logout" size={24} color="black" />
             <Text style={{ fontWeight: "bold" }}>LOG OUT </Text>
-          </View>
+          </Pressable>
         </View>
 
         <View

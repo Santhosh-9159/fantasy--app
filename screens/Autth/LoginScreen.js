@@ -14,6 +14,7 @@ import InviteCode from "../../components/Model/InviteCode";
 import { OTPWidget } from "@msg91comm/sendotp-react-native";
 
 
+
 const widgetId = "346543686978353039333132";
 const tokenAuth = { authToken:"384577TwCDcUNKMXxm6656eba5P1" };
 const LoginScreen = () => {
@@ -31,7 +32,7 @@ const LoginScreen = () => {
         identifier: phone // Use the entered phone number as the identifier
       };
       const response = await OTPWidget.sendOTP(data.identifier); // Send OTP
-      console.log(response);
+      console.log("error",response);
     } catch (error) {
       console.error("Error sending OTP:", error);
     }

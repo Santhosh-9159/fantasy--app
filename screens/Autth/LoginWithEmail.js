@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   Alert,
   ImageBackground,
@@ -7,10 +8,10 @@ import {
   TextInput,
   View,
 } from "react-native";
-import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/core";
 import { AntDesign } from '@expo/vector-icons';
 import axios from "axios";
+
 const LoginWithEmail = () => {
   const [email, setEmail] = useState("");
   const navigation = useNavigation();
@@ -18,11 +19,13 @@ const LoginWithEmail = () => {
   const sendOtp = async () => {
     try {
       await axios.post('http://192.168.0.160:5000/auth/login/email', { email });
+      Alert.alert("OTP Resent", "OTP has been sent to your email.");
       navigation.navigate('OTP', { email });
     } catch (error) {
-      console.error("msg",error);
+      console.error("msg", error);
     }
   };
+
   
   
   return (

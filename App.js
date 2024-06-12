@@ -2,12 +2,12 @@ import "react-native-gesture-handler";
 import { StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SportProvider } from "./components/SportContext";
-import PlayerInfo from "./screens/CreateTeam/PlayerInfo";
 import Navigation from "./Navigation";
 import { configureStore } from "@reduxjs/toolkit";
-import  useReducer  from "./Redux/Slice";
+import useReducer from "./Redux/Slice";
 import { Provider } from "react-redux";
-import TeamPreview from "./screens/CreateTeam/TeamPreview";
+import Toast from "react-native-toast-message"; // Import Toast
+import FlashMessage from "react-native-flash-message";
 
 const store = configureStore({
   reducer: {
@@ -20,8 +20,8 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SportProvider>
         <Provider store={store}>
-          <Navigation />
-          {/* <TeamPreview /> */}
+          <FlashMessage style={styles.flashMessage} />
+           <Navigation />
         </Provider>
       </SportProvider>
     </GestureHandlerRootView>
@@ -34,5 +34,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  flashMessage: {
+    top: 60, // Adjust the top position
+    position: 'absolute', // Make sure it's positioned absolutely
   },
 });

@@ -33,7 +33,7 @@ export default function CricketHome() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
-            marginLeft: 15,
+            marginLeft: 10,
             padding: 5,
           }}
         >
@@ -54,7 +54,7 @@ export default function CricketHome() {
               style={{
                 borderRadius: 5,
                 overflow: "hidden",
-                width: "90%",
+                width: "95%",
                 backgroundColor: "#fff",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -296,19 +296,15 @@ export default function CricketHome() {
                   <Pressable
                     onPress={() => setShow(true)}
                     style={{
-                      borderWidth: 2,
-                      borderColor: "#666666",
-                      borderRadius: 8,
+                      
                       padding: 1,
                       opacity: 0.8,
                     }}
                   >
-                    <MaterialCommunityIcons
-                      name="bell-plus-outline"
-                      size={20}
+                    <MaterialCommunityIcons name="bell-circle" size={24}
                       color="#666666"
-                      style={{ opacity: 0.8 }}
-                    />
+                      style={{ opacity: 0.8 }} />
+                    
                   </Pressable>
                   <MatchReminder visible={show} onclose={()=> setShow(false)}/>
                 </View>
@@ -322,10 +318,10 @@ export default function CricketHome() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start",
-              marginLeft: 20,
+              marginLeft: 10,
             }}
           >
-            <Text>Upcoming Matches</Text>
+            <Text style={{fontWeight:"bold"}}>Upcoming Matches</Text>
           </View>
 
           <View
@@ -341,7 +337,7 @@ export default function CricketHome() {
               style={{
                 borderRadius: 5,
                 overflow: "hidden",
-                width: "90%",
+                width: "95%",
                 backgroundColor: "#fff",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -600,22 +596,19 @@ export default function CricketHome() {
                     </Text>
                     <Text style={{ fontWeight: "bold" }}>₹ 1 CRORE</Text>
                   </View>
-                  <View
+                   <Pressable
+                    onPress={() => setShow(true)}
                     style={{
-                      borderWidth: 2,
-                      borderColor: "#666666",
-                      borderRadius: 8,
+                      
                       padding: 1,
                       opacity: 0.8,
                     }}
                   >
-                    <MaterialCommunityIcons
-                      name="bell-plus-outline"
-                      size={20}
+                    <MaterialCommunityIcons name="bell-circle" size={24}
                       color="#666666"
-                      style={{ opacity: 0.8 }}
-                    />
-                  </View>
+                      style={{ opacity: 0.8 }} />
+                    
+                  </Pressable>
                 </View>
               </View>
             </Pressable>
@@ -634,7 +627,7 @@ export default function CricketHome() {
               style={{
                 borderRadius: 5,
                 overflow: "hidden",
-                width: "90%",
+                width: "95%",
                 backgroundColor: "#fff",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -893,22 +886,19 @@ export default function CricketHome() {
                     </Text>
                     <Text style={{ fontWeight: "bold" }}>₹ 1 CRORE</Text>
                   </View>
-                  <View
+                   <Pressable
+                    onPress={() => setShow(true)}
                     style={{
-                      borderWidth: 2,
-                      borderColor: "#666666",
-                      borderRadius: 8,
+                      
                       padding: 1,
                       opacity: 0.8,
                     }}
                   >
-                    <MaterialCommunityIcons
-                      name="bell-plus-outline"
-                      size={20}
+                    <MaterialCommunityIcons name="bell-circle" size={24}
                       color="#666666"
-                      style={{ opacity: 0.8 }}
-                    />
-                  </View>
+                      style={{ opacity: 0.8 }} />
+                    
+                  </Pressable>
                 </View>
               </View>
             </Pressable>
@@ -927,7 +917,7 @@ export default function CricketHome() {
               style={{
                 borderRadius: 5,
                 overflow: "hidden",
-                width: "90%",
+                width: "95%",
                 backgroundColor: "#fff",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -1186,22 +1176,19 @@ export default function CricketHome() {
                     </Text>
                     <Text style={{ fontWeight: "bold" }}>₹ 1 CRORE</Text>
                   </View>
-                  <View
+                   <Pressable
+                    onPress={() => setShow(true)}
                     style={{
-                      borderWidth: 2,
-                      borderColor: "#666666",
-                      borderRadius: 8,
+                      
                       padding: 1,
                       opacity: 0.8,
                     }}
                   >
-                    <MaterialCommunityIcons
-                      name="bell-plus-outline"
-                      size={20}
+                    <MaterialCommunityIcons name="bell-circle" size={24}
                       color="#666666"
-                      style={{ opacity: 0.8 }}
-                    />
-                  </View>
+                      style={{ opacity: 0.8 }} />
+                    
+                  </Pressable>
                 </View>
               </View>
             </Pressable>
@@ -1220,7 +1207,7 @@ export default function CricketHome() {
               style={{
                 borderRadius: 5,
                 overflow: "hidden",
-                width: "90%",
+                width: "95%",
                 backgroundColor: "#fff",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -1479,22 +1466,19 @@ export default function CricketHome() {
                     </Text>
                     <Text style={{ fontWeight: "bold" }}>₹ 1 CRORE</Text>
                   </View>
-                  <View
+                   <Pressable
+                    onPress={() => setShow(true)}
                     style={{
-                      borderWidth: 2,
-                      borderColor: "#666666",
-                      borderRadius: 8,
+                      
                       padding: 1,
                       opacity: 0.8,
                     }}
                   >
-                    <MaterialCommunityIcons
-                      name="bell-plus-outline"
-                      size={20}
+                    <MaterialCommunityIcons name="bell-circle" size={24}
                       color="#666666"
-                      style={{ opacity: 0.8 }}
-                    />
-                  </View>
+                      style={{ opacity: 0.8 }} />
+                    
+                  </Pressable>
                 </View>
               </View>
             </Pressable>
@@ -1513,7 +1497,7 @@ export default function CricketHome() {
               style={{
                 borderRadius: 5,
                 overflow: "hidden",
-                width: "90%",
+                width: "95%",
                 backgroundColor: "#fff",
                 flexDirection: "column",
                 justifyContent: "space-between",
@@ -1772,22 +1756,19 @@ export default function CricketHome() {
                     </Text>
                     <Text style={{ fontWeight: "bold" }}>₹ 1 CRORE</Text>
                   </View>
-                  <View
+                   <Pressable
+                    onPress={() => setShow(true)}
                     style={{
-                      borderWidth: 2,
-                      borderColor: "#666666",
-                      borderRadius: 8,
+                      
                       padding: 1,
                       opacity: 0.8,
                     }}
                   >
-                    <MaterialCommunityIcons
-                      name="bell-plus-outline"
-                      size={20}
+                    <MaterialCommunityIcons name="bell-circle" size={24}
                       color="#666666"
-                      style={{ opacity: 0.8 }}
-                    />
-                  </View>
+                      style={{ opacity: 0.8 }} />
+                    
+                  </Pressable>
                 </View>
               </View>
             </Pressable>

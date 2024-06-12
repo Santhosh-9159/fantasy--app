@@ -38,7 +38,7 @@ import TireScreen from "./screens/stack navigator/TireScreen";
 import ProfileScreen from "./screens/Tabscreen/ProfileScreen";
 import Withdraw from "./screens/PaymentScreen/Withdraw";
 
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
 import MyBalance from "./screens/PaymentScreen/MyBalance";
 import KYC from "./screens/PaymentScreen/KYC";
 import ManagePayments from "./screens/PaymentScreen/ManagePayments";
@@ -60,6 +60,8 @@ import CricketHome from "./components/Cricket/CricketHome";
 import MatchReminder from "./components/Model/MatchReminder";
 import CaptainandViceCaptain from "./components/Cricket/CaptainandViceCaptain";
 import CricketCompleted from "./components/Cricket/Completed/CompletedTabs/CricketCompleted";
+import AuthLoadingScreen from "./screens/Autth/AuthLoadingScreen";
+import RegisterPage from "./screens/Autth/RegisterPage";
 
 const getHeaderRight = (navigation) => (
   <View
@@ -81,7 +83,9 @@ const getHeaderRight = (navigation) => (
           style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 15 }}
         />
       </Pressable>
-      <Text style={{ fontSize: 24, fontWeight: "bold", color: "#fff" }}>IMPACT 11</Text>
+      <Text style={{ fontSize: 24, fontWeight: "bold", color: "#fff" }}>
+        IMPACT 11
+      </Text>
 
       <View
         style={{
@@ -108,7 +112,7 @@ const getHeaderRight = (navigation) => (
             onPress={() => navigation.navigate("login")}
             style={{
               flexDirection: "row",
-              marginRight: 20, 
+              marginRight: 20,
               alignItems: "center",
               gap: 10,
             }}
@@ -123,8 +127,7 @@ const getHeaderRight = (navigation) => (
           </Pressable>
         </View>
         <Pressable
-          onPress={() => {
-          }}
+          onPress={() => {}}
           style={{
             marginRight: 20,
             paddingTop: 9,
@@ -134,8 +137,6 @@ const getHeaderRight = (navigation) => (
         </Pressable>
       </View>
     </View>
-
-   
   </View>
 );
 
@@ -153,14 +154,11 @@ function TopScreen({ navigation }) {
     });
   }, [navigation]);
 
-
-    if (selectedSport === "football" && TabName === "matches") {
-      initialRouteName = {selectedSport};
-    } else {
-      initialRouteName = {selectedSport};
-    }
-    
-   
+  if (selectedSport === "football" && TabName === "matches") {
+    initialRouteName = { selectedSport };
+  } else {
+    initialRouteName = { selectedSport };
+  }
 
   // Function to handle tab press
   const handleTabPress = (sport) => {
@@ -173,7 +171,7 @@ function TopScreen({ navigation }) {
 
   return (
     <Top.Navigator
-       initialRouteName={initialRouteName}
+      initialRouteName={initialRouteName}
       screenOptions={{
         tabBarLabelStyle: {
           fontWeight: "bold",
@@ -183,19 +181,15 @@ function TopScreen({ navigation }) {
           height: 5,
           borderRadius: 5,
           backgroundColor: "#fff",
-          
         },
-      
-        
+
         tabBarStyle: {
           backgroundColor: "#3385ff",
-          
         },
         tabBarItemStyle: {
           padding: 0,
         },
-        swipeEnabled:false
-        
+        swipeEnabled: false,
       }}
     >
       <Top.Screen
@@ -236,7 +230,7 @@ const Stack = createNativeStackNavigator();
 
 function StackScreen() {
   return (
-    <Stack.Navigator initialRouteName="login">
+    <Stack.Navigator initialRouteName="AuthLoadingScreen">
       <Stack.Screen
         name="Tab"
         component={TabScreen}
@@ -254,6 +248,13 @@ function StackScreen() {
         component={UpcomeingMatchDetailes}
       />
       <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="AuthLoadingScreen"
+        component={AuthLoadingScreen}
+      />
+      <Stack.Screen
         options={{ headerShown: false }}
         name="login"
         component={LoginScreen}
@@ -269,7 +270,7 @@ function StackScreen() {
       />
       <Stack.Screen
         options={{
-          headerTitle: () => <OTPHeaderTitle/>,
+          headerTitle: () => <OTPHeaderTitle />,
           headerStyle: {
             backgroundColor: "#3385ff",
             height: 10,
@@ -280,263 +281,272 @@ function StackScreen() {
         component={OtpScreen}
       />
       <Stack.Screen
-      options={{
-        headerShown: false,
-      }}
-      name="NameRegister"
-      component={NameRegister}
-    />
-    <Stack.Screen
-    options={{
-      headerTitle:"ENTER NEW EMAIL",
-      headerStyle:{
-        backgroundColor:"#3385ff",
-        
-      },
-      headerTintColor:"#fff"
-      
-    }}
-    name="EditEmail"
-    component={EditEmail}
-    />
-    <Stack.Screen
-    options={{
-      headerTitle:"ENTER NEW NUMBER",
-      headerStyle:{
-        backgroundColor:"#3385ff",
-        
-      },
-      headerTintColor:"#fff"
-      
-    }}
-    name="EditPhoneNumber"
-    component={EditPhoneNumber}
-    />
-    <Stack.Screen
-    options={{
-      headerTitle: () => <ContestHeader/>,
-      headerStyle: {
-        backgroundColor: "#3385ff",
-      },
-      headerTintColor: "#fff",
-    }}
-    name="ContestScreen"
-    component={ContestScreen}
-    />
-    <Stack.Screen
-    options={{
-      headerTitle: () => <ContestHeader/>,
-      headerStyle: {
-        backgroundColor: "#3385ff",
-      },
-      headerTintColor: "#fff",
-    }}
-    name="MYContest"
-    component={MyContests}
-    />
-    <Stack.Screen
-    options={{
-      headerTitle: () => <ContestHeader/>,
-      headerStyle: {
-        backgroundColor: "#3385ff",
-      },
-      headerTintColor: "#fff",
-    }}
-    name="MYTeam"
-    component={Myteam}
-    />
-    <Stack.Screen
-    options={{
-      headerTitle: () => <ContestHeader/>,
-      headerStyle: {
-        backgroundColor: "#3385ff",
-      },
-      headerTintColor: "#fff",
-    }}
-    name="DetailScreen"
-    component={DetailScreen}
-    />
-    <Stack.Screen
-    options={{
-      headerStyle:{
-        backgroundColor:"#3385ff",
-        borderBottomWidth: 0,
-      },
-      headerTintColor:"#fff"
-    }}
-    name="ADD CASH"
-    component={AddCash}
-    />
-    <Stack.Screen
-    options={{
-      headerStyle:{
-        backgroundColor:"#3385ff",
-        borderBottomWidth: 0,
-      },
-      headerTintColor:"#fff"
-    }}
-    name="PAYMENT OPTIONS"
-    component={PaymentScreen}
-    />
-     <Stack.Screen
-    options={{
-      headerShown:false
-    }}
-    name="Tire Screen"
-    component={TireScreen}
-    />
-     <Stack.Screen
-     options={{
-      headerStyle:{
-        backgroundColor:"#3385ff",
-        borderBottomWidth: 0,
-      },
-      headerTintColor:"#fff"
-    }}
-    name="WITHDRAW"
-    component={Withdraw}
-    />
-      <Stack.Screen  options={{headerStyle:{
-        backgroundColor:"#3385ff",
-      },
-      headerTitle:"My Balance",
-      headerTitleStyle:{
-        color:"#fff"
-      },
-      headerTintColor:"#fff",
-      headerRight:()=> 
-        <Pressable>
-          <FontAwesome5 name="question-circle" size={24} color="#fff" />
-        </Pressable>
-    }}
-      name="MyBalance"
-      component={MyBalance}
-      />
-      <Stack.Screen  options={{headerStyle:{
-        backgroundColor:"#3385ff",
-      },
-      headerTitle:"KYC VERIFICATION",
-      headerTitleStyle:{
-        color:"#fff"
-      },
-      headerTintColor:"#fff",
-    }}
-      name="KYC VERIFICATION"
-      component={KYC}
+        options={{
+          headerShown: false,
+        }}
+        name="NameRegister"
+        component={NameRegister}
       />
       <Stack.Screen
-      options={{
-        headerStyle: {
-          backgroundColor: "#3385ff",
-        },
-        headerTitle:"Manage Payments",
-        headerTintColor: "#fff",
-      }}
-      name="ManagePayments"
-      component={ManagePayments}
-      />
-      <Stack.Screen
-      options={{
-        headerStyle: {
-          backgroundColor: "#3385ff",
-        },
-        headerTitle:"Wicketscreen",
-        headerTintColor: "#fff",
-      }}
-      name="Wicketscreen"
-      component={Wicketerscreen}
+        options={{
+          headerTitle: "ENTER NEW EMAIL",
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTintColor: "#fff",
+        }}
+        name="EditEmail"
+        component={EditEmail}
       />
        <Stack.Screen
-      options={{
-        headerStyle: {
-          backgroundColor: "#3385ff",
-        },
-        headerTitle:"BatterScreen",
-        headerTintColor: "#fff",
-      }}
-      name="BatterScreen"
-      component={BatterScreen}
-      />
-       <Stack.Screen
-      options={{
-        headerStyle: {
-          backgroundColor: "#3385ff",
-        },
-        headerTitle:"Allrounderscreen",
-        headerTintColor: "#fff",
-      }}
-      name="Allrounderscreen"
-      component={Allrounderscreen}
-      />
-       <Stack.Screen
-      options={{
-        headerStyle: {
-          backgroundColor: "#3385ff",
-        },
-        headerTitle:"Bowlerscreen",
-        headerTintColor: "#fff",
-      }}
-      name="Bowlerscreen"
-      component={Bowlerscreen}
-      />
-       <Stack.Screen
-       options={{
-        headerShown:false
-      }}
-      name="Teamscreen"
-      component={TeamScreen}
+        options={{
+          headerShown: false,
+        }}
+        name="RegisterPage"
+        component={RegisterPage}
       />
       <Stack.Screen
-       options={{
-        headerShown:false,
-        ...TransitionPresets.ModalSlideFromBottomIOS,
-
-      }}
-      name="PlayerInfo"
-      component={PlayerInfo}
+        options={{
+          headerTitle: "ENTER NEW NUMBER",
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTintColor: "#fff",
+        }}
+        name="EditPhoneNumber"
+        component={EditPhoneNumber}
       />
       <Stack.Screen
-       options={{
-        headerShown:false,
-        ...TransitionPresets.ModalSlideFromBottomIOS
-      }}
-      name="SelectImpactPlayer"
-      component={SelectImpactPlayer}
+        options={{
+          headerTitle: () => <ContestHeader />,
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTintColor: "#fff",
+        }}
+        name="ContestScreen"
+        component={ContestScreen}
       />
       <Stack.Screen
-       options={{
-        headerShown:false
-      }}
-      name="TeamPreview"
-      component={TeamPreview}
+        options={{
+          headerTitle: () => <ContestHeader />,
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTintColor: "#fff",
+        }}
+        name="MYContest"
+        component={MyContests}
       />
       <Stack.Screen
-       options={{
-        headerShown:false
-      }}
-      name="SelectCaptainandVCaptain"
-      component={SelectCaptainandVCaptain}
+        options={{
+          headerTitle: () => <ContestHeader />,
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTintColor: "#fff",
+        }}
+        name="MYTeam"
+        component={Myteam}
       />
-      <Stack.Screen 
-      options={{
-        headerShown:false
-      }}
-      name="CricketLive" component={CricketLive}/>
-      <Stack.Screen 
-      
-      name="MatchReminder" component={MatchReminder}/>
-      <Stack.Screen 
-      options={{
-        headerShown:false
-      }}
-      name="CaptainandViceCaptain" component={CaptainandViceCaptain}/>
-      <Stack.Screen 
-      options={{
-        headerShown:false
-      }}
-      name="CricketCompleted" component={CricketCompleted}/>
-      
-
+      <Stack.Screen
+        options={{
+          headerTitle: () => <ContestHeader />,
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTintColor: "#fff",
+        }}
+        name="DetailScreen"
+        component={DetailScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+            borderBottomWidth: 0,
+          },
+          headerTintColor: "#fff",
+        }}
+        name="ADD CASH"
+        component={AddCash}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+            borderBottomWidth: 0,
+          },
+          headerTintColor: "#fff",
+        }}
+        name="PAYMENT OPTIONS"
+        component={PaymentScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="Tire Screen"
+        component={TireScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+            borderBottomWidth: 0,
+          },
+          headerTintColor: "#fff",
+        }}
+        name="WITHDRAW"
+        component={Withdraw}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTitle: "My Balance",
+          headerTitleStyle: {
+            color: "#fff",
+          },
+          headerTintColor: "#fff",
+          headerRight: () => (
+            <Pressable>
+              <FontAwesome5 name="question-circle" size={24} color="#fff" />
+            </Pressable>
+          ),
+        }}
+        name="MyBalance"
+        component={MyBalance}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTitle: "KYC VERIFICATION",
+          headerTitleStyle: {
+            color: "#fff",
+          },
+          headerTintColor: "#fff",
+        }}
+        name="KYC VERIFICATION"
+        component={KYC}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTitle: "Manage Payments",
+          headerTintColor: "#fff",
+        }}
+        name="ManagePayments"
+        component={ManagePayments}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTitle: "Wicketscreen",
+          headerTintColor: "#fff",
+        }}
+        name="Wicketscreen"
+        component={Wicketerscreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTitle: "BatterScreen",
+          headerTintColor: "#fff",
+        }}
+        name="BatterScreen"
+        component={BatterScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTitle: "Allrounderscreen",
+          headerTintColor: "#fff",
+        }}
+        name="Allrounderscreen"
+        component={Allrounderscreen}
+      />
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTitle: "Bowlerscreen",
+          headerTintColor: "#fff",
+        }}
+        name="Bowlerscreen"
+        component={Bowlerscreen}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="Teamscreen"
+        component={TeamScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+          ...TransitionPresets.ModalSlideFromBottomIOS,
+        }}
+        name="PlayerInfo"
+        component={PlayerInfo}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+          ...TransitionPresets.ModalSlideFromBottomIOS,
+        }}
+        name="SelectImpactPlayer"
+        component={SelectImpactPlayer}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="TeamPreview"
+        component={TeamPreview}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="SelectCaptainandVCaptain"
+        component={SelectCaptainandVCaptain}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="CricketLive"
+        component={CricketLive}
+      />
+      <Stack.Screen name="MatchReminder" component={MatchReminder} />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="CaptainandViceCaptain"
+        component={CaptainandViceCaptain}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="CricketCompleted"
+        component={CricketCompleted}
+      />
     </Stack.Navigator>
   );
 }
@@ -574,10 +584,9 @@ function TabScreen({ navigation }) {
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-       
       })}
     >
-    <Tab.Screen
+      <Tab.Screen
         name="Home"
         component={TopScreen}
         options={{
@@ -601,17 +610,13 @@ function TabScreen({ navigation }) {
         options={{ tabBarLabel: "Refer & Earn", headerShown: false }}
       />
       <Tab.Screen
+        options={{ headerShown: false }}
         name="Profile"
         component={ProfileScreen} // Assuming Settings is the correct component
-        options={{
-          tabBarLabel: "Profile",
-          headerTitle: "My INFO & SETTING"  // Explicitly set the header title for this tab
-        }}
       />
     </Tab.Navigator>
   );
 }
-
 
 //Drawer Navigation
 
@@ -620,12 +625,12 @@ const Drawer = createDrawerNavigator();
 function DrawerScreen() {
   return (
     <Drawer.Navigator
-    drawerContent={(props) => <DrawerHeader {...props} />}
-    screenOptions={{
-      drawerStyle:{
-        width:350
-      }
-    }}
+      drawerContent={(props) => <DrawerHeader {...props} />}
+      screenOptions={{
+        drawerStyle: {
+          width: 350,
+        },
+      }}
     >
       <Drawer.Screen
         name="Home"
@@ -642,12 +647,12 @@ function DrawerScreen() {
         }}
       />
       <Drawer.Screen
-      name="HelpAndSuport"
-      component={HelpAndSuport}
-      options={{
-        headerShown: true,
-      }}
-    />
+        name="HelpAndSuport"
+        component={HelpAndSuport}
+        options={{
+          headerShown: true,
+        }}
+      />
     </Drawer.Navigator>
   );
 }

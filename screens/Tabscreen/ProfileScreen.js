@@ -35,28 +35,27 @@ const ProfileScreen = () => {
     }
   };
 
-  const { Tier,setTier} = useSport();
-  const { ImpactScore} = useSport();
+  const { Tier, setTier } = useSport();
+  const { ImpactScore } = useSport();
 
-  
-if(ImpactScore>=0 && ImpactScore <=200){
-  setTier('BRONZE')
-}
-if(ImpactScore>=201 && ImpactScore <=300){
-  setTier('SILVER')
-}
-if(ImpactScore>=301 && ImpactScore <=400){
-  setTier('GOLD')
-}
-if(ImpactScore>=401 && ImpactScore <=500){
-  setTier('DIAMOND')
-}
-if(ImpactScore>=501 && ImpactScore <=800){
-  setTier('THE STAR')
-}
-if(ImpactScore>=801 && ImpactScore <=1000){
-  setTier('LEGEND')
-}
+  if (ImpactScore >= 0 && ImpactScore <= 200) {
+    setTier("BRONZE");
+  }
+  if (ImpactScore >= 201 && ImpactScore <= 300) {
+    setTier("SILVER");
+  }
+  if (ImpactScore >= 301 && ImpactScore <= 400) {
+    setTier("GOLD");
+  }
+  if (ImpactScore >= 401 && ImpactScore <= 500) {
+    setTier("DIAMOND");
+  }
+  if (ImpactScore >= 501 && ImpactScore <= 800) {
+    setTier("THE STAR");
+  }
+  if (ImpactScore >= 801 && ImpactScore <= 1000) {
+    setTier("LEGEND");
+  }
 
   return (
     <View
@@ -64,20 +63,44 @@ if(ImpactScore>=801 && ImpactScore <=1000){
         width: "100%",
         display: "flex",
         flexDirection: "column",
-        gap: 20,
       }}
     >
+      <View
+        style={{
+          height: 100,
+          backgroundColor: "#3f58c5",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "flex-end",
+          padding: 10,
+          paddingLeft:15,
+          paddingRight:15
+        }}
+      >
+        <Text style={{ fontSize: 18, color: "#fff",fontWeight:"bold" }}>PROFILE</Text>
+        <Pressable>
+          <View style={{ gap: 5,display: "flex",
+          flexDirection: "row",justifyContent: "center",
+          alignItems: "center", }}>
+            <View>
+              <MaterialIcons name="power-settings-new" size={20} color="#fff" />
+            </View>
+            <Text style={{fontSize:16,color:"#fff"}}>Logout</Text>
+          </View>
+        </Pressable>
+      </View>
       <View
         style={{
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          paddingTop: 50,
         }}
       >
         <View
           style={{
             width: "100%",
+            paddingTop: 50,
 
             flexDirection: "column",
             justifyContent: "center",
@@ -185,81 +208,107 @@ if(ImpactScore>=801 && ImpactScore <=1000){
           <View>
             <Text style={{ fontWeight: "bold", fontSize: 17 }}>Tier</Text>
           </View>
-         <Pressable onPress={()=>navigation.navigate('Tire Screen')}>
-         <View
-            style={{
-              width: "95%",
-              borderRadius: 10,
-              backgroundColor: "#ffff",
-              ...Platform.select({
-                ios: {
-                  shadowColor: "red",
-                  shadowOpacity: 0.8,
-                  shadowRadius: 10,
-                  shadowOffset: { width: 20, height: 10 },
-                },
-                android: {
-                  elevation: 10,
-                },
-              }),
-              flexDirection: "row",
-              padding: 7,
-            }}
-          >
+          <Pressable onPress={() => navigation.navigate("Tire Screen")}>
             <View
               style={{
-                flexDirection: "column",
-                width: "20%",
-                alignItems: "center",
-                justifyContent:"center",
-                display:"flex"
+                width: "95%",
+                borderRadius: 10,
+                backgroundColor: "#ffff",
+                ...Platform.select({
+                  ios: {
+                    shadowColor: "red",
+                    shadowOpacity: 0.8,
+                    shadowRadius: 10,
+                    shadowOffset: { width: 20, height: 10 },
+                  },
+                  android: {
+                    elevation: 10,
+                  },
+                }),
+                flexDirection: "row",
+                padding: 15,
               }}
             >
-               {
-                Tier == 'BRONZE' && <Image source={require('../../assets/Bronze.png')} style={{ height: 50, width: 40 }}/>
-              }
-              {
-                Tier == 'SILVER' && <Image source={require('../../assets/Silver.png')} style={{ height: 50, width: 40 }}/>
-              }
-              {
-                Tier == 'GOLD' && <Image source={require('../../assets/Gold.png')} style={{ height: 50, width: 40 }}/>
-              }
-              {
-                Tier == 'DIAMOND' && <Image source={require('../../assets/Diamond.png')} style={{ height: 50, width: 40 }}/>
-              }
-              {
-                Tier == 'THE STAR' && <Image source={require('../../assets/starplace.png')} style={{ height: 50, width: 40 }}/>
-              }
-              {
-                Tier == 'LEGEND' && <Image source={require('../../assets/Legend.png')} style={{ height: 50, width: 40 }}/>
-              }
-             
-            </View>
-            <View
-              style={{
-                flexDirection: "column",
-                alignItems: "center",
-                width: "80%",
-              }}
-            >
-              <View style={{ flexDirection: "column", gap: 5 }}>
-                <Text style={{ fontWeight: "bold", fontSize: 17 }}>{Tier}</Text>
-                <Text style={{ fontSize: 13 }}>
-                  Tier will be upgraded when you reach 800 Total Impacts
-                </Text>
-                <Progress.Bar
-                  progress={0.3}
-                  width={243}
-                  height={3}
-                  borderWidth={0.2}
-                  backgroundColor="#ABABAB"
-                />
+              <View
+                style={{
+                  flexDirection: "column",
+                  width: "20%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  display: "flex",
+                }}
+              >
+                {Tier == "BRONZE" && (
+                  <Image
+                    source={require("../../assets/Bronze.png")}
+                    style={{ height: 50, width: 40 }}
+                  />
+                )}
+                {Tier == "SILVER" && (
+                  <Image
+                    source={require("../../assets/Silver.png")}
+                    style={{ height: 50, width: 40 }}
+                  />
+                )}
+                {Tier == "GOLD" && (
+                  <Image
+                    source={require("../../assets/Gold.png")}
+                    style={{ height: 50, width: 40 }}
+                  />
+                )}
+                {Tier == "DIAMOND" && (
+                  <Image
+                    source={require("../../assets/Diamond.png")}
+                    style={{ height: 50, width: 40 }}
+                  />
+                )}
+                {Tier == "THE STAR" && (
+                  <Image
+                    source={require("../../assets/starplace.png")}
+                    style={{ height: 50, width: 40 }}
+                  />
+                )}
+                {Tier == "LEGEND" && (
+                  <Image
+                    source={require("../../assets/Legend.png")}
+                    style={{ height: 50, width: 40 }}
+                  />
+                )}
+              </View>
+              <View
+                style={{
+                  flexDirection: "column",
+                  alignItems: "center",
+                  width: "80%",
+                }}
+              >
+                <View style={{ flexDirection: "column", gap: 5 }}>
+                  <Text style={{ fontWeight: "bold", fontSize: 17 }}>
+                    {Tier}
+                  </Text>
+                  <Text style={{ fontSize: 13 }}>
+                    Tier will be upgraded when you reach 800 Total Impacts
+                  </Text>
+                  <Progress.Bar
+                    progress={0.3}
+                    width={243}
+                    height={3}
+                    borderWidth={0.2}
+                    backgroundColor="#ABABAB"
+                  />
+                </View>
               </View>
             </View>
-          </View>
-         </Pressable>
+          </Pressable>
         </View>
-        <View style={{ paddingTop: 10, paddingLeft: 20, gap: 10 }}>
+        <View
+          style={{
+            paddingTop: 10,
+            paddingLeft: 20,
+            gap: 10,
+            paddingBottom: 15,
+          }}
+        >
           <View>
             <Text style={{ fontWeight: "bold", fontSize: 17 }}>
               Career Stats
@@ -271,7 +320,7 @@ if(ImpactScore>=801 && ImpactScore <=1000){
               borderColor: "#000",
               borderColor: "#000",
               flexDirection: "row",
-              padding: 7,
+              padding: 15,
               borderRadius: 10,
               backgroundColor: "#ffff",
               ...Platform.select({
@@ -295,15 +344,15 @@ if(ImpactScore>=801 && ImpactScore <=1000){
                 display: "flex",
               }}
             >
-              <View style={{ flexDirection: "column" }}>
+              <View style={{ flexDirection: "column", gap: 5 }}>
                 <Text style={{ fontSize: 14 }}>Matches</Text>
                 <Text style={{ fontWeight: "bold" }}>1,666</Text>
               </View>
-              <View style={{ flexDirection: "column" }}>
+              <View style={{ flexDirection: "column", gap: 5 }}>
                 <Text style={{ fontSize: 14 }}>Contests</Text>
                 <Text style={{ fontWeight: "bold" }}>2,774</Text>
               </View>
-              <View style={{ flexDirection: "column" }}>
+              <View style={{ flexDirection: "column", gap: 5 }}>
                 <Text style={{ fontSize: 14 }}>Win rate</Text>
                 <Text style={{ fontWeight: "bold" }}>64%</Text>
               </View>
@@ -327,14 +376,18 @@ if(ImpactScore>=801 && ImpactScore <=1000){
             width: "90%",
           }}
         >
-          <View>
+          <View style={{ paddingBottom: 10 }}>
             <Text style={{ fontWeight: "bold", fontSize: 17 }}>
               Recently Played
             </Text>
           </View>
-          <Pressable onPress={()=>navigation.navigate('ViewAll')}>
+          <Pressable onPress={() => navigation.navigate("ViewAll")}>
             <View>
-              <Text style={{ fontWeight: "bold", fontSize: 17 }}>View all</Text>
+              <Text
+                style={{ fontWeight: "bold", fontSize: 14, color: "#7d7d7d" }}
+              >
+                View all
+              </Text>
             </View>
           </Pressable>
         </View>
@@ -342,7 +395,7 @@ if(ImpactScore>=801 && ImpactScore <=1000){
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            style={{  paddingRight: 10 }}
+            style={{ paddingRight: 10 }}
           >
             <View
               style={{
@@ -351,7 +404,7 @@ if(ImpactScore>=801 && ImpactScore <=1000){
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "flex-start",
-                overflow:"scroll"
+                overflow: "scroll",
               }}
             >
               <View

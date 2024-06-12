@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   Alert,
+  Image,
   ImageBackground,
   Pressable,
   StyleSheet,
@@ -11,6 +12,7 @@ import {
 import { useNavigation } from "@react-navigation/core";
 import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
+import FlashMessage, { showMessage } from "react-native-flash-message";
 
 const LoginWithEmail = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +21,15 @@ const LoginWithEmail = () => {
   const sendOtp = async () => {
     try {
       await axios.post("http://192.168.0.119:5000/auth/login/email", { email });
-      Alert.alert("OTP Resent", "OTP has been sent to your email.");
+      // Alert.alert("OTP Resent", "OTP has been sent to your email.");
+      await showMessage({
+        message: "OTP Verification ",
+        description: "OTP has been sent to your email. Please check your email",
+        icon: props => <Image source={require("../../assets/Logo.png")}   style={{ width: 50, height: 30 }}  {...props} />,
+        type: "success",
+        duration: 2000,
+      });
+      console.log(email);
       navigation.navigate("OTP", { email });
     } catch (error) {
       console.error("msg", error);
@@ -145,7 +155,7 @@ const LoginWithEmail = () => {
               justifyContent: "center",
               alignItems: "center",
               padding: 5,
-              gap: 30,
+              gap: 15,
             }}
           >
             <View
@@ -154,7 +164,6 @@ const LoginWithEmail = () => {
                 flexDirection: "row",
                 justifyContent: "center",
                 alignItems: "center",
-                gap: 5,
               }}
             >
               <Pressable onPress={() => navigation.navigate("login")}>
@@ -165,6 +174,11 @@ const LoginWithEmail = () => {
                 </Text>
               </Pressable>
             </View>
+            <View style={{display:"flex",flexDirection:"row"}}>
+              <Text style={styles.footerText}>Don't have an account?</Text><Pressable onPress={() => navigation.navigate("RegisterPage")}>
+                <Text style={styles.footerText}>Signup</Text>
+              </Pressable>
+              </View>
           </View>
         </View>
       </ImageBackground>
@@ -174,4 +188,10 @@ const LoginWithEmail = () => {
 
 export default LoginWithEmail;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  footerText: {
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#fff",
+  },
+});

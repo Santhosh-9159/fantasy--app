@@ -29,6 +29,7 @@ const LoginScreen = () => {
       const data = {
         identifier: phone, // Use the entered phone number as the identifier
       };
+      console.log(data,"mobile number");
       const response = await OTPWidget.sendOTP(data.identifier); // Send OTP
       console.log("error", response);
     } catch (error) {
@@ -69,23 +70,26 @@ const LoginScreen = () => {
                 onChangeText={setPhone}
               />
             </View>
-            <Pressable style={styles.button} onPress={sendOtp}>
+            <Pressable style={styles.button} 
+            onPress={sendOtp}
+            // onPress={() => navigation.navigate("Tab")}
+
+            >
               <Text style={styles.buttonText}>Continue</Text>
             </Pressable>
           </View>
           <View style={styles.footer}>
             <View style={styles.footerContent}>
-              <Pressable onPress={() => setModalVisible(true)}>
-                <Text style={styles.footerText}>Have an Invite Code</Text>
-              </Pressable>
-              <InviteCode
-                visible={modalVisible}
-                onClose={() => setModalVisible(false)}
-              />
-              <Text style={styles.footerSeparator}>|</Text>
-              <Pressable onPress={() => navigation.navigate("Email")}>
+            <Pressable onPress={() => navigation.navigate("Email")}>
                 <Text style={styles.footerText}>Login with Email</Text>
               </Pressable>
+              <View style={{gap:5,display:"flex",flexDirection:"row"}}>
+              <Text style={styles.footerText}>Don't have an account?</Text><Pressable onPress={() => navigation.navigate("RegisterPage")}>
+                <Text style={styles.footerText}>Signup</Text>
+              </Pressable>
+              </View>
+              
+              
             </View>
           </View>
         </View>
@@ -170,14 +174,14 @@ const styles = StyleSheet.create({
   },
   footerContent: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
     gap: 20,
   },
   footerText: {
     fontWeight: "bold",
-    fontSize: 14,
+    fontSize: 16,
     color: "#fff",
   },
   footerSeparator: {

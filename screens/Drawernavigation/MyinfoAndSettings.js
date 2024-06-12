@@ -4,6 +4,7 @@ import { FontAwesome5, Fontisto, Entypo, MaterialIcons, MaterialCommunityIcons, 
 import { RadioButton } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import * as ImagePicker from 'expo-image-picker';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const MyinfoAndSettings = () => {
   const [selectedValue, setSelectedValue] = useState("option1");
@@ -29,6 +30,12 @@ const MyinfoAndSettings = () => {
     }
   };
   
+
+  const logout = async () => {
+    console.log("pressed");
+    await AsyncStorage.removeItem('userToken');
+    navigation.navigate('login');
+};
 
 
   return (
@@ -303,19 +310,20 @@ const MyinfoAndSettings = () => {
             paddingTop:10
           }}
         >
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              width: "25%",
-              justifyContent: "center",
-              gap: 10,
-              alignItems:"center"
-            }}
-          >
-            <MaterialIcons name="logout" size={24} color="black" />
-            <Text style={{ fontWeight: "bold" }}>LOG OUT </Text>
-          </View>
+         <Pressable onPress={logout} // directly reference the function
+  style={{
+    display: "flex",
+    flexDirection: "row",
+    width: "25%",
+    justifyContent: "center",
+    gap: 10,
+    alignItems:"center"
+  }}
+>
+  <MaterialIcons name="logout" size={24} color="black" />
+  <Text style={{ fontWeight: "bold" }}>LOG OUT</Text>
+</Pressable>
+
         </View>
 
         <View

@@ -11,9 +11,6 @@ dotenv.config();
 
 const authRoutes = require('./routes/authroutes');
 
-
-
-
 // //server setup and connect
 app.listen(5000, () => {
     console.log("Server connected");
@@ -27,3 +24,4 @@ mongoose.connect(MONGOURL).then(console.log("Database connected"));
 
 // Routes
 app.use('/auth', authRoutes);
+

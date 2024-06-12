@@ -18,12 +18,12 @@ const MatchReminder = ({ visible, onclose }) => {
         flexDirection: "column",
         justifyContent: "flex-end",
         alignItems: "flex-end",
-        backgroundColor:"rgba(0,0,0,0.5)"
+        //backgroundColor:"rgba(0,0,0,0.5)"
       }}
     >
       <View
         style={{
-          height: "37%",
+          height: "35%",
           backgroundColor: "#fff",
           width: "100%",
           borderTopLeftRadius: 10,
@@ -63,7 +63,7 @@ const MatchReminder = ({ visible, onclose }) => {
                 color="#3F58C5"
               />
             </View>
-            <Pressable onPress={() => setShow(false)}>
+            <Pressable  onPress={onclose}>
               <Ionicons name="close" size={30} color="black" />
             </Pressable>
           </View>

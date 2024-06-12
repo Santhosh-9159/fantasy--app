@@ -1,8 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState, useRef, useEffect } from "react";
-import { View, TextInput, StyleSheet, Text, Pressable, Alert } from "react-native";
+import { View, TextInput, StyleSheet, Text, Pressable, Alert, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import axios from 'axios';
+import { showMessage } from 'react-native-flash-message';
 
 const OtpScreen = ({ route }) => {
   const navigation = useNavigation();
@@ -27,13 +28,23 @@ const OtpScreen = ({ route }) => {
       const otpString = otp.join('');
       const response = await axios.post('http://192.168.0.119:5000/auth/verify-Otp', { identifier: email, otp: otpString });
       const { token } = response.data;
-      
+      console.log(token,"token");
       await AsyncStorage.setItem('userToken', token);
-      
+      showMessage({
+        message: "OTP Verification ",
+        description: "OTP has been sent to your email. Please check your email",
+        icon: props => <Image source={require("../../assets/Logo.png")} {...props} />,
+        type: "success",
+      });
       navigation.navigate('NameRegister'); 
     } catch (error) {
       console.error("Error verifying OTP:", error);
-      Alert.alert("Verification Failed", "Invalid OTP. Please try again.");
+      showMessage({
+        message: "Verification Failed",
+        description: "Invalid OTP. Please try again.",
+        icon: props => <Image source={require("../../assets/Logo.png")} {...props} />,
+        type: "danger",
+      });
     }
   };
 
@@ -60,6 +71,7 @@ const OtpScreen = ({ route }) => {
 
   return (
     <View style={styles.container}>
+        
       <View style={styles.otpInputContainer}>
         {otp.map((data, index) => (
           <TextInput

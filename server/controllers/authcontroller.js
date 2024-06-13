@@ -3,6 +3,7 @@ const generateOTP = require("../utils/generateOTP");
 const sendEmail = require("../utils/sendEmail");
 const sendSMS = require("../utils/sendsms");
 const { otpcreate } = require("../models/createotp");
+const UserRegister = require("../models/UserRegister");
 
 const SECRET_KEY = "wfgksdfninqkfofnndakfw325";
 
@@ -11,41 +12,57 @@ exports.loginWithEmail = async (req, res) => {
   const otp = generateOTP();
 
   try {
-    const oldUser = await otpcreate.findOne({ identifier: email });
+    const existingUser = await UserRegister.findOne({ email });
 
-    if (oldUser) {
-      // If old OTP exists, update it with the new OTP
-      const result = await otpcreate.updateOne(
-        { identifier: email },
-        { otp, createdAt: Date.now() }
-      );
-      console.log("Update Result:", result);
+    if (existingUser) {
+      // Check if OTP already exists for the user
+      let otpDoc = await otpcreate.findOne({ identifier: email });
+
+      if (otpDoc) {
+        // Update existing OTP
+        otpDoc.otp = otp;
+        otpDoc.createdAt = Date.now();
+        await otpDoc.save();
+      } else {
+        // Create new OTP
+        otpDoc = await otpcreate.create({ identifier: email, otp });
+      }
+
+      // Send OTP via Email
+      await sendEmail(email, otp);
+
+      res.send({ success: true });
     } else {
-      // Save OTP in the database
-      const result = await otpcreate.create({ identifier: email, otp });
-      console.log("Create Result:", result);
+      // User not found, return error
+      res.status(404).send({ success: false, error: "User not found" });
     }
-
-    // Send OTP via Email
-    await sendEmail(email, otp);
-
-    res.send({ success: true });
   } catch (error) {
     console.error(error);
     res.status(500).send({ success: false, error: "Failed to generate OTP" });
   }
 };
 
+
+
+
 exports.loginWithPhone = async (req, res) => {
   const { phoneNumber } = req.body;
   const otp = generateOTP();
 
   try {
-    // Save OTP in the database
-    await otpcreate.create({ identifier: phoneNumber, otp });
+    const oldUser = await UserRegister.findOne({ mobilenumber:phoneNumber  });
 
-    // Send OTP via SMS
-    await sendSMS(phoneNumber, otp);
+    if(oldUser){
+  // Save OTP in the database
+  await otpcreate.create({ identifier: phoneNumber, otp });
+
+  // Send OTP via SMS
+  await sendSMS(phoneNumber, otp);
+    }else {
+      res.status(404).send({ success: false, error: "User does not exist" });
+
+    }
+  
 
     res.send({ success: true });
   } catch (error) {

@@ -5,6 +5,7 @@ import {
   View,
   Image,
   TextInput,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
@@ -14,10 +15,99 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import CheckBox from "react-native-check-box";
+import axios from "axios";
+import { ActivityIndicator } from "react-native-paper";
+
 
 const RegisterPage = () => {
   const navigation = useNavigation();
   const [isSelected, setSelection] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [indicator, setIndicator] = useState(false);
+  const [inputvalue, setInputvalue] = useState({
+    username: "",
+    mobilenumber: "",
+    email: "",
+    invitecode: "",
+  });
+
+  const { username, mobilenumber, email, invitecode } = inputvalue;
+
+ 
+
+  const handleInputChange = (name, value) => {
+    setInputvalue({ ...inputvalue, [name]: value });
+  };
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.username) {
+      errors.username = 'Username is required';
+    } else if (values.username.length < 2) {
+      errors.username = 'Username must be at least 2 characters long';
+    }
+
+    if (!values.mobilenumber) {
+      errors.mobilenumber = 'Mobile number is required';
+    } else if (!/^[0-9]+$/.test(values.mobilenumber)) {
+      errors.mobilenumber = 'Mobile number must be numeric';
+    } else if (values.mobilenumber.length < 10) {
+      errors.mobilenumber = 'Mobile number must be at least 10 digits long';
+    }
+
+    if (!values.email) {
+      errors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = 'Invalid email format';
+    }
+
+    // Invite code is optional, no validation required
+
+    return errors;
+  };
+
+
+
+  const handlechange = async () => {
+    const validationErrors = validate(inputvalue);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      if (
+        username !== '' &&
+       mobilenumber !== '' &&
+        email !== ''
+      ) {
+        try {
+          setIndicator(true)
+          const response = await axios.post("http://192.168.0.119:5000/auth/userRegister", { username,mobilenumber,email,invitecode });
+
+          console.log(response.data);
+          // Handle successful registration, e.g., navigate to another screen
+          setInputvalue({
+            username: '',
+            mobilenumber: '',
+            email: '',
+            invitecode: '',
+          });
+          console.log(inputvalue);
+          // Delay navigation by 3 seconds
+        setTimeout(() => {
+          navigation.navigate("login");
+        }, 1000);
+        } catch (error) {
+          console.error('Registration failed:', error);
+          // Handle registration error
+        }
+      } else {
+        console.error('All fields are mandatory');
+        // You can use a toast notification library to show this error to the user
+      }
+    } else {
+      console.error('Validation errors:', validationErrors);
+      // You can use a toast notification library to show validation errors to the user
+    }
+  };
 
   return (
     <LinearGradient
@@ -69,7 +159,6 @@ const RegisterPage = () => {
             justifyContent: "center",
             alignItems: "center",
             gap: 20,
-
             width: "90%",
           }}
         >
@@ -91,7 +180,7 @@ const RegisterPage = () => {
               Hi! Register and Start Winning
             </Text>
           </View>
-          <View>
+          <ScrollView>
             <View
               style={{
                 display: "flex",
@@ -126,8 +215,15 @@ const RegisterPage = () => {
                   }}
                 >
                   <FontAwesome5 name="user" size={18} color="#fff" />
-                  <TextInput style={{ width: "100%", color: "#fff" }} />
+                  <TextInput
+                    style={{ width: "100%", color: "#fff" }}
+                    value={username}
+                    onChangeText={(value) => handleInputChange("username", value)}
+                  />
+
                 </View>
+                {errors.username && <Text style={{color:"red",fontWeight:"bold"}}>{errors.username}</Text>}
+
               </View>
 
               <View
@@ -159,8 +255,12 @@ const RegisterPage = () => {
                   <TextInput
                     style={{ width: "100%", color: "#fff" }}
                     keyboardType="number-pad"
+                    value={mobilenumber}
+                    onChangeText={(value) => handleInputChange("mobilenumber", value)}
                   />
                 </View>
+                {errors.mobilenumber && <Text style={{color:"red",fontWeight:"bold"}}>{errors.mobilenumber}</Text>}
+
               </View>
 
               <View
@@ -187,11 +287,17 @@ const RegisterPage = () => {
                   }}
                 >
                   <Feather name="mail" size={20} color="#fff" />
-                  <TextInput style={{ width: "100%", color: "#fff" }} />
+                  <TextInput
+                    style={{ width: "100%", color: "#fff" }}
+                    value={email}
+                    onChangeText={(value) => handleInputChange("email", value)}
+                  />
                 </View>
+                {errors.email && <Text style={{color:"red",fontWeight:"bold"}}>{errors.email}</Text>}
+
               </View>
             </View>
-          </View>
+          </ScrollView>
 
           <View
             style={{
@@ -234,6 +340,8 @@ const RegisterPage = () => {
                 style={{ width: "100%", color: "#fff", fontSize: 18 }}
                 placeholder="Invite code"
                 placeholderTextColor="#ababab"
+                value={invitecode}
+                onChangeText={(value) => handleInputChange("invitecode", value)}
               />
             </View>
           </View>
@@ -272,41 +380,47 @@ const RegisterPage = () => {
             </View>
           </View>
 
-
-{isSelected == true ? <Pressable
-            onPress={() => navigation.navigate("NameRegister")}
-            style={{
-              width: "100%",
-              padding: 10,
-              backgroundColor: "#3757E2",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: 8,
-            }}
-          >
-            <View style={{}}>
-              <Text style={{ fontWeight: "bold", color: "#fff", fontSize: 16 }}>
-                CONTINUE
-              </Text>
-            </View>
-          </Pressable>: <Pressable
-            onPress={() => navigation.navigate("NameRegister")}
-            style={{
-              width: "100%",
-              padding: 10,
-              backgroundColor: "#ababab",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: 8,
-            }}
-          >
-            <View style={{}}>
-              <Text style={{ fontWeight: "bold", color: "#fff", fontSize: 16 }}>
-                CONTINUE
-              </Text>
-            </View>
-          </Pressable> }
-          
+          {isSelected == true ? (
+            <Pressable
+              onPress={handlechange}
+              style={{
+                width: "100%",
+                padding: 10,
+                backgroundColor: "#3757E2",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 8,
+              }}
+            >
+              <View style={{}}>
+                {indicator == true ? <ActivityIndicator size={"small"} color="#fff"/> : <Text
+                  style={{ fontWeight: "bold", color: "#fff", fontSize: 16 }}
+                >
+                  CONTINUE
+                </Text>}
+              </View>
+            </Pressable>
+          ) : (
+            <Pressable
+              onPress={() => navigation.navigate("NameRegister")}
+              style={{
+                width: "100%",
+                padding: 10,
+                backgroundColor: "#ababab",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 8,
+              }}
+            >
+              <View style={{}}>
+                <Text
+                  style={{ fontWeight: "bold", color: "#fff", fontSize: 16 }}
+                >
+                  CONTINUE
+                </Text>
+              </View>
+            </Pressable>
+          )}
 
           <View style={{ display: "flex", flexDirection: "row", gap: 5 }}>
             <Text style={{ color: "#fff" }}>Already Have an account?</Text>

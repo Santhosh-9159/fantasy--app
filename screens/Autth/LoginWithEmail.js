@@ -32,7 +32,7 @@ const LoginWithEmail = () => {
       console.log(email);
       navigation.navigate("OTP", { email });
     } catch (error) {
-      console.error("msg", error);
+      console.error("msger", error);
     }
   };
 

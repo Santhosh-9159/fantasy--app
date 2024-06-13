@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const playerSchema = new mongoose.Schema({
   _id: {
@@ -11,7 +11,7 @@ const playerSchema = new mongoose.Schema({
   },
   teamId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Team',
+    ref: "Team",
     required: true,
   },
   playerImage: {
@@ -23,12 +23,12 @@ const playerSchema = new mongoose.Schema({
       subType: {
         type: String,
         required: true,
-      }
-    }
+      },
+    },
   },
   playerRoleId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'PlayerRole',
+    ref: "PlayerRole",
     required: true,
   },
   creator: {
@@ -43,25 +43,25 @@ const playerSchema = new mongoose.Schema({
     $date: {
       type: Date,
       default: Date.now,
-    }
+    },
   },
   lastModified: {
     $date: {
       type: Date,
       default: Date.now,
-    }
+    },
   },
   _class: {
     type: String,
-    default: 'com.avitam.fantasy11.model.Player',
-  }
+    default: "com.avitam.fantasy11.model.Player",
+  },
 });
 
-playerSchema.pre('save', function (next) {
+playerSchema.pre("save", function (next) {
   this.lastModified.$date = Date.now();
   next();
 });
 
-const Player = mongoose.model('Player', playerSchema);
+const PlayerDetails = mongoose.model("Players", playerSchema);
 
-module.exports = Player;
+module.exports = PlayerDetails;

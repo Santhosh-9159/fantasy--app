@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   getMatchCountdown,
   getTeam1logo,
@@ -32,16 +32,12 @@ export default function Home() {
     const fetchTeamsAndMatches = async () => {
       try {
         // Fetch teams
-        const teamsResponse = await fetch(
-          "http://192.168.0.119:5000/api/teams"
-        );
+        const teamsResponse = await fetch("http://192.168.0.119:5000/api/teams");
         const teamsData = await teamsResponse.json();
         setTeams(teamsData.data);
 
         // Fetch matches
-        const matchesResponse = await fetch(
-          "http://192.168.0.119:5000/api/matches"
-        );
+        const matchesResponse = await fetch("http://192.168.0.119:5000/api/matches");
         const matchesData = await matchesResponse.json();
         setMatches(matchesData.data);
       } catch (error) {
@@ -58,26 +54,23 @@ export default function Home() {
         const matchTime = new Date(match.dateAndTime).getTime();
         const currentTime = new Date().getTime();
         const timeDifference = matchTime - currentTime;
+        const timeAfterStart = currentTime - matchTime;
 
         if (timeDifference > 0) {
           const hoursDifference = Math.floor(timeDifference / 3600000); // Convert milliseconds to hours
-          const minutesDifference = Math.floor(
-            (timeDifference % 3600000) / 60000
-          ); // Remaining minutes
+          const minutesDifference = Math.floor((timeDifference % 3600000) / 60000); // Remaining minutes
           const secondsDifference = Math.floor((timeDifference % 60000) / 1000); // Remaining seconds
 
-          if (timeDifference <= 7200000) {
-            // Less than or equal to 2 hours
-            acc[match._id] = `${
-              hoursDifference * 60 + minutesDifference
-            }min ${secondsDifference}s left`;
+          if (timeDifference < 3600000) {
+            // Less than 1 hour
+            acc[match._id] = `${minutesDifference}min ${secondsDifference}s left`;
           } else {
-            acc[
-              match._id
-            ] = `${hoursDifference}h ${minutesDifference}m ${secondsDifference}s left`;
+            acc[match._id] = `${hoursDifference}h ${minutesDifference}m left`;
           }
+        } else if (timeAfterStart < 14400000) { // Match started less than 4 hours ago
+          acc[match._id] = "Live";
         } else {
-          acc[match._id] = "The match has started";
+          acc[match._id] = "The match has ended";
         }
 
         return acc;
@@ -165,13 +158,7 @@ export default function Home() {
                   }),
                 }}
               >
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "100%",
-                  }}
-                >
+                <View style={{ display: "flex", flexDirection: "column", width: "100%" }}>
                   <View
                     style={{
                       display: "flex",
@@ -217,18 +204,8 @@ export default function Home() {
                         gap: 5,
                       }}
                     >
-                      <Ionicons
-                        name="megaphone-outline"
-                        size={16}
-                        color="#19c869"
-                      />
-                      <Text
-                        style={{
-                          fontSize: 10,
-                          color: "#19c869",
-                          fontWeight: "900",
-                        }}
-                      >
+                      <Ionicons name="megaphone-outline" size={16} color="#19c869" />
+                      <Text style={{ fontSize: 10, color: "#19c869", fontWeight: "900" }}>
                         LINEUPS OUT
                       </Text>
                     </View>
@@ -243,15 +220,7 @@ export default function Home() {
                       padding: 10,
                     }}
                   >
-                    <View
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        width: "35%",
-                        gap: 5,
-                        // backgroundColor:"#f267"
-                      }}
-                    >
+                    <View style={{ display: "flex", flexDirection: "column", width: "35%", gap: 5 }}>
                       <View
                         style={{
                           display: "flex",
@@ -276,19 +245,10 @@ export default function Home() {
                           />
                         </View>
                         <View>
-                          <Text style={{ fontWeight: "bold" }}>
-                            {team1.shortName}
-                          </Text>
+                          <Text style={{ fontWeight: "bold" }}>{team1.shortName}</Text>
                         </View>
                       </View>
-                      <View
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                          width: "100%",
-                        }}
-                      >
+                      <View style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "100%" }}>
                         <View
                           style={{
                             display: "flex",
@@ -316,45 +276,21 @@ export default function Home() {
                         gap: 5,
                       }}
                     >
-                      {/* <View style={{ backgroundColor: "#e7ecff", padding: 5 }}>
-                        <Text
-                          style={{
-                            fontSize: 10,
-                            color: "#ff0c0c",
-                            fontWeight: "900",
-                          }}
-                        >
-                          {new Date(match.dateAndTime).toLocaleDateString()}
-                        </Text>
-                      </View> */}
                       <View style={{ backgroundColor: "#E7ECFF", padding: 5 }}>
-                        <Text
-                          style={{
-                            fontSize: 10,
-                            color: "red",
-                            textAlign: "center",
-                            fontWeight: "bold",
-                          }}
-                        >
+                        <Text style={{ fontSize: 10, color: "red", textAlign: "center", fontWeight: "bold" }}>
                           {countdown}
                         </Text>
                       </View>
-                      <View>
-                        <Text style={{ fontSize: 10 }}>
-                          {new Date(match.dateAndTime).toLocaleTimeString()}
-                        </Text>
-                      </View>
+                      {countdown !== "Live" && countdown !== "The match has ended" && (
+                        <View>
+                          <Text style={{ fontSize: 10 }}>
+                            {new Date(match.dateAndTime).toLocaleTimeString()}
+                          </Text>
+                        </View>
+                      )}
                     </View>
 
-                    <View
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        width: "35%",
-                        gap: 5,
-                        // backgroundColor:"#f267"
-                      }}
-                    >
+                    <View style={{ display: "flex", flexDirection: "column", width: "35%", gap: 5 }}>
                       <View
                         style={{
                           display: "flex",
@@ -366,9 +302,7 @@ export default function Home() {
                         }}
                       >
                         <View>
-                          <Text style={{ fontWeight: "bold" }}>
-                            {team2.shortName}
-                          </Text>
+                          <Text style={{ fontWeight: "bold" }}>{team2.shortName}</Text>
                         </View>
 
                         <View>
@@ -385,14 +319,7 @@ export default function Home() {
                           />
                         </View>
                       </View>
-                      <View
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "center",
-                          width: "100%",
-                        }}
-                      >
+                      <View style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "100%" }}>
                         <View
                           style={{
                             display: "flex",
@@ -426,22 +353,10 @@ export default function Home() {
                     }}
                   >
                     <View>
-                      <Text style={{ fontWeight: "bold" }}>
-                        1 Team 3 Contests
-                      </Text>
+                      <Text style={{ fontWeight: "bold" }}>1 Team 3 Contests</Text>
                     </View>
-                    <Pressable
-                      onPress={() => setModal(true)}
-                      style={{
-                        padding: 1,
-                        opacity: 0.5,
-                      }}
-                    >
-                      <MaterialCommunityIcons
-                        name="bell-circle"
-                        size={27}
-                        color="black"
-                      />
+                    <Pressable onPress={() => setModal(true)} style={{ padding: 1, opacity: 0.5 }}>
+                      <MaterialCommunityIcons name="bell-circle" size={27} color="black" />
                     </Pressable>
                   </View>
                 </View>

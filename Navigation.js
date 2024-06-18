@@ -62,30 +62,32 @@ import CaptainandViceCaptain from "./components/Cricket/CaptainandViceCaptain";
 import CricketCompleted from "./components/Cricket/Completed/CompletedTabs/CricketCompleted";
 import AuthLoadingScreen from "./screens/Autth/AuthLoadingScreen";
 import RegisterPage from "./screens/Autth/RegisterPage";
+import { Entypo } from '@expo/vector-icons';
 
 const getHeaderRight = (navigation) => (
   <View
     style={{
       flexDirection: "column",
       backgroundColor: "#3385ff",
-      height: 100,
+      height: 90,
       alignItems: "center",
+      justifyContent:"center",
       gap: 5,
+      width:"100%"
     }}
   >
-    <View style={{ flexDirection: "row", padding: 3, paddingTop: 50, gap: 20 }}>
+    <View style={{ flexDirection: "row", padding: 3, paddingTop: 50, gap: 20,alignItems: "center",
+      justifyContent:"center",width:"100%" }}>
       <Pressable
-        style={{ justifyContent: "flex-start" }}
+        style={{ justifyContent: "flex-start",paddingLeft:10 }}
         onPress={() => navigation.openDrawer()}
       >
-        <Image
-          source={require("./assets/profile.png")}
-          style={{ width: 40, height: 40, borderRadius: 20, marginLeft: 15 }}
-        />
+        <Entypo name="menu" size={28} color="#ffff" />
       </Pressable>
-      <Text style={{ fontSize: 24, fontWeight: "bold", color: "#fff" }}>
-        IMPACT 11
-      </Text>
+      <Image
+          source={require("./assets/IMPACT11 Logo extended.png")}
+          style={{ width: 120, height: 20, borderRadius: 20 }}
+        />
 
       <View
         style={{

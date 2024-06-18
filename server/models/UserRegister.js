@@ -1,23 +1,23 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const registerSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true
+    required: true,
   },
   mobilenumber: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
   },
   invitecode: {
-    type: String
-  }
+    type: String,
+  },
 });
 
-const UserRegister = mongoose.model('Register', registerSchema);
+const UserRegister = mongoose.model("Register", registerSchema);
 
 module.exports = UserRegister;

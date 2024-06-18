@@ -180,7 +180,11 @@ const RegisterPage = () => {
               Hi! Register and Start Winning
             </Text>
           </View>
-          <ScrollView>
+          <ScrollView  style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                 }}>
             <View
               style={{
                 display: "flex",
@@ -442,3 +446,5 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
 });
+
+

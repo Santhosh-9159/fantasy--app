@@ -62,6 +62,6 @@ playerSchema.pre("save", function (next) {
   next();
 });
 
-const PlayerDetails = mongoose.model("Players", playerSchema);
+const PlayerDetails = mongoose.model("players", playerSchema);
 
 module.exports = PlayerDetails;

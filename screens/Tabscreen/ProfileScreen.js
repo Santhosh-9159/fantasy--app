@@ -67,7 +67,7 @@ const ProfileScreen = () => {
     >
       <View
         style={{
-          height: 100,
+          height: 80,
           backgroundColor: "#3f58c5",
           display: "flex",
           flexDirection: "row",

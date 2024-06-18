@@ -1,11 +1,10 @@
-const Match = require("../models/PlayerDetails");
-const MatchType = require("../models/PlayerDetails");
+const PlayerDetails = require("../models/PlayerDetails");
 
 exports.getallplayerDetails = async (req, res) => {
   try {
-    const getplayerdetails = await MatchType.find({});
+    const getplayerdetails = await PlayerDetails.find({});
     res.send({ status: "ok", data: getplayerdetails });
-    console.log(getplayerdetails);
+    console.log(getplayerdetails, "Get player details ");
   } catch (error) {
     console.log(error, "Get player details error");
   }

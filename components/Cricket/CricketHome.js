@@ -11,7 +11,14 @@ import {
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { getMatchCountdown, getTeam1logo, getTeam2logo, getteam1shortform, getteam2shortform } from "../../Redux/Slice";
+import {
+  getMatchCountdown,
+  getTeam1logo,
+  getTeam2logo,
+  getteam1shortform,
+  getteam2shortform,
+} from "../../Redux/Slice";
+import MatchReminder from "../Model/MatchReminder";
 
 export default function Home() {
   const [teams, setTeams] = useState([]);
@@ -19,12 +26,15 @@ export default function Home() {
   const [countdowns, setCountdowns] = useState({});
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     const fetchTeamsAndMatches = async () => {
       try {
         // Fetch teams
-        const teamsResponse = await fetch("http://192.168.0.119:5000/api/teams");
+        const teamsResponse = await fetch(
+          "http://192.168.0.119:5000/api/teams"
+        );
         const teamsData = await teamsResponse.json();
         setTeams(teamsData.data);
 
@@ -51,13 +61,20 @@ export default function Home() {
 
         if (timeDifference > 0) {
           const hoursDifference = Math.floor(timeDifference / 3600000); // Convert milliseconds to hours
-          const minutesDifference = Math.floor((timeDifference % 3600000) / 60000); // Remaining minutes
+          const minutesDifference = Math.floor(
+            (timeDifference % 3600000) / 60000
+          ); // Remaining minutes
           const secondsDifference = Math.floor((timeDifference % 60000) / 1000); // Remaining seconds
 
-          if (timeDifference <= 7200000) { // Less than or equal to 2 hours
-            acc[match._id] = `${hoursDifference * 60 + minutesDifference}min ${secondsDifference}s left`;
+          if (timeDifference <= 7200000) {
+            // Less than or equal to 2 hours
+            acc[match._id] = `${
+              hoursDifference * 60 + minutesDifference
+            }min ${secondsDifference}s left`;
           } else {
-            acc[match._id] = `${hoursDifference}h ${minutesDifference}m ${secondsDifference}s left`;
+            acc[
+              match._id
+            ] = `${hoursDifference}h ${minutesDifference}m ${secondsDifference}s left`;
           }
         } else {
           acc[match._id] = "The match has started";
@@ -246,10 +263,8 @@ export default function Home() {
                         }}
                       >
                         <View style={{ padding: 2 }}>
-                          
                           <Image
-                                    source={require("../../assets/CSK logo.png")}
-
+                            source={require("../../assets/CSK logo.png")}
                             //source={{ uri: logoUri1 }}
                             style={{
                               backgroundColor: "#fff",
@@ -257,40 +272,38 @@ export default function Home() {
                               width: 60,
                               height: 60,
                               borderRadius: 50,
-
                             }}
                           />
                         </View>
                         <View>
                           <Text style={{ fontWeight: "bold" }}>
-                          {team1.shortName}
-
+                            {team1.shortName}
                           </Text>
                         </View>
                       </View>
-                      <View style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        width:"100%",
-                      }}>
                       <View
                         style={{
                           display: "flex",
                           flexDirection: "row",
                           alignItems: "center",
-                          width: 135,
-                          justifyContent: "center",
-
+                          width: "100%",
                         }}
                       >
-                        <Text style={{ fontSize: 10 }} numberOfLines={1}>
-                        {team1.teamName}
-                        {/* Chennai super kings */}
-                        </Text>
+                        <View
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            width: 135,
+                            justifyContent: "center",
+                          }}
+                        >
+                          <Text style={{ fontSize: 10 }} numberOfLines={1}>
+                            {team1.teamName}
+                            {/* Chennai super kings */}
+                          </Text>
+                        </View>
                       </View>
-                      </View>
-                      
                     </View>
 
                     <View
@@ -314,8 +327,15 @@ export default function Home() {
                           {new Date(match.dateAndTime).toLocaleDateString()}
                         </Text>
                       </View> */}
-                       <View style={{backgroundColor:"#E7ECFF",padding:5}}>
-                        <Text style={{ fontSize: 10, color: "red",textAlign:"center",fontWeight:"bold" }}>
+                      <View style={{ backgroundColor: "#E7ECFF", padding: 5 }}>
+                        <Text
+                          style={{
+                            fontSize: 10,
+                            color: "red",
+                            textAlign: "center",
+                            fontWeight: "bold",
+                          }}
+                        >
                           {countdown}
                         </Text>
                       </View>
@@ -324,7 +344,6 @@ export default function Home() {
                           {new Date(match.dateAndTime).toLocaleTimeString()}
                         </Text>
                       </View>
-                     
                     </View>
 
                     <View
@@ -348,15 +367,13 @@ export default function Home() {
                       >
                         <View>
                           <Text style={{ fontWeight: "bold" }}>
-                          {team2.shortName}
-
+                            {team2.shortName}
                           </Text>
                         </View>
 
                         <View>
                           <Image
-                                    source={require("../../assets/RCB logo.png")}
-
+                            source={require("../../assets/RCB logo.png")}
                             //source={{ uri: logoUri2 }}
                             style={{
                               backgroundColor: "#fff",
@@ -367,35 +384,33 @@ export default function Home() {
                             }}
                           />
                         </View>
-                        
                       </View>
-                      <View style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        width:"100%",
-                      }}>
                       <View
                         style={{
                           display: "flex",
                           flexDirection: "row",
                           alignItems: "center",
-                          width: 135,
-                          justifyContent: "center",
-
+                          width: "100%",
                         }}
                       >
-                        <Text style={{ fontSize: 10 }} numberOfLines={1}>
-                        {team2.teamName}
-                        {/* Chennai super kings */}
-                        </Text>
+                        <View
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            width: 135,
+                            justifyContent: "center",
+                          }}
+                        >
+                          <Text style={{ fontSize: 10 }} numberOfLines={1}>
+                            {team2.teamName}
+                            {/* Chennai super kings */}
+                          </Text>
+                        </View>
                       </View>
-                      </View>
-                      
                     </View>
-                    
                   </View>
-                
+
                   <View
                     style={{
                       padding: 5,
@@ -415,7 +430,8 @@ export default function Home() {
                         1 Team 3 Contests
                       </Text>
                     </View>
-                    <View
+                    <Pressable
+                      onPress={() => setModal(true)}
                       style={{
                         padding: 1,
                         opacity: 0.5,
@@ -426,7 +442,7 @@ export default function Home() {
                         size={27}
                         color="black"
                       />
-                    </View>
+                    </Pressable>
                   </View>
                 </View>
               </Pressable>
@@ -434,6 +450,7 @@ export default function Home() {
           </View>
         );
       })}
+      <MatchReminder visible={modal} onclose={() => setModal(false)} />
     </ScrollView>
   );
 }

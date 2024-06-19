@@ -163,7 +163,7 @@ const TeamScreen = () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                alignItems: "center",
+                alignItems: "flex-start",
                 width: "70%",
               }}
             >
@@ -243,8 +243,8 @@ const TeamScreen = () => {
                 alignItems: "center",
                 width: "100%",
                 paddingTop: 10,
-                paddingLeft: 10,
-                paddingRight: 10,
+                paddingLeft: 20,
+                paddingRight: 20,
               }}
             >
               <View
@@ -258,7 +258,7 @@ const TeamScreen = () => {
               >
                 <View>
                   <Image
-                    source={require("../../assets/csk.png")}
+                    source={{ uri: `${getTeam1logo}` }} // Provide a fallback value if getTeam1logo is undefined or null
                     style={{
                       backgroundColor: "#fff",
                       resizeMode: "contain",
@@ -302,7 +302,7 @@ const TeamScreen = () => {
                 </View>
                 <View>
                   <Image
-                    source={require("../../assets/rcb.png")}
+                    source={{ uri: `${getTeam2logo}` }} // Provide a fallback value if getTeam1logo is undefined or null
                     style={{
                       backgroundColor: "#fff",
                       resizeMode: "contain",

@@ -187,15 +187,15 @@ const ProfileScreen = () => {
                 {imageUri ? (
                   <Image source={{ uri: imageUri }} style={styles.profilePic} />
                 ) : (
-                  <FontAwesome5 name="user-circle" size={100} color="gray" />
+                  <Image source={require("../../assets/user-profile.png")} style={{width:100,height:100,borderWidth:2,borderColor:"#979797",borderRadius:60}} />
                 )}
 
                 <View style={styles.iconBackground}>
-                  <View>
+                  <View style={{opacity:0.7}}>
                     <MaterialIcons
                       name="camera-alt"
-                      size={22}
-                      color="white"
+                      size={26}
+                      color="#000"
                       style={styles.icon}
                     />
                   </View>
@@ -724,11 +724,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     right: 0,
-    backgroundColor: "#000", // Optional: Add a background color to the icon
-    borderRadius: 44, // To match the circular shape
-    paddingLeft: 2,
-    borderWidth: 3,
-    opacity: 0.7,
+    
   },
   profbox: {
     flex: 1,

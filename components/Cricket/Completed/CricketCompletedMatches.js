@@ -30,10 +30,13 @@ const CricketLiveMatches = () => {
           <View
             style={{
               width: "100%",
+              height:"100%",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
+              justifyContent: "flex-start",
                alignItems: "center",
+               padding:10
+
             }}
           >
             <Pressable 
@@ -41,7 +44,7 @@ const CricketLiveMatches = () => {
               style={{
                 borderRadius: 5,
                 overflow: "hidden",
-                width: "90%",
+                width: "95%",
                 backgroundColor: "#fff",
                 flexDirection: "column",
                 justifyContent: "space-between",

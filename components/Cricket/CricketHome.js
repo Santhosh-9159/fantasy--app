@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getMatchCountdown,
   getTeam1logo,
@@ -27,17 +27,24 @@ export default function Home() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
+  const [teamId1, setTeamId1] = useState("");
+  const [teamId2, setTeamId2] = useState("");
+  const [selectTeams, setSelectTeams] = useState([]);
 
   useEffect(() => {
     const fetchTeamsAndMatches = async () => {
       try {
         // Fetch teams
-        const teamsResponse = await fetch("http://192.168.0.119:5000/api/teams");
+        const teamsResponse = await fetch(
+          "http://192.168.0.119:5000/api/teams"
+        );
         const teamsData = await teamsResponse.json();
         setTeams(teamsData.data);
 
         // Fetch matches
-        const matchesResponse = await fetch("http://192.168.0.119:5000/api/matches");
+        const matchesResponse = await fetch(
+          "http://192.168.0.119:5000/api/matches"
+        );
         const matchesData = await matchesResponse.json();
         setMatches(matchesData.data);
       } catch (error) {
@@ -47,6 +54,35 @@ export default function Home() {
 
     fetchTeamsAndMatches();
   }, []);
+
+  const selectTeamId = async () => {
+    console.log("start running selectTeamId");
+    try {
+      const response = await fetch(
+        "http://192.168.0.119:5000/api/getTeamPlayers",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            team1id: teamId1,
+            team2id: teamId2,
+          }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const teamsData = await response.json();
+      // Assuming setSelectTeams is a state updater function from useState hook
+      setSelectTeams(teamsData.data);
+      console.log(teamsData.data, "filtered team players"); // Logging teamsData.data after updating state
+    } catch (error) {
+      console.error("Error sending team id data:", error);
+    }
+  };
+  
 
   useEffect(() => {
     const updateCountdowns = () => {
@@ -58,16 +94,21 @@ export default function Home() {
 
         if (timeDifference > 0) {
           const hoursDifference = Math.floor(timeDifference / 3600000); // Convert milliseconds to hours
-          const minutesDifference = Math.floor((timeDifference % 3600000) / 60000); // Remaining minutes
+          const minutesDifference = Math.floor(
+            (timeDifference % 3600000) / 60000
+          ); // Remaining minutes
           const secondsDifference = Math.floor((timeDifference % 60000) / 1000); // Remaining seconds
 
           if (timeDifference < 3600000) {
             // Less than 1 hour
-            acc[match._id] = `${minutesDifference}min ${secondsDifference}s left`;
+            acc[
+              match._id
+            ] = `${minutesDifference}min ${secondsDifference}s left`;
           } else {
             acc[match._id] = `${hoursDifference}h ${minutesDifference}m left`;
           }
-        } else if (timeAfterStart < 14400000) { // Match started less than 4 hours ago
+        } else if (timeAfterStart < 14400000) {
+          // Match started less than 4 hours ago
           acc[match._id] = "Live";
         } else {
           acc[match._id] = "The match has ended";
@@ -131,12 +172,17 @@ export default function Home() {
             >
               <Pressable
                 onPress={() => {
+                  selectTeamId();
                   navigation.navigate("ContestScreen");
                   dispatch(getteam1shortform(team1.shortName));
                   dispatch(getteam2shortform(team2.shortName));
                   dispatch(getMatchCountdown(countdown));
                   dispatch(getTeam1logo(logoUri1));
                   dispatch(getTeam2logo(logoUri2));
+                  setTeamId1(match.teamId1);
+                  setTeamId2(match.teamId2);
+
+                  console.log(teamId1, "team no 1");
                 }}
                 style={{
                   borderRadius: 5,
@@ -158,7 +204,13 @@ export default function Home() {
                   }),
                 }}
               >
-                <View style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "100%",
+                  }}
+                >
                   <View
                     style={{
                       display: "flex",
@@ -204,8 +256,18 @@ export default function Home() {
                         gap: 5,
                       }}
                     >
-                      <Ionicons name="megaphone-outline" size={16} color="#19c869" />
-                      <Text style={{ fontSize: 10, color: "#19c869", fontWeight: "900" }}>
+                      <Ionicons
+                        name="megaphone-outline"
+                        size={16}
+                        color="#19c869"
+                      />
+                      <Text
+                        style={{
+                          fontSize: 10,
+                          color: "#19c869",
+                          fontWeight: "900",
+                        }}
+                      >
                         LINEUPS OUT
                       </Text>
                     </View>
@@ -220,7 +282,14 @@ export default function Home() {
                       padding: 10,
                     }}
                   >
-                    <View style={{ display: "flex", flexDirection: "column", width: "35%", gap: 5 }}>
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "35%",
+                        gap: 5,
+                      }}
+                    >
                       <View
                         style={{
                           display: "flex",
@@ -233,8 +302,8 @@ export default function Home() {
                       >
                         <View style={{ padding: 2 }}>
                           <Image
-                            source={require("../../assets/CSK logo.png")}
-                            //source={{ uri: logoUri1 }}
+                            // source={require("../../assets/CSK logo.png")}
+                            source={{ uri: logoUri1 }}
                             style={{
                               backgroundColor: "#fff",
                               resizeMode: "contain",
@@ -245,10 +314,19 @@ export default function Home() {
                           />
                         </View>
                         <View>
-                          <Text style={{ fontWeight: "bold" }}>{team1.shortName}</Text>
+                          <Text style={{ fontWeight: "bold" }}>
+                            {team1.shortName}
+                          </Text>
                         </View>
                       </View>
-                      <View style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "100%" }}>
+                      <View
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          alignItems: "center",
+                          width: "100%",
+                        }}
+                      >
                         <View
                           style={{
                             display: "flex",
@@ -277,20 +355,35 @@ export default function Home() {
                       }}
                     >
                       <View style={{ backgroundColor: "#E7ECFF", padding: 5 }}>
-                        <Text style={{ fontSize: 10, color: "red", textAlign: "center", fontWeight: "bold" }}>
+                        <Text
+                          style={{
+                            fontSize: 10,
+                            color: "red",
+                            textAlign: "center",
+                            fontWeight: "bold",
+                          }}
+                        >
                           {countdown}
                         </Text>
                       </View>
-                      {countdown !== "Live" && countdown !== "The match has ended" && (
-                        <View>
-                          <Text style={{ fontSize: 10 }}>
-                            {new Date(match.dateAndTime).toLocaleTimeString()}
-                          </Text>
-                        </View>
-                      )}
+                      {countdown !== "Live" &&
+                        countdown !== "The match has ended" && (
+                          <View>
+                            <Text style={{ fontSize: 10 }}>
+                              {new Date(match.dateAndTime).toLocaleTimeString()}
+                            </Text>
+                          </View>
+                        )}
                     </View>
 
-                    <View style={{ display: "flex", flexDirection: "column", width: "35%", gap: 5 }}>
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "35%",
+                        gap: 5,
+                      }}
+                    >
                       <View
                         style={{
                           display: "flex",
@@ -302,7 +395,9 @@ export default function Home() {
                         }}
                       >
                         <View>
-                          <Text style={{ fontWeight: "bold" }}>{team2.shortName}</Text>
+                          <Text style={{ fontWeight: "bold" }}>
+                            {team2.shortName}
+                          </Text>
                         </View>
 
                         <View>
@@ -319,7 +414,14 @@ export default function Home() {
                           />
                         </View>
                       </View>
-                      <View style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "100%" }}>
+                      <View
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          alignItems: "center",
+                          width: "100%",
+                        }}
+                      >
                         <View
                           style={{
                             display: "flex",
@@ -353,10 +455,19 @@ export default function Home() {
                     }}
                   >
                     <View>
-                      <Text style={{ fontWeight: "bold" }}>1 Team 3 Contests</Text>
+                      <Text style={{ fontWeight: "bold" }}>
+                        1 Team 3 Contests
+                      </Text>
                     </View>
-                    <Pressable onPress={() => setModal(true)} style={{ padding: 1, opacity: 0.5 }}>
-                      <MaterialCommunityIcons name="bell-circle" size={27} color="black" />
+                    <Pressable
+                      onPress={() => setModal(true)}
+                      style={{ padding: 1, opacity: 0.5 }}
+                    >
+                      <MaterialCommunityIcons
+                        name="bell-circle"
+                        size={27}
+                        color="black"
+                      />
                     </Pressable>
                   </View>
                 </View>

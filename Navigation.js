@@ -63,6 +63,7 @@ import CricketCompleted from "./components/Cricket/Completed/CompletedTabs/Crick
 import AuthLoadingScreen from "./screens/Autth/AuthLoadingScreen";
 import RegisterPage from "./screens/Autth/RegisterPage";
 import { Entypo } from '@expo/vector-icons';
+import HomeNotification from "./components/NotificationTabs/HomeNotification";
 
 const getHeaderRight = (navigation) => (
   <View
@@ -129,7 +130,7 @@ const getHeaderRight = (navigation) => (
           </Pressable>
         </View>
         <Pressable
-          onPress={() => {}}
+          onPress={() => navigation.navigate('HomeNotification')}
           style={{
             marginRight: 20,
             paddingTop: 9,
@@ -549,6 +550,20 @@ function StackScreen() {
         name="CricketCompleted"
         component={CricketCompleted}
       />
+     <Stack.Screen 
+      options={{
+         headerStyle:{
+          backgroundColor:"#3385ff"
+         },
+         headerTitle:"Notifications",
+         headerTitleStyle:{
+          color:"#fff"
+         },
+         headerTintColor:"#fff"
+       
+         
+      }}
+      name="HomeNotification" component={HomeNotification}/>
     </Stack.Navigator>
   );
 }

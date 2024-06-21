@@ -20,6 +20,7 @@ const TeamPreview = () => {
   );
   const remindplayer = 11 - playercount;
   const player = useSelector((state) => state.tasks.finalPlayerSelected);
+  
     const impactPlayerprofile = useSelector((state) => state.tasks.impactPlayerSelected);
 console.log("impact player",impactPlayerprofile);
 

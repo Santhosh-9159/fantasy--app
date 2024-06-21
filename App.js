@@ -4,10 +4,12 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SportProvider } from "./components/SportContext";
 import Navigation from "./Navigation";
 import { configureStore } from "@reduxjs/toolkit";
-import useReducer from "./Redux/Slice";
 import { Provider } from "react-redux";
 import Toast from "react-native-toast-message"; // Import Toast
 import FlashMessage from "react-native-flash-message";
+
+
+import useReducer from "./Redux/Slice";
 
 const store = configureStore({
   reducer: {

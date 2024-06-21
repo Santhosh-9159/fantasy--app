@@ -1,16 +1,19 @@
-  import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
-  import React, { useState } from "react";
-  import { MaterialCommunityIcons } from "@expo/vector-icons";
-  import { Ionicons } from "@expo/vector-icons";
-  import { FontAwesome } from "@expo/vector-icons";
+import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
-  const MatchReminder = ({ visible, onclose }) => {
-    return (
-      <Modal animationType="slide"
+const MatchReminder = ({ visible, onclose }) => {
+  return (
+    <Modal
+      animationType="slide"
       transparent={true}
       visible={visible}
-      onRequestClose={onclose}>
-        <Pressable onPress={onclose}
+      onRequestClose={onclose}
+    >
+      <Pressable
+        onPress={onclose}
         style={{
           width: "100%",
           height: "100%",
@@ -63,7 +66,7 @@
                   color="#3F58C5"
                 />
               </View>
-              <Pressable  onPress={onclose}>
+              <Pressable onPress={onclose}>
                 <Ionicons name="close" size={30} color="black" />
               </Pressable>
             </View>
@@ -159,10 +162,10 @@
           </View>
         </View>
       </Pressable>
-      </Modal>
-    );
-  };
+    </Modal>
+  );
+};
 
-  export default MatchReminder;
+export default MatchReminder;
 
-  const styles = StyleSheet.create({});
+const styles = StyleSheet.create({});

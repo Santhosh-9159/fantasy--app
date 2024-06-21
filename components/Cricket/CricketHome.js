@@ -149,8 +149,8 @@ export default function Home() {
         const countdown = countdowns[match._id];
 
         // Find teams for the current match
-        const team1 = teams.find((team) => team._id === match.teamId1);
-        const team2 = teams.find((team) => team._id === match.teamId2);
+        const team1 = teams.find((team) => team._id === match.team1Id);
+        const team2 = teams.find((team) => team._id === match.team2Id);
 
         if (!team1 || !team2) {
           return null;
@@ -309,7 +309,7 @@ export default function Home() {
                               resizeMode: "contain",
                               width: 60,
                               height: 60,
-                              borderRadius: 50,
+                              //borderRadius: 50,
                             }}
                           />
                         </View>
@@ -337,7 +337,7 @@ export default function Home() {
                           }}
                         >
                           <Text style={{ fontSize: 10 }} numberOfLines={1}>
-                            {team1.teamName}
+                            {team1.name}
                             {/* Chennai super kings */}
                           </Text>
                         </View>
@@ -402,14 +402,14 @@ export default function Home() {
 
                         <View>
                           <Image
-                            source={require("../../assets/RCB logo.png")}
-                            //source={{ uri: logoUri2 }}
+                            //source={require("../../assets/RCB logo.png")}
+                            source={{ uri: logoUri2 }}
                             style={{
                               backgroundColor: "#fff",
                               resizeMode: "contain",
                               width: 60,
                               height: 60,
-                              borderRadius: 50,
+                              //borderRadius: 50,
                             }}
                           />
                         </View>
@@ -432,7 +432,7 @@ export default function Home() {
                           }}
                         >
                           <Text style={{ fontSize: 10 }} numberOfLines={1}>
-                            {team2.teamName}
+                            {team2.name}
                             {/* Chennai super kings */}
                           </Text>
                         </View>

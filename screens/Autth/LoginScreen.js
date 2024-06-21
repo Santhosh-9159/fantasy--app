@@ -48,7 +48,7 @@ const LoginScreen = () => {
     >
       <ImageBackground
         source={require("../../assets/Loginbg.png")}
-        resizeMode="cover"
+        resizeMode="stretch"
         style={{ flex: 1, justifyContent: "center", width: "100%" }}
       >
         <View style={{ height: "50%" }}>

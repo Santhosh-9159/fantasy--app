@@ -13,10 +13,14 @@ import { Ionicons } from "@expo/vector-icons";
 import * as Progress from "react-native-progress";
 import { useNavigation } from "@react-navigation/core";
 import ContestFilter from "../../../components/Model/ContestFilter";
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 const Contest = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <ScrollView>
@@ -36,12 +40,16 @@ const Contest = () => {
               alignItems: "center",
             }}
           >
-            <Pressable 
-            onPress={() => setModalVisible(true)}
-            style={styles.filterIcon}>
+            <Pressable
+              onPress={() => setModalVisible(true)}
+              style={styles.filterIcon}
+            >
               <Ionicons name="filter" size={24} color="black" />
             </Pressable>
-            <ContestFilter visible={modalVisible} onClose={() => setModalVisible(false)} /> 
+            <ContestFilter
+              visible={modalVisible}
+              onClose={() => setModalVisible(false)}
+            />
           </View>
           <View
             style={{ flexDirection: "row", width: "90%", overflow: "scroll" }}
@@ -86,20 +94,20 @@ const Contest = () => {
           </View>
         </View>
 
-        <View
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            marginLeft: 15,
-            padding: 5,
-            backgroundColor: "#fff",
-          }}
-        >
-          <Text style={{ fontWeight: "bold" }}>Mega Contest</Text>
-        </View>
-        <View style={{ gap: 10, backgroundColor: "#fff" }}>
+        <View style={{ gap: 10 }}>
+          <View
+            style={{
+              width: "90%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              marginLeft: 15,
+              padding: 5,
+            }}
+          >
+            <Text style={{ fontWeight: "bold" }}>Mega Contest</Text>
+          </View>
+
           <View style={{ gap: 10, backgroundColor: "#fff" }}>
             <View
               style={{
@@ -111,12 +119,12 @@ const Contest = () => {
               }}
             >
               <Pressable
-              onPress={()=>navigation.navigate("DetailScreen")}
+                onPress={() => navigation.navigate("DetailScreen")}
                 style={{
                   borderRadius: 5,
                   overflow: "hidden",
                   width: "90%",
-                  backgroundColor: "#fff",
+                  backgroundColor: "#f27",
                   flexDirection: "column",
                   justifyContent: "space-between",
 
@@ -361,10 +369,10 @@ const Contest = () => {
           </View>
           <View
             style={{
-              width: "100%",
+              width: "90%",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "flex-start",
+              justifyContent: "center",
               marginLeft: 15,
               padding: 5,
               backgroundColor: "#fff",
@@ -440,7 +448,7 @@ const Contest = () => {
                     <View style={{ display: "flex", flexDirection: "row" }}>
                       <View style={{ paddingTop: 2 }}>
                         <Image
-                        source={require("../../../assets/1stplace.png")}
+                          source={require("../../../assets/1stplace.png")}
                           style={{ width: 30, height: 30 }}
                         />
                       </View>
@@ -473,7 +481,7 @@ const Contest = () => {
                         style={{
                           display: "flex",
                           flexDirection: "row",
-                          width: "100%",
+                          width: wp("100"),
                           justifyContent: "flex-end",
                           alignItems: "center",
                         }}
@@ -519,10 +527,10 @@ const Contest = () => {
                     <View style={{ padding: 3 }}>
                       <Progress.Bar
                         progress={0.9}
-                        width={300}
+                        width={wp(85)}
                         height={3}
                         borderWidth={0.2}
-                        backgroundColor="#ababab"
+                        backgroundColor="#f27"
                       />
                     </View>
                     <View
@@ -632,6 +640,7 @@ const Contest = () => {
           </View>
         </View>
       </ScrollView>
+
       <View
         style={{
           display: "flex",
@@ -639,10 +648,11 @@ const Contest = () => {
           width: "100%",
           padding: 15,
           justifyContent: "space-evenly",
-        }}>
+        }}
+      >
         <View style={{ width: "47%" }}>
           <Pressable
-          onPress={()=>navigation.navigate('MYContest')}
+            onPress={() => navigation.navigate("MYContest")}
             style={{
               backgroundColor: "#000",
               paddingTop: 10,
@@ -650,13 +660,16 @@ const Contest = () => {
               borderRadius: 10,
               width: "100%",
               display: "flex",
-              flexDirection:"row",
+              flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
-              gap:5
-            }} >
-              <View><FontAwesome5 name="ticket-alt" size={20} color="#fff" /></View>
-            <Text style={{ fontWeight: "400", color: "#fff",fontSize:14 }}>
+              gap: 5,
+            }}
+          >
+            <View>
+              <FontAwesome5 name="ticket-alt" size={20} color="#fff" />
+            </View>
+            <Text style={{ fontWeight: "400", color: "#fff", fontSize: 14 }}>
               MY CONTESTS
             </Text>
             <Text style={{ fontWeight: "600", color: "#fff" }}>(1)</Text>
@@ -664,7 +677,7 @@ const Contest = () => {
         </View>
         <View style={{ width: "47%" }}>
           <Pressable
-          onPress={()=>navigation.navigate('MYTeam')}
+            onPress={() => navigation.navigate("MYTeam")}
             style={{
               backgroundColor: "#000",
               paddingTop: 8,
@@ -672,17 +685,22 @@ const Contest = () => {
               borderRadius: 10,
               width: "100%",
               display: "flex",
-              flexDirection:"row",
+              flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
-              gap:5
-            }}>
-              <View>
-                <Image source={require("../../../assets/Jersey.png")} style={{width:25,height:25}} />
-              </View>
-            <Text style={{ fontWeight: "400", color: "#fff",fontSize:14  }}>MY TEAM</Text>
+              gap: 5,
+            }}
+          >
+            <View>
+              <Image
+                source={require("../../../assets/Jersey.png")}
+                style={{ width: 25, height: 25 }}
+              />
+            </View>
+            <Text style={{ fontWeight: "400", color: "#fff", fontSize: 14 }}>
+              MY TEAM
+            </Text>
             <Text style={{ fontWeight: "600", color: "#fff" }}>(1)</Text>
-
           </Pressable>
         </View>
       </View>

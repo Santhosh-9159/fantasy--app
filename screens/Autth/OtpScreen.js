@@ -31,8 +31,8 @@ const OtpScreen = ({ route }) => {
       console.log(token,"token");
       await AsyncStorage.setItem('userToken', token);
       showMessage({
-        message: "OTP Verification ",
-        description: "OTP has been sent to your email. Please check your email",
+        message: "OTP Verified Successfully ",
+       // description: "OTP has been sent to your email. Please check your email",
         icon: props => <Image source={require("../../assets/Logo.png")} {...props} />,
         type: "success",
       });

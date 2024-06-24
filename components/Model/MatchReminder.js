@@ -1,19 +1,33 @@
 import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+  import React, { useState } from "react";
+  import { MaterialCommunityIcons } from "@expo/vector-icons";
+  import { Ionicons } from "@expo/vector-icons";
+  import { FontAwesome } from "@expo/vector-icons";
+import { Switch } from "react-native";
 
-const MatchReminder = ({ visible, onclose }) => {
-  return (
-    <Modal
-      animationType="slide"
+  const MatchReminder = ({ visible, onclose }) => {
+
+    const [Enable , setEnable]  = useState(false); 
+    const [twenty , setTwenty]  = useState(false); 
+    const [thirty , setThirty]  = useState(false); 
+
+    const toggle = (state)=>{ 
+      setEnable(state); 
+     
+      
+    }
+    const toggle2 = (state)=>{ 
+      setTwenty(state)
+    }
+    const toggle3 = (state)=>{ 
+      setThirty(state)
+    }
+    return (
+      <Modal animationType="slide"
       transparent={true}
       visible={visible}
-      onRequestClose={onclose}
-    >
-      <Pressable
-        onPress={onclose}
+      onRequestClose={onclose}>
+        <Pressable onPress={onclose}
         style={{
           width: "100%",
           height: "100%",
@@ -21,12 +35,12 @@ const MatchReminder = ({ visible, onclose }) => {
           flexDirection: "column",
           justifyContent: "flex-end",
           alignItems: "flex-end",
-          //backgroundColor:"rgba(0,0,0,0.5)"
+          // backgroundColor:"rgba(0,0,0,0.5)"
         }}
       >
         <View
           style={{
-            height: "35%",
+            height: "40%",
             backgroundColor: "#fff",
             width: "100%",
             borderTopLeftRadius: 10,
@@ -63,11 +77,11 @@ const MatchReminder = ({ visible, onclose }) => {
                 <MaterialCommunityIcons
                   name="bell-circle"
                   size={70}
-                  color="#3F58C5"
+                  color="#3385ff"
                 />
               </View>
-              <Pressable onPress={onclose}>
-                <Ionicons name="close" size={30} color="black" />
+              <Pressable  onPress={onclose}>
+                <Ionicons name="close" size={25} color="black" />
               </Pressable>
             </View>
             <View
@@ -79,7 +93,7 @@ const MatchReminder = ({ visible, onclose }) => {
                 flexDirection: "row",
               }}
             >
-              <Text style={{ fontSize: 25, fontWeight: "500" }}>
+              <Text style={{ fontSize: 23, fontWeight: "500" }}>
                 Match Reminder
               </Text>
             </View>
@@ -91,8 +105,8 @@ const MatchReminder = ({ visible, onclose }) => {
                 width: "100%",
                 justifyContent: "center",
                 alignItems: "center",
-                padding: 10,
-                gap: 10,
+                padding: 5,
+                gap: 5,
               }}
             >
               <View
@@ -108,7 +122,12 @@ const MatchReminder = ({ visible, onclose }) => {
                   Before 30 Minutes
                 </Text>
                 <View>
-                  <FontAwesome name="toggle-on" size={30} color="#196" />
+                <Switch 
+                trackColor={{ false: "#c0c0c0", true: "#c0c0c0" }} 
+                thumbColor={Enable ? "#3385ff" : "#000"} 
+                onValueChange={toggle} 
+                value={Enable} 
+              />
                 </View>
               </View>
               <View
@@ -124,7 +143,12 @@ const MatchReminder = ({ visible, onclose }) => {
                   Before 20 Minutes
                 </Text>
                 <View>
-                  <FontAwesome name="toggle-on" size={30} color="#196" />
+                <Switch 
+                trackColor={{ false: "#c0c0c0", true: "#c0c0c0" }} 
+                thumbColor={twenty ? "#3385ff" : "#000"} 
+                onValueChange={toggle2} 
+                value={twenty} 
+              />
                 </View>
               </View>
               <View
@@ -140,7 +164,12 @@ const MatchReminder = ({ visible, onclose }) => {
                   Before 15 Minutes
                 </Text>
                 <View>
-                  <FontAwesome name="toggle-on" size={30} color="#196" />
+                <Switch 
+                trackColor={{ false: "#c0c0c0", true: "#c0c0c0" }} 
+                thumbColor={thirty ? "#3385ff" : "#000"} 
+                onValueChange={toggle3} 
+                value={thirty} 
+              />
                 </View>
               </View>
             </View>
@@ -149,7 +178,7 @@ const MatchReminder = ({ visible, onclose }) => {
               style={{
                 width: "90%",
                 padding: 10,
-                backgroundColor: "#3F58C5",
+                backgroundColor: "#3385ff",
                 borderRadius: 8,
                 justifyContent: "center",
                 alignItems: "center",
@@ -162,10 +191,10 @@ const MatchReminder = ({ visible, onclose }) => {
           </View>
         </View>
       </Pressable>
-    </Modal>
-  );
-};
+      </Modal>
+    );
+  };
 
-export default MatchReminder;
+  export default MatchReminder;
 
-const styles = StyleSheet.create({});
+  const styles = StyleSheet.create({});

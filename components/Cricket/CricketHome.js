@@ -11,10 +11,13 @@ import {
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+
 import {
   getMatchCountdown,
   getTeam1logo,
   getTeam2logo,
+  getTeamPlayers,
   getteam1shortform,
   getteam2shortform,
 } from "../../Redux/Slice";
@@ -27,8 +30,8 @@ export default function Home() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
-  const [teamId1, setTeamId1] = useState("");
-  const [teamId2, setTeamId2] = useState("");
+  const [teamId1, setTeamId1] = useState({});
+  const [teamId2, setTeamId2] = useState({});
   const [selectTeams, setSelectTeams] = useState([]);
 
   useEffect(() => {
@@ -57,33 +60,25 @@ export default function Home() {
 
   const selectTeamId = async () => {
     console.log("start running selectTeamId");
+    console.log(teamId1, "teamId1");
     try {
-      const response = await fetch(
-        "http://192.168.0.119:5000/api/getTeamPlayers",
+      const response = await axios.post(
+        "http://192.168.0.119:5000/api/getteamplayers",
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            team1id: teamId1,
-            team2id: teamId2,
-          }),
+          team1id: teamId1,
+          team2id: teamId2,
         }
       );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const teamsData = await response.json();
+
+      const teamsData = response.data;
       // Assuming setSelectTeams is a state updater function from useState hook
       setSelectTeams(teamsData.data);
-      console.log(teamsData.data, "filtered team players"); // Logging teamsData.data after updating state
+      dispatch(getTeamPlayers(teamsData.data));
+       console.log(teamsData.data, "filtered team players"); // Logging teamsData.data after updating state
     } catch (error) {
       console.error("Error sending team id data:", error);
     }
   };
-  
-
   useEffect(() => {
     const updateCountdowns = () => {
       const newCountdowns = matches.reduce((acc, match) => {
@@ -147,6 +142,8 @@ export default function Home() {
       {matches.map((match, index) => {
         const matchTime = new Date(match.dateAndTime);
         const countdown = countdowns[match._id];
+        const team1id = match.team1Id;
+        const team2id = match.team2Id;
 
         // Find teams for the current match
         const team1 = teams.find((team) => team._id === match.team1Id);
@@ -179,10 +176,11 @@ export default function Home() {
                   dispatch(getMatchCountdown(countdown));
                   dispatch(getTeam1logo(logoUri1));
                   dispatch(getTeam2logo(logoUri2));
-                  setTeamId1(match.teamId1);
-                  setTeamId2(match.teamId2);
+                  setTeamId1(team1id);
+                  setTeamId2(team2id);
 
-                  console.log(teamId1, "team no 1");
+                  console.log(team1id, "team no 1");
+                  console.log(team2id, "team no 2");
                 }}
                 style={{
                   borderRadius: 5,

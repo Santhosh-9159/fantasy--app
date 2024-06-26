@@ -84,7 +84,7 @@ padding:3,
                   onPress={() => {
                     navigation.navigate("PlayerInfo");
                     dispatch(getplayerProfileInfo(player));
-                    console.log(player);
+                    // console.log(player);
                   }}
                   style={{
                     padding: 2,

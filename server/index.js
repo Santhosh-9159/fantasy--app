@@ -29,10 +29,3 @@ app.use("/auth", authRoutes);
 app.use("/auth", userRegister);
 app.use("/api", playerDetails);
 app.use("/api", matchcontroller);
-
-// Logging registered routes
-app._router.stack.forEach(function (r) {
-  if (r.route && r.route.path) {
-    console.log(r.route.path);
-  }
-});

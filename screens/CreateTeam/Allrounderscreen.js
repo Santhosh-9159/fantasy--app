@@ -1,137 +1,221 @@
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
-import React, { useState } from "react";
-import { Feather } from "@expo/vector-icons";
+import React, { useEffect, useState } from "react";
+import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { getfinalPlayerSelected, getplayerProfileInfo } from "../../Redux/Slice";
-import { AntDesign } from '@expo/vector-icons';
-import { teamsArray } from "../../jsondata/cskjson";
+import {
+  getfinalPlayerSelected,
+  getplayerProfileInfo,
+} from "../../Redux/Slice";
+import base64 from "base-64";
 
 const Allrounderscreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const getTeams = useSelector((state) => state.tasks.teamPlayers);
+  const [teams, setTeams] = useState([]);
+  const [playerRole, setPlayerRole] = useState([]);
 
+  console.log(getTeams.length, "getTeams");
 
+  useEffect(() => {
+    const fetchPlayerRoleandTeam = async () => {
+      try {
+        // Fetch player roles
+        const playerroleResponse = await fetch(
+          "http://192.168.0.119:5000/api/playerrole"
+        );
+        const playerroleData = await playerroleResponse.json();
+        console.log(playerroleData, "playerrole Data");
+        setPlayerRole(playerroleData);
 
-  const allPlayers = teamsArray.flatMap(team => team.players);
-  const Allrounder = (role) => {
-    return allPlayers.filter(player => player.role === role);
-  };
-
-  const findTeamShortForm = (playerId) => {
-    for (let team of teamsArray) {
-      for (let player of team.players) {
-        if (player.id === playerId) {
-          return team.team_short_form;
-        }
+        // Fetch teams
+        const playerTeamsResponse = await fetch(
+          "http://192.168.0.119:5000/api/teams"
+        );
+        const teamsData = await playerTeamsResponse.json();
+        setTeams(teamsData.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
+    };
+
+    fetchPlayerRoleandTeam();
+  }, []);
+
+  // Function to find the short form for the player's team
+  const findTeamShortForm = (playerRoleId) => {
+    const team = teams.find((team) => team._id === playerRoleId);
+    return team ? team.shortName : "Nil";
+  };
+
+  // Function to filter All Rounder players
+  const filterAllRounderPlayers = (players) => {
+    return players.filter((player) => {
+      // Assuming playerRoleId is the correct identifier in player object
+      return player.playerRoleId === "6656e6307a97ed40e430f329"; // Replace with your specific ID for All Rounders
+    });
+  };
+
+  // Utility function to convert binary data to Base64
+  const arrayBufferToBase64 = (buffer) => {
+    let binary = "";
+    let bytes = new Uint8Array(buffer);
+    let len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
     }
-    return "";
+    return base64.encode(binary);
   };
-
-
-  const [selectedPlayers, setSelectedPlayers] = useState({});
-  const handlePlayerSelection = (playerId) => {
-    setSelectedPlayers((prevState) => ({
-      ...prevState,
-      [playerId]: !prevState[playerId]
-    }));
-    dispatch(getfinalPlayerSelected(playerId));
-
-  };
-
-
-  const selectedPlayer = useSelector((state) => state.tasks.finalPlayerSelected);
 
   return (
-    <ScrollView style={{ backgroundColor: "#fff", width: "100%", height: "100%" }}>
+    <ScrollView
+      style={{ backgroundColor: "#fff", width: "100%", height: "100%" }}
+    >
       <View style={{ flex: 1, alignItems: "center", gap: 5 }}>
         <View style={{ padding: 5 }}>
           <Text style={{ fontSize: 12 }}>Pick 1-8 All-rounder</Text>
         </View>
-        <View style={{ backgroundColor: "#dee4fa", width: "100%", flexDirection: "row" }}>
-          <View style={{ width: "100%", flexDirection: "row", justifyContent: "space-between" }}>
-            <View style={{ width: "50%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+        <View
+          style={{
+            backgroundColor: "#dee4fa",
+            width: "100%",
+            flexDirection: "row",
+          }}
+        >
+          <View
+            style={{
+              width: "100%",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <View
+              style={{
+                width: "50%",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Text style={{ fontSize: 12 }}>Player</Text>
             </View>
-            <View style={{ width: "20%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+            <View
+              style={{
+                width: "20%",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Text style={{ fontSize: 12 }}>Points</Text>
             </View>
-            <View style={{ flexDirection: "row", width: "30%", justifyContent: "flex-start", alignItems: "center" }}>
+            <View
+              style={{
+                flexDirection: "row",
+                width: "30%",
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}
+            >
               <Text style={{ fontSize: 12 }}>Selected By %</Text>
             </View>
           </View>
         </View>
-        <View style={{ flex: 1, alignItems: "center", gap: 10 }}>
-          {Allrounder("All-rounder").map((player,id) => (
-            <Pressable
-              key={id}
-              onPress={() => handlePlayerSelection(player.id)}
+        <View>
+          <View style={{ flex: 1, alignItems: "center", gap: 10 }}>
+            {filterAllRounderPlayers(getTeams).map((player, id) => {
+              // Check if playerImage is already a URL or binary data
+              const imageUrl = `data:image/jpeg;base64,${player.playerImage}`;
 
-              style={{
-                flexDirection: "row",
-                width: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-                borderBottomWidth: 0.5,
-                borderColor: "#ababab",
-                paddingBottom: 10,
-                backgroundColor:selectedPlayer.includes(player.id) ? "#ccd6ff" : "#fff",
-padding:3,
-       }}
-            >
-              <View style={{ flexDirection: "row", width: "48%", gap: 10 }}>
+              return (
                 <Pressable
-                  onPress={() => {
-                    navigation.navigate("PlayerInfo");
-                    console.log(player);
-                    dispatch(getplayerProfileInfo(player));
-                  }}
+                  key={id}
                   style={{
-                    padding: 2,
-                    backgroundColor: "#fff",
-                    overflow: "hidden",
-                    width: "30%",
-                    position: "relative",
+                    flexDirection: "row",
+                    width: "100%",
                     justifyContent: "center",
                     alignItems: "center",
+                    borderBottomWidth: 0.5,
+                    borderColor: "#ababab",
+                    paddingBottom: 10,
+                    backgroundColor: "#f7f7f7",
+                    padding: 3,
                   }}
                 >
-                  <Image source={{ uri: player.image }} style={{ width: 50, height: 50, borderRadius: 30 }} />
+                  <View style={{ flexDirection: "row", width: "48%", gap: 10 }}>
+                    <Pressable
+                      onPress={() => {
+                        // navigation.navigate("PlayerInfo");
+                        // dispatch(getplayerProfileInfo(player));
+                      }}
+                      style={{
+                        padding: 2,
+                        backgroundColor: "#f27",
+                        overflow: "hidden",
+                        width: "30%",
+                        position: "relative",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Image
+                        source={{ uri: imageUrl }}
+                        style={{ width: 50, height: 50, borderRadius: 30 }}
+                      />
+                      <View
+                        style={{
+                          paddingLeft: 5,
+                          paddingRight: 5,
+                          backgroundColor: "#7f7f7f",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          width: "100%",
+                          borderRadius: 8,
+                          position: "absolute",
+                          bottom: 0,
+                        }}
+                      >
+                        <Text style={{ fontSize: 10, color: "#fff" }}>
+                          {findTeamShortForm(player.teamId)}
+                        </Text>
+                      </View>
+                    </Pressable>
+                    <View
+                      style={{ width: "70%", justifyContent: "center", gap: 3 }}
+                    >
+                      <Text style={{ fontSize: 12, fontWeight: "bold" }}>
+                        {player.name}
+                      </Text>
+                      <Text style={{ fontSize: 12 }}>Played Last Match</Text>
+                    </View>
+                  </View>
                   <View
                     style={{
-                      paddingLeft: 5,
-                      paddingRight: 5,
-                      backgroundColor: "#7f7f7f",
+                      width: "20%",
                       justifyContent: "center",
                       alignItems: "center",
-                      width: "100%",
-                      borderRadius: 8,
-                      position: 'absolute',
-                      bottom: 0,
                     }}
                   >
-                    <Text style={{ fontSize: 10, color: "#fff" }}>
-                      {findTeamShortForm(player.id)}
-                    </Text>
+                    <Text style={{ fontWeight: "bold" }}>100</Text>
+                  </View>
+                  <View
+                    style={{
+                      width: "30%",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <View style={{ width: "70%", justifyContent: "center" }}>
+                      <Text style={{ fontWeight: "bold" }}>80%</Text>
+                    </View>
+                    <AntDesign name="minussquareo" size={24} color="#ffae36" />
                   </View>
                 </Pressable>
-                <View style={{ width: "70%", justifyContent: "center", gap: 3 }}>
-                  <Text style={{ fontSize: 12, fontWeight: "bold" }}>{player.name}</Text>
-                  <Text style={{ fontSize: 12 }}>Played Last Match</Text>
-                </View>
-              </View>
-              <View style={{ width: "20%", justifyContent: "center", alignItems: "center" }}>
-                <Text style={{ fontWeight: "bold" }}>{player.points}</Text>
-              </View>
-              <View style={{ width: "30%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-                <View style={{ width: "70%", justifyContent: "center" }}>
-                  <Text style={{ fontWeight: "bold" }}>80%</Text>
-                </View>
-                {selectedPlayer.includes(player.id) ? <AntDesign name="minussquareo" size={24} color="#ffae36" /> : <Feather name="plus-square" size={24} color="#35b367" />}
-              </View>
-            </Pressable>
-          ))}
+              );
+            })}
+          </View>
         </View>
       </View>
     </ScrollView>

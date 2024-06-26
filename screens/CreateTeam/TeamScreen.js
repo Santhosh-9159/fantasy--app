@@ -7,6 +7,7 @@ import {
   Dimensions,
   SafeAreaView,
   Pressable,
+  BackHandler,
 } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import Wicketerscreen from "./Wicketerscreen"; // Adjust the import path
@@ -26,6 +27,7 @@ import {
   resetFinalPlayerSelected,
 } from "../../Redux/Slice";
 import { teamsArray } from "../../jsondata/cskjson";
+import DiscardTeam from "../../components/Model/DiscardTeam";
 
 const initialLayout = { width: Dimensions.get("window").width };
 
@@ -80,7 +82,10 @@ const TeamScreen = () => {
   const getTeam1logo = useSelector((state) => state.tasks.team1logo);
   const getTeam2logo = useSelector((state) => state.tasks.team2logo);
   const matchCountdown = useSelector((state) => state.tasks.matchCountdown);
-
+  const finalPlayerSelecte = useSelector(
+    (state) => state.tasks.finalPlayerSelected
+  );
+  console.log(finalPlayerSelecte.length, "length");
   // Update countdown every second
   const [countdown, setCountdown] = useState("");
   useEffect(() => {
@@ -119,6 +124,21 @@ const TeamScreen = () => {
   };
 
   dispatch(initializePlayerLists());
+  const [modal, setModal] = useState(false);
+
+  useEffect(() => {
+    const backAction = () => {
+      setModal(true); // Show the modal when back button is pressed
+      return true; // Prevent the default back action
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove(); // Clean up the event listener on unmount
+  }, []);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -152,7 +172,12 @@ const TeamScreen = () => {
           >
             <View style={{ width: "30%" }}>
               <Pressable
-                onPress={() => navigation.goBack()}
+                onPress={
+                  // () => navigation.goBack()
+                  () => {
+                    setModal(true);
+                  }
+                }
                 style={styles.back}
               >
                 <Ionicons name="arrow-back" size={25} color="#fff" />
@@ -535,6 +560,7 @@ const TeamScreen = () => {
           </Pressable>
         </View>
       </View>
+      <DiscardTeam visible={modal} onclose={() => setModal(false)} />
     </SafeAreaView>
   );
 };

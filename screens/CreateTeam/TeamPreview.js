@@ -20,20 +20,28 @@ const TeamPreview = () => {
   );
   const remindplayer = 11 - playercount;
   const player = useSelector((state) => state.tasks.finalPlayerSelected);
-  
-    const impactPlayerprofile = useSelector((state) => state.tasks.impactPlayerSelected);
-console.log("impact player",impactPlayerprofile);
+  console.log(player.length, "player length");
 
+  const impactPlayerprofile = useSelector(
+    (state) => state.tasks.impactPlayerSelected
+  );
+  // console.log("impact player", impactPlayerprofile);
 
-const allPlayers = teamsArray.flatMap(team => team.players);
-const selectedPlayer = useSelector((state) => state.tasks.finalPlayerSelected);
+  const allPlayers = teamsArray.flatMap((team) => team.players);
+  const selectedPlayer = useSelector(
+    (state) => state.tasks.finalPlayerSelected
+  );
 
-const selectedPlayers = allPlayers.filter(player =>
-  selectedPlayer.includes(player.id)
-);
+  const selectedPlayers = allPlayers.filter((player) =>
+    selectedPlayer.includes(player.id)
+  );
 
-const cskPlayersCount = selectedPlayers.filter(player => player.team_short_form === 'CSK').length;
-const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form === 'RCB').length;
+  const cskPlayersCount = selectedPlayers.filter(
+    (player) => player.team_short_form === "CSK"
+  ).length;
+  const rcbPlayersCount = selectedPlayers.filter(
+    (player) => player.team_short_form === "RCB"
+  ).length;
 
   return (
     <View style={{ backgroundColor: "#2d2d2d", width: "100%", height: "100%" }}>
@@ -117,7 +125,9 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
             >
               <Text style={{ fontSize: 12, fontWeight: "bold" }}>CSK</Text>
             </View>
-            <Text style={{ fontSize: 12, color: "#fff" }}>{cskPlayersCount} : {rcbPlayersCount}</Text>
+            <Text style={{ fontSize: 12, color: "#fff" }}>
+              {cskPlayersCount} : {rcbPlayersCount}
+            </Text>
             <View
               style={{
                 display: "flex",
@@ -144,14 +154,18 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
               justifyContent: "flex-end",
               alignItems: "flex-end",
             }}
-          >{impactPlayerprofile.length > 0 ? <Image
-            source={require("../../assets/ImpactPreviewSelected.png")}
-            style={{ width: 40, height: 40 }}
-          /> :<Image
-          source={require("../../assets/ImpactPreviewNotSelected.png")}
-          style={{ width: 40, height: 40 }}
-        /> }
-            
+          >
+            {impactPlayerprofile.length > 0 ? (
+              <Image
+                source={require("../../assets/ImpactPreviewSelected.png")}
+                style={{ width: 40, height: 40 }}
+              />
+            ) : (
+              <Image
+                source={require("../../assets/ImpactPreviewNotSelected.png")}
+                style={{ width: 40, height: 40 }}
+              />
+            )}
           </View>
         </View>
       </View>
@@ -178,11 +192,15 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
             justifyContent: "space-between",
           }}
         >
-          <View style={{height:"95%",overflow:"scroll",zIndex:10}}>
+          <View style={{ height: "95%", overflow: "scroll", zIndex: 10 }}>
             {playercount > 0 ? (
-              <View style={{height:"92%",overflow:"visible",}}>
-                <View style={{ width: "100%", height: playercount >= 1 ? "auto" : "20%",                    
- }}>
+              <View style={{ height: "92%", overflow: "visible" }}>
+                <View
+                  style={{
+                    width: "100%",
+                    height: playercount >= 1 ? "auto" : "20%",
+                  }}
+                >
                   <View
                     style={{
                       display: "flex",
@@ -190,7 +208,7 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
                       justifyContent: "center",
                       alignItems: "center",
                       width: "100%",
-                      paddingTop:5
+                      paddingTop: 5,
                     }}
                   >
                     <Text
@@ -241,26 +259,28 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
                                 borderRadius: 25,
                               }}
                             />
-                           <View style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: 110,
-                    }}>
-                            <Text
+                            <View
                               style={{
-                                fontSize: 10,
-                                backgroundColor: "#d9d9d9",
-                                paddingLeft: 5,
-                                paddingRight: 5,
-                                borderRadius: 5,
-                                fontWeight: "900",
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: 110,
                               }}
-                              numberOfLines={1}
                             >
-                              {selectedPlayer.name}
-                            </Text>
+                              <Text
+                                style={{
+                                  fontSize: 10,
+                                  backgroundColor: "#d9d9d9",
+                                  paddingLeft: 5,
+                                  paddingRight: 5,
+                                  borderRadius: 5,
+                                  fontWeight: "900",
+                                }}
+                                numberOfLines={1}
+                              >
+                                {selectedPlayer.name}
+                              </Text>
                             </View>
                           </View>
                         );
@@ -271,15 +291,18 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
                   </View>
                 </View>
 
-                <View style={{ width: "100%", height: playercount >= 1 ? "auto" : null,                    
- }}>
+                <View
+                  style={{
+                    width: "100%",
+                    height: playercount >= 1 ? "auto" : null,
+                  }}
+                >
                   <View
                     style={{
                       flexDirection: "row",
                       justifyContent: "center",
                       alignItems: "center",
                       width: "100%",
-                      
                     }}
                   >
                     <Text
@@ -328,26 +351,28 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
                                 borderRadius: 25,
                               }}
                             />
-                           <View style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: 110,
-                    }}>
-                            <Text
+                            <View
                               style={{
-                                fontSize: 10,
-                                backgroundColor: "#d9d9d9",
-                                paddingLeft: 5,
-                                paddingRight: 5,
-                                borderRadius: 5,
-                                fontWeight: "900",
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: 110,
                               }}
-                              numberOfLines={1}
                             >
-                              {selectedPlayer.name}
-                            </Text>
+                              <Text
+                                style={{
+                                  fontSize: 10,
+                                  backgroundColor: "#d9d9d9",
+                                  paddingLeft: 5,
+                                  paddingRight: 5,
+                                  borderRadius: 5,
+                                  fontWeight: "900",
+                                }}
+                                numberOfLines={1}
+                              >
+                                {selectedPlayer.name}
+                              </Text>
                             </View>
                           </View>
                         );
@@ -358,8 +383,12 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
                   </View>
                 </View>
 
-                <View style={{ width: "100%",    height: playercount >= 1 ? "auto" : null,                   
- }}>
+                <View
+                  style={{
+                    width: "100%",
+                    height: playercount >= 1 ? "auto" : null,
+                  }}
+                >
                   <View
                     style={{
                       display: "flex",
@@ -367,7 +396,6 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
                       justifyContent: "center",
                       alignItems: "center",
                       width: "100%",
-                      
                     }}
                   >
                     <Text
@@ -417,26 +445,28 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
                                 borderRadius: 25,
                               }}
                             />
-                           <View style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: 110,
-                    }}>
-                            <Text
+                            <View
                               style={{
-                                fontSize: 10,
-                                backgroundColor: "#d9d9d9",
-                                paddingLeft: 5,
-                                paddingRight: 5,
-                                borderRadius: 5,
-                                fontWeight: "900",
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: 110,
                               }}
-                              numberOfLines={1}
                             >
-                              {selectedPlayer.name}
-                            </Text>
+                              <Text
+                                style={{
+                                  fontSize: 10,
+                                  backgroundColor: "#d9d9d9",
+                                  paddingLeft: 5,
+                                  paddingRight: 5,
+                                  borderRadius: 5,
+                                  fontWeight: "900",
+                                }}
+                                numberOfLines={1}
+                              >
+                                {selectedPlayer.name}
+                              </Text>
                             </View>
                           </View>
                         );
@@ -447,8 +477,12 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
                   </View>
                 </View>
 
-                <View style={{ width: "100%",   height: playercount >= 1 ? "auto" : null,                    
- }}>
+                <View
+                  style={{
+                    width: "100%",
+                    height: playercount >= 1 ? "auto" : null,
+                  }}
+                >
                   <View
                     style={{
                       display: "flex",
@@ -456,8 +490,6 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
                       justifyContent: "center",
                       alignItems: "center",
                       width: "100%",
-                      
-
                     }}
                   >
                     <Text
@@ -478,7 +510,7 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
                       justifyContent: "space-around",
                       alignItems: "center",
                       width: "100%",
-                      gap:3
+                      gap: 3,
                     }}
                   >
                     {player.map((playerId, index) => {
@@ -505,26 +537,28 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
                                 borderRadius: 25,
                               }}
                             />
-                            <View style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: 110,
-                    }}>
-                            <Text
+                            <View
                               style={{
-                                fontSize: 10,
-                                backgroundColor: "#d9d9d9",
-                                paddingLeft: 5,
-                                paddingRight: 5,
-                                borderRadius: 5,
-                                fontWeight: "900",
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: 110,
                               }}
-                              numberOfLines={1}
                             >
-                              {selectedPlayer.name}
-                            </Text>
+                              <Text
+                                style={{
+                                  fontSize: 10,
+                                  backgroundColor: "#d9d9d9",
+                                  paddingLeft: 5,
+                                  paddingRight: 5,
+                                  borderRadius: 5,
+                                  fontWeight: "900",
+                                }}
+                                numberOfLines={1}
+                              >
+                                {selectedPlayer.name}
+                              </Text>
                             </View>
                           </View>
                         );
@@ -623,34 +657,54 @@ const rcbPlayersCount = selectedPlayers.filter(player => player.team_short_form 
               justifyContent: "center",
               alignItems: "center",
               height: "5%",
-              gap:5
+              gap: 5,
             }}
           >
-            <View style={{ display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-              alignItems: "center",gap:3}}>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: 3,
+              }}
+            >
               <View>
-              <Text style={{fontWeight:"bold",color:"#fff"}}>IMPACT PLAYER</Text>
+                <Text style={{ fontWeight: "bold", color: "#fff" }}>
+                  IMPACT PLAYER
+                </Text>
               </View>
               <Image
-              source={require("../../assets/ImpactPreviewNotSelected.png")}
-              style={{ width: 40, height: 40 }}
-            />
+                source={require("../../assets/ImpactPreviewNotSelected.png")}
+                style={{ width: 40, height: 40 }}
+              />
             </View>
-            <View style={{ display: "flex",
-            flexDirection: "row",justifyContent: "center",
-            alignItems: "center",}}>
-            {impactPlayerprofile.map((item, id) => (
-  <View key={id} style={{ display: "flex",
-  flexDirection: "row",justifyContent: "center",
-  alignItems: "center",gap:5}}>
-    <Image source={{ uri: item.image }} style={{width:30,height:30}}
- />
-    <Text style={{color:"#fff"}}>{item.name}</Text>
-  </View>
-))}
-
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {impactPlayerprofile.map((item, id) => (
+                <View
+                  key={id}
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: 5,
+                  }}
+                >
+                  <Image
+                    source={{ uri: item.image }}
+                    style={{ width: 30, height: 30 }}
+                  />
+                  <Text style={{ color: "#fff" }}>{item.name}</Text>
+                </View>
+              ))}
             </View>
           </View>
         </View>

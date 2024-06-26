@@ -10,6 +10,7 @@ import FlashMessage from "react-native-flash-message";
 
 
 import useReducer from "./Redux/Slice";
+import DiscardTeam from "./components/Model/DiscardTeam";
 
 const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ export default function App() {
         <Provider store={store}>
           <FlashMessage style={styles.flashMessage} />
            <Navigation />
+           {/* <DiscardTeam /> */}
         </Provider>
       </SportProvider>
     </GestureHandlerRootView>

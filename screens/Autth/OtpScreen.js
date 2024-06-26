@@ -30,6 +30,8 @@ const OtpScreen = ({ route }) => {
       const { token } = response.data;
       console.log(token,"token");
       await AsyncStorage.setItem('userToken', token);
+      await AsyncStorage.setItem('email', email);
+
       showMessage({
         message: "OTP Verified Successfully ",
        // description: "OTP has been sent to your email. Please check your email",

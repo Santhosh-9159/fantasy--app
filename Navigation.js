@@ -62,8 +62,10 @@ import CaptainandViceCaptain from "./components/Cricket/CaptainandViceCaptain";
 import CricketCompleted from "./components/Cricket/Completed/CompletedTabs/CricketCompleted";
 import AuthLoadingScreen from "./screens/Autth/AuthLoadingScreen";
 import RegisterPage from "./screens/Autth/RegisterPage";
-import { Entypo } from '@expo/vector-icons';
+import { Entypo } from "@expo/vector-icons";
 import HomeNotification from "./components/NotificationTabs/HomeNotification";
+import HowToPlay from "./screens/Drawernavigation/HowToPlay";
+import DiscardTeam from "./components/Model/DiscardTeam";
 
 const getHeaderRight = (navigation) => (
   <View
@@ -72,23 +74,32 @@ const getHeaderRight = (navigation) => (
       backgroundColor: "#3385ff",
       height: 90,
       alignItems: "center",
-      justifyContent:"center",
+      justifyContent: "center",
       gap: 5,
-      width:"100%"
+      width: "100%",
     }}
   >
-    <View style={{ flexDirection: "row", padding: 3, paddingTop: 50, gap: 20,alignItems: "center",
-      justifyContent:"center",width:"100%" }}>
+    <View
+      style={{
+        flexDirection: "row",
+        padding: 3,
+        paddingTop: 50,
+        gap: 20,
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+      }}
+    >
       <Pressable
-        style={{ justifyContent: "flex-start",paddingLeft:10 }}
+        style={{ justifyContent: "flex-start", paddingLeft: 10 }}
         onPress={() => navigation.openDrawer()}
       >
         <Entypo name="menu" size={28} color="#ffff" />
       </Pressable>
       <Image
-          source={require("./assets/IMPACT11 Logo extended.png")}
-          style={{ width: 120, height: 20, borderRadius: 20 }}
-        />
+        source={require("./assets/IMPACT11 Logo extended.png")}
+        style={{ width: 120, height: 20, borderRadius: 20 }}
+      />
 
       <View
         style={{
@@ -130,7 +141,7 @@ const getHeaderRight = (navigation) => (
           </Pressable>
         </View>
         <Pressable
-          onPress={() => navigation.navigate('HomeNotification')}
+          onPress={() => navigation.navigate("HomeNotification")}
           style={{
             marginRight: 20,
             paddingTop: 9,
@@ -301,7 +312,7 @@ function StackScreen() {
         name="EditEmail"
         component={EditEmail}
       />
-       <Stack.Screen
+      <Stack.Screen
         options={{
           headerShown: false,
         }}
@@ -536,6 +547,8 @@ function StackScreen() {
         component={CricketLive}
       />
       <Stack.Screen name="MatchReminder" component={MatchReminder} />
+      <Stack.Screen name="DiscardTeam" component={DiscardTeam} />
+
       <Stack.Screen
         options={{
           headerShown: false,
@@ -550,20 +563,21 @@ function StackScreen() {
         name="CricketCompleted"
         component={CricketCompleted}
       />
-     <Stack.Screen 
-      options={{
-         headerStyle:{
-          backgroundColor:"#3385ff"
-         },
-         headerTitle:"Notifications",
-         headerTitleStyle:{
-          color:"#fff"
-         },
-         headerTintColor:"#fff"
-       
-         
-      }}
-      name="HomeNotification" component={HomeNotification}/>
+
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTitle: "Notifications",
+          headerTitleStyle: {
+            color: "#fff",
+          },
+          headerTintColor: "#fff",
+        }}
+        name="HomeNotification"
+        component={HomeNotification}
+      />
     </Stack.Navigator>
   );
 }
@@ -662,6 +676,13 @@ function DrawerScreen() {
         options={{
           headerShown: true,
         }}
+      />
+      <Drawer.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="HowToPlay"
+        component={HowToPlay}
       />
       <Drawer.Screen
         name="HelpAndSuport"

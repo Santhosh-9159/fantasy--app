@@ -1,34 +1,21 @@
 const mongoose = require("mongoose");
 
+// Define the Player schema
 const playerSchema = new mongoose.Schema({
-  _id: {
-    type: mongoose.Schema.Types.ObjectId,
-    default: () => new mongoose.Types.ObjectId(),
-  },
-  playerName: {
-    type: String,
-    required: true,
-  },
   teamId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Team",
+    type: String, // Use String instead of ObjectId
     required: true,
   },
   playerImage: {
-    $binary: {
-      base64: {
-        type: String,
-        required: true,
-      },
-      subType: {
-        type: String,
-        required: true,
-      },
-    },
+    type: String, // Store the base64 string directly
+    required: true,
   },
   playerRoleId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "PlayerRole",
+    type: String, // Use String instead of ObjectId
+    required: true,
+  },
+  name: {
+    type: String,
     required: true,
   },
   creator: {
@@ -40,28 +27,29 @@ const playerSchema = new mongoose.Schema({
     required: true,
   },
   creationTime: {
-    $date: {
-      type: Date,
-      default: Date.now,
-    },
+    type: Date,
+    required: true,
+    default: Date.now,
   },
   lastModified: {
-    $date: {
-      type: Date,
-      default: Date.now,
-    },
+    type: Date,
+    required: true,
+    default: Date.now,
   },
   _class: {
     type: String,
+    required: true,
     default: "com.avitam.fantasy11.model.Player",
   },
 });
 
+// Middleware to update the lastModified field before saving
 playerSchema.pre("save", function (next) {
-  this.lastModified.$date = Date.now();
+  this.lastModified = Date.now();
   next();
 });
 
-const PlayerDetails = mongoose.model("players", playerSchema);
+// Create the Player model
+const PlayerDetails = mongoose.model("Player", playerSchema);
 
 module.exports = PlayerDetails;

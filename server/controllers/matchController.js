@@ -2,11 +2,12 @@ const mongoose = require("mongoose");
 const PlayerRole = require("../models/playerRoleSchema");
 const Team = require("../models/teamSchema");
 const Match = require("../models/matchschema");
+const PlayerDetails = require("../models/PlayerDetails");
 
 const getMatches = async (req, res) => {
   try {
     const matches = await Match.find({});
-    console.log(matches,"matches data");
+    // console.log(matches, "matches data");
 
     const populatedMatches = await Promise.all(
       matches.map(async (match) => {
@@ -58,42 +59,28 @@ const playerRole = async (req, res) => {
 const getTeamPlayers = async (req, res) => {
   const { team1id, team2id } = req.body;
   try {
-    console.log(`Received team1id: ${team1id}, team2id: ${team2id}`);
-
     if (!team1id || !team2id) {
       return res
         .status(400)
         .json({ message: "team1id and team2id are required." });
     }
 
-    // Convert team1id and team2id to ObjectId if they are not already
-    const team1ObjectId = mongoose.Types.ObjectId.isValid(team1id)
-      ? new mongoose.Types.ObjectId(team1id)
-      : null;
-    const team2ObjectId = mongoose.Types.ObjectId.isValid(team2id)
-      ? new mongoose.Types.ObjectId(team2id)
-      : null;
+    const playersTeam1 = await PlayerDetails.find({ teamId: team1id });
+    const playersTeam2 = await PlayerDetails.find({ teamId: team2id });
 
-    if (!team1ObjectId || !team2ObjectId) {
-      return res.status(400).json({ message: "Invalid team1id or team2id." });
-    }
+    // Assuming playerImage is already stored as Base64 in MongoDB
+    const allPlayers = [...playersTeam1, ...playersTeam2].map((player) => ({
+      ...player.toObject(),
+      playerImage: player.playerImage, // Ensure it's already a Base64 string
+    }));
 
-    const playersTeam1 = await PlayerDetails.find({ teamId: team1ObjectId });
-    const playersTeam2 = await PlayerDetails.find({ teamId: team2ObjectId });
-
-    console.log(`Team1 players: ${JSON.stringify(playersTeam1)}`);
-    console.log(`Team2 players: ${JSON.stringify(playersTeam2)}`);
-
-    // Combine player arrays into a single array
-    const allPlayers = [...playersTeam1, ...playersTeam2];
-
-    res.send({
+    res.json({
       status: "ok",
       data: allPlayers,
     });
   } catch (error) {
-    console.error("Error fetching player roles:", error);
-    res.status(500).json({ message: "Error fetching player roles", error });
+    console.error("Error fetching player details:", error);
+    res.status(500).json({ message: "Error fetching player details", error });
   }
 };
 

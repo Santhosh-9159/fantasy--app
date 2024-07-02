@@ -73,6 +73,7 @@ const getTeamPlayers = async (req, res) => {
       ...player.toObject(),
       playerImage: player.playerImage, // Ensure it's already a Base64 string
     }));
+    console.log(allPlayers,"allpalyers aaaa");
 
     res.json({
       status: "ok",

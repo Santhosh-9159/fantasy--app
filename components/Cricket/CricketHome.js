@@ -39,14 +39,14 @@ export default function Home() {
       try {
         // Fetch teams
         const teamsResponse = await fetch(
-          "http://192.168.0.119:5000/api/teams"
+          "http://192.168.43.194:5000/api/teams"
         );
         const teamsData = await teamsResponse.json();
         setTeams(teamsData.data);
 
         // Fetch matches
         const matchesResponse = await fetch(
-          "http://192.168.0.119:5000/api/matches"
+          "http://192.168.43.194:5000/api/matches"
         );
         const matchesData = await matchesResponse.json();
         setMatches(matchesData.data);
@@ -63,7 +63,7 @@ export default function Home() {
     console.log(teamId1, "teamId1");
     try {
       const response = await axios.post(
-        "http://192.168.0.119:5000/api/getteamplayers",
+        "http://192.168.43.194:5000/api/getteamplayers",
         {
           team1id: teamId1,
           team2id: teamId2,
@@ -74,11 +74,12 @@ export default function Home() {
       // Assuming setSelectTeams is a state updater function from useState hook
       setSelectTeams(teamsData.data);
       dispatch(getTeamPlayers(teamsData.data));
-       console.log(teamsData.data, "filtered team players"); // Logging teamsData.data after updating state
+      console.log(teamsData.data, "filtered team players"); // Logging teamsData.data after updating state
     } catch (error) {
       console.error("Error sending team id data:", error);
     }
   };
+  
   useEffect(() => {
     const updateCountdowns = () => {
       const newCountdowns = matches.reduce((acc, match) => {

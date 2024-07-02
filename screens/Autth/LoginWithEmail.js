@@ -20,12 +20,18 @@ const LoginWithEmail = () => {
 
   const sendOtp = async () => {
     try {
-      await axios.post("http://192.168.0.119:5000/auth/login/email", { email });
+      await axios.post("http://192.168.0.143:5000/auth/login/email", { email });
       // Alert.alert("OTP Resent", "OTP has been sent to your email.");
       await showMessage({
         message: "OTP Verification ",
         description: "OTP has been sent to your email. Please check your email",
-        icon: props => <Image source={require("../../assets/Logo.png")}   style={{ width: 50, height: 30 }}  {...props} />,
+        icon: (props) => (
+          <Image
+            source={require("../../assets/Logo.png")}
+            style={{ width: 50, height: 30 }}
+            {...props}
+          />
+        ),
         type: "success",
         duration: 2000,
       });
@@ -174,11 +180,12 @@ const LoginWithEmail = () => {
                 </Text>
               </Pressable>
             </View>
-            <View style={{display:"flex",flexDirection:"row"}}>
-              <Text style={styles.footerText}>Don't have an account?</Text><Pressable onPress={() => navigation.navigate("RegisterPage")}>
+            <View style={{ display: "flex", flexDirection: "row" }}>
+              <Text style={styles.footerText}>Don't have an account?</Text>
+              <Pressable onPress={() => navigation.navigate("RegisterPage")}>
                 <Text style={styles.footerText}>Signup</Text>
               </Pressable>
-              </View>
+            </View>
           </View>
         </View>
       </ImageBackground>

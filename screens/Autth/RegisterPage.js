@@ -18,7 +18,6 @@ import CheckBox from "react-native-check-box";
 import axios from "axios";
 import { ActivityIndicator } from "react-native-paper";
 
-
 const RegisterPage = () => {
   const navigation = useNavigation();
   const [isSelected, setSelection] = useState(false);
@@ -33,8 +32,6 @@ const RegisterPage = () => {
 
   const { username, mobilenumber, email, invitecode } = inputvalue;
 
- 
-
   const handleInputChange = (name, value) => {
     setInputvalue({ ...inputvalue, [name]: value });
   };
@@ -42,23 +39,23 @@ const RegisterPage = () => {
     const errors = {};
 
     if (!values.username) {
-      errors.username = 'Username is required';
+      errors.username = "Username is required";
     } else if (values.username.length < 2) {
-      errors.username = 'Username must be at least 2 characters long';
+      errors.username = "Username must be at least 2 characters long";
     }
 
     if (!values.mobilenumber) {
-      errors.mobilenumber = 'Mobile number is required';
+      errors.mobilenumber = "Mobile number is required";
     } else if (!/^[0-9]+$/.test(values.mobilenumber)) {
-      errors.mobilenumber = 'Mobile number must be numeric';
+      errors.mobilenumber = "Mobile number must be numeric";
     } else if (values.mobilenumber.length < 10) {
-      errors.mobilenumber = 'Mobile number must be at least 10 digits long';
+      errors.mobilenumber = "Mobile number must be at least 10 digits long";
     }
 
     if (!values.email) {
-      errors.email = 'Email is required';
+      errors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-      errors.email = 'Invalid email format';
+      errors.email = "Invalid email format";
     }
 
     // Invite code is optional, no validation required
@@ -66,45 +63,42 @@ const RegisterPage = () => {
     return errors;
   };
 
-
-
   const handlechange = async () => {
     const validationErrors = validate(inputvalue);
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      if (
-        username !== '' &&
-       mobilenumber !== '' &&
-        email !== ''
-      ) {
+      if (username !== "" && mobilenumber !== "" && email !== "") {
         try {
-          setIndicator(true)
-          const response = await axios.post("http://192.168.0.119:5000/auth/userRegister", { username,mobilenumber,email,invitecode });
+          setIndicator(true);
+          const response = await axios.post(
+            "http://192.168.0.143:5000/auth/userRegister",
+            { username, mobilenumber, email, invitecode }
+          );
 
           console.log(response.data);
           // Handle successful registration, e.g., navigate to another screen
           setInputvalue({
-            username: '',
-            mobilenumber: '',
-            email: '',
-            invitecode: '',
+            username: "",
+            mobilenumber: "",
+            email: "",
+            invitecode: "",
           });
           console.log(inputvalue);
           // Delay navigation by 3 seconds
-        setTimeout(() => {
-          navigation.navigate("login");
-        }, 1000);
+          setTimeout(() => {
+            navigation.navigate("login");
+          }, 1000);
         } catch (error) {
-          console.error('Registration failed:', error);
+          console.error("Registration failed:", error);
           // Handle registration error
         }
       } else {
-        console.error('All fields are mandatory');
+        console.error("All fields are mandatory");
         // You can use a toast notification library to show this error to the user
       }
     } else {
-      console.error('Validation errors:', validationErrors);
+      console.error("Validation errors:", validationErrors);
       // You can use a toast notification library to show validation errors to the user
     }
   };
@@ -180,11 +174,13 @@ const RegisterPage = () => {
               Hi! Register and Start Winning
             </Text>
           </View>
-          <ScrollView  style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "100%",
-                 }}>
+          <ScrollView
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              width: "100%",
+            }}
+          >
             <View
               style={{
                 display: "flex",
@@ -222,12 +218,16 @@ const RegisterPage = () => {
                   <TextInput
                     style={{ width: "100%", color: "#fff" }}
                     value={username}
-                    onChangeText={(value) => handleInputChange("username", value)}
+                    onChangeText={(value) =>
+                      handleInputChange("username", value)
+                    }
                   />
-
                 </View>
-                {errors.username && <Text style={{color:"red",fontWeight:"bold"}}>{errors.username}</Text>}
-
+                {errors.username && (
+                  <Text style={{ color: "red", fontWeight: "bold" }}>
+                    {errors.username}
+                  </Text>
+                )}
               </View>
 
               <View
@@ -260,11 +260,16 @@ const RegisterPage = () => {
                     style={{ width: "100%", color: "#fff" }}
                     keyboardType="number-pad"
                     value={mobilenumber}
-                    onChangeText={(value) => handleInputChange("mobilenumber", value)}
+                    onChangeText={(value) =>
+                      handleInputChange("mobilenumber", value)
+                    }
                   />
                 </View>
-                {errors.mobilenumber && <Text style={{color:"red",fontWeight:"bold"}}>{errors.mobilenumber}</Text>}
-
+                {errors.mobilenumber && (
+                  <Text style={{ color: "red", fontWeight: "bold" }}>
+                    {errors.mobilenumber}
+                  </Text>
+                )}
               </View>
 
               <View
@@ -297,8 +302,11 @@ const RegisterPage = () => {
                     onChangeText={(value) => handleInputChange("email", value)}
                   />
                 </View>
-                {errors.email && <Text style={{color:"red",fontWeight:"bold"}}>{errors.email}</Text>}
-
+                {errors.email && (
+                  <Text style={{ color: "red", fontWeight: "bold" }}>
+                    {errors.email}
+                  </Text>
+                )}
               </View>
             </View>
           </ScrollView>
@@ -397,11 +405,15 @@ const RegisterPage = () => {
               }}
             >
               <View style={{}}>
-                {indicator == true ? <ActivityIndicator size={"small"} color="#fff"/> : <Text
-                  style={{ fontWeight: "bold", color: "#fff", fontSize: 16 }}
-                >
-                  CONTINUE
-                </Text>}
+                {indicator == true ? (
+                  <ActivityIndicator size={"small"} color="#fff" />
+                ) : (
+                  <Text
+                    style={{ fontWeight: "bold", color: "#fff", fontSize: 16 }}
+                  >
+                    CONTINUE
+                  </Text>
+                )}
               </View>
             </Pressable>
           ) : (
@@ -446,5 +458,3 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
 });
-
-

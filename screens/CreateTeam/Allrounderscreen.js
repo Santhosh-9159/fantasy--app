@@ -23,7 +23,7 @@ const Allrounderscreen = () => {
       try {
         // Fetch player roles
         const playerroleResponse = await fetch(
-          "http://192.168.0.119:5000/api/playerrole"
+          "http://192.168.0.143:5000/api/playerrole"
         );
         const playerroleData = await playerroleResponse.json();
         console.log(playerroleData, "playerrole Data");
@@ -31,7 +31,7 @@ const Allrounderscreen = () => {
 
         // Fetch teams
         const playerTeamsResponse = await fetch(
-          "http://192.168.0.119:5000/api/teams"
+          "http://192.168.0.143:5000/api/teams"
         );
         const teamsData = await playerTeamsResponse.json();
         setTeams(teamsData.data);
@@ -125,8 +125,10 @@ const Allrounderscreen = () => {
         <View>
           <View style={{ flex: 1, alignItems: "center", gap: 10 }}>
             {filterAllRounderPlayers(getTeams).map((player, id) => {
-              // Check if playerImage is already a URL or binary data
-              const imageUrl = `data:image/jpeg;base64,${player.playerImage}`;
+              // Convert binary data to Base64 string
+              const base64Image = arrayBufferToBase64(player.playerImage);
+              const imageUrl = `data:image/jpeg;base64,${base64Image}`;
+              console.log(player.playerImage, "playerImage fbdfbd");
 
               return (
                 <Pressable

@@ -13,7 +13,7 @@ import Scoreboard from '../../Live/LiveTabs/Scoreboard';
 import Stats from '../../Live/LiveTabs/Stats';
 import Winning from '../../Live/LiveTabs/Winning';
 import Leaderboard from '../../Live/LiveTabs/Leaderboard';
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 
@@ -79,8 +79,8 @@ const CricketCompleted = () => {
       };
 
   return (
-    <View style={{height:"100%",width:"100%"}}>
-        <View style={{height:"22%",backgroundColor:"#126",width:"100%"}}>
+    <View style={{height: hp(120),width: wp("100%")}}>
+        <View style={{height: hp("27%"),backgroundColor:"#126",width: wp("100%")}}>
         <LinearGradient
           style={{
             flex: 1,
@@ -88,11 +88,11 @@ const CricketCompleted = () => {
           }}
           colors={["#3247A0", "#1B2656", "#020202"]}
         >
-       <View style={{display:"flex",width:"100%",flexDirection:"column",gap:20,justifyContent:"space-between",alignItems:"center"}}>
-       <View style={{width:"95%",flexDirection:"row",display:"flex",paddingTop:45,justifyContent:"space-between",alignItems:"center"}}>
+       <View style={{display:"flex",width: wp("100%"),flexDirection:"column",gap:20,justifyContent:"space-between",alignItems:"center"}}>
+       <View style={{width: wp("95%"),flexDirection:"row",display:"flex",paddingTop:45,justifyContent:"space-between",alignItems:"center"}}>
            <View style={{flexDirection:"row",gap:5,alignItems:"center"}}>
            <Pressable onPress={handleBackPress}><Ionicons name="arrow-back" size={24} color="#fff" /></Pressable>
-           <Text style={{color:"#fff",fontWeight:"bold",fontSize:14}}>CSK vs RCB</Text>
+           <Text style={{color:"#fff",fontWeight:"bold",fontSize:hp(2)}}>CSK vs RCB</Text>
            </View>
            <View style={{flexDirection:"row",gap:10}}>
             <View>
@@ -100,11 +100,11 @@ const CricketCompleted = () => {
 
             </View>
             <View style={{borderWidth:3,borderRadius:17,borderColor:"#fff",padding:2.5,alignItems:"center"}}>
-                <Text style={{color:"#fff",fontSize:7,textAlign:"center",fontWeight:"bold",paddingTop:1.5,paddingRight:1}}>PTS</Text>
+                <Text style={{color:"#fff",fontSize:hp(1),textAlign:"center",fontWeight:"bold",paddingTop:1.5,paddingRight:1}}>PTS</Text>
             </View>
            </View>
         </View>  
-        <View style={{flexDirection:"row",width:"90%",display:"flex",justifyContent:"space-between",alignItems:"center"}}>                                                  
+        <View style={{flexDirection:"row",width: wp("90%"),display:"flex",justifyContent:"space-between",alignItems:"center"}}>                                                  
            <View style={{flexDirection:"row",gap:5,alignItems:"center",display:"flex"}}>
              <View>
                 <Image source={require('../../../../assets/rcb.png')} style={{height:50,width:50,borderRadius:30}}/>
@@ -116,7 +116,7 @@ const CricketCompleted = () => {
             </View>
 
            <View style={{flexDirection:"row",backgroundColor:"#35B267",padding:2,paddingLeft:5,paddingRight:5,justifyContent:"center",display:"flex",alignItems:"center"}}>
-            <Text style={{color:"#fff",fontWeight:"700",fontSize:12,letterSpacing:1}}>Completed</Text>
+            <Text style={{color:"#fff",fontWeight:"700",fontSize:hp(1.9),letterSpacing:1}}>Completed</Text>
            </View>
 
            <View style={{flexDirection:"row",gap:5,alignItems:"center",display:"flex"}}>
@@ -133,14 +133,14 @@ const CricketCompleted = () => {
 
         
        
-        <View style={{width:"90%",display:"flex",flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
+        <View style={{width: wp("90%"),display:"flex",flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
                 <Text style={{color:"#fff"}}>CSK won by 15 Runs</Text>
               </View>
         </View>      
         </LinearGradient>
         </View>
 
-        <View style={{height:"78%",width:"100%"}}>
+        <View style={{height:  hp("78%"),width: wp("100%")}}>
           {
              show ?  MyTabsWinning()  :MyTabs()
           }

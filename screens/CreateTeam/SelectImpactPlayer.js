@@ -13,6 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from '@expo/vector-icons';
 import { useDispatch, useSelector } from "react-redux";
 import { getImpactPlayerSelected } from "../../Redux/Slice";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const SelectImpactPlayer = () => {
   const navigation = useNavigation();
@@ -27,7 +28,7 @@ const SelectImpactPlayer = () => {
 
   return (
     <View>
-      <View style={{ height: "43%", backgroundColor: "#DEE4FA" }}>
+      <View style={{ height: wp("80%"), backgroundColor: "#DEE4FA" }}>
         <LinearGradient
           style={{
             flex: 1,
@@ -38,8 +39,8 @@ const SelectImpactPlayer = () => {
         >
           <View
             style={{
-              height: "30%",
-              width: "100%",
+              height: hp("13%"),
+              width: wp("100%"),
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-end",
@@ -48,8 +49,8 @@ const SelectImpactPlayer = () => {
             <View
               style={{
                 flexDirection: "row",
-                padding: 20,
-                width: "100%",
+                padding: 15,
+                width:  wp("100%"),
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -63,10 +64,10 @@ const SelectImpactPlayer = () => {
                   <Ionicons name="arrow-back" size={24} color="#fff" />
                 </Pressable>
                 <View style={{ flexDirection: "column" }}>
-                  <Text style={{ color: "#fff", fontWeight: "bold" }}>
+                  <Text style={{ color: "#fff", fontWeight: "bold", fontSize: hp(2) }}>
                     CHOOSE YOUR IMPACT PLAYER
                   </Text>
-                  <Text style={{ color: "#fff", fontSize: 12 }}>
+                  <Text style={{ color: "#fff", fontSize: hp(1.6) }}>
                     21M 30S left
                   </Text>
                 </View>
@@ -79,8 +80,8 @@ const SelectImpactPlayer = () => {
 
           <View
             style={{
-              height: "55%",
-              width: "100%",
+              height: hp("22%"),
+              width: hp("60%"),
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-around",
@@ -88,7 +89,7 @@ const SelectImpactPlayer = () => {
           >
             <View
               style={{
-                width: "30%",
+                width: wp("30%"),
                 display: "flex",
                 justifyContent: "center",
                 flexDirection: "row",
@@ -97,12 +98,12 @@ const SelectImpactPlayer = () => {
             >
               <Image
                 source={require("../../assets/Logo.png")}
-                style={{ height: 40, width: "70%", opacity: 0.2 }}
+                style={{ height: 40, width: wp("22%"), opacity: 0.2 }}
               />
             </View>
             <View
               style={{
-                width: "40%",
+                width: wp("35%"),
                 display: "flex",
                 justifyContent: "center",
                 flexDirection: "column",
@@ -112,7 +113,7 @@ const SelectImpactPlayer = () => {
             >
               <Image
                 source={require("../../assets/ImpactArrowUp.png")}
-                style={{ height: 27, width: "70%" }}
+                style={{ height: 27, width:  wp("25%") }}
               />
               {impactPlayerSelected.length > 0 && (
                 <Image
@@ -127,7 +128,7 @@ const SelectImpactPlayer = () => {
             </View>
             <View
               style={{
-                width: "30%",
+                width: wp("30%"),
                 display: "flex",
                 justifyContent: "center",
                 flexDirection: "row",
@@ -136,14 +137,14 @@ const SelectImpactPlayer = () => {
             >
               <Image
                 source={require("../../assets/Logo.png")}
-                style={{ height: 40, width: "70%", opacity: 0.2 }}
+                style={{ height: 40, width:  wp("25%"), opacity: 0.2 }}
               />
             </View>
           </View>
           <View
             style={{
-              height: "15%",
-              width: "100%",
+              height:  hp("13%"),
+              width: wp("100%"),
               justifyContent: "center",
               display: "flex",
               flexDirection: "column",
@@ -152,7 +153,7 @@ const SelectImpactPlayer = () => {
           >
             <View
               style={{
-                width: "95%",
+                width: wp("90%"),
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "center",
@@ -166,7 +167,7 @@ const SelectImpactPlayer = () => {
                 size={17}
                 color="#fff"
               />
-              <Text style={{ color: "#fff", fontSize: 14 }}>
+              <Text style={{ color: "#fff", fontSize: hp(1.9) }}>
                 Impact Player will replace the player with least points in your
                 Team
               </Text>
@@ -174,30 +175,30 @@ const SelectImpactPlayer = () => {
           </View>
         </LinearGradient>
       </View>
-      <View style={{ height: "57%" }}>
+      <View style={{ height: hp("55%") }}>
         <View
           style={{
             backgroundColor: "#DEE4FA",
-            width: "100%",
+            width: wp("100%"),
             flexDirection: "row",
           }}
         >
           <View
             style={{
-              width: "55%",
+              width: wp("55%"),
               display: "flex",
               justifyContent: "center",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
-            <Text style={{ fontSize: 12 }}>Player</Text>
+            <Text style={{ fontSize: hp(1.7) }}>Player</Text>
           </View>
-          <View style={{ width: "15%" }}>
-            <Text style={{ fontSize: 12 }}>Points</Text>
+          <View style={{ width: wp("15%") }}>
+            <Text style={{ fontSize: hp(1.7) }}>Points</Text>
           </View>
-          <View style={{ width: "30%" }}>
-            <Text style={{ fontSize: 12 }}>Selected by %</Text>
+          <View style={{ width: wp("30%") }}>
+            <Text style={{ fontSize: hp(1.7) }}>Selected by %</Text>
           </View>
         </View>
         <ScrollView>
@@ -208,7 +209,7 @@ const SelectImpactPlayer = () => {
                 dispatch(getImpactPlayerSelected(item));
               }}
               style={{
-                width: "100%",
+                width: wp("100%"),
                 flexDirection: "row",
                 padding: 10,
                 borderColor: "#000",
@@ -218,7 +219,7 @@ const SelectImpactPlayer = () => {
             >
               <View
                 style={{
-                  width: "55%",
+                  width: wp("55%"),
                   display: "flex",
                   justifyContent: "center",
                   flexDirection: "row",
@@ -227,7 +228,7 @@ const SelectImpactPlayer = () => {
               >
                 <View
                   style={{
-                    width: "30%",
+                    width: wp("18%"),
                     display: "flex",
                     justifyContent: "center",
                     flexDirection: "row",
@@ -251,45 +252,45 @@ const SelectImpactPlayer = () => {
                       bottom: 0,
                       paddingLeft: 3,
                       paddingRight: 5,
-                      width: "90%",
+                      width: wp("17%"),
                       display: "flex",
                       justifyContent: "center",
                       flexDirection: "row",
                       alignItems: "center",
                     }}
                   >
-                    <Text style={{ color: "#fff", fontSize: 10 }}>{item.team_short_form}</Text>
+                    <Text style={{ color: "#fff", fontSize: hp(1.5) }}>{item.team_short_form}</Text>
                   </View>
                 </View>
                 <View
                   style={{
-                    width: "70%",
+                    width: wp("35%"),
                     flexDirection: "column",
                     paddingLeft: 10,
                   }}
                 >
                   <Text style={{ fontWeight: "bold" }}>{item.name}</Text>
-                  <Text style={{ fontSize: 12, color: "blue" }}>
+                  <Text style={{ fontSize:hp(1.7), color: "blue" }}>
                     Played Last Match
                   </Text>
                 </View>
               </View>
               <View
                 style={{
-                  width: "15%",
+                  width: wp("13%"),
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <View style={{ width: "100%" }}>
+                <View style={{ width: wp("15%") }}>
                   <Text style={{ fontWeight: "bold" }}>{item.points}</Text>
                 </View>
               </View>
               <View
                 style={{
-                  width: "30%",
+                  width: wp("30%"),
                   alignItems: "center",
                   display: "flex",
                   flexDirection: "row",
@@ -305,7 +306,7 @@ const SelectImpactPlayer = () => {
         </ScrollView>
         <View
           style={{
-            width: "100%",
+            width: wp("100%"),
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
@@ -317,7 +318,7 @@ const SelectImpactPlayer = () => {
             style={{
               display: 'flex',
               flexDirection: 'row',
-              width: '100%',
+              width: wp('100%'),
               justifyContent: 'space-around',
               alignItems: 'center',
               padding: 10,
@@ -326,7 +327,7 @@ const SelectImpactPlayer = () => {
             <Pressable onPress={() => navigation.navigate("TeamPreview")}
               style={{
                 backgroundColor: '#000',
-                width: '45%',
+                width: wp('45%'),
                 borderWidth: 1.5,
                 borderColor: '#000',
                 display: 'flex',
@@ -344,7 +345,7 @@ const SelectImpactPlayer = () => {
             <Pressable onPress={() => navigation.navigate("SelectCaptainandVCaptain")}
               style={{
                 backgroundColor: '#3e57c4',
-                width: '45%',
+                width: wp('45%'),
                 borderWidth: 1.5,
                 borderColor: '#fff',
                 display: 'flex',
@@ -356,7 +357,7 @@ const SelectImpactPlayer = () => {
                 gap: 3
               }}
             >
-              <Text style={{ color: '#fff', paddingLeft: 5, fontWeight: "bold" }}>NEXT</Text>
+              <Text style={{ color: '#fff', paddingLeft: 5, fontWeight: "bold" ,fontSize: hp(2),}}>NEXT</Text>
               <View style={{}}><MaterialIcons name="skip-next" size={24} color="#fff" /></View>
             </Pressable>
           </View>

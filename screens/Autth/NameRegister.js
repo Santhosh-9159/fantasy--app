@@ -2,6 +2,7 @@ import { Image, SafeAreaView, StyleSheet, Text, TextInput, View,Pressable } from
 import React from 'react'
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from '@react-navigation/core';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 const NameRegister = () => {
@@ -9,20 +10,20 @@ const NameRegister = () => {
     
   return (
     <SafeAreaView>
-    <View style={{display:"flex",flexDirection: 'column',width:"100",justifyContent:"center",alignItems:"center",top: 70,}}>
-      <View style={{display:"flex",flexDirection: 'column',width:"100",justifyContent:"center",alignItems:"center",gap:8}}>
+    <View style={{display:"flex",flexDirection: 'column',width: wp("100%"),justifyContent:"center",alignItems:"center",top: 70,}}>
+      <View style={{display:"flex",flexDirection: 'column',width: wp("100%"),justifyContent:"center",alignItems:"center",gap:8}}>
       <Image source={require("../../assets/Personimage.png")}
-      style={{width:150,height:150}}
+      style={{width: wp(36),height: hp(20)}}
       />
-      <Text style={{ fontWeight: "900", color: "#000" }}>Start your Innings in IMPACT11!</Text>
-      <Text style={{ fontWeight: "900", color: "#3c3c3c" }}>Tell us your Name</Text>
+      <Text style={{ fontWeight: "900", color: "#000",fontSize:hp(2.4) }}>Start your Innings in IMPACT11!</Text>
+      <Text style={{ fontWeight: "900", color: "#3c3c3c" ,fontSize:hp(2.2)}}>Tell us your Name</Text>
       </View>
-      <View style={{display:"flex",flexDirection: 'column',width:"90%",padding:10,gap:15}}>
+      <View style={{display:"flex",flexDirection: 'column',width: wp("90%"),padding:10,gap:15}}>
       <View
       style={{
         display: "flex",
         flexDirection: "row",
-        width: "100%",
+        width:  wp("75%"),
         marginTop: 5,
         justifyContent:"center",alignItems:"center",
         borderBottomWidth: 2,
@@ -33,17 +34,17 @@ const NameRegister = () => {
     >
      
         <FontAwesome5 name="user" size={18} color="black" />
-        <TextInput style={{width:"100%"}} placeholder="Enter your name" />
+        <TextInput style={{width: wp("70%")}} placeholder="Enter your name" />
     </View>
     <View>
-    <Text style={{ fontWeight: "900", color: "#818181",fontSize:12 }}>Note : We will use this name to generate a user name for you. You can change the username later.</Text>
+    <Text style={{ fontWeight: "900", color: "#818181",fontSize:hp(2) }}>Note : We will use this name to generate a user name for you. You can change the username later.</Text>
     </View>
    
     <Pressable 
     style={{
       backgroundColor: "#3385ff",
       padding: 8,
-      width: "100%",
+      width:  wp("85%"),
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
@@ -62,7 +63,7 @@ const NameRegister = () => {
   style={{
     backgroundColor: "#FFF",
     padding: 8,
-    width: "100%",
+    width: wp("85%"),
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",

@@ -5,6 +5,7 @@ import { RadioButton } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const MyinfoAndSettings = () => {
   const [selectedValue, setSelectedValue] = useState("option1");
@@ -54,7 +55,7 @@ const MyinfoAndSettings = () => {
         </View>
         <View
         style={{
-          width: "100%",
+          width: wp("100%"),
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -67,8 +68,7 @@ const MyinfoAndSettings = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "90%",
-            
+            width: wp("90%"),    
             marginTop: 5,
           }}
         >
@@ -76,7 +76,7 @@ const MyinfoAndSettings = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
               justifyContent: "flex-start",
               marginTop:20
             }}
@@ -92,7 +92,7 @@ const MyinfoAndSettings = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "90%",
+            width: wp("90%"),
            
           }}
         >
@@ -100,7 +100,7 @@ const MyinfoAndSettings = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
               justifyContent: "flex-start",
             }}
           >
@@ -115,7 +115,7 @@ const MyinfoAndSettings = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "90%",
+            width: wp("90%"),
             
           }}
         >
@@ -123,7 +123,7 @@ const MyinfoAndSettings = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
               justifyContent: "flex-start",
             }}
           >
@@ -148,7 +148,7 @@ const MyinfoAndSettings = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "90%",
+            width: wp("90%"),
             
           }}
         >
@@ -156,7 +156,7 @@ const MyinfoAndSettings = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
               justifyContent: "flex-start",
             }}
           >
@@ -182,7 +182,7 @@ const MyinfoAndSettings = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "90%",
+            width: wp("90%"),
             
           }}
         >
@@ -190,7 +190,7 @@ const MyinfoAndSettings = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
               justifyContent: "flex-start",
             }}
           >
@@ -231,14 +231,14 @@ const MyinfoAndSettings = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "90%",
+            width: wp("90%"),
           }}
         >
           <View
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
               justifyContent: "flex-start",
             }}
           >
@@ -253,7 +253,7 @@ const MyinfoAndSettings = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "90%",
+            width: wp("90%"),
             
           }}
         >
@@ -261,7 +261,7 @@ const MyinfoAndSettings = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
               justifyContent: "flex-start",
             }}
           >
@@ -280,7 +280,7 @@ const MyinfoAndSettings = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "90%",
+            width: wp("90%"),
             
           }}
         >
@@ -288,7 +288,7 @@ const MyinfoAndSettings = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
               justifyContent: "flex-start",
             }}
           >
@@ -305,7 +305,7 @@ const MyinfoAndSettings = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "90%",
+            width: wp("90%"),
             gap:10,
             paddingTop:10
           }}
@@ -314,7 +314,7 @@ const MyinfoAndSettings = () => {
   style={{
     display: "flex",
     flexDirection: "row",
-    width: "25%",
+    width: wp("25%"),
     justifyContent: "center",
     gap: 10,
     alignItems:"center"
@@ -330,7 +330,7 @@ const MyinfoAndSettings = () => {
           style={{
             backgroundColor: "#3385ff",
             padding: 5,
-            width: "40%",
+            width: wp("40%"),
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -361,7 +361,7 @@ const styles = StyleSheet.create({
     gap: 10,
     borderBottomWidth: 2,
     borderColor: "#595959",
-    width: "100%",
+    width: wp("90%"),
     padding: 2,
   },
 
@@ -379,7 +379,7 @@ const styles = StyleSheet.create({
   },
   radioLabel: {
     marginLeft: 8,
-    fontSize: 16,
+    fontSize: hp(2),
     color: "#333",
   },
   radioSection: {
@@ -387,7 +387,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "100%",
+    width: wp("90%"),
   },
   container: {
     alignItems: 'center',

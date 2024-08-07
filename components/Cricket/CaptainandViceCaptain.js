@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from '@react-navigation/native';
 import { Entypo } from '@expo/vector-icons';
 
+
 const CaptainandViceCaptain = () => {
     const navigation = useNavigation();
 

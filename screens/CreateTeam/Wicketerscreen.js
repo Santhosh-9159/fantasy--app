@@ -9,6 +9,7 @@ import {
 } from "../../Redux/Slice";
 import { AntDesign } from "@expo/vector-icons";
 import { teamsArray } from "../../jsondata/cskjson";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const Wicketerscreen = () => {
   const navigation = useNavigation();
@@ -45,55 +46,55 @@ const Wicketerscreen = () => {
 
   return (
     <ScrollView
-      style={{ backgroundColor: "#fff", width: "100%", height: "100%" }}
+      style={{ backgroundColor: "#fff", width: wp("100%"), height: hp("100%") }}
     >
       <View style={{ flex: 1, alignItems: "center", gap: 5 }}>
         <View style={{ padding: 5 }}>
-          <Text style={{ fontSize: 12 }}>Pick 1-8 All-rounder</Text>
+          <Text style={{ fontSize: hp(1.7) }}>Pick 1-8 All-rounder</Text>
         </View>
         <View
           style={{
             backgroundColor: "#dee4fa",
-            width: "100%",
+            width: wp("100%"),
             flexDirection: "row",
           }}
         >
           <View
             style={{
-              width: "100%",
+              width: wp("100%"),
               flexDirection: "row",
               justifyContent: "space-between",
             }}
           >
             <View
               style={{
-                width: "50%",
+                width: wp("50%"),
                 flexDirection: "row",
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
-              <Text style={{ fontSize: 12 }}>Player</Text>
+              <Text style={{ fontSize: hp(1.7) }}>Player</Text>
             </View>
             <View
               style={{
-                width: "20%",
+                width: wp("20%"),
                 flexDirection: "row",
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
-              <Text style={{ fontSize: 12 }}>Points</Text>
+              <Text style={{ fontSize: hp(1.7) }}>Points</Text>
             </View>
             <View
               style={{
                 flexDirection: "row",
-                width: "30%",
+                width: wp("40%"),
                 justifyContent: "flex-start",
                 alignItems: "center",
               }}
             >
-              <Text style={{ fontSize: 12 }}>Selected By %</Text>
+              <Text style={{ fontSize: hp(1.7) }}>Selected  By %</Text>
             </View>
           </View>
         </View>
@@ -106,7 +107,7 @@ const Wicketerscreen = () => {
               }}
               style={{
                 flexDirection: "row",
-                width: "100%",
+                width: wp("100%"),
                 justifyContent: "center",
                 alignItems: "center",
                 borderBottomWidth: 0.5,
@@ -118,7 +119,7 @@ const Wicketerscreen = () => {
                 padding: 3,
               }}
             >
-              <View style={{ flexDirection: "row", width: "48%", gap: 10 }}>
+              <View style={{ flexDirection: "row", width: wp("48%"), gap: 10 }}>
                 <Pressable
                   onPress={() => {
                     navigation.navigate("PlayerInfo");
@@ -128,7 +129,7 @@ const Wicketerscreen = () => {
                     padding: 2,
                     backgroundColor: "#fff",
                     overflow: "hidden",
-                    width: "30%",
+                    width: wp("15%"),
                     position: "relative",
                     justifyContent: "center",
                     alignItems: "center",
@@ -145,45 +146,45 @@ const Wicketerscreen = () => {
                       backgroundColor: "#7f7f7f",
                       justifyContent: "center",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("15%"),
                       borderRadius: 8,
                       position: "absolute",
                       bottom: 0,
                     }}
                   >
-                    <Text style={{ fontSize: 10, color: "#fff" }}>
+                    <Text style={{ fontSize: hp(1.7), color: "#fff" }}>
                       {findTeamShortForm(player.id)}
                     </Text>
                   </View>
                 </Pressable>
                 <View
-                  style={{ width: "70%", justifyContent: "center", gap: 3 }}
+                  style={{ width:  wp("70%"), justifyContent: "center", gap: 3 }}
                 >
-                  <Text style={{ fontSize: 12, fontWeight: "bold" }}>
+                  <Text style={{ fontSize: hp(1.8), fontWeight: "bold" }}>
                     {player.name}
                   </Text>
-                  <Text style={{ fontSize: 12 }}>Played Last Match</Text>
+                  <Text style={{ fontSize: hp(1.8) }}>Played Last Match</Text>
                 </View>
               </View>
               <View
                 style={{
-                  width: "20%",
+                  width:  wp("20%"),
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <Text style={{ fontWeight: "bold" }}>{player.points}</Text>
+                <Text style={{ fontWeight: "bold", fontSize: hp(1.8) }}>{player.points}</Text>
               </View>
               <View
                 style={{
-                  width: "30%",
+                  width: wp("25%"),
                   flexDirection: "row",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <View style={{ width: "70%", justifyContent: "center" }}>
-                  <Text style={{ fontWeight: "bold" }}>80%</Text>
+                <View style={{ width: wp("17%"), justifyContent: "center", justifyContent:'space-evenly' }}>
+                  <Text style={{ fontWeight: "bold" ,fontSize: hp(1.8)}}>80%</Text>
                 </View>
                 {selectedPlayer.includes(player.id) ? (
                   <AntDesign name="minussquareo" size={24} color="#ffae36" />

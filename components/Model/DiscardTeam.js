@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import { resetFinalPlayerSelected } from "../../Redux/Slice";
 import { useNavigation } from "@react-navigation/native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const DiscardTeam = ({ visible, onclose }) => {
   const navigation = useNavigation();
@@ -23,8 +24,8 @@ const DiscardTeam = ({ visible, onclose }) => {
       <Pressable
         onPress={onclose}
         style={{
-          width: "100%",
-          height: "100%",
+          width: wp("100%"),
+          height: hp("100%"),
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
@@ -33,7 +34,7 @@ const DiscardTeam = ({ visible, onclose }) => {
       >
         <View
           style={{
-            width: "100%",
+            width: wp("100%"),
             display: "flex",
             flexDirection: "column",
             backgroundColor: "#ebebeb",
@@ -46,7 +47,7 @@ const DiscardTeam = ({ visible, onclose }) => {
         >
           <View
             style={{
-              width: "100%",
+              width: wp("100%"),
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -54,10 +55,10 @@ const DiscardTeam = ({ visible, onclose }) => {
               padding: 10,
             }}
           >
-            <View style={{ width: "100%" }}>
+            <View style={{ width: wp("100%") }}>
               <View
                 style={{
-                  width: "100%",
+                  width: wp("100%"),
                   justifyContent: "center",
                   alignItems: "center",
                   opacity: 0.04,
@@ -73,7 +74,7 @@ const DiscardTeam = ({ visible, onclose }) => {
                 style={{
                   position: "absolute",
                   top: 0,
-                  width: "100%",
+                  width: wp("100%"),
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
@@ -81,7 +82,7 @@ const DiscardTeam = ({ visible, onclose }) => {
                 }}
               >
                 <View>
-                  <Text style={{ fontWeight: "500", fontSize: 18 }}>
+                  <Text style={{ fontWeight: "500", fontSize: hp(2.5) }}>
                     Go Back?
                   </Text>
                 </View>
@@ -92,7 +93,7 @@ const DiscardTeam = ({ visible, onclose }) => {
                   />
                 </View>
                 <View>
-                  <Text style={{ fontSize: 16 }}>
+                  <Text style={{ fontSize: hp(2.2) }}>
                     The Team will not be saved!
                   </Text>
                 </View>
@@ -101,7 +102,7 @@ const DiscardTeam = ({ visible, onclose }) => {
 
             <View
               style={{
-                width: "100%",
+                width: wp("95%"),
                 display: "flex",
                 flexDirection: "row",
                 padding: 10,
@@ -113,7 +114,7 @@ const DiscardTeam = ({ visible, onclose }) => {
               <Pressable
                 onPress={handleResetSelection}
                 style={{
-                  width: "50%",
+                  width: wp("45%"),
                   backgroundColor: "green",
                   padding: 8,
                   borderRadius: 5,
@@ -122,7 +123,7 @@ const DiscardTeam = ({ visible, onclose }) => {
                 }}
               >
                 <Text
-                  style={{ fontWeight: "500", fontSize: 18, color: "#fff" }}
+                  style={{ fontWeight: "500", fontSize: hp(2.5), color: "#fff" }}
                 >
                   Discard Team
                 </Text>
@@ -130,7 +131,7 @@ const DiscardTeam = ({ visible, onclose }) => {
               <Pressable
                 onPress={onclose}
                 style={{
-                  width: "50%",
+                  width: wp("45%"),
                   backgroundColor: "#fff",
                   padding: 7,
                   borderRadius: 5,
@@ -141,7 +142,7 @@ const DiscardTeam = ({ visible, onclose }) => {
                 }}
               >
                 <Text
-                  style={{ fontWeight: "500", fontSize: 18, color: "#000" }}
+                  style={{ fontWeight: "500", fontSize: hp(2.5), color: "#000" }}
                 >
                   Continue Editing
                 </Text>

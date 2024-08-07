@@ -28,6 +28,9 @@ import {
 } from "../../Redux/Slice";
 import { teamsArray } from "../../jsondata/cskjson";
 import DiscardTeam from "../../components/Model/DiscardTeam";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
+
 
 const initialLayout = { width: Dimensions.get("window").width };
 
@@ -144,7 +147,7 @@ const TeamScreen = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <LinearGradient
         style={{
-          height: 100,
+          height: hp(13),
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
@@ -156,7 +159,7 @@ const TeamScreen = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "100%",
+            width: wp("100%"),
             padding: 5,
             justifyContent: "space-between",
             alignItems: "center",
@@ -166,11 +169,11 @@ const TeamScreen = () => {
             style={{
               display: "flex",
               flexDirection: "row",
-              width: "40%",
+              width: wp("37%"),
               justifyContent: "space-around",
             }}
           >
-            <View style={{ width: "30%" }}>
+            <View style={{ width: wp("16%") }}>
               <Pressable
                 onPress={
                   // () => navigation.goBack()
@@ -189,17 +192,17 @@ const TeamScreen = () => {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "flex-start",
-                width: "70%",
+                width: wp("30%"),
               }}
             >
               <View>
-                <Text style={{ fontWeight: "bold", color: "#fff" }}>
+                <Text style={{ fontWeight: "bold", color: "#fff", fontSize:hp(2) }}>
                   CREATE TEAM 1
                 </Text>
               </View>
               <View>
                 <Text
-                  style={{ fontWeight: "700", fontSize: 12, color: "#fff" }}
+                  style={{ fontWeight: "700", fontSize: hp(1.8), color: "#fff" }}
                 >
                   {matchCountdown}
                 </Text>
@@ -213,7 +216,7 @@ const TeamScreen = () => {
               gap: 20,
               justifyContent: "flex-end",
               alignItems: "center",
-              width: "60%",
+              width: wp("60%"),
               paddingRight: 5,
             }}
           >
@@ -232,7 +235,7 @@ const TeamScreen = () => {
                 paddingLeft: 2,
               }}
             >
-              <Text style={{ fontWeight: "700", fontSize: 10, color: "#fff" }}>
+              <Text style={{ fontWeight: "700", fontSize: hp(1.5), color: "#fff" }}>
                 PTS
               </Text>
             </View>
@@ -245,7 +248,7 @@ const TeamScreen = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "100%",
+            width: wp("100%"),
             backgroundColor: "#fff",
           }}
         >
@@ -255,7 +258,7 @@ const TeamScreen = () => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              width: "100%",
+              width: wp("100%"),
               gap: 5,
             }}
           >
@@ -266,7 +269,7 @@ const TeamScreen = () => {
                 backgroundColor: "#fff",
                 justifyContent: "space-between",
                 alignItems: "center",
-                width: "100%",
+                width: wp("100%"),
                 paddingTop: 10,
                 paddingLeft: 20,
                 paddingRight: 20,
@@ -344,7 +347,7 @@ const TeamScreen = () => {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                width: "100%",
+                width: wp("100%"),
                 justifyContent: "center",
                 alignItems: "center",
                 gap: 10,
@@ -353,19 +356,19 @@ const TeamScreen = () => {
               }}
             >
               <View>
-                <Text style={{ fontSize: 14 }}>
+                <Text style={{ fontSize: hp(2) }}>
                   Maximum 7 Players for one team
                 </Text>
               </View>
               <View
-                style={{ display: "flex", flexDirection: "row", width: "100%" }}
+                style={{ display: "flex", flexDirection: "row", width: wp("100%") }}
               >
                 <View
                   style={{
                     flexDirection: "row",
                     justifyContent: "center",
                     alignItems: "center",
-                    width: "100%",
+                    width: wp("100%"),
                   }}
                 >
                   {[...Array(totalDots)].map((_, index) => (
@@ -386,7 +389,7 @@ const TeamScreen = () => {
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  width: "100%",
+                  width: wp("95%"),
                   justifyContent: "space-between",
                   alignItems: "center",
                   paddingLeft: 15,
@@ -435,7 +438,7 @@ const TeamScreen = () => {
               style={{
                 display: "flex",
                 flexDirection: "row",
-                width: "100%",
+                width: wp("100%"),
                 marginTop: 5,
               }}
             >
@@ -444,7 +447,7 @@ const TeamScreen = () => {
                   height: 25,
                   display: "flex",
                   flexDirection: "row",
-                  width: "100%",
+                  width: wp("100%"),
                 }}
                 colors={["#7185d8", "#c2cffe"]}
                 start={{ x: 1, y: 0 }}
@@ -454,7 +457,7 @@ const TeamScreen = () => {
                   style={{
                     display: "flex",
                     flexDirection: "row",
-                    width: "100%",
+                    width: wp("100%"),
                     justifyContent: "center",
                     alignItems: "center",
                   }}
@@ -463,7 +466,7 @@ const TeamScreen = () => {
                     <Entypo name="location-pin" size={24} color="black" />
                   </View>
                   <View>
-                    <Text style={{ fontWeight: "500" }}>
+                    <Text style={{ fontWeight: "500", fontSize: hp(2) }}>
                       M.Chinnaswamy Stadium, Bangalore
                     </Text>
                   </View>
@@ -492,7 +495,7 @@ const TeamScreen = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "100%",
+            width: wp("100%"),
             justifyContent: "space-around",
             alignItems: "center",
             padding: 10,
@@ -502,7 +505,7 @@ const TeamScreen = () => {
             onPress={() => navigation.navigate("TeamPreview")}
             style={{
               backgroundColor: "#000",
-              width: "45%",
+              width: wp("45%"),
               borderWidth: 1.5,
               borderColor: "#000",
               display: "flex",
@@ -522,7 +525,7 @@ const TeamScreen = () => {
                 color: "#fff",
                 paddingRight: 5,
                 fontWeight: "bold",
-                fontSize: 14,
+                fontSize: hp(2),
               }}
             >
               TEAM PREVIEW
@@ -532,7 +535,7 @@ const TeamScreen = () => {
             onPress={() => navigation.navigate("SelectImpactPlayer")}
             style={{
               backgroundColor: "#3e57c4",
-              width: "45%",
+              width: wp("45%"),
               borderWidth: 1.5,
               borderColor: "#fff",
               display: "flex",
@@ -549,7 +552,7 @@ const TeamScreen = () => {
                 color: "#fff",
                 paddingLeft: 5,
                 fontWeight: "bold",
-                fontSize: 14,
+                fontSize: hp(2),
               }}
             >
               NEXT
@@ -575,5 +578,6 @@ const styles = StyleSheet.create({
   },
   back: {
     padding: 10,
+    
   },
 });

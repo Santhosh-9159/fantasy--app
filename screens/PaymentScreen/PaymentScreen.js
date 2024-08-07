@@ -21,6 +21,7 @@ import {
   Entypo,
 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 if (
   Platform.OS === "android" &&
@@ -59,13 +60,13 @@ const PaymentScreen = () => {
         >
           <Image
             source={require("../../assets/Google Pay.png")}
-            style={{ width: 30, height: 30 }}
+            style={{ width: wp(10), height: hp(5) }}
           />
           {selectedValue ? (
             <Text
               style={{
                 color: "#000",
-                fontSize: 16,
+                fontSize: hp(2),
                 marginLeft: 10,
                 flex: 1,
                 fontWeight: "700",
@@ -101,14 +102,14 @@ const PaymentScreen = () => {
           style={{
             flexDirection: "row",
             display: "flex",
-            width: "100%",
+            width: wp("90%"),
             justifyContent: "flex-end",
             alignItems: "center",
           }}
         >
           <Pressable
             style={{
-              width: "90%",
+              width: wp("85%"),
               backgroundColor: "#29a329",
               padding: 5,
               borderRadius: 5,
@@ -130,19 +131,19 @@ const PaymentScreen = () => {
           <TouchableOpacity style={styles.iconButton}>
             <Image
               source={require("../../assets/Paytm.png")}
-              style={{ width: 60, height: 60 }}
+              style={{ width: wp(15), height: hp(8)}}
             />
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconButton}>
             <Image
               source={require("../../assets/Apple Pay.png")}
-              style={{ width: 60, height: 60 }}
+              style={{  width: wp(15), height: hp(8)}}
             />
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconButton}>
             <Image
               source={require("../../assets/Phone Pe.png")}
-              style={{ width: 60, height: 60 }}
+              style={{  width: wp(15), height: hp(8) }}
             />
           </TouchableOpacity>
         </View>
@@ -153,7 +154,7 @@ const PaymentScreen = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "100%",
+            width: wp("88%"),
             justifyContent: "space-between",
           }}
         >
@@ -179,7 +180,7 @@ const PaymentScreen = () => {
               alignItems: "center",
             }}
           >
-            <View style={{ width: "100%", padding: 2 }}>
+            <View style={{ width: wp("90%"), padding: 2 }}>
               <TextInput
                 placeholderTextColor="#000"
                 style={{
@@ -191,7 +192,7 @@ const PaymentScreen = () => {
                 placeholder="NAME ON CARD"
               />
             </View>
-            <View style={{ width: "100%", padding: 2 }}>
+            <View style={{ width: wp("90%"), padding: 2 }}>
               <TextInput
                 placeholderTextColor="#000"
                 style={{
@@ -209,11 +210,11 @@ const PaymentScreen = () => {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                width: "100%",
+                width: wp("89%"),
                 marginBottom: 5,
               }}
             >
-              <View style={{ width: "45%" }}>
+              <View style={{ width: wp("40%") }}>
                 <TextInput
                   placeholderTextColor="#000"
                   style={{
@@ -225,7 +226,7 @@ const PaymentScreen = () => {
                   placeholder="EXPIRY (MM/YY)"
                 />
               </View>
-              <View style={{ width: "45%" }}>
+              <View style={{ width: wp("43%") }}>
                 <TextInput
                   placeholderTextColor="#000"
                   style={{
@@ -240,7 +241,7 @@ const PaymentScreen = () => {
             </View>
             <Pressable
               style={{
-                width: "100%",
+                width: wp("90%"),
                 backgroundColor: "#35b267",
                 padding: 7,
                 borderRadius: 5,
@@ -251,7 +252,7 @@ const PaymentScreen = () => {
               }}
             >
               <Text style={{ color: "#fff", fontWeight: "800", fontSize: 14 }}>
-                Add 100
+                Add ₹ 100
               </Text>
             </Pressable>
           </View>
@@ -268,7 +269,7 @@ const PaymentScreen = () => {
                 alignItems: "center",
               }}
             >
-              <View style={{ width: "10%", backgroundColor: "#fff" }}>
+              <View style={{ width: wp("9%"), backgroundColor: "#fff" }}>
                 <FontAwesome name="cc-visa" size={24} color="purple" />
               </View>
 
@@ -278,7 +279,7 @@ const PaymentScreen = () => {
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: "90%",
+                  width: wp("76%"),
                   backgroundColor: "#fff",
                 }}
               >
@@ -288,7 +289,7 @@ const PaymentScreen = () => {
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    width: "100%",
+                    width: wp("77%"),
                   }}
                 >
                   <View
@@ -326,7 +327,7 @@ const PaymentScreen = () => {
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  width: "100%",
+                  width: wp("88%"),
                   justifyContent: "flex-end",
                   alignItems: "flex-end",
                   padding: 5,
@@ -336,7 +337,7 @@ const PaymentScreen = () => {
                   style={{
                     display: "flex",
                     flexDirection: "row",
-                    width: "90%",
+                    width: wp("75%"),
                     justifyContent: "space-between",
                     alignItems: "center",
                   }}
@@ -349,7 +350,7 @@ const PaymentScreen = () => {
                       flexDirection: "row",
                       justifyContent: "flex-start",
                       alignItems: "center",
-                      width: "45%",
+                      width: wp("35%"),
                       borderRadius: 4,
                     }}
                   >
@@ -365,7 +366,7 @@ const PaymentScreen = () => {
                       flexDirection: "row",
                       justifyContent: "center",
                       alignItems: "center",
-                      width: "45%",
+                      width: wp("35%"),
                       borderRadius: 4,
                     }}
                   >
@@ -427,7 +428,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FfF",
   },
   amountText: {
-    fontSize: 16,
+    fontSize: hp(2),
     fontWeight: "800",
     marginVertical: 10,
   },
@@ -443,7 +444,7 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   sectionTitle: {
-    fontSize: 14,
+    fontSize: hp(2.1),
     marginBottom: 10,
     fontWeight: "bold",
   },
@@ -458,7 +459,7 @@ const styles = StyleSheet.create({
   },
   payButtonText: {
     color: "#000",
-    fontSize: 16,
+    fontSize: hp(2.3),
     marginLeft: 10,
     flex: 1,
   },
@@ -470,14 +471,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
-
     flex: 1,
     marginHorizontal: 5,
   },
   addButton: {},
   addButtonText: {
     color: "#29a329",
-    fontSize: 14,
+    fontSize: hp(2),
     fontWeight: "700",
   },
   cardOption: {
@@ -491,10 +491,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flex: 1,
     // marginHorizontal: 5,
-    width: "100%",
+    width: wp("90%"),
   },
   cardText: {
-    fontSize: 14,
+    fontSize: hp(2),
     marginLeft: 10,
   },
   linkButton: {
@@ -510,7 +510,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   linkText: {
-    fontSize: 14,
+    fontSize: hp(2),
     marginLeft: 10,
   },
   viewAllButton: {
@@ -519,7 +519,7 @@ const styles = StyleSheet.create({
   },
   viewAllText: {
     color: "#3385ff",
-    fontSize: 14,
+    fontSize: hp(1.8),
   },
   bankButton: {
     alignItems: "center",
@@ -531,7 +531,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   bankText: {
-    fontSize: 12,
+    fontSize: hp(1.8),
     textAlign: "center",
     marginTop: 5,
   },

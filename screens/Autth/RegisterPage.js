@@ -17,6 +17,7 @@ import { Feather } from "@expo/vector-icons";
 import CheckBox from "react-native-check-box";
 import axios from "axios";
 import { ActivityIndicator } from "react-native-paper";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const RegisterPage = () => {
   const navigation = useNavigation();
@@ -72,7 +73,7 @@ const RegisterPage = () => {
         try {
           setIndicator(true);
           const response = await axios.post(
-            "http://192.168.0.143:5000/auth/userRegister",
+            "http://192.168.0.172:5000/auth/userRegister",
             { username, mobilenumber, email, invitecode }
           );
 
@@ -104,88 +105,81 @@ const RegisterPage = () => {
   };
 
   return (
+    
+
     <LinearGradient
       style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-end",
-        alignItems: "center",
-        position: "relative",
+        flex: 1,
       }}
       colors={["#3b53bd", "#243373", "#192451", "#020202"]}
     >
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          zIndex: 1000,
-          position: "absolute",
-          top: 0,
+      <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
         }}
       >
         <View
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-end",
-            alignItems: "flex-start",
-            width: "100%",
-            height: 100,
-            padding: 20,
-          }}
-        >
-          <View style={{ width: "30%" }}>
-            <Pressable onPress={() => navigation.goBack()} style={styles.back}>
-              <Ionicons name="arrow-back" size={25} color="#fff" />
-            </Pressable>
-          </View>
-        </View>
-
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            gap: 20,
-            width: "90%",
+            width: wp("100%"),
+            
           }}
         >
           <View
             style={{
-              padding: 10,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              alignItems: "flex-start",
+              width: wp("100%"),
+              height: 100,
+              padding: 20,
+            }}
+          >
+            <View style={{ width: wp("30%") }}>
+              <Pressable onPress={() => navigation.goBack()} style={styles.back}>
+                <Ionicons name="arrow-back" size={25} color="#fff" />
+              </Pressable>
+            </View>
+          </View>
+
+          <View
+            style={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              width: "100%",
-            }}
-          >
-            <Image
-              source={require("../../assets/RegisterPage.png")}
-              style={{ width: 200, height: 160 }}
-            />
-            <Text style={{ fontSize: 25, color: "#fff", fontWeight: "bold" }}>
-              Hi! Register and Start Winning
-            </Text>
-          </View>
-          <ScrollView
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "100%",
+              gap: 20,
+              width: wp("90%"),
             }}
           >
             <View
               style={{
+                padding: 10,
                 display: "flex",
                 flexDirection: "column",
-                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+                width: wp("100%"),
+              }}
+            >
+              <Image
+                source={require("../../assets/RegisterPage.png")}
+                style={{ width: 200, height: 160 }}
+              />
+              <Text style={{ fontSize: hp(3.4), color: "#fff", fontWeight: "bold" }}>
+                Hi! Register and Start Winning
+              </Text>
+            </View>
+
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: wp("90%"),
                 justifyContent: "center",
                 alignItems: "center",
                 gap: 20,
@@ -195,19 +189,19 @@ const RegisterPage = () => {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  width: "100%",
+                  width: wp("90%"),
                   gap: 10,
                   paddingLeft: 13,
                 }}
               >
                 <View>
-                  <Text style={{ color: "#fff", fontSize: 16 }}>Name</Text>
+                  <Text style={{ color: "#fff", fontSize: hp(2.2) }}>Name</Text>
                 </View>
                 <View
                   style={{
                     display: "flex",
                     flexDirection: "row",
-                    width: "100%",
+                    width:  wp("88%"),
                     borderBottomWidth: 2,
                     borderColor: "#fff ",
                     gap: 10,
@@ -216,7 +210,7 @@ const RegisterPage = () => {
                 >
                   <FontAwesome5 name="user" size={18} color="#fff" />
                   <TextInput
-                    style={{ width: "100%", color: "#fff" }}
+                    style={{ width:  wp("90%"), color: "#fff" }}
                     value={username}
                     onChangeText={(value) =>
                       handleInputChange("username", value)
@@ -234,13 +228,13 @@ const RegisterPage = () => {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  width: "100%",
+                  width:  wp("90%"),
                   gap: 10,
                   paddingLeft: 13,
                 }}
               >
                 <View>
-                  <Text style={{ color: "#fff", fontSize: 16 }}>
+                  <Text style={{ color: "#fff", fontSize: hp(2.2) }}>
                     Mobile Number
                   </Text>
                 </View>
@@ -248,7 +242,7 @@ const RegisterPage = () => {
                   style={{
                     display: "flex",
                     flexDirection: "row",
-                    width: "100%",
+                    width:  wp("88%"),
                     borderBottomWidth: 2,
                     borderColor: "#fff ",
                     gap: 10,
@@ -257,7 +251,7 @@ const RegisterPage = () => {
                 >
                   <AntDesign name="mobile1" size={20} color="#fff" />
                   <TextInput
-                    style={{ width: "100%", color: "#fff" }}
+                    style={{ width:  wp("90%"), color: "#fff" }}
                     keyboardType="number-pad"
                     value={mobilenumber}
                     onChangeText={(value) =>
@@ -276,19 +270,19 @@ const RegisterPage = () => {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  width: "100%",
+                  width:  wp("90%"),
                   gap: 10,
                   paddingLeft: 13,
                 }}
               >
                 <View>
-                  <Text style={{ color: "#fff", fontSize: 16 }}>Email</Text>
+                  <Text style={{ color: "#fff", fontSize: hp(2.2)}}>Email</Text>
                 </View>
                 <View
                   style={{
                     display: "flex",
                     flexDirection: "row",
-                    width: "100%",
+                    width: wp("88%"),
                     borderBottomWidth: 2,
                     borderColor: "#fff ",
                     gap: 10,
@@ -297,7 +291,7 @@ const RegisterPage = () => {
                 >
                   <Feather name="mail" size={20} color="#fff" />
                   <TextInput
-                    style={{ width: "100%", color: "#fff" }}
+                    style={{ width:  wp("90%"), color: "#fff" }}
                     value={email}
                     onChangeText={(value) => handleInputChange("email", value)}
                   />
@@ -309,143 +303,143 @@ const RegisterPage = () => {
                 )}
               </View>
             </View>
-          </ScrollView>
 
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "100%",
-              gap: 10,
-              paddingLeft: 13,
-              backgroundColor: "#505b8d",
-              padding: 15,
-              borderRadius: 5,
-            }}
-          >
             <View
               style={{
                 display: "flex",
-                flexDirection: "row",
-                width: "100%",
-                justifyContent: "center",
-                alignContent: "center",
-              }}
-            >
-              <Text style={{ color: "#fff", fontSize: 16 }}>
-                Have an Invite code?
-              </Text>
-            </View>
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                width: "100%",
-                borderBottomWidth: 2,
-                borderColor: "#fff ",
+                flexDirection: "column",
+                width: wp("90%"),
                 gap: 10,
                 paddingLeft: 13,
+                backgroundColor: "#505b8d",
+                padding: 15,
+                borderRadius: 5,
               }}
             >
-              <Feather name="gift" size={24} color="#fff" />
-              <TextInput
-                style={{ width: "100%", color: "#fff", fontSize: 18 }}
-                placeholder="Invite code"
-                placeholderTextColor="#ababab"
-                value={invitecode}
-                onChangeText={(value) => handleInputChange("invitecode", value)}
-              />
-            </View>
-          </View>
-
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              width: "95%",
-              paddingRight: 0,
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 5,
-            }}
-          >
-            <View>
-              {isSelected == true ? (
-                <Pressable onPress={() => setSelection(false)}>
-                  <Ionicons name="checkbox" size={24} color="#fff" />
-                </Pressable>
-              ) : (
-                <CheckBox
-                  onClick={() => setSelection(true)}
-                  checked={isSelected}
-                  checkBoxColor="#fff"
-                  uncheckedCheckBoxColor="#ababab"
-                  containerStyle={styles.checkboxContainer}
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: wp("80%"),
+                  justifyContent: "center",
+                  alignContent: "center",
+                }}
+              >
+                <Text style={{ color: "#fff", fontSize: hp(2)}}>
+                  Have an Invite code?
+                </Text>
+              </View>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: wp("83%"),
+                  borderBottomWidth: 2,
+                  borderColor: "#fff ",
+                  gap: 10,
+                  paddingLeft: 13,
+                }}
+              >
+                <Feather name="gift" size={24} color="#fff" />
+                <TextInput
+                  style={{ width: wp("100%"), color: "#fff", fontSize: hp(2.5) }}
+                  placeholder="Invite code"
+                  placeholderTextColor="#ababab"
+                  value={invitecode}
+                  onChangeText={(value) => handleInputChange("invitecode", value)}
                 />
-              )}
+              </View>
             </View>
-            <View>
-              <Text style={{ color: "#fff" }}>
-                I hereby confirm to be 18 year old and provide my acceptance to
-                Terms & Conditions and Privacy Policy of Impact11
-              </Text>
-            </View>
-          </View>
 
-          {isSelected == true ? (
-            <Pressable
-              onPress={handlechange}
+            <View
               style={{
-                width: "100%",
-                padding: 10,
-                backgroundColor: "#3757E2",
+                display: "flex",
+                flexDirection: "row",
+                width: wp("90%"),
+                paddingRight: 0,
                 justifyContent: "center",
                 alignItems: "center",
-                borderRadius: 8,
+                gap: 5,
               }}
             >
-              <View style={{}}>
-                {indicator == true ? (
-                  <ActivityIndicator size={"small"} color="#fff" />
+              <View>
+                {isSelected == true ? (
+                  <Pressable onPress={() => setSelection(false)}>
+                    <Ionicons name="checkbox" size={24} color="#fff" />
+                  </Pressable>
                 ) : (
+                  <CheckBox
+                    onClick={() => setSelection(true)}
+                    checked={isSelected}
+                    checkBoxColor="#fff"
+                    uncheckedCheckBoxColor="#ababab"
+                    containerStyle={styles.checkboxContainer}
+                  />
+                )}
+              </View>
+              <View>
+                <Text style={{ color: "#fff" }}>
+                  I hereby confirm to be 18 year old and provide my acceptance to
+                  Terms & Conditions and Privacy Policy of Impact11
+                </Text>
+              </View>
+            </View>
+
+            {isSelected == true ? (
+              <Pressable
+                onPress={handlechange}
+                style={{
+                  width: wp("90%"),
+                  padding: 10,
+                  backgroundColor: "#3757E2",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: 8,
+                }}
+              >
+                <View style={{}}>
+                  {indicator == true ? (
+                    <ActivityIndicator size={"small"} color="#fff" />
+                  ) : (
+                    <Text
+                      style={{ fontWeight: "bold", color: "#fff", fontSize: hp(2) }}
+                    >
+                      CONTINUE
+                    </Text>
+                  )}
+                </View>
+              </Pressable>
+            ) : (
+              <Pressable
+                onPress={() => navigation.navigate("NameRegister")}
+                style={{
+                  width: wp("90%"),
+                  padding: 10,
+                  backgroundColor: "#ababab",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: 8,
+                }}
+              >
+                <View style={{}}>
                   <Text
-                    style={{ fontWeight: "bold", color: "#fff", fontSize: 16 }}
+                    style={{ fontWeight: "bold", color: "#fff", fontSize: hp(2.2) }}
                   >
                     CONTINUE
                   </Text>
-                )}
-              </View>
-            </Pressable>
-          ) : (
-            <Pressable
-              onPress={() => navigation.navigate("NameRegister")}
-              style={{
-                width: "100%",
-                padding: 10,
-                backgroundColor: "#ababab",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 8,
-              }}
-            >
-              <View style={{}}>
-                <Text
-                  style={{ fontWeight: "bold", color: "#fff", fontSize: 16 }}
-                >
-                  CONTINUE
-                </Text>
-              </View>
-            </Pressable>
-          )}
+                </View>
+              </Pressable>
+            )}
 
-          <View style={{ display: "flex", flexDirection: "row", gap: 5 }}>
-            <Text style={{ color: "#fff" }}>Already Have an account?</Text>
-            <Pressable onPress={() => navigation.navigate("login")}>
-              <Text style={{ color: "#fff" }}>Login</Text>
-            </Pressable>
+            <View style={{ display: "flex", flexDirection: "row", gap: 5,paddingBottom: 30 }}>
+              <Text style={{ color: "#fff" }}>Already Have an account?</Text>
+              <Pressable onPress={() => navigation.navigate("login")}>
+                <Text style={{ color: "#fff" }}>Login</Text>
+              </Pressable>
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </LinearGradient>
   );
 };

@@ -15,28 +15,29 @@ import {
 } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import LottieView from "lottie-react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const MyContests = () => {
   return (
     <><LottieView
     source={require("../../../../assets/Congratulations.json")}
-    style={{ width: "100%", height: "100%", position: "absolute", top: 0,zIndex:1000 }}
+    style={{ width: wp("100%"), height: hp("100%"), position: "absolute", top: 0,zIndex:1000 }}
     autoPlay
     loop={false}
     speed={0.9}
   />
     <ScrollView
       style={{
-        width: "100%",
+        width: wp("100%"),
         padding: 15,
         flexDirection: "column",
-        height: "100%",
+        height: hp("100%"),
       }}
     >
       
       <View
         style={{
-          width: "100%",
+          width: wp("93%"),
           flexDirection: "column",
           display: "flex",
           justifyContent: "center",
@@ -45,7 +46,7 @@ const MyContests = () => {
       >
         <View
           style={{
-            width: "100%",
+            width: wp("93%"),
             flexDirection: "row",
             display: "flex",
             justifyContent: "center",
@@ -63,7 +64,7 @@ const MyContests = () => {
           >
             <View
               style={{
-                width: "97%",
+                width: wp("93%"),
                 flexDirection: "row",
                 display: "flex",
                 justifyContent: "space-between",
@@ -88,7 +89,7 @@ const MyContests = () => {
 
               <View>
                 <Text
-                  style={{ color: "#fff", fontWeight: "bold", fontSize: 16 }}
+                  style={{ color: "#fff", fontWeight: "bold", fontSize: hp(2.7) }}
                 >
                   ₹1000
                 </Text>
@@ -100,7 +101,7 @@ const MyContests = () => {
 
       <View
         style={{
-          width: "100%",
+          width: wp("92%"),
           flexDirection: "column",
           display: "flex",
           justifyContent: "center",
@@ -110,7 +111,7 @@ const MyContests = () => {
       >
         <View
           style={{
-            width: "100%",
+            width: wp("92%"),
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -124,7 +125,7 @@ const MyContests = () => {
             <View
               style={{
                 flexDirection: "row",
-                width: "100%",
+                width: wp("87%"),
                 display: "flex",
                 justifyContent: "space-between",
               }}
@@ -136,7 +137,7 @@ const MyContests = () => {
             <View
               style={{
                 flexDirection: "row",
-                width: "100%",
+                width: wp("86%"),
                 display: "flex",
                 justifyContent: "space-between",
               }}
@@ -151,7 +152,7 @@ const MyContests = () => {
             <View
               style={{
                 flexDirection: "row",
-                width: "100%",
+                width: wp("85%"),
                 display: "flex",
                 justifyContent: "flex-start",
                 backgroundColor: "#EBEBEB",
@@ -160,7 +161,7 @@ const MyContests = () => {
               <View
                 style={{
                   flexDirection: "row",
-                  width: "70%",
+                  width: wp("60%"),
                   display: "flex",
                   justifyContent: "space-between",
                   paddingLeft: 10,
@@ -175,7 +176,7 @@ const MyContests = () => {
                       width: 20,
                     }}
                   >
-                    <Text style={{ fontSize: 7, padding: 3 }}>1st</Text>
+                    <Text style={{ fontSize: hp(1.2), padding: 3 }}>1st</Text>
                   </View>
                   <Text>40Lakhs</Text>
                 </View>
@@ -197,7 +198,7 @@ const MyContests = () => {
             <View
               style={{
                 flexDirection: "row",
-                width: "100%",
+                width: wp("91%"),
                 display: "flex",
                 justifyContent: "space-between",
                 backgroundColor: "#E4E8FF",

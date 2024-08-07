@@ -1,16 +1,26 @@
 import "react-native-gesture-handler";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SportProvider } from "./components/SportContext";
 import Navigation from "./Navigation";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import Toast from "react-native-toast-message"; // Import Toast
 import FlashMessage from "react-native-flash-message";
 
 
 import useReducer from "./Redux/Slice";
-import DiscardTeam from "./components/Model/DiscardTeam";
+import { Text} from "react-native";
+import EditEmail from "./screens/Autth/EditEmail";
+import EditPhoneNumber from "./screens/Autth/EditPhoneNumber";
+import NameRegister from "./screens/Autth/NameRegister";
+import KYC from "./screens/PaymentScreen/KYC";
+import ManagePayments from "./screens/PaymentScreen/ManagePayments";
+import AboutUs from "./screens/Drawernavigation/AboutUs";
+import Legality from "./screens/Drawernavigation/Legality";
+import More from "./screens/Drawernavigation/More";
+
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
 
 const store = configureStore({
   reducer: {
@@ -25,10 +35,12 @@ export default function App() {
         <Provider store={store}>
           <FlashMessage style={styles.flashMessage} />
            <Navigation />
-           {/* <DiscardTeam /> */}
-        </Provider>
+           
+         
+       </Provider>
       </SportProvider>
-    </GestureHandlerRootView>
+    </GestureHandlerRootView> 
+  
   );
 }
 

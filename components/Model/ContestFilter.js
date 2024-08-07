@@ -1,6 +1,8 @@
 import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 const ContestFilter = ({ visible, onClose }) => {
   return (
     <Modal
@@ -13,19 +15,20 @@ const ContestFilter = ({ visible, onClose }) => {
       <View style={{
         display: "flex",
         flexDirection: "column",
-        width: "100%",
+        width: wp("100%"),
       justifyContent: 'flex-end',
-      height:"100%",
+      height: hp("100%"),
+      
       }}>
       <View
         style={{
           backgroundColor: "#fff",
           display: "flex",
           flexDirection: "column",
-          width: "100%",
+          width: wp("100%"),
         justifyContent: 'flex-end',
-        height:"75%",
-          paddingBottom:20,
+        height: hp("80%"),
+          paddingBottom:35,
           paddingRight:20
         }}
       >
@@ -33,7 +36,7 @@ const ContestFilter = ({ visible, onClose }) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "100%",
+            width: wp("100%"),
             justifyContent: "space-between",
             padding: 10,
           }}
@@ -64,7 +67,7 @@ const ContestFilter = ({ visible, onClose }) => {
               gap: 10,
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
             }}
           >
             <View>
@@ -75,7 +78,7 @@ const ContestFilter = ({ visible, onClose }) => {
                 gap: 15,
                 display: "flex",
                 flexDirection: "row",
-                width: "100%",
+                width: wp("100%"),
                 flexWrap: "wrap",
               }}
             >
@@ -101,7 +104,7 @@ const ContestFilter = ({ visible, onClose }) => {
               gap: 10,
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
             }}
           >
             <View>
@@ -112,7 +115,7 @@ const ContestFilter = ({ visible, onClose }) => {
                 gap: 15,
                 display: "flex",
                 flexDirection: "row",
-                width: "100%",
+                width: wp("100%"),
                 flexWrap: "wrap",
               }}
             >
@@ -149,7 +152,7 @@ const ContestFilter = ({ visible, onClose }) => {
                 gap: 15,
                 display: "flex",
                 flexDirection: "row",
-                width: "100%",
+                width: wp("100%"),
                 flexWrap: "wrap",
               }}
             >
@@ -172,7 +175,7 @@ const ContestFilter = ({ visible, onClose }) => {
               gap: 10,
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
             }}
           >
             <View>
@@ -183,7 +186,7 @@ const ContestFilter = ({ visible, onClose }) => {
                 gap: 15,
                 display: "flex",
                 flexDirection: "row",
-                width: "100%",
+                width: wp("100%"),
                 flexWrap: "wrap",
               }}
             >
@@ -208,7 +211,7 @@ const ContestFilter = ({ visible, onClose }) => {
 
         <Pressable
           style={{
-            width: "100%",
+            width: wp("100%"),
             justifyContent: "center",
             alignItems: "center",
             display: "flex",
@@ -217,7 +220,7 @@ const ContestFilter = ({ visible, onClose }) => {
         >
           <Text
             style={{
-              width: "95%",
+              width: wp("95%"),
               backgroundColor: "#3f58c5",
               color: "#fff",
               fontWeight: "700",

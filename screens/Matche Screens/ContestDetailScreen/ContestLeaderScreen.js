@@ -1,5 +1,7 @@
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 const ContestLeaderScreen = () => {
   return (
@@ -11,12 +13,12 @@ const ContestLeaderScreen = () => {
           display: "flex",
           flexDirection: "column",
           backgroundColor: "#fff",
-          width: "100%",
+          width: wp("100%"),
           flex: 1,
         }}
       >
-        <View style={{}}>
-          <Text>All Teams(5,49,108)</Text>
+        <View >
+          <Text style={{fontSize: hp(2)}}>All Teams(5,49,108)</Text>
         </View>
 
 
@@ -30,7 +32,7 @@ const ContestLeaderScreen = () => {
             display: "flex",
             flexDirection: "row",
             gap: 10,
-            width: "100%",
+            width: wp("100%"),
             justifyContent: "flex-start",
             alignItems: "center",
             borderBottomWidth: 2,
@@ -51,7 +53,7 @@ const ContestLeaderScreen = () => {
           <View
             style={{ padding: 2, borderRadius: 5, backgroundColor: "#ebebeb" }}
           >
-            <Text style={{ fontSize: 10 }}>T1</Text>
+            <Text style={{ fontSize: hp(1.7) }}>T1</Text>
           </View>
         </View>
         <View
@@ -59,7 +61,7 @@ const ContestLeaderScreen = () => {
             display: "flex",
             flexDirection: "row",
             gap: 10,
-            width: "100%",
+            width: wp("100%"),
             justifyContent: "flex-start",
             alignItems: "center",
             borderBottomWidth: 2,
@@ -75,12 +77,12 @@ const ContestLeaderScreen = () => {
         />
       </View>
           <View>
-            <Text>Super Kings </Text>
+            <Text style={{ fontSize: hp(2)}}>Super Kings </Text>
           </View>
           <View
             style={{ padding: 2, borderRadius: 5, backgroundColor: "#ebebeb" }}
           >
-            <Text style={{ fontSize: 10 }}>T1</Text>
+            <Text style={{ fontSize: hp(1.7) }}>T1</Text>
           </View>
         </View>
         </View>

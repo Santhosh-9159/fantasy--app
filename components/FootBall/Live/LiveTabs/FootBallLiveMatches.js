@@ -1,5 +1,6 @@
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const FootBallLiveMatches = ({navigation}) => {
   return (
@@ -18,28 +19,22 @@ const FootBallLiveMatches = ({navigation}) => {
 
 export default FootBallLiveMatches
 
-const styles = StyleSheet.create({
-  container:{
-     justifyContent:"center",
-     alignItems:"center",
-     flex:1,
 
-     
-  },
- content:{
+const styles = StyleSheet.create({
+  content:{
    
-    height:"70%",
-    width:"100%",
+    height:hp("63%"),
+    width: wp("100%"),
     justifyContent:"center",
      alignItems:"center",
-     padding:30,
+     padding:35,
      gap:15
      
  },
   
    image:{
     height:350,
-    width:"90%",
+    width:290,
     opacity:0.30
     
    },
@@ -49,15 +44,14 @@ const styles = StyleSheet.create({
          borderRadius:6
    },
    text:{
-    fontSize:14,
+    fontSize:hp(2),
     fontWeight:"bold",
     textAlign:"justify"
 
-    
    },
    pressText:{
     fontWeight:"bold",
     color:"#fff",
-    fontSize:15
+    fontSize:hp(2)
    }
-})
+  })

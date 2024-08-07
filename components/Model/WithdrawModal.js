@@ -1,5 +1,7 @@
 import { Modal, Pressable, Text, View } from 'react-native';
 import React from 'react';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 const WithdrawModal = ({ visible, onClose }) => {
   return (
@@ -20,8 +22,8 @@ const WithdrawModal = ({ visible, onClose }) => {
       >
         <Pressable
           style={{
-            width: '100%',
-            backgroundColor: 'white',
+            width: wp('100%'),
+            backgroundColor: '#fff',
             borderTopLeftRadius: 10,
             borderTopRightRadius: 10,
             padding: 20,
@@ -31,14 +33,15 @@ const WithdrawModal = ({ visible, onClose }) => {
           onPress={() => {}}
         >
           <Text style={{
-            fontSize: 16,
-            color: 'black',
+            fontSize: hp(2.5),
+            color: '#000',
             marginBottom: 10,
+            fontWeight:'500'
           }}>
-            withdrawal amount
+            Withdrawal Amount
           </Text>
           <Text style={{
-            fontSize: 24,
+            fontSize: hp(4),
             color: 'green',
             fontWeight: 'bold',
             marginBottom: 20,
@@ -47,30 +50,30 @@ const WithdrawModal = ({ visible, onClose }) => {
           </Text>
           <View style={{ alignItems: 'center', marginBottom: 20 }}>
             <View style={{ marginBottom: 10 }}>
-              <Text style={{ fontSize: 40 }}>🏦</Text>
+              <Text style={{ fontSize: hp(6) }}>🏦</Text>
             </View>
-            <Text style={{ fontSize: 18, color: 'black' }}>AXIS BANK</Text>
-            <Text style={{ fontSize: 16, color: 'gray' }}>xxxxxxxxxxxx9876</Text>
+            <Text style={{ fontSize: hp(2.6), color: 'black' }}>AXIS BANK</Text>
+            <Text style={{ fontSize: hp(2.2), color: 'gray' }}>xxxxxxxxxxxx9876</Text>
           </View>
           <Pressable style={{
-            width: '100%',
+            width: wp('90%'),
             backgroundColor: '#3385ff',
             padding: 15,
             alignItems: 'center',
             borderRadius: 5,
             marginBottom: 10,
           }}>
-            <Text style={{ color: 'white', fontWeight: 'bold' }}>CONFIRM</Text>
+            <Text style={{ color: '#fff', fontWeight: 'bold',fontSize: hp(2.3) }}>CONFIRM</Text>
           </Pressable>
           <Pressable style={{
-            width: '100%',
+            width: wp('90%'),
             borderWidth: 1,
             borderColor: 'black',
             padding: 15,
             alignItems: 'center',
             borderRadius: 5,
           }} onPress={onClose}>
-            <Text style={{ color: 'black', fontWeight: 'bold' }}>EDIT PAYMENT</Text>
+            <Text style={{ color: 'black', fontWeight: 'bold',fontSize: hp(2.2) }}>EDIT PAYMENT</Text>
           </Pressable>
         </Pressable>
       </Pressable>

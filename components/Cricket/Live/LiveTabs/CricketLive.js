@@ -13,6 +13,7 @@ import Stats from './Stats';
 import Leaderboard from './Leaderboard';
 import Winning from './Winning';
 
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 
@@ -78,8 +79,8 @@ const CricketLive = () => {
       };
 
   return (
-    <View style={{height:"100%",width:"100%"}}>
-        <View style={{height:"32%",backgroundColor:"#126",width:"100%"}}>
+    <View style={{height: hp(120),width: wp("100%")}}>
+        <View style={{height:wp("65%"),backgroundColor:"#126",width: wp("100%")}}>
         <LinearGradient
           style={{
             flex: 1,
@@ -87,11 +88,11 @@ const CricketLive = () => {
           }}
           colors={["#3247A0", "#1B2656", "#020202"]}
         >
-       <View style={{display:"flex",width:"100%",flexDirection:"column",gap:20,justifyContent:"space-between",alignItems:"center"}}>
-       <View style={{width:"95%",flexDirection:"row",display:"flex",paddingTop:45,justifyContent:"space-between",alignItems:"center"}}>
+       <View style={{display:"flex",width: wp("100%"),flexDirection:"column",gap:20,justifyContent:"space-between",alignItems:"center"}}>
+       <View style={{width:wp("95%"),flexDirection:"row",display:"flex",paddingTop:45,justifyContent:"space-between",alignItems:"center"}}>
            <View style={{flexDirection:"row",gap:5,alignItems:"center"}}>
            <Pressable onPress={handleBackPress}><Ionicons name="arrow-back" size={24} color="#fff" /></Pressable>
-           <Text style={{color:"#fff",fontWeight:"bold",fontSize:14}}>CSK vs RCB</Text>
+           <Text style={{color:"#fff",fontWeight:"bold",fontSize: hp(2)}}>CSK vs RCB</Text>
            </View>
            <View style={{flexDirection:"row",gap:10}}>
             <View>
@@ -99,11 +100,11 @@ const CricketLive = () => {
 
             </View>
             <View style={{borderWidth:3,borderRadius:17,borderColor:"#fff",padding:2.5,alignItems:"center"}}>
-                <Text style={{color:"#fff",fontSize:7,textAlign:"center",fontWeight:"bold",paddingTop:1.5,paddingRight:1}}>PTS</Text>
+                <Text style={{color:"#fff",fontSize:hp(1),textAlign:"center",fontWeight:"bold",paddingTop:1.5,paddingRight:1}}>PTS</Text>
             </View>
            </View>
         </View>  
-        <View style={{flexDirection:"row",width:"90%",display:"flex",justifyContent:"space-between",alignItems:"center"}}>                                                  
+        <View style={{flexDirection:"row",width: wp("90%"),display:"flex",justifyContent:"space-between",alignItems:"center"}}>                                                  
            <View style={{flexDirection:"row",gap:5,alignItems:"center",display:"flex"}}>
              <View>
                 <Image source={require('../../../../assets/rcb.png')} style={{height:50,width:50,borderRadius:30}}/>
@@ -115,7 +116,7 @@ const CricketLive = () => {
             </View>
 
            <View style={{flexDirection:"row",backgroundColor:"#911836",padding:2,paddingLeft:5,paddingRight:5,justifyContent:"center",display:"flex",alignItems:"center"}}>
-            <Text style={{color:"#fff",fontWeight:"700",fontSize:12,letterSpacing:1}}>Live</Text>
+            <Text style={{color:"#fff",fontWeight:"700",fontSize:hp(2),letterSpacing:1}}>Live</Text>
            </View>
 
            <View style={{flexDirection:"row",gap:5,alignItems:"center",display:"flex"}}>
@@ -130,31 +131,31 @@ const CricketLive = () => {
             </View>
         </View> 
 
-        <View style={{flexDirection:"row",width:"90%",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-              <View style={{width:"40%"}}>
+        <View style={{flexDirection:"row",width:wp("90%"),display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+              <View style={{width: wp("40 %")}}>
                 <Text style={{color:'#fff',fontWeight:"bold"}}>V Kohli*</Text>
               </View>
-              <View style={{width:"20%"}}>
+              <View style={{width:wp("20%")}}>
                 <Text style={{color:'#fff',fontWeight:"bold"}}>14(9)</Text>
               </View>
-              <View style={{flexDirection:"row",gap:5,width:"40%"}}>
+              <View style={{flexDirection:"row",gap:5,width:wp("40%")}}>
                 <Text style={{color:'#fff',fontWeight:"bold"}}>S Thakur</Text>
                 <Text style={{color:'#fff',fontWeight:"bold"}}>0/11</Text>
                 <Text style={{color:'#fff',fontWeight:"bold"}}>(0.3)</Text>
               </View>
         </View>
-        <View style={{flexDirection:"row",width:"90%",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-              <View style={{width:"40%"}}>
+        <View style={{flexDirection:"row",width:wp("90%"),display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+              <View style={{width:wp("40%")}}>
                 <Text style={{color:'#fff',fontWeight:"bold"}}>F du Plessis</Text>
               </View>
-              <View style={{width:"20%",justifyContent:"flex-start",display:"flex",flexDirection:"row"}}>
+              <View style={{width:wp("20%"),justifyContent:"flex-start",display:"flex",flexDirection:"row"}}>
                 <Text style={{color:'#fff',fontWeight:"bold"}}>6(13)</Text>
               </View>
               <ScrollView horizontal  
 showsHorizontalScrollIndicator={false}
-               style={{display:"flex",flexDirection:"row",gap:5,width:"40%",display:"flex"}}>
+               style={{display:"flex",flexDirection:"row",gap:5,width:wp("20%"),display:"flex"}}>
              
-              <View style={{display:"flex",flexDirection:"row",gap:5,width:"100%",}}>
+              <View style={{display:"flex",flexDirection:"row",gap:5,width: wp("100%")}}>
               <MaterialCommunityIcons name="numeric-1-circle-outline" size={24} color="#fff" />
               <MaterialCommunityIcons name="numeric-4-circle-outline" size={24} color="#fff" />
               <MaterialCommunityIcons name="numeric-6-circle-outline" size={24} color="#fff" />
@@ -170,7 +171,7 @@ showsHorizontalScrollIndicator={false}
 
              
         </View>
-        <View style={{width:"90%",display:"flex",flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
+        <View style={{width:wp("90%"),display:"flex",flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
                 <Text style={{color:"#fff"}}>RCB needs 156 Runs in 99 Balls</Text>
               </View>
         </View>      

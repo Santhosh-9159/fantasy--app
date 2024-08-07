@@ -1,13 +1,15 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import Fontisto from "@expo/vector-icons/Fontisto";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 const EditEmail = () => {
   return (
     <View
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "100%",
+            width: wp("100%"),
             justifyContent: 'center',
             alignItems:"center"
           }}
@@ -16,7 +18,7 @@ const EditEmail = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("95%"),
               justifyContent: "flex-start",
               padding:10,
               paddingLeft:17
@@ -24,15 +26,15 @@ const EditEmail = () => {
           >
             <Text>Enter your new email</Text>
           </View>
-          <View style={{display:"flex",flexDirection: 'row',width:"90%",justifyContent:"flex-start",alignItems:"center",borderBottomWidth:2,gap:5}}>
+          <View style={{display:"flex",flexDirection: 'row',width:wp("87%"),justifyContent:"flex-start",alignItems:"center",borderBottomWidth:2,gap:5}}>
             <Fontisto name="email" size={18} color="black" />
-            <View style={{display:"flex",flexDirection: 'column',width:"100%",}}>
-            <TextInput style={{width:"100%"}} />
+            <View style={{display:"flex",flexDirection: 'column',width: wp("100%"),}}>
+            <TextInput style={{width: wp("95%")}} />
             </View>
             
           </View>
-          <View style={{display:"flex",width:"100%",justifyContent: 'center',alignItems:"center",borderRadius:5,paddingTop:20}}>
-          <Pressable style={{display:"flex",width:"90%",backgroundColor:"#3385ff",justifyContent: 'center',alignItems:"center",borderRadius:5,padding:10}}>
+          <View style={{display:"flex",width:wp("100%"),justifyContent: 'center',alignItems:"center",borderRadius:5,paddingTop:20, paddingBottom:10}}>
+          <Pressable style={{display:"flex",width:wp("90%"),backgroundColor:"#3385ff",justifyContent: 'center',alignItems:"center",borderRadius:5,padding:10}}>
           <Text style={{color:"#fff",fontWeight:"bold"}}>GET OTP</Text>
           </Pressable>
           </View>

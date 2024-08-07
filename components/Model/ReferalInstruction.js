@@ -2,6 +2,8 @@ import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-nati
 import React from "react";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 const ReferalInstruction = ({ visible, onClose }) => {
   return (
@@ -14,13 +16,15 @@ const ReferalInstruction = ({ visible, onClose }) => {
       <LinearGradient
         colors={["#020202", "#1B2656", "#3247A0"]}
         style={{
+          paddingTop:20,
           flex: 1,
           backgroundColor: "#fff",
           display: "flex",
           flexDirection: "column",
-          width: "100%",
+          width: wp("100%"),
          borderTopLeftRadius:15,
-         borderTopRightRadius:15
+         borderTopRightRadius:15,
+         paddingBottom: 20
         }}
       >
        <View style={{paddingBottom:10}}>
@@ -28,12 +32,12 @@ const ReferalInstruction = ({ visible, onClose }) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "100%",
+            width: wp("100%"),
             justifyContent: "space-between",
             padding: 10,
           }}
         >
-          <Text style={{ color: "#fff", fontWeight: "bold",fontSize:17 }}>
+          <Text style={{ color: "#fff", fontWeight: "bold",fontSize:hp(2.2) }}>
             How it Works?
           </Text>
           <Pressable onPress={onClose}>
@@ -51,7 +55,7 @@ const ReferalInstruction = ({ visible, onClose }) => {
           <View  style={{
             display: "flex",
             flexDirection: "column",
-            width: "100%",
+            width: wp("100%"),
             justifyContent: "center",
             padding: 10,
             paddingBottom:25
@@ -61,15 +65,15 @@ const ReferalInstruction = ({ visible, onClose }) => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
               justifyContent: "center",
               padding: 10,
             }}
           >
             <Text style={{ color: "#fff" }}>
-              Join the realm of
+              Join the realm of     
               <Text style={{ fontWeight: "bold", color: "#fff" }}>
-                Impact11
+                    Impact11
               </Text>
               and uncover a world where every referral brings forth real cash
               rewards! Our referral program offers you the key to unlock
@@ -84,7 +88,7 @@ const ReferalInstruction = ({ visible, onClose }) => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "95%",
+              width: wp("90%"),
               justifyContent: "center",
               padding: 10,
             }}
@@ -113,14 +117,14 @@ const ReferalInstruction = ({ visible, onClose }) => {
             </View>
              </View>
           </View>
-          <Text style={{ color: "#fff", fontWeight: "bold" }}>
+          <Text style={{ color: "#fff", fontWeight: "bold", fontSize: hp(2) }}>
             Referral Terms:{" "}
           </Text>
           <View
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "95%",
+              width: wp("90%"),
               justifyContent: "center",
               padding: 10,
             }}

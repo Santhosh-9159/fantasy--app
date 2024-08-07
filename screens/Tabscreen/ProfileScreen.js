@@ -13,6 +13,7 @@ import * as ImagePicker from "expo-image-picker";
 import * as Progress from "react-native-progress";
 import { useNavigation } from "@react-navigation/native";
 import { useSport } from "../../components/SportContext";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
@@ -58,16 +59,17 @@ const ProfileScreen = () => {
   }
 
   return (
-    <View
+    
+      <View
       style={{
-        width: "100%",
+        width: wp("100%"),
         display: "flex",
         flexDirection: "column",
       }}
     >
       <View
         style={{
-          height: 80,
+          height: hp(12),
           backgroundColor: "#3f58c5",
           display: "flex",
           flexDirection: "row",
@@ -78,7 +80,7 @@ const ProfileScreen = () => {
           paddingRight:15
         }}
       >
-        <Text style={{ fontSize: 18, color: "#fff",fontWeight:"bold" }}>PROFILE</Text>
+        <Text style={{ fontSize: hp(2.5), color: "#fff",fontWeight:"bold" }}>PROFILE</Text>
         <Pressable>
           <View style={{ gap: 5,display: "flex",
           flexDirection: "row",justifyContent: "center",
@@ -86,22 +88,24 @@ const ProfileScreen = () => {
             <View>
               <MaterialIcons name="power-settings-new" size={20} color="#fff" />
             </View>
-            <Text style={{fontSize:16,color:"#fff"}}>Logout</Text>
+            <Text style={{fontSize:hp(2),color:"#fff"}}>Logout</Text>
           </View>
         </Pressable>
       </View>
+
+      <ScrollView>
       <View
         style={{
-          width: "100%",
+          width: wp("100%"),
           display: "flex",
           flexDirection: "column",
         }}
       >
         <View
           style={{
-            width: "100%",
+            width: wp("100%"),
             paddingTop: 50,
-
+           
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
@@ -111,13 +115,13 @@ const ProfileScreen = () => {
             style={{
               paddingTop: 60,
               backgroundColor: "#ECECEC",
-              width: "90%",
+              width: wp("90%"),
               alignItems: "center",
             }}
           >
             <View
               style={{
-                width: "100%",
+                width: wp("100%"),
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -125,10 +129,10 @@ const ProfileScreen = () => {
               }}
             >
               <View style={{ padding: 5 }}>
-                <Text style={{ fontWeight: "900", fontSize: 17 }}>
+                <Text style={{ fontWeight: "900", fontSize: hp(2.3) }}>
                   shivam11s
                 </Text>
-                <Text style={{ fontSize: 15 }}>Shivam11s</Text>
+                <Text style={{ fontSize: hp(2) }}>Shivam11s</Text>
               </View>
               <View>
                 <Text style={{ backgroundColor: "#CCD5FF" }}>
@@ -139,7 +143,7 @@ const ProfileScreen = () => {
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  width: "100%",
+                  width: wp("100%"),
                   justifyContent: "space-around",
                   padding: 10,
                 }}
@@ -156,7 +160,7 @@ const ProfileScreen = () => {
                     <Text>100</Text>
                   </View>
                   <View>
-                    <Text style={{ fontWeight: "900", fontSize: 17 }}>
+                    <Text style={{ fontWeight: "900", fontSize: hp(2.5) }}>
                       FOLLOWERS
                     </Text>
                   </View>
@@ -173,7 +177,7 @@ const ProfileScreen = () => {
                     <Text>100</Text>
                   </View>
                   <View>
-                    <Text style={{ fontWeight: "900", fontSize: 17 }}>
+                    <Text style={{ fontWeight: "900", fontSize: hp(2.5) }}>
                       FOLLOWING
                     </Text>
                   </View>
@@ -206,12 +210,12 @@ const ProfileScreen = () => {
         </View>
         <View style={{ paddingTop: 10, paddingLeft: 20, gap: 10 }}>
           <View>
-            <Text style={{ fontWeight: "bold", fontSize: 17 }}>Tier</Text>
+            <Text style={{ fontWeight: "bold", fontSize: hp(2.4) }}>Tier</Text>
           </View>
           <Pressable onPress={() => navigation.navigate("Tire Screen")}>
             <View
               style={{
-                width: "95%",
+                width: wp("90%"),
                 borderRadius: 10,
                 backgroundColor: "#ffff",
                 ...Platform.select({
@@ -232,7 +236,7 @@ const ProfileScreen = () => {
               <View
                 style={{
                   flexDirection: "column",
-                  width: "20%",
+                  width: wp("17%"),
                   alignItems: "center",
                   justifyContent: "center",
                   display: "flex",
@@ -279,14 +283,14 @@ const ProfileScreen = () => {
                 style={{
                   flexDirection: "column",
                   alignItems: "center",
-                  width: "80%",
+                  width: wp("67%"),
                 }}
               >
                 <View style={{ flexDirection: "column", gap: 5 }}>
-                  <Text style={{ fontWeight: "bold", fontSize: 17 }}>
+                  <Text style={{ fontWeight: "bold", fontSize: hp(2.2) }}>
                     {Tier}
                   </Text>
-                  <Text style={{ fontSize: 13 }}>
+                  <Text style={{ fontSize: hp(1.8) }}>
                     Tier will be upgraded when you reach 800 Total Impacts
                   </Text>
                   <Progress.Bar
@@ -310,7 +314,7 @@ const ProfileScreen = () => {
           }}
         >
           <View>
-            <Text style={{ fontWeight: "bold", fontSize: 17 }}>
+            <Text style={{ fontWeight: "bold", fontSize: hp(2.4) }}>
               Career Stats
             </Text>
           </View>
@@ -340,20 +344,20 @@ const ProfileScreen = () => {
               style={{
                 flexDirection: "row",
                 justifyContent: "space-evenly",
-                width: "100%",
+                width: wp("90%"),
                 display: "flex",
               }}
             >
               <View style={{ flexDirection: "column", gap: 5 }}>
-                <Text style={{ fontSize: 14 }}>Matches</Text>
+                <Text style={{ fontSize: hp(2) }}>Matches</Text>
                 <Text style={{ fontWeight: "bold" }}>1,666</Text>
               </View>
               <View style={{ flexDirection: "column", gap: 5 }}>
-                <Text style={{ fontSize: 14 }}>Contests</Text>
+                <Text style={{ fontSize: hp(2)  }}>Contests</Text>
                 <Text style={{ fontWeight: "bold" }}>2,774</Text>
               </View>
               <View style={{ flexDirection: "column", gap: 5 }}>
-                <Text style={{ fontSize: 14 }}>Win rate</Text>
+                <Text style={{ fontSize: hp(2)  }}>Win rate</Text>
                 <Text style={{ fontWeight: "bold" }}>64%</Text>
               </View>
             </View>
@@ -362,9 +366,10 @@ const ProfileScreen = () => {
       </View>
       <View
         style={{
+          paddingBottom: 20,
           flexDirection: "column",
           justifyContent: "center",
-          width: "100%",
+          width: wp("100%"),
           alignItems: "center",
           gap: 5,
         }}
@@ -373,25 +378,25 @@ const ProfileScreen = () => {
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            width: "90%",
+            width: wp("90%"),
           }}
         >
           <View style={{ paddingBottom: 10 }}>
-            <Text style={{ fontWeight: "bold", fontSize: 17 }}>
+            <Text style={{ fontWeight: "bold", fontSize: hp(2.4)  }}>
               Recently Played
             </Text>
           </View>
           <Pressable onPress={() => navigation.navigate("ViewAll")}>
             <View>
               <Text
-                style={{ fontWeight: "bold", fontSize: 14, color: "#7d7d7d" }}
+                style={{ fontWeight: "bold", fontSize: hp(2), color: "#7d7d7d" }}
               >
                 View all
               </Text>
             </View>
           </Pressable>
         </View>
-        <View style={{ gap: 10, width: "90%" }}>
+        <View style={{ gap: 10, width: wp("90%"),paddingBottom:80 }}>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -409,7 +414,7 @@ const ProfileScreen = () => {
             >
               <View
                 style={{
-                  width: "40%",
+                  width: wp("80%"),
                   flexDirection: "column",
                   gap: 3,
                   borderRadius: 12,
@@ -431,7 +436,7 @@ const ProfileScreen = () => {
                   style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    width: "100%",
+                    width: wp("80%"),
                     padding: 7,
                   }}
                 >
@@ -443,20 +448,20 @@ const ProfileScreen = () => {
                     flexDirection: "row",
                     padding: 7,
                     justifyContent: "center",
-                    width: "90%",
+                    width: wp("80%"),
                     display: "flex",
                     gap: 10,
                   }}
                 >
                   <Image
                     source={require("../../assets/csk.png")}
-                    style={{ height: 20, width: 30, borderRadius: 10 }}
+                    style={{ height: 30, width: 30, borderRadius: 10,  }}
                   />
                   <Text style={{ fontWeight: "bold" }}>CSK</Text>
-                  <Text>VS</Text>
+                  <Text style={{}}>VS</Text>
                   <Image
                     source={require("../../assets/rcb.png")}
-                    style={{ height: 20, width: 30, borderRadius: 10 }}
+                    style={{ height: 30, width: 30, borderRadius: 10 }}
                   />
                   <Text style={{ fontWeight: "bold" }}>RCB</Text>
                 </View>
@@ -464,7 +469,7 @@ const ProfileScreen = () => {
                   style={{
                     justifyContent: "center",
                     display: "flex",
-                    width: "100%",
+                    width: wp("85%"),
                     flexDirection: "row",
                   }}
                 >
@@ -473,8 +478,8 @@ const ProfileScreen = () => {
                 <View
                   style={{
                     flexDirection: "row",
-                    justifyContent: "space-evenly",
-                    width: "100%",
+                    justifyContent: "space-between",
+                    width: wp("80%"),
                     display: "flex",
                     paddingLeft: 3,
                     paddingRight: 3,
@@ -491,7 +496,7 @@ const ProfileScreen = () => {
                 <View
                   style={{
                     backgroundColor: "#8AA1FF",
-                    width: "100%",
+                    width: wp("80%"),
                     borderBottomEndRadius: 10,
                     borderBottomStartRadius: 10,
                     paddingLeft: 7,
@@ -502,7 +507,7 @@ const ProfileScreen = () => {
               </View>
               <View
                 style={{
-                  width: "40%",
+                  width: wp("80%"),
                   flexDirection: "column",
                   gap: 3,
                   borderRadius: 12,
@@ -515,7 +520,7 @@ const ProfileScreen = () => {
                       shadowOffset: { width: 20, height: 10 },
                     },
                     android: {
-                      elevation: 10,
+                      elevation: 15,
                     },
                   }),
                 }}
@@ -524,7 +529,7 @@ const ProfileScreen = () => {
                   style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    width: "100%",
+                    width: wp("80%"),
                     padding: 7,
                   }}
                 >
@@ -536,20 +541,20 @@ const ProfileScreen = () => {
                     flexDirection: "row",
                     padding: 7,
                     justifyContent: "center",
-                    width: "90%",
+                    width: wp("80%"),
                     display: "flex",
                     gap: 10,
                   }}
                 >
                   <Image
                     source={require("../../assets/csk.png")}
-                    style={{ height: 20, width: 30, borderRadius: 10 }}
+                    style={{ height: 30, width: 30, borderRadius: 10,  }}
                   />
                   <Text style={{ fontWeight: "bold" }}>CSK</Text>
-                  <Text>VS</Text>
+                  <Text style={{}}>VS</Text>
                   <Image
                     source={require("../../assets/rcb.png")}
-                    style={{ height: 20, width: 30, borderRadius: 10 }}
+                    style={{ height: 30, width: 30, borderRadius: 10 }}
                   />
                   <Text style={{ fontWeight: "bold" }}>RCB</Text>
                 </View>
@@ -557,7 +562,7 @@ const ProfileScreen = () => {
                   style={{
                     justifyContent: "center",
                     display: "flex",
-                    width: "100%",
+                    width: wp("85%"),
                     flexDirection: "row",
                   }}
                 >
@@ -567,7 +572,7 @@ const ProfileScreen = () => {
                   style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    width: "100%",
+                    width: wp("80%"),
                     display: "flex",
                     paddingLeft: 3,
                     paddingRight: 3,
@@ -584,7 +589,7 @@ const ProfileScreen = () => {
                 <View
                   style={{
                     backgroundColor: "#8AA1FF",
-                    width: "100%",
+                    width: wp("80%"),
                     borderBottomEndRadius: 10,
                     borderBottomStartRadius: 10,
                     paddingLeft: 7,
@@ -595,7 +600,7 @@ const ProfileScreen = () => {
               </View>
               <View
                 style={{
-                  width: "40%",
+                  width: wp("80%"),
                   flexDirection: "column",
                   gap: 3,
                   borderRadius: 12,
@@ -608,7 +613,7 @@ const ProfileScreen = () => {
                       shadowOffset: { width: 20, height: 10 },
                     },
                     android: {
-                      elevation: 10,
+                      elevation: 15,
                     },
                   }),
                 }}
@@ -617,7 +622,7 @@ const ProfileScreen = () => {
                   style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    width: "100%",
+                    width: wp("80%"),
                     padding: 7,
                   }}
                 >
@@ -629,20 +634,20 @@ const ProfileScreen = () => {
                     flexDirection: "row",
                     padding: 7,
                     justifyContent: "center",
-                    width: "90%",
+                    width: wp("80%"),
                     display: "flex",
                     gap: 10,
                   }}
                 >
                   <Image
                     source={require("../../assets/csk.png")}
-                    style={{ height: 20, width: 30, borderRadius: 10 }}
+                    style={{ height: 30, width: 30, borderRadius: 10,  }}
                   />
                   <Text style={{ fontWeight: "bold" }}>CSK</Text>
-                  <Text>VS</Text>
+                  <Text style={{}}>VS</Text>
                   <Image
                     source={require("../../assets/rcb.png")}
-                    style={{ height: 20, width: 30, borderRadius: 10 }}
+                    style={{ height: 30, width: 30, borderRadius: 10 }}
                   />
                   <Text style={{ fontWeight: "bold" }}>RCB</Text>
                 </View>
@@ -650,7 +655,7 @@ const ProfileScreen = () => {
                   style={{
                     justifyContent: "center",
                     display: "flex",
-                    width: "100%",
+                    width: wp("85%"),
                     flexDirection: "row",
                   }}
                 >
@@ -660,7 +665,7 @@ const ProfileScreen = () => {
                   style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    width: "100%",
+                    width: wp("80%"),
                     display: "flex",
                     paddingLeft: 3,
                     paddingRight: 3,
@@ -677,7 +682,7 @@ const ProfileScreen = () => {
                 <View
                   style={{
                     backgroundColor: "#8AA1FF",
-                    width: "100%",
+                    width: wp("80%"),
                     borderBottomEndRadius: 10,
                     borderBottomStartRadius: 10,
                     paddingLeft: 7,
@@ -690,7 +695,11 @@ const ProfileScreen = () => {
           </ScrollView>
         </View>
       </View>
+      </ScrollView>
     </View>
+    
+
+
   );
 };
 

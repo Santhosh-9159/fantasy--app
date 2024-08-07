@@ -7,6 +7,8 @@ import {
 } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 const DrawerHeader = (props) => {
     const navigation = useNavigation()
   return (
@@ -17,7 +19,7 @@ const DrawerHeader = (props) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "100%",
+            width: wp("80%"),
             justifyContent: "space-between",
             alignItems: "center",
           }}
@@ -39,11 +41,11 @@ const DrawerHeader = (props) => {
             </View>
             <View style={{ gap: 5 }}>
               <Text
-                style={{ fontSize: 20, fontWeight: "700", color: "#3f58c5" }}
+                style={{ fontSize:  hp(2.5), fontWeight: "700", color: "#3f58c5" }}
               >
                 shivam11s
               </Text>
-              <Text style={{ fontSize: 12, fontWeight: "500" }}>
+              <Text style={{ fontSize: hp(2.4), fontWeight: "500" }}>
                 Total Impacts: 767
               </Text>
             </View>
@@ -51,7 +53,7 @@ const DrawerHeader = (props) => {
           <View style={{}}>
             <Image
               source={require("../assets/starplace.png")} // Replace with your profile picture URL
-              style={{ height: 60, width: 60, borderRadius: 7 }}
+              style={{ height: hp(11), width: wp(16), borderRadius: 7 }}
             />
           </View>
         </View>
@@ -66,7 +68,7 @@ const DrawerHeader = (props) => {
             style={{
               display: "flex",
               flexDirection: "row",
-              width: "100%",
+              width: wp("73%"),
               justifyContent: "space-between",
               alignItems: "center",
             }}
@@ -145,9 +147,8 @@ const DrawerHeader = (props) => {
         label="Fantasy Point System"
         onPress={() => alert("Fantasy Point System")}
       />
-      <DrawerItem label="How to Play?" onPress={() => alert("How to Play?")} />
-      <DrawerItem label="About us" onPress={() => alert("About us")} />
-      <DrawerItem label="More" onPress={() => alert("More")} />
+      {/* <DrawerItem label="About us" onPress={() => alert("About us")} /> */}
+      <DrawerItem label="More" onPress={()=>navigation.navigate('More')} />
       <Text style={styles.version}>VERSION 1.22.0</Text>
     </DrawerContentScrollView>
   );
@@ -160,14 +161,14 @@ const styles = StyleSheet.create({
     // backgroundColor: "#eeeeee",
   },
   profileImage: {
-    width: 80,
-    height: 80,
+    width: wp(19),
+    height: hp(11),
     borderRadius: 40,
   },
 
   balanceContainer: {
     marginTop: 20,
-    width: "100%",
+    width: wp("80%"),
     alignItems: "center",
     backgroundColor: "#fff",
     padding: 10,
@@ -177,11 +178,11 @@ const styles = StyleSheet.create({
     elevation:15
   },
   balanceText: {
-    fontSize: 16,
+    fontSize: hp(2.5),
     fontWeight: "500",
   },
   balanceAmount: {
-    fontSize: 24,
+    fontSize: hp(2.7),
     fontWeight: "bold",
     color: "#000",
     marginTop: 5,
@@ -190,7 +191,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent:"space-between",
     marginTop: 10,
-    width:"100%"
+    width: wp ("74%")
   },
   addCash: {
     marginRight: 20,

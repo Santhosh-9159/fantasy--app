@@ -5,21 +5,23 @@ import { useNavigation } from "@react-navigation/native";
 import { Octicons } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 const MyTeam = () => {
   const navigation = useNavigation()
   return (
-    <View style={{padding:10,backgroundColor:"#fff",height:"100%"}}>
+    <View style={{padding:10,backgroundColor:"#fff",height: hp("100%")}}>
        <View style={{ display:"flex",
-        flexDirection:"column",        gap:15,elevation:10}}>
-<View style={{ display: "flex", width: "100%", flexDirection: "column", }}>
+        flexDirection:"column",gap:15,elevation:10}}>
+<View style={{ display: "flex", width: wp("95%"), flexDirection: "column", }}>
         <View
           style={{
-            width: "100%",
+            width: wp("95%"),
             backgroundColor: "#979797",
             borderWidth: 2,
             borderColor: "#fff",
-            height: 220,
+            height: hp(32),
             borderRadius: 8,
             position: "relative",
             elevation: 10,
@@ -28,8 +30,8 @@ const MyTeam = () => {
           <Image
             source={require("../../../../assets/CreateTeamPreview.png")}
             style={{
-              width: "100%",
-              height: "100%",
+              width: wp("95%"),
+              height: hp(32),
               borderRadius: 8,
               opacity: 0.9,
             }}
@@ -40,7 +42,7 @@ const MyTeam = () => {
             position: "absolute",
             top: 0,
             display: "flex",
-            width: "100%",
+            width: wp("96%"),
             flexDirection: "column",
             padding: 1,
             justifyContent: "center",
@@ -51,7 +53,7 @@ const MyTeam = () => {
           <View
             style={{
               display: "flex",
-              width: "100%",
+              width: wp("95%"),
               flexDirection: "row",
               padding: 10,
               justifyContent: "space-between",
@@ -63,7 +65,7 @@ const MyTeam = () => {
             <View
               style={{
                 display: "flex",
-                width: "25%",
+                width: wp("25%"),
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -72,12 +74,12 @@ const MyTeam = () => {
               <Text style={{ fontWeight: "bold", color: "#fff" }}>
                 Shivam11’s
               </Text>
-              <Text style={{ fontWeight: "bold", color: "#fff" }}>T1</Text>
+              <Text style={{ fontWeight: "bold", color: "#fff" }}>(T1)</Text>
             </View>
             <View
               style={{
                 display: "flex",
-                width: "30%",
+                width: wp("30%"),
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -98,7 +100,7 @@ const MyTeam = () => {
           <View
             style={{
               display: "flex",
-              width: "100%",
+              width: wp("100%"),
               flexDirection: "row",
               padding: 5,
             }}
@@ -106,7 +108,7 @@ const MyTeam = () => {
             <View
               style={{
                 display: "flex",
-                width: "60%",
+                width: wp("62%"),
                 flexDirection: "column",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -115,7 +117,7 @@ const MyTeam = () => {
               <View
                 style={{
                   display: "flex",
-                  width: "100%",
+                  width: wp("60%"),
                   flexDirection: "row",
                   justifyContent: "space-around",
                   alignItems: "center",
@@ -138,7 +140,7 @@ const MyTeam = () => {
                     style={{
                       position: "absolute",
                       bottom: 0,
-                      width: "100%",
+                      width: wp("22%"),
                       backgroundColor: "#fff",
                       borderRadius: 8,
                       justifyContent: "center",
@@ -167,7 +169,7 @@ const MyTeam = () => {
                       style={{
                         fontWeight: "bold",
                         color: "#fff",
-                        fontSize: 16,
+                        fontSize: hp(2),
                       }}
                     >
                       C
@@ -205,7 +207,7 @@ const MyTeam = () => {
                       style={{
                         fontWeight: "bold",
                         color: "#fff",
-                        fontSize: 16,
+                        fontSize: hp(1.8),
                       }}
                     >
                       VC
@@ -215,7 +217,7 @@ const MyTeam = () => {
                     style={{
                       position: "absolute",
                       bottom: 0,
-                      width: "100%",
+                      width: wp("22%"),
                       backgroundColor: "#f27",
                       borderRadius: 8,
                       justifyContent: "center",
@@ -233,7 +235,7 @@ const MyTeam = () => {
             </View>
             <View  style={{
               display: "flex",
-              width: "40%",
+              width: wp("40%"),
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
@@ -245,7 +247,7 @@ const MyTeam = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 position: "relative",
-                width:"50%"
+                width: wp("22%")
 
               }}
             >
@@ -276,7 +278,7 @@ const MyTeam = () => {
                 style={{
                   position: "absolute",
                   bottom: 0,
-                  width: "100%",
+                  width: wp("22%"),
                   backgroundColor: "#fff",
                   borderRadius: 8,
                   justifyContent: "center",
@@ -292,7 +294,7 @@ const MyTeam = () => {
 
           <View  style={{
               display: "flex",
-              width: "100%",
+              width: wp("100%"),
               flexDirection: "row",
               padding: 5,
               justifyContent: "space-evenly",
@@ -302,7 +304,7 @@ const MyTeam = () => {
           <View
                 style={{
                   display: "flex",
-                  width: "35%",
+                  width: wp("35%"),
                   flexDirection: "row",
                   justifyContent: "space-around",
                   alignItems: "center",
@@ -317,7 +319,7 @@ const MyTeam = () => {
               <View
                 style={{
                   display: "flex",
-                  width: "35%",
+                  width: wp("35%"),
                   flexDirection: "row",
                   justifyContent: "space-around",
                   alignItems: "center",
@@ -334,7 +336,7 @@ const MyTeam = () => {
           <View
             style={{
               display: "flex",
-              width: "100%",
+              width: wp("100%"),
               flexDirection: "row",
               justifyContent: "space-around",
               alignItems: "center",

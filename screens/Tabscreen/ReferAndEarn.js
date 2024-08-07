@@ -13,6 +13,7 @@ import * as Clipboard from "expo-clipboard";
 import { Ionicons, FontAwesome6 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import ReferalInstruction from "../../components/Model/ReferalInstruction";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const ReferAndEarn = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -42,24 +43,25 @@ const ReferAndEarn = () => {
   };
   return (
     <View>
+      <ScrollView>
       <View
         style={{
-          height: "73%",
+          height: hp("80%"),
           backgroundColor: "#3385ff",
 
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
           alignItems: "center",
-          width: "100%",
+          width: wp("100%"),
           borderBottomEndRadius: 15,
           borderBottomStartRadius: 15,
         }}
       >
         <View
           style={{
-            width: "100%",
-            height: "15%",
+            width: wp("100%"),
+            height: hp("15%"),
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-end",
@@ -72,7 +74,7 @@ const ReferAndEarn = () => {
               flexDirection: "row",
               justifyContent: "flex-end",
               alignItems: "center",
-              width: "85%",
+              width: wp("85%"),
             }}
           >
             <Pressable onPress={() => setModalVisible(true)}>
@@ -90,8 +92,8 @@ const ReferAndEarn = () => {
             flexDirection: "column",
             justifyContent: "space-between",
             alignItems: "center",
-            width: "100%",
-            height: "88%",
+            width: wp("100%"),
+            height: hp(72),
           }}
         >
           <View>
@@ -103,7 +105,7 @@ const ReferAndEarn = () => {
                 alignItems: "center",
               }}
             >
-              <Text style={{ fontWeight: "500", fontSize: 17, color: "#fff" }}>
+              <Text style={{ fontWeight: "500", fontSize: hp(2.8), color: "#fff" }}>
                 Invite Friends & Earn
               </Text>
             </View>
@@ -115,13 +117,13 @@ const ReferAndEarn = () => {
                 alignItems: "center",
               }}
             >
-              <Text style={{ fontWeight: "bold", fontSize: 30, color: "#fff" }}>
+              <Text style={{ fontWeight: "bold", fontSize: hp(4.8), color: "#fff" }}>
                 ₹500
               </Text>
               <Text
                 style={{
                   fontWeight: "500",
-                  fontSize: 17,
+                  fontSize: hp(2),
                   color: "#fff",
                   paddingTop: 10,
                 }}
@@ -134,18 +136,18 @@ const ReferAndEarn = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "100%",
+              width: wp("100%"),
               justifyContent: "center",
-              gap: 10,
+              gap: 10, 
               alignItems: "center",
             }}
           >
             <Image
               source={require("../../assets/Refer&Earn.png")}
               resizeMode="cover"
-              style={{ width: 300, height: 300 }}
+              style={{ width: wp(70), height:hp(35) }}
             />
-            <Pressable style={{ flexDirection: "column", gap: 5 }}>
+            <Pressable style={{ flexDirection: "column", gap: 5, }}>
               <Text style={{ color: "#fff", fontWeight: "bold" }}>
                 YOUR REFFERAL CODE :
               </Text>
@@ -178,9 +180,9 @@ const ReferAndEarn = () => {
             style={{
               display: "flex",
               flexDirection: "row",
-              width: "100%",
+              width: wp("100%"),
               justifyContent: "space-evenly",
-              paddingBottom: 10,
+              // paddingBottom: 10,
               padding: 10,
             }}
           >
@@ -193,7 +195,7 @@ const ReferAndEarn = () => {
                 alignItems: "center",
                 gap: 5,
                 borderRadius: 5,
-                width: "40%",
+                width: wp("40%"),
                 justifyContent: "center",
               }}
             >
@@ -231,8 +233,8 @@ const ReferAndEarn = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-          width: "100%",
-          height: "27%",
+          width: wp("100%"),
+          height: hp("27%"),
           justifyContent: "space-around",
           backgroundColor: "#fff",
           padding: 5,
@@ -246,21 +248,21 @@ const ReferAndEarn = () => {
             alignItems: "center",
           }}
         >
-          <Text style={{ fontSize: 14, fontWeight: "bold" }}>HOW IT WORKS</Text>
+          <Text style={{ fontSize: hp(1.8), fontWeight: "800"}}>HOW IT WORKS</Text>
         </View>
         <View
           style={{
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-around",
-            width: "100%",
+            width: wp("100%"),
           }}
         >
           <View
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "25%",
+              width: wp("25%"),
               justifyContent: "center",
               gap: 10,
               alignItems: "center",
@@ -270,10 +272,10 @@ const ReferAndEarn = () => {
               source={require("../../assets/Hand Shake.jpg")}
               style={{ width: 70, height: 70 }}
             />
-            <View style={{ width: "100%" }}>
+            <View style={{ width: wp("100%") }}>
               <Text
                 style={{
-                  fontSize: 12,
+                  fontSize: hp(1.7),
                   textAlign: "center",
                   justifyContent: "center",
                   alignItems: "center",
@@ -287,7 +289,7 @@ const ReferAndEarn = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "25%",
+              width: wp("25%"),
               justifyContent: "center",
               gap: 10,
               alignItems: "center",
@@ -297,10 +299,10 @@ const ReferAndEarn = () => {
               source={require("../../assets/Friends Play.jpg")}
               style={{ width: 70, height: 70 }}
             />
-            <View style={{ width: "100%" }}>
+            <View style={{ width: wp("20%") }}>
               <Text
                 style={{
-                  fontSize: 12,
+                  fontSize: hp(1.7),
                   textAlign: "center",
                   justifyContent: "center",
                   alignItems: "center",
@@ -314,7 +316,7 @@ const ReferAndEarn = () => {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "25%",
+              width: wp("25%"),
               justifyContent: "center",
               gap: 10,
               alignItems: "center",
@@ -324,10 +326,10 @@ const ReferAndEarn = () => {
               source={require("../../assets/cash wallet.png")}
               style={{ width: 70, height: 70 }}
             />
-            <View style={{ width: "100%" }}>
+            <View style={{ width: wp("100%") }}>
               <Text
                 style={{
-                  fontSize: 12,
+                  fontSize: hp(1.7),
                   textAlign: "center",
                   justifyContent: "center",
                   alignItems: "center",
@@ -339,6 +341,7 @@ const ReferAndEarn = () => {
           </View>
         </View>
       </View>
+      </ScrollView>
     </View>
   );
 };

@@ -1,12 +1,13 @@
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const All = () => {
   return (
     <ScrollView>
       <View
         style={{
-          width: "100%",
+          width: wp("100%"),
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
@@ -16,8 +17,8 @@ const All = () => {
           padding: 10,
         }}
       >
-        <View style={{ width: "96%", flexDirection: "row" }}>
-          <View style={{ width: "25%" }}>
+        <View style={{ width: wp("93%"), flexDirection: "row" }}>
+          <View style={{ width: wp("22%") }}>
             <View>
               <Image
                 source={require("../../assets/Discount.png")}
@@ -25,11 +26,11 @@ const All = () => {
               />
             </View>
           </View>
-          <View style={{ width: "75%", flexDirection: "column", gap: 5 }}>
+          <View style={{ width: wp("70%"), flexDirection: "column", gap: 5 }}>
             <View
               style={{
                 flexDirection: "row",
-                width: "100%",
+                width: wp("69%"),
                 display: "flex",
                 justifyContent: "space-between",
               }}
@@ -40,9 +41,7 @@ const All = () => {
               <Text style={{ color: "#4D4D4D" }}>10 hours ago</Text>
             </View>
             <View>
-              <Text style={{ fontSize: 13 }}>
-                Congratulation Shivam, you discount and join your Favorite
-                contests
+              <Text style={{ fontSize: hp(1.8) }}>Congratulation Shivam, you discount and join your Favorite contests
               </Text>
             </View>
           </View>
@@ -50,7 +49,7 @@ const All = () => {
       </View>
       <View
         style={{
-          width: "100%",
+          width: wp("100%"),
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
@@ -60,8 +59,8 @@ const All = () => {
           padding: 10,
         }}
       >
-        <View style={{ width: "96%", flexDirection: "row" }}>
-          <View style={{ width: "25%" }}>
+        <View style={{ width: wp("93%"), flexDirection: "row" }}>
+          <View style={{ width: wp("22%") }}>
             <View>
               <Image
                 source={require("../../assets/LevelUp.png")}
@@ -69,11 +68,11 @@ const All = () => {
               />
             </View>
           </View>
-          <View style={{ width: "75%", flexDirection: "column", gap: 5 }}>
+          <View style={{ width: wp("70%"), flexDirection: "column", gap: 5 }}>
             <View
               style={{
                 flexDirection: "row",
-                width: "100%",
+                width: wp("69%"),
                 display: "flex",
                 justifyContent: "space-between",
               }}
@@ -82,7 +81,7 @@ const All = () => {
               <Text style={{ color: "#4D4D4D" }}>10 hours ago</Text>
             </View>
             <View>
-              <Text style={{ fontSize: 13 }}>
+              <Text style={{ fontSize: hp(1.8) }}>
                 You showed your skills, You’ve leveled up from Silver to Gold
                 tier.
               </Text>
@@ -92,7 +91,7 @@ const All = () => {
       </View>
       <View
         style={{
-          width: "100%",
+          width: wp("100%"),
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
@@ -102,8 +101,8 @@ const All = () => {
           padding: 10,
         }}
       >
-        <View style={{ width: "96%", flexDirection: "row" }}>
-          <View style={{ width: "25%" }}>
+        <View style={{ width: wp("93%"), flexDirection: "row" }}>
+          <View style={{ width: wp("22%") }}>
             <View>
               <Image
                 source={require("../../assets/Deposit.png")}
@@ -111,11 +110,11 @@ const All = () => {
               />
             </View>
           </View>
-          <View style={{ width: "75%", flexDirection: "column", gap: 5 }}>
+          <View style={{ width: wp("70%"), flexDirection: "column", gap: 5 }}>
             <View
               style={{
                 flexDirection: "row",
-                width: "100%",
+                width: wp("69%"),
                 display: "flex",
                 justifyContent: "space-between",
               }}
@@ -124,7 +123,7 @@ const All = () => {
               <Text style={{ color: "#4D4D4D" }}>10 hours ago</Text>
             </View>
             <View>
-              <Text style={{ fontSize: 13 }}>
+              <Text style={{ fontSize: hp(1.8) }}>
                 Hi Shivam, Your deposit of ₹100 has been successfull
               </Text>
             </View>
@@ -133,7 +132,7 @@ const All = () => {
       </View>
       <View
         style={{
-          width: "100%",
+          width: wp("100%"),
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
@@ -143,8 +142,8 @@ const All = () => {
           padding: 10,
         }}
       >
-        <View style={{ width: "96%", flexDirection: "row" }}>
-          <View style={{ width: "25%" }}>
+        <View style={{ width: wp("93%"), flexDirection: "row" }}>
+          <View style={{ width: wp("22%") }}>
             <View>
               <Image
                 source={require("../../assets/Winnings.png")}
@@ -152,11 +151,11 @@ const All = () => {
               />
             </View>
           </View>
-          <View style={{ width: "75%", flexDirection: "column", gap: 5 }}>
+          <View style={{ width: wp("70%"), flexDirection: "column", gap: 5 }}>
             <View
               style={{
                 flexDirection: "row",
-                width: "100%",
+                width: wp("69%"),
                 display: "flex",
                 justifyContent: "space-between",
               }}
@@ -165,7 +164,7 @@ const All = () => {
               <Text style={{ color: "#4D4D4D" }}>10 hours ago</Text>
             </View>
             <View>
-              <Text style={{ fontSize: 13 }}>
+              <Text style={{ fontSize: hp(1.8) }}>
                 You won ₹1000 is last series, Join more contest and continue
                 winning more.
               </Text>

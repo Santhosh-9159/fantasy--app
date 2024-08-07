@@ -22,6 +22,8 @@ import {
   getteam2shortform,
 } from "../../Redux/Slice";
 import MatchReminder from "../Model/MatchReminder";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 export default function Home() {
   const [teams, setTeams] = useState([]);
@@ -39,14 +41,14 @@ export default function Home() {
       try {
         // Fetch teams
         const teamsResponse = await fetch(
-          "http://192.168.43.194:5000/api/teams"
+          "http://192.168.0.172:5000/api/teams"
         );
         const teamsData = await teamsResponse.json();
         setTeams(teamsData.data);
 
         // Fetch matches
         const matchesResponse = await fetch(
-          "http://192.168.43.194:5000/api/matches"
+          "http://192.168.0.172:5000/api/matches"
         );
         const matchesData = await matchesResponse.json();
         setMatches(matchesData.data);
@@ -63,7 +65,7 @@ export default function Home() {
     console.log(teamId1, "teamId1");
     try {
       const response = await axios.post(
-        "http://192.168.43.194:5000/api/getteamplayers",
+        "http://192.168.0.172:5000/api/getteamplayers",
         {
           team1id: teamId1,
           team2id: teamId2,
@@ -161,7 +163,7 @@ export default function Home() {
           <View key={index} style={{ gap: 10, paddingBottom: 20 }}>
             <View
               style={{
-                width: "100%",
+                width: wp("100%"),
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -186,7 +188,7 @@ export default function Home() {
                 style={{
                   borderRadius: 5,
                   overflow: "hidden",
-                  width: "95%",
+                  width: wp("95%"),
                   backgroundColor: "#fff",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -207,7 +209,7 @@ export default function Home() {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "100%",
+                    width: wp("95%"),
                   }}
                 >
                   <View
@@ -216,12 +218,12 @@ export default function Home() {
                       flexDirection: "row",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("100%"),
                     }}
                   >
                     <View
                       style={{
-                        width: "60%",
+                        width: wp("60%"),
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
@@ -235,7 +237,7 @@ export default function Home() {
                       />
                       <Text
                         style={{
-                          fontSize: 10,
+                          fontSize: hp(1.5),
                           padding: 5,
                           color: "#fff",
                           fontWeight: "bold",
@@ -247,7 +249,7 @@ export default function Home() {
                     </View>
                     <View
                       style={{
-                        width: "40%",
+                        width: wp("40%"),
                         display: "flex",
                         flexDirection: "row",
                         justifyContent: "center",
@@ -262,7 +264,7 @@ export default function Home() {
                       />
                       <Text
                         style={{
-                          fontSize: 10,
+                          fontSize: hp(1.5),
                           color: "#19c869",
                           fontWeight: "900",
                         }}
@@ -277,7 +279,7 @@ export default function Home() {
                       flexDirection: "row",
                       alignItems: "center",
                       justifyContent: "space-evenly",
-                      width: "100%",
+                      width: wp("100%"),
                       padding: 10,
                     }}
                   >
@@ -285,7 +287,7 @@ export default function Home() {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        width: "35%",
+                        width: wp("25%"),
                         gap: 5,
                       }}
                     >
@@ -295,7 +297,7 @@ export default function Home() {
                           flexDirection: "row",
                           alignItems: "center",
                           justifyContent: "center",
-                          width: "100%",
+                          width: wp("25%"),
                           gap: 10,
                         }}
                       >
@@ -335,7 +337,7 @@ export default function Home() {
                             justifyContent: "center",
                           }}
                         >
-                          <Text style={{ fontSize: 10 }} numberOfLines={1}>
+                          <Text style={{ fontSize: hp(1.5)}} numberOfLines={1}>
                             {team1.name}
                             {/* Chennai super kings */}
                           </Text>
@@ -347,7 +349,7 @@ export default function Home() {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        width: "30%",
+                        width: wp("30%"),
                         alignItems: "center",
                         justifyContent: "center",
                         gap: 5,
@@ -356,7 +358,7 @@ export default function Home() {
                       <View style={{ backgroundColor: "#E7ECFF", padding: 5 }}>
                         <Text
                           style={{
-                            fontSize: 10,
+                            fontSize: hp(1.5),
                             color: "red",
                             textAlign: "center",
                             fontWeight: "bold",
@@ -368,7 +370,7 @@ export default function Home() {
                       {countdown !== "Live" &&
                         countdown !== "The match has ended" && (
                           <View>
-                            <Text style={{ fontSize: 10 }}>
+                            <Text style={{ fontSize: hp(1.5) }}>
                               {new Date(match.dateAndTime).toLocaleTimeString()}
                             </Text>
                           </View>
@@ -379,7 +381,7 @@ export default function Home() {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        width: "35%",
+                        width: wp("35%"),
                         gap: 5,
                       }}
                     >
@@ -389,7 +391,7 @@ export default function Home() {
                           flexDirection: "row",
                           alignItems: "center",
                           justifyContent: "center",
-                          width: "100%",
+                          width: wp("35%"),
                           gap: 10,
                         }}
                       >
@@ -418,7 +420,7 @@ export default function Home() {
                           display: "flex",
                           flexDirection: "row",
                           alignItems: "center",
-                          width: "100%",
+                          width: wp("100%"),
                         }}
                       >
                         <View
@@ -430,7 +432,7 @@ export default function Home() {
                             justifyContent: "center",
                           }}
                         >
-                          <Text style={{ fontSize: 10 }} numberOfLines={1}>
+                          <Text style={{ fontSize: hp(1.5) }} numberOfLines={1}>
                             {team2.name}
                             {/* Chennai super kings */}
                           </Text>
@@ -442,7 +444,7 @@ export default function Home() {
                   <View
                     style={{
                       padding: 5,
-                      width: "100%",
+                      width: wp("95%"),
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
@@ -477,5 +479,6 @@ export default function Home() {
       })}
       <MatchReminder visible={modal} onclose={() => setModal(false)} />
     </ScrollView>
+   
   );
 }

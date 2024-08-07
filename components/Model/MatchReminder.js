@@ -4,6 +4,8 @@ import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
   import { Ionicons } from "@expo/vector-icons";
   import { FontAwesome } from "@expo/vector-icons";
 import { Switch } from "react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
   const MatchReminder = ({ visible, onclose }) => {
 
@@ -29,8 +31,8 @@ import { Switch } from "react-native";
       onRequestClose={onclose}>
         <Pressable onPress={onclose}
         style={{
-          width: "100%",
-          height: "100%",
+          width: wp("100%"),
+          height: hp("100%"),
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
@@ -40,17 +42,17 @@ import { Switch } from "react-native";
       >
         <View
           style={{
-            height: "40%",
+            height: hp("50%"),
             backgroundColor: "#fff",
-            width: "100%",
+            width: wp("100%"),
             borderTopLeftRadius: 10,
             borderTopRightRadius: 10,
           }}
         >
           <View
             style={{
-              width: "100%",
-              height: "100%",
+              width: wp("100%"),
+              height: hp("100%"),
               justifyContent: "flex-start",
               alignItems: "center",
               display: "flex",
@@ -59,7 +61,7 @@ import { Switch } from "react-native";
           >
             <View
               style={{
-                width: "100%",
+                width: wp("100%"),
                 justifyContent: "space-between",
                 alignItems: "flex-start",
                 display: "flex",
@@ -86,14 +88,14 @@ import { Switch } from "react-native";
             </View>
             <View
               style={{
-                width: "100%",
+                width: wp("100%"),
                 justifyContent: "center",
                 alignItems: "center",
                 display: "flex",
                 flexDirection: "row",
               }}
             >
-              <Text style={{ fontSize: 23, fontWeight: "500" }}>
+              <Text style={{ fontSize: hp(3), fontWeight: "500" }}>
                 Match Reminder
               </Text>
             </View>
@@ -102,7 +104,7 @@ import { Switch } from "react-native";
               style={{
                 display: "flex",
                 flexDirection: "column",
-                width: "100%",
+                width: wp("100%"),
                 justifyContent: "center",
                 alignItems: "center",
                 padding: 5,
@@ -111,14 +113,14 @@ import { Switch } from "react-native";
             >
               <View
                 style={{
-                  width: "90%",
+                  width: wp("85%"),
                   justifyContent: "space-between",
                   alignItems: "center",
                   display: "flex",
                   flexDirection: "row",
                 }}
               >
-                <Text style={{ fontSize: 18, fontWeight: "500" }}>
+                <Text style={{ fontSize: hp(2.5), fontWeight: "500" }}>
                   Before 30 Minutes
                 </Text>
                 <View>
@@ -132,14 +134,14 @@ import { Switch } from "react-native";
               </View>
               <View
                 style={{
-                  width: "90%",
+                  width: wp("85%"),
                   justifyContent: "space-between",
                   alignItems: "center",
                   display: "flex",
                   flexDirection: "row",
                 }}
               >
-                <Text style={{ fontSize: 18, fontWeight: "500" }}>
+                <Text style={{ fontSize: hp(2.5), fontWeight: "500" }}>
                   Before 20 Minutes
                 </Text>
                 <View>
@@ -153,14 +155,14 @@ import { Switch } from "react-native";
               </View>
               <View
                 style={{
-                  width: "90%",
+                  width: wp("85%"),
                   justifyContent: "space-between",
                   alignItems: "center",
                   display: "flex",
                   flexDirection: "row",
                 }}
               >
-                <Text style={{ fontSize: 18, fontWeight: "500" }}>
+                <Text style={{ fontSize: hp(2.5), fontWeight: "500" }}>
                   Before 15 Minutes
                 </Text>
                 <View>
@@ -176,7 +178,7 @@ import { Switch } from "react-native";
 
             <Pressable
               style={{
-                width: "90%",
+                width: wp("85%"),
                 padding: 10,
                 backgroundColor: "#3385ff",
                 borderRadius: 8,
@@ -184,7 +186,7 @@ import { Switch } from "react-native";
                 alignItems: "center",
               }}
             >
-              <Text style={{ fontSize: 18, color: "#fff", fontWeight: "bold" }}>
+              <Text style={{ fontSize: hp(2.2), color: "#fff", fontWeight: "bold" }}>
                 Set Reminder
               </Text>
             </Pressable>

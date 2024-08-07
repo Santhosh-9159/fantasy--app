@@ -1,7 +1,7 @@
 import { Image, Pressable, StyleSheet, Text, View, Platform} from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 const CricketLiveMatches = () => {
@@ -10,14 +10,14 @@ const CricketLiveMatches = () => {
    const navigation = useNavigation();
   const initialLive = () =>{
     return(
-  <View style={styles.content}>
-          <Text>Cricket</Text>
-        <Image source={require('../../../assets/ContestScreen.png')} style={styles.image} />
-        <Text style={styles.text}>You haven’t join any contests that are live join contest for any of the upcoming matches.</Text>
-        <Pressable style={styles.pressable} onPress={()=>navigation.navigate('Home')}>
-          <Text style={styles.pressText}>VIEW UPCOMING MATCHES</Text>
-        </Pressable>
-        </View>
+      <View style={styles.content}>
+          
+      <Image source={require('../../../assets/ContestScreen.png')} style={styles.image} />
+      <Text style={styles.text}>You haven’t join any contests that are live join contest for any of the upcoming matches.</Text>
+      <Pressable style={styles.pressable} onPress={()=>navigation.navigate('Home')}>
+        <Text style={styles.pressText}>VIEW UPCOMING MATCHES</Text>
+      </Pressable>
+      </View>
     )
   }
 
@@ -25,8 +25,8 @@ const CricketLiveMatches = () => {
     return(
           <View
             style={{
-              width: "100%",
-              height:"100%",
+              width: wp("100%"),
+              height: hp(65),
               display: "flex",
               flexDirection: "column",
               justifyContent:"flex-start",
@@ -60,7 +60,7 @@ const CricketLiveMatches = () => {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  width: "100%",
+                  width: wp("95%"),
                 }}
               >
                 <View
@@ -69,12 +69,12 @@ const CricketLiveMatches = () => {
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    width: "100%",
+                    width: wp("100%"),
                   }}
                 >
                    <View
                     style={{
-                      width: "60%",
+                      width: wp("60%"),
                       display: "flex",
                       flexDirection: "row",
                       alignItems: "center",
@@ -83,13 +83,13 @@ const CricketLiveMatches = () => {
                     }}
                   >
                     <Image source={require("../../../assets/Borderradius.png")} style={{height:20,width:200}}/>
-                    <Text style={{ fontSize: 10, padding: 5, color: "#fff",fontWeight:"bold",position:'absolute' }}>
+                    <Text style={{ fontSize: hp(1.5), padding: 5, color: "#fff",fontWeight:"bold",position:'absolute' }}>
                       INDIAN T20 LEAGUE
                     </Text>
                   </View>
                   <View
                     style={{
-                      width: "40%",
+                      width: wp("40%"),
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "center",
@@ -107,7 +107,7 @@ const CricketLiveMatches = () => {
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "space-evenly",
-                    width: "100%",
+                    width: wp("95%"),
                     padding: 10,
                   }}
                 >
@@ -115,7 +115,7 @@ const CricketLiveMatches = () => {
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      width: "30%",
+                      width: wp("25%"),
                       gap: 5,
                     }}
                   >
@@ -125,7 +125,7 @@ const CricketLiveMatches = () => {
                         flexDirection: "row",
                         alignItems: "center",
                         justifyContent: "center",
-                        width: "100%",
+                        width: wp("30%"),
                         gap: 10,
                       }}
                     >
@@ -154,7 +154,7 @@ const CricketLiveMatches = () => {
                         width: 100,
                       }}
                     >
-                      <Text style={{ fontSize: 10 }} numberOfLines={1}>
+                      <Text style={{ fontSize: hp(1.5) }} numberOfLines={1}>
                         Chennai Super Kings  
                       </Text>
                     </View>
@@ -164,14 +164,14 @@ const CricketLiveMatches = () => {
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      width: "40%",
+                      width: wp("40%"),
                       alignItems: "center",
                       justifyContent: "center",
                       gap: 5,
                     }}
                   >
                     <View style={{ backgroundColor: "#e7ecff", padding: 5 }}>
-                      <Text style={{ fontSize: 10 ,color:"#ff0c0c",fontWeight:"900"}}>LIVE</Text>
+                      <Text style={{ fontSize: hp(1.5) ,color:"#ff0c0c",fontWeight:"900"}}>LIVE</Text>
                     </View>
                     
                   </View>
@@ -180,7 +180,7 @@ const CricketLiveMatches = () => {
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      width: "30%",
+                      width: wp("30%"),
                       gap: 5,
                     }}
                   >
@@ -190,7 +190,7 @@ const CricketLiveMatches = () => {
                         flexDirection: "row",
                         alignItems: "center",
                         justifyContent: "center",
-                        width: "100%",
+                        width: wp("28%"),
                         gap: 10,
                       }}
                     >
@@ -220,7 +220,7 @@ const CricketLiveMatches = () => {
                         width: 100,
                       }}
                     >
-                      <Text style={{ fontSize: 10 }} numberOfLines={1}>
+                      <Text style={{ fontSize: hp(1.5) }} numberOfLines={1}>
                         Royal Challenger Bangalore
                       </Text>
                     </View>
@@ -229,7 +229,7 @@ const CricketLiveMatches = () => {
                 <View
                 style={{
                   padding: 5,
-                  width: "100%",
+                  width: wp("100%"),
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "space-between",
@@ -243,8 +243,8 @@ const CricketLiveMatches = () => {
                 <View style={{display: "flex",
                   flexDirection: "row",gap:6,alignItems: "center",
                   justifyContent: "center",}}>
-                <Text style={{padding:3,paddingLeft:5,borderRadius:15,fontSize:13,fontWeight:"bold"}}>1 Team</Text>
-                <Text style={{fontSize:13,fontWeight:"bold"}} >3 Contests</Text>
+                <Text style={{padding:3,paddingLeft:5,borderRadius:15,fontSize:hp(1.9),fontWeight:"bold"}}>1 Team</Text>
+                <Text style={{fontSize:hp(1.9),fontWeight:"bold"}} >3 Contests</Text>
                 </View>
                
               </View>
@@ -252,6 +252,7 @@ const CricketLiveMatches = () => {
               
             </Pressable>
           </View>
+          
           )
   }
   
@@ -268,45 +269,38 @@ const CricketLiveMatches = () => {
 export default CricketLiveMatches
 
 const styles = StyleSheet.create({
-  container:{
-     justifyContent:"center",
-     alignItems:"center",
-     flex:1,
-
-     
-  },
- content:{
-   
-    height:"70%",
-    width:"100%",
-    justifyContent:"center",
-     alignItems:"center",
-     padding:30,
-     gap:15
-     
- },
   
-   image:{
-    height:350,
-    width:290,
-    opacity:0.30
+  content:{
     
-   },
-   pressable:{
-         backgroundColor:"#3385ff",
-         padding:10,
-         borderRadius:6
-   },
-   text:{
-    fontSize:14,
-    fontWeight:"bold",
-    textAlign:"justify"
-
-    
-   },
-   pressText:{
-    fontWeight:"bold",
-    color:"#fff",
-    fontSize:15
-   }
-})
+     height:hp("63%"),
+     width: wp("100%"),
+     justifyContent:"center",
+      alignItems:"center",
+      padding:35,
+      gap:15
+      
+  },
+   
+    image:{
+     height:350,
+     width:290,
+     opacity:0.30
+     
+    },
+    pressable:{
+          backgroundColor:"#3385ff",
+          padding:10,
+          borderRadius:6
+    },
+    text:{
+     fontSize:hp(2),
+     fontWeight:"bold",
+     textAlign:"justify"
+ 
+    },
+    pressText:{
+     fontWeight:"bold",
+     color:"#fff",
+     fontSize:hp(2)
+    }
+ })

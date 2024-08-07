@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getfinalPlayerSelected, getplayerProfileInfo } from "../../Redux/Slice";
 import { AntDesign } from '@expo/vector-icons';
 import { teamsArray } from "../../jsondata/cskjson";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const BatterScreen = () => {
   const navigation = useNavigation();
@@ -43,21 +44,21 @@ const BatterScreen = () => {
 
   
   return (
-    <ScrollView style={{ backgroundColor: "#fff", width: "100%", height: "100%" }}>
+    <ScrollView style={{ backgroundColor: "#fff", width: wp("100%"), height: hp("100%") }}>
       <View style={{ flex: 1, alignItems: "center", gap: 5 }}>
         <View style={{ padding: 5 }}>
-          <Text style={{ fontSize: 12 }}>Pick 1-8 All-rounder</Text>
+          <Text style={{ fontSize: hp(1.7)}}>Pick 1-8 All-rounder</Text>
         </View>
-        <View style={{ backgroundColor: "#dee4fa", width: "100%", flexDirection: "row" }}>
-          <View style={{ width: "100%", flexDirection: "row", justifyContent: "space-between" }}>
-            <View style={{ width: "50%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-              <Text style={{ fontSize: 12 }}>Player</Text>
+        <View style={{ backgroundColor: "#dee4fa", width: wp("100%"), flexDirection: "row" }}>
+          <View style={{ width: wp("100%"), flexDirection: "row", justifyContent: "space-between" }}>
+            <View style={{ width: wp("50%"), flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+              <Text style={{ fontSize: hp(1.7)}}>Player</Text>
             </View>
-            <View style={{ width: "20%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-              <Text style={{ fontSize: 12 }}>Points</Text>
+            <View style={{ width: wp("20%"), flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+              <Text style={{ fontSize: hp(1.7) }}>Points</Text>
             </View>
-            <View style={{ flexDirection: "row", width: "30%", justifyContent: "flex-start", alignItems: "center" }}>
-              <Text style={{ fontSize: 12 }}>Selected By %</Text>
+            <View style={{ flexDirection: "row", width: wp("30%"), justifyContent: "flex-start", alignItems: "center" }}>
+              <Text style={{ fontSize: hp(1.7) }}>Selected By %</Text>
             </View>
           </View>
         </View>
@@ -69,7 +70,7 @@ const BatterScreen = () => {
 
               style={{
                 flexDirection: "row",
-                width: "100%",
+                width: wp("100%"),
                 justifyContent: "center",
                 alignItems: "center",
                 borderBottomWidth: 0.5,
@@ -79,7 +80,7 @@ const BatterScreen = () => {
 padding:3,
               }}
             >
-              <View style={{ flexDirection: "row", width: "48%", gap: 10 }}>
+              <View style={{ flexDirection: "row", width: wp("48%"), gap: 10 }}>
                 <Pressable
                   onPress={() => {
                     navigation.navigate("PlayerInfo");
@@ -90,7 +91,7 @@ padding:3,
                     padding: 2,
                     backgroundColor: "#fff",
                     overflow: "hidden",
-                    width: "30%",
+                    width: wp("15%"),
                     position: "relative",
                     justifyContent: "center",
                     alignItems: "center",
@@ -104,28 +105,28 @@ padding:3,
                       backgroundColor: "#7f7f7f",
                       justifyContent: "center",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("15%"),
                       borderRadius: 8,
                       position: 'absolute',
                       bottom: 0,
                     }}
                   >
-                    <Text style={{ fontSize: 10, color: "#fff" }}>
+                    <Text style={{ fontSize: hp(1.7), color: "#fff" }}>
                       {findTeamShortForm(player.id)}
                     </Text>
                   </View>
                 </Pressable>
-                <View style={{ width: "70%", justifyContent: "center", gap: 3 }}>
-                  <Text style={{ fontSize: 12, fontWeight: "bold" }}>{player.name}</Text>
-                  <Text style={{ fontSize: 12 }}>Played Last Match</Text>
+                <View style={{ width: wp("70%"), justifyContent: "center", gap: 3 }}>
+                  <Text style={{ fontSize: hp(1.8), fontWeight: "bold" }}>{player.name}</Text>
+                  <Text style={{ fontSize: hp(1.8)}}>Played Last Match</Text>
                 </View>
               </View>
-              <View style={{ width: "20%", justifyContent: "center", alignItems: "center" }}>
+              <View style={{ width:  wp("20%"), justifyContent: "center", alignItems: "center" }}>
                 <Text style={{ fontWeight: "bold" }}>{player.points}</Text>
               </View>
-              <View style={{ width: "30%", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-                <View style={{ width: "70%", justifyContent: "center" }}>
-                  <Text style={{ fontWeight: "bold" }}>80%</Text>
+              <View style={{ width: wp("25%"), flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                <View style={{ width:  wp("17%"), justifyContent: "center" }}>
+                  <Text style={{ fontWeight: "bold",fontSize: hp(1.8) }}>80%</Text>
                 </View>
                 {selectedPlayer.includes(player.id) ? <AntDesign name="minussquareo" size={24} color="#ffae36" /> : <Feather name="plus-square" size={24} color="#35b367" />}
               </View>

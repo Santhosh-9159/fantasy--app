@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { MaterialCommunityIcons, AntDesign, Feather } from "@expo/vector-icons";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const Leaderboard = () => {
   return (
@@ -9,10 +10,10 @@ const Leaderboard = () => {
         padding: 5,
         display: "flex",
         flexDirection: "column",
-        width: "100%",
+        width: wp("100%"),
         backgroundColor: "#fff",
         gap: 15,
-        height: "100%",
+        height: hp("100%"),
         justifyContent: "flex-start",
         alignItems: "center",
       }}
@@ -22,7 +23,7 @@ const Leaderboard = () => {
           display: "flex",
           flexDirection: "row",
           padding: 5,
-          width: "90%",
+          width:  wp("90%"),
           justifyContent: "space-between",
           alignItems: "center",
         }}
@@ -31,7 +32,7 @@ const Leaderboard = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "50%",
+            width: wp("45%"),
             gap: 5,
             justifyContent: "flex-start",
             alignItems: "center",
@@ -49,7 +50,7 @@ const Leaderboard = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "50%",
+            width: wp("40%"),
             gap: 5,
             justifyContent: "flex-end",
             alignItems: "center",
@@ -72,13 +73,13 @@ const Leaderboard = () => {
           padding: 10,
           display: "flex",
           flexDirection: "column",
-          width: "100%",
+          width:  wp("95%"),
         }}
       >
         <View
           style={{
             flexDirection: "row",
-            width: "100%",
+            width: wp("90%"),
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -92,7 +93,7 @@ const Leaderboard = () => {
               flexDirection: "column",
               gap: 6,
               paddingLeft: 10,
-              width: "40%",
+              width:wp ("30%"),
               backgroundColor: "#fff",
             }}
           >
@@ -105,7 +106,7 @@ const Leaderboard = () => {
                 size={24}
                 color="green"
               />
-              <Text style={{ color: "green", fontSize: 12 }}>
+              <Text style={{ color: "green", fontSize: hp(1.7) }}>
                 In Wining zone
               </Text>
             </View>
@@ -115,7 +116,7 @@ const Leaderboard = () => {
             style={{
               flexDirection: "row",
               gap: 5,
-              width: "20%",
+              width: wp("20%"),
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -144,7 +145,7 @@ const Leaderboard = () => {
               paddingRight: 10,
               justifyContent: "flex-end",
               alignItems: "center",
-              width: "40%",
+              width: wp("30%"),
             }}
           >
             <AntDesign name="caretup" size={14} color="green" />
@@ -155,7 +156,7 @@ const Leaderboard = () => {
         <View
           style={{
             flexDirection: "row",
-            width: "100%",
+            width: wp("90%"),
             display: "flex",
             justifyContent: "space-between",
             backgroundColor: "#fff",
@@ -170,7 +171,7 @@ const Leaderboard = () => {
               flexDirection: "column",
               gap: 6,
               paddingLeft: 10,
-              width: "40%",
+              width: wp("30%"),
               backgroundColor: "#fff",
             }}
           >
@@ -183,7 +184,7 @@ const Leaderboard = () => {
                 size={24}
                 color="green"
               />
-              <Text style={{ color: "green", fontSize: 12 }}>
+              <Text style={{ color: "green", fontSize: hp(1.7) }}>
                 In Wining zone
               </Text>
             </View>
@@ -193,7 +194,7 @@ const Leaderboard = () => {
             style={{
               flexDirection: "row",
               gap: 5,
-              width: "20%",
+              width: wp("20%"),
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -221,7 +222,7 @@ const Leaderboard = () => {
               paddingRight: 10,
               justifyContent: "flex-end",
               alignItems: "center",
-              width: "40%",
+              width: wp("30%"),
             }}
           >
             <AntDesign name="caretdown" size={14} color="red" />
@@ -232,7 +233,7 @@ const Leaderboard = () => {
         <View
           style={{
             flexDirection: "row",
-            width: "100%",
+            width: wp("90%"),
             display: "flex",
             justifyContent: "space-between",
             backgroundColor: "#fff",
@@ -247,7 +248,7 @@ const Leaderboard = () => {
               flexDirection: "column",
               gap: 6,
               paddingLeft: 10,
-              width: "40%",
+              width: wp("30%"),
               backgroundColor: "#fff",
             }}
           >
@@ -260,7 +261,7 @@ const Leaderboard = () => {
                 size={24}
                 color="green"
               />
-              <Text style={{ color: "green", fontSize: 12 }}>
+              <Text style={{ color: "green", fontSize: hp(1.7) }}>
                 In Wining zone
               </Text>
             </View>
@@ -270,7 +271,7 @@ const Leaderboard = () => {
             style={{
               flexDirection: "row",
               gap: 5,
-              width: "20%",
+              width: wp("20%"),
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -298,7 +299,7 @@ const Leaderboard = () => {
               paddingRight: 10,
               justifyContent: "flex-end",
               alignItems: "center",
-              width: "40%",
+              width: wp("30%"),
             }}
           >
             <Text>-</Text>
@@ -309,7 +310,7 @@ const Leaderboard = () => {
         <View
           style={{
             flexDirection: "row",
-            width: "100%",
+            width: wp("90%"),
             display: "flex",
             justifyContent: "space-between",
             backgroundColor: "#fff",
@@ -326,7 +327,7 @@ const Leaderboard = () => {
               flexDirection: "column",
               gap: 6,
               paddingLeft: 10,
-              width: "40%",
+              width: wp("30%"),
               backgroundColor: "#fff",
             }}
           >
@@ -337,7 +338,7 @@ const Leaderboard = () => {
             style={{
               flexDirection: "row",
               gap: 5,
-              width: "20%",
+              width: wp("20%"),
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -365,7 +366,7 @@ const Leaderboard = () => {
               paddingRight: 10,
               justifyContent: "flex-end",
               alignItems: "center",
-              width: "40%",
+              width: wp("30%"),
             }}
           >
             <View>

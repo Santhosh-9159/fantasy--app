@@ -35,7 +35,7 @@ const OtpScreen = ({ route }) => {
     try {
       const otpString = otp.join("");
       const response = await axios.post(
-        "http://192.168.0.143:5000/auth/verify-Otp",
+        "http://192.168.0.172:5000/auth/verify-Otp",
         { identifier: email, otp: otpString }
       );
       const { token } = response.data;
@@ -78,7 +78,7 @@ const OtpScreen = ({ route }) => {
 
   const resendOtp = async () => {
     try {
-      await axios.post("http://192.168.0.143:5000/auth/resend-otp", {
+      await axios.post("http://192.168.0.172:5000/auth/resend-otp", {
         identifier: email,
       });
       Alert.alert("OTP Resent", "A new OTP has been sent to your email.");

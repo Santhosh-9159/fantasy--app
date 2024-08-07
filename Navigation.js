@@ -66,6 +66,13 @@ import { Entypo } from "@expo/vector-icons";
 import HomeNotification from "./components/NotificationTabs/HomeNotification";
 import HowToPlay from "./screens/Drawernavigation/HowToPlay";
 import DiscardTeam from "./components/Model/DiscardTeam";
+import CreateContestPopup from "./screens/Matche Screens/ContestDetailScreen/CreateContestPopup";
+
+import CreateContest from "./screens/Matche Screens/ContestDetailScreen/CreateContest";
+import AboutUs from "./screens/Drawernavigation/AboutUs";
+import More from "./screens/Drawernavigation/More";
+import Legality from "./screens/Drawernavigation/Legality";
+import TermsAndCondition from "./screens/Drawernavigation/TermsAndCondition";
 
 const getHeaderRight = (navigation) => (
   <View
@@ -578,6 +585,44 @@ function StackScreen() {
         name="HomeNotification"
         component={HomeNotification}
       />
+
+      <Stack.Screen name="CreateContestPopup"
+       component={CreateContestPopup} />
+
+      <Stack.Screen options={{
+          headerShown: false,
+        }} name="CreateContest" 
+      component={CreateContest} />
+
+      <Stack.Screen options={{
+          headerStyle: {
+            backgroundColor: "#3385ff",
+          },
+          headerTitle: "MORE",
+          headerTitleStyle: {
+            color: "#fff",
+            fontSize:15,
+            fontWeight:'bold'
+          },
+          headerTintColor: "#fff",
+        }} name="More" 
+      component={More} />
+
+    <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="Legality"
+        component={Legality}
+      />
+
+    <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="TermsandCondition"
+        component={TermsAndCondition}
+      />
     </Stack.Navigator>
   );
 }
@@ -681,14 +726,21 @@ function DrawerScreen() {
         options={{
           headerShown: false,
         }}
-        name="HowToPlay"
+        name="How to Play"
         component={HowToPlay}
       />
       <Drawer.Screen
-        name="HelpAndSuport"
+        name="Help & Suport"
         component={HelpAndSuport}
         options={{
-          headerShown: true,
+          headerShown: false,
+        }}
+      />
+      <Drawer.Screen
+        name="About us"
+        component={AboutUs}
+        options={{
+          headerShown: false,
         }}
       />
     </Drawer.Navigator>

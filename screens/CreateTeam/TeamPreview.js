@@ -12,6 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { teamsArray } from "../../jsondata/cskjson";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const TeamPreview = () => {
   const navigation = useNavigation();
@@ -44,15 +45,15 @@ const TeamPreview = () => {
   ).length;
 
   return (
-    <View style={{ backgroundColor: "#2d2d2d", width: "100%", height: "100%" }}>
+    <View style={{ backgroundColor: "#2d2d2d", width: wp("100%"), height: hp("100%") }}>
       <View
         style={{
-          height: "18%",
+          height: hp("17%"),
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: 15,
+          padding: 5,
         }}
       >
         <View
@@ -61,20 +62,21 @@ const TeamPreview = () => {
             flexDirection: "row",
             justifyContent: "flex-start",
             alignItems: "center",
-            width: "100%",
+            width: wp("95%"),
             gap: 10,
             top: 30,
+            paddingBottom:25
           }}
         >
           <Pressable onPress={() => navigation.goBack()}>
             <Ionicons name="close" size={26} color="#fff" />
           </Pressable>
-          <View>
-            <Text style={{ fontWeight: "bold", fontSize: 16, color: "#fff" }}>
+          <View  >
+            <Text style={{ fontWeight: "bold", fontSize: hp(2), color: "#fff" }}>
               Team Preview
             </Text>
             <Text
-              style={{ color: "#a4a4a4", fontWeight: "bold", fontSize: 10 }}
+              style={{ color: "#a4a4a4", fontWeight: "bold", fontSize: hp(1.6)}}
             >
               21M 30S left
             </Text>
@@ -87,16 +89,17 @@ const TeamPreview = () => {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
-            width: "100%",
+            width: wp("90%"),
+            
           }}
         >
-          <View style={{ width: "35%" }}>
+          <View style={{ width: wp("35%") }}>
             <Text
-              style={{ color: "#a4a4a4", fontSize: 14, fontWeight: "bold" }}
+              style={{ color: "#a4a4a4", fontSize: hp(2), fontWeight: "bold" }}
             >
               Players
             </Text>
-            <Text style={{ fontSize: 12, color: "#fff", fontWeight: "bold" }}>
+            <Text style={{ fontSize:  hp(2), color: "#fff", fontWeight: "bold" }}>
               {playercount}/{remindplayer}
             </Text>
           </View>
@@ -106,7 +109,7 @@ const TeamPreview = () => {
               display: "flex",
               flexDirection: "row",
               gap: 5,
-              width: "30%",
+              width: wp("25%"),
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -123,9 +126,9 @@ const TeamPreview = () => {
                 paddingRight: 3,
               }}
             >
-              <Text style={{ fontSize: 12, fontWeight: "bold" }}>CSK</Text>
+              <Text style={{ fontSize: hp(1.5), fontWeight: "bold" }}>CSK</Text>
             </View>
-            <Text style={{ fontSize: 12, color: "#fff" }}>
+            <Text style={{ fontSize: hp(2), color: "#fff" }}>
               {cskPlayersCount} : {rcbPlayersCount}
             </Text>
             <View
@@ -140,7 +143,7 @@ const TeamPreview = () => {
                 paddingRight: 3,
               }}
             >
-              <Text style={{ fontSize: 12, fontWeight: "bold", color: "#fff" }}>
+              <Text style={{ fontSize: hp(1.6), fontWeight: "bold", color: "#fff" }}>
                 RCB
               </Text>
             </View>
@@ -148,7 +151,7 @@ const TeamPreview = () => {
 
           <View
             style={{
-              width: "35%",
+              width: wp("31%"),
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-end",
@@ -170,9 +173,10 @@ const TeamPreview = () => {
         </View>
       </View>
 
-      <View
+     
+     <View
         style={{
-          height: "82%",
+          height: hp("10%"),
           display: "flex",
           flexDirection: "column",
           position: "relative",
@@ -180,25 +184,25 @@ const TeamPreview = () => {
       >
         <Image
           source={require("../../assets/GroundPreview.png")}
-          style={{ width: "100%", height: "100%", opacity: 0.9 }}
+          style={{ width: wp("100%"), height: hp("100%"), opacity: 0.9 }}
         />
         <View
           style={{
             position: "absolute",
             display: "flex",
             flexDirection: "column",
-            width: "100%",
-            height: "100%",
+            width: wp("100%"),
+            height:hp("98%"),
             justifyContent: "space-between",
           }}
         >
-          <View style={{ height: "95%", overflow: "scroll", zIndex: 10 }}>
+          <View style={{ height: hp("95%"), overflow: "scroll", zIndex: 10 }}>
             {playercount > 0 ? (
-              <View style={{ height: "92%", overflow: "visible" }}>
+              <View style={{ height: hp("92%"), overflow: "visible" }}>
                 <View
                   style={{
-                    width: "100%",
-                    height: playercount >= 1 ? "auto" : "20%",
+                    width: wp("100%"),
+                    height: playercount >= 1 ? "auto" : hp("20%"),
                   }}
                 >
                   <View
@@ -207,7 +211,7 @@ const TeamPreview = () => {
                       flexDirection: "row",
                       justifyContent: "center",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("100%"),
                       paddingTop: 5,
                     }}
                   >
@@ -215,7 +219,7 @@ const TeamPreview = () => {
                       style={{
                         color: "#fff",
                         fontWeight: "bold",
-                        fontSize: 12,
+                        fontSize: hp(1.8),
                       }}
                     >
                       Wicketkeeper
@@ -228,7 +232,7 @@ const TeamPreview = () => {
                       flexWrap: "wrap",
                       justifyContent: "space-around",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("100%"),
                       gap: 5,
                     }}
                   >
@@ -293,7 +297,7 @@ const TeamPreview = () => {
 
                 <View
                   style={{
-                    width: "100%",
+                    width: wp("100%"),
                     height: playercount >= 1 ? "auto" : null,
                   }}
                 >
@@ -302,14 +306,14 @@ const TeamPreview = () => {
                       flexDirection: "row",
                       justifyContent: "center",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("100%"),
                     }}
                   >
                     <Text
                       style={{
                         color: "#fff",
                         fontWeight: "bold",
-                        fontSize: 12,
+                        fontSize: hp(2),
                       }}
                     >
                       Batsman
@@ -322,7 +326,7 @@ const TeamPreview = () => {
                       flexWrap: "wrap",
                       justifyContent: "space-around",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("100%"),
                       gap: 5,
                     }}
                   >
@@ -385,7 +389,7 @@ const TeamPreview = () => {
 
                 <View
                   style={{
-                    width: "100%",
+                    width: wp("100%"),
                     height: playercount >= 1 ? "auto" : null,
                   }}
                 >
@@ -395,14 +399,14 @@ const TeamPreview = () => {
                       flexDirection: "row",
                       justifyContent: "center",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("100%"),
                     }}
                   >
                     <Text
                       style={{
                         color: "#fff",
                         fontWeight: "bold",
-                        fontSize: 12,
+                        fontSize: hp(2),
                       }}
                     >
                       All-rounder
@@ -415,7 +419,7 @@ const TeamPreview = () => {
                       flexWrap: "wrap",
                       justifyContent: "space-around",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("100%"),
                     }}
                   >
                     {player.map((playerId, index) => {
@@ -479,7 +483,7 @@ const TeamPreview = () => {
 
                 <View
                   style={{
-                    width: "100%",
+                    width: wp("100%"),
                     height: playercount >= 1 ? "auto" : null,
                   }}
                 >
@@ -489,14 +493,14 @@ const TeamPreview = () => {
                       flexDirection: "row",
                       justifyContent: "center",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("100%"),
                     }}
                   >
                     <Text
                       style={{
                         color: "#fff",
                         fontWeight: "bold",
-                        fontSize: 12,
+                        fontSize: hp(2),
                       }}
                     >
                       Bowler
@@ -509,7 +513,7 @@ const TeamPreview = () => {
                       flexWrap: "wrap",
                       justifyContent: "space-around",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("100%"),
                       gap: 3,
                     }}
                   >
@@ -574,25 +578,25 @@ const TeamPreview = () => {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  width: "100%",
+                  width: wp("100%"),
                   alignItems: "center",
                   justifyContent: "space-between",
-                  height: "100%",
+                  height: hp("100%"),
                 }}
               >
                 <View
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "100%",
-                    height: "25%",
+                    width: wp("100%"),
+                    height: hp("25%"),
                     justifyContent: "flex-start",
                     alignItems: "center",
                     paddingTop: 10,
                   }}
                 >
                   <Text
-                    style={{ color: "#fff", fontWeight: "bold", fontSize: 12 }}
+                    style={{ color: "#fff", fontWeight: "bold", fontSize: hp(1.8) }}
                   >
                     WICKET-KEEPER
                   </Text>
@@ -601,14 +605,14 @@ const TeamPreview = () => {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "100%",
-                    height: "25%",
+                    width: wp("100%"),
+                    height: hp("25%"),
                     justifyContent: "flex-start",
                     alignItems: "center",
                   }}
                 >
                   <Text
-                    style={{ color: "#fff", fontWeight: "bold", fontSize: 12 }}
+                    style={{ color: "#fff", fontWeight: "bold", fontSize: hp(2) }}
                   >
                     BATTER
                   </Text>
@@ -617,14 +621,14 @@ const TeamPreview = () => {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "100%",
-                    height: "25%",
+                    width: wp("100%"),
+                    height: hp("25%"),
                     justifyContent: "flex-start",
                     alignItems: "center",
                   }}
                 >
                   <Text
-                    style={{ color: "#fff", fontWeight: "bold", fontSize: 12 }}
+                    style={{ color: "#fff", fontWeight: "bold", fontSize: hp(1.8) }}
                   >
                     ALL-ROUNDER
                   </Text>
@@ -633,14 +637,14 @@ const TeamPreview = () => {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "100%",
-                    height: "25%",
+                    width: wp("100%"),
+                    height: hp("25%"),
                     justifyContent: "flex-start",
                     alignItems: "center",
                   }}
                 >
                   <Text
-                    style={{ color: "#fff", fontWeight: "bold", fontSize: 12 }}
+                    style={{ color: "#fff", fontWeight: "bold", fontSize: hp(1.8), }}
                   >
                     BOWLER
                   </Text>
@@ -648,16 +652,17 @@ const TeamPreview = () => {
               </View>
             )}
           </View>
-
+          
           <View
             style={{
-              width: "100%",
+              width: wp("100%"),
               backgroundColor: "#2d2d2d",
               flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
-              height: "5%",
+              height: hp("5%"),
               gap: 5,
+             
             }}
           >
             <View
@@ -667,6 +672,7 @@ const TeamPreview = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 gap: 3,
+               
               }}
             >
               <View>
@@ -708,7 +714,9 @@ const TeamPreview = () => {
             </View>
           </View>
         </View>
+      
       </View>
+     
     </View>
   );
 };

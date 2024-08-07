@@ -9,6 +9,7 @@ import {
 import React from "react";
 import * as Progress from "react-native-progress";
 import { Ionicons } from "@expo/vector-icons";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const ContestDetailsScreen = () => {
   return (
@@ -35,7 +36,7 @@ const ContestDetailsScreen = () => {
           <View style={{ paddingTop: 5 }}>
             <Progress.Bar
               progress={0.9}
-              width={365}
+              width= {365}
               height={3}
               borderWidth={0.2}
               backgroundColor="#ababab"
@@ -45,16 +46,16 @@ const ContestDetailsScreen = () => {
             style={{
               display: "flex",
               flexDirection: "row",
-              width: "100%",
+              width: wp("90%"),
               justifyContent: "space-between",
               alignItems: "center",
             }}
           >
             <View>
-              <Text style={{ color: "#d62424" }}>23,40,021 Spots left</Text>
+              <Text style={{ color: "#d62424" ,fontSize: hp(2)}}>23,40,021 Spots left</Text>
             </View>
             <View>
-              <Text style={{ color: "#333333" }}>28,89,129 Spots</Text>
+              <Text style={{ color: "#333333" ,fontSize: hp(2)}}>28,89,129 Spots</Text>
             </View>
           </View>
         </View>
@@ -67,7 +68,7 @@ const ContestDetailsScreen = () => {
             gap: 10,
             padding: 5,
             backgroundColor: "#ebebeb",
-            width: "100%",
+            width: wp("100%"),
             alignItems: "center",
             paddingLeft: 11,
           }}
@@ -95,7 +96,7 @@ const ContestDetailsScreen = () => {
                 paddingBottom: 0.5,
               }}
             >
-              <Text style={{ fontSize: 9 }}>M</Text>
+              <Text style={{ fontSize: hp(1.3) }}>M</Text>
             </View>
             <View
               style={{
@@ -106,7 +107,7 @@ const ContestDetailsScreen = () => {
                 gap: 5,
               }}
             >
-              <Text style={{ fontSize: 12 }}>Upto 20</Text>
+              <Text style={{ fontSize: hp(1.7) }}>Upto 20</Text>
             </View>
           </View>
           <View
@@ -137,7 +138,7 @@ const ContestDetailsScreen = () => {
                 gap: 5,
               }}
             >
-              <Text style={{ fontSize: 12 }}>62%</Text>
+              <Text style={{ fontSize: hp(1.7) }}>62%</Text>
             </View>
           </View>
         </View>
@@ -145,7 +146,7 @@ const ContestDetailsScreen = () => {
         {/* match join spectfic by using amount/ payment */}
         <View
           style={{
-            width: "100%",
+            width: wp("100%"),
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -158,7 +159,7 @@ const ContestDetailsScreen = () => {
           <Pressable
             style={{
               backgroundColor: "#3e57c4",
-              width: "90%",
+              width: wp("90%"),
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -167,7 +168,7 @@ const ContestDetailsScreen = () => {
               borderRadius: 6,
             }}
           >
-            <Text style={{ color: "#fff", fontWeight: "700" }}>JOIN ₹39</Text>
+            <Text style={{ color: "#fff", fontWeight: "700" ,fontSize: hp(2) }}>JOIN  ₹ 39</Text>
           </Pressable>
         </View>
 
@@ -180,7 +181,7 @@ const ContestDetailsScreen = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            width: "100%",
+            width: wp("100%"),
             gap: 15,
           }}
         >
@@ -190,10 +191,10 @@ const ContestDetailsScreen = () => {
               flexDirection: "column",
               justifyContent: "flex-start",
               alignItems: "flex-start",
-              width: "100%",
+              width: wp("91%"),
             }}
           >
-            <Text>Prize Breakup</Text>
+            <Text style={{fontSize: hp(2)}}>Prize Breakup</Text>
           </View>
 
           <View
@@ -202,7 +203,7 @@ const ContestDetailsScreen = () => {
               flexDirection: "column",
               justifyContent: "flex-start",
               alignItems: "flex-start",
-              width: "100%",
+              width: wp("100%"),
               gap: 5,
             }}
           >
@@ -212,16 +213,16 @@ const ContestDetailsScreen = () => {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                width: "100%",
+                width: wp("97%"),
                 paddingLeft: 30,
                 paddingRight: 30,
               }}
             >
               <View>
-                <Text style={{ fontWeight: "500" }}>RANK</Text>
+                <Text style={{ fontWeight: "500", fontSize: hp(2) }}>RANK</Text>
               </View>        
               <View>
-                <Text style={{ fontWeight: "500" }}>WINNINGS</Text>
+                <Text style={{ fontWeight: "500", fontSize: hp(2) }}>WINNINGS</Text>
               </View>
             </View>
 
@@ -232,7 +233,7 @@ const ContestDetailsScreen = () => {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                width: "100%",
+                width: wp("100%"),
                 paddingLeft: 30,
                 paddingRight: 30,
                 backgroundColor: "#f1f1f1",
@@ -255,11 +256,11 @@ const ContestDetailsScreen = () => {
                   />
                 </View>
                 <View>
-                  <Text style={{ fontSize: 20, fontWeight: "600" }}>#1</Text>
+                  <Text style={{ fontSize: hp(2.5), fontWeight: "600" }}>#1</Text>
                 </View>
               </View>
               <View style={{}}>
-                <Text style={{ fontSize: 25, fontWeight: "500" }}>
+                <Text style={{ fontSize: hp(3), fontWeight: "500" }}>
                   ₹40 Lakhs
                 </Text>
               </View>
@@ -272,7 +273,7 @@ const ContestDetailsScreen = () => {
                 flexDirection: "column",
                 justifyContent: "space-between",
                 alignItems: "center",
-                width: "100%",
+                width: wp("100%"),
                 gap:5,
                 paddingTop: 10,
                 borderRadius: 7,
@@ -284,7 +285,7 @@ const ContestDetailsScreen = () => {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                width: "100%",
+                width: wp("100%"),
                 paddingLeft: 36,
                 paddingRight: 36,}}><View
                 style={{
@@ -295,16 +296,19 @@ const ContestDetailsScreen = () => {
                 }}
               >
                 
-                  <Text style={{ fontSize: 16, fontWeight: "600" }}>#2</Text>
+                  <Text style={{ fontSize: hp(2.5),fontWeight: "600" }}>#2</Text>
               </View>
               <View style={{}}>
-                <Text style={{ fontSize: 16, fontWeight: "500" }}>
+                <Text style={{ fontSize:  hp(2.4), fontWeight: "500" }}>
                   ₹10 Lakhs
                 </Text>
-              </View></View>
-              <View style={{borderWidth:1,
-                borderColor:"#e8e8e8",   backgroundColor:"#e8e8e8",             width: "100%",
+              </View>
+              </View>
 
+              <View style={{borderWidth:1,
+                borderColor:"#e8e8e8",
+                backgroundColor:"#e8e8e8",
+                width: wp("100%"),
               }}>
 
               </View>
@@ -316,7 +320,7 @@ const ContestDetailsScreen = () => {
                 flexDirection: "column",
                 justifyContent: "space-between",
                 alignItems: "center",
-                width: "100%",
+                width: wp("100%"),
                 gap:5,
                 paddingTop: 10,
                 borderRadius: 7,
@@ -328,9 +332,11 @@ const ContestDetailsScreen = () => {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                width: "100%",
+                width: wp("100%"),
                 paddingLeft: 36,
-                paddingRight: 36,}}><View
+                paddingRight: 36,}}>
+                  
+              <View
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -339,16 +345,17 @@ const ContestDetailsScreen = () => {
                 }}
               >
                 
-                  <Text style={{ fontSize: 16, fontWeight: "600" }}>#3</Text>
+                  <Text style={{ fontSize: hp(2.5), fontWeight: "600" }}>#3</Text>
               </View>
               <View style={{}}>
-                <Text style={{ fontSize: 16, fontWeight: "500" }}>
+                <Text style={{ fontSize: hp(2.4), fontWeight: "500" }}>
                   ₹10 Lakhs
                 </Text>
               </View></View>
               <View style={{borderWidth:1,
-                borderColor:"#e8e8e8",   backgroundColor:"#e8e8e8",             width: "100%",
-
+                borderColor:"#e8e8e8",
+                backgroundColor:"#e8e8e8",
+                width: wp("100%"),
               }}>
 
               </View>

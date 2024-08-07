@@ -1,11 +1,13 @@
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const FootballCompletedMatches = () => {
   return (
     <View style={styles.container}>
     <View style={styles.content}>
-      <Text>Football</Text>
+    <Text>Football</Text>
+
     <Image source={require('../../../assets/ContestScreen.png')} style={styles.image} />
     <Text style={styles.text}>You haven’t join any contests that completed recently
 join contest for any of the upcoming matches.</Text>
@@ -20,43 +22,36 @@ join contest for any of the upcoming matches.</Text>
 export default FootballCompletedMatches
 
 const styles = StyleSheet.create({
-    container:{
-       justifyContent:"center",
-       alignItems:"center",
-       flex:1,
-  
-       
-    },
-   content:{
+  content:{
+    height:hp("63%"),
+    width: wp("100%"),
+    justifyContent:"center",
+     alignItems:"center",
+     padding:35,
+     gap:15
      
-      height:"70%",
-      width:"100%",
-      justifyContent:"center",
-       alignItems:"center",
-       padding:30,
-       gap:15
-       
-   },
+ },
+  
+   image:{
+    height:350,
+    width:290,
+    opacity:0.30
     
-     image:{
-      height:350,
-      width:"90%",
-      opacity:0.30
-      
-     },
-     pressable:{
-           backgroundColor:"#3385ff",
-           padding:10,
-           borderRadius:6
-     },
-     text:{
-      fontSize:14,
-      fontWeight:"bold",
-      textAlign:"justify"
-     },
-     pressText:{
-      fontWeight:"bold",
-      color:"#fff",
-      fontSize:15
-     }
+   },
+   pressable:{
+         backgroundColor:"#3385ff",
+         padding:10,
+         borderRadius:6
+   },
+   text:{
+    fontSize:hp(2),
+    fontWeight:"bold",
+    textAlign:"justify"
+
+   },
+   pressText:{
+    fontWeight:"bold",
+    color:"#fff",
+    fontSize:hp(2)
+   }
   })

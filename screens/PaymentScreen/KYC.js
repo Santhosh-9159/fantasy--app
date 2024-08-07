@@ -1,11 +1,13 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { FontAwesome5,Fontisto ,MaterialCommunityIcons} from '@expo/vector-icons';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 const KYC = () => {
   return (
     <View style={{padding:10,flexDirection:"column",gap:10}}>
-      <View style={{display:"flex",flexDirection:"row",width:"100%",justifyContent:"space-between",padding:10,alignItems:"center",backgroundColor:"#fff",borderWidth:1,borderRadius:5,borderColor:"#949494"}}>
+      <View style={{display:"flex",flexDirection:"row",width: wp("95%"),justifyContent:"space-between",padding:10,alignItems:"center",backgroundColor:"#fff",borderWidth:1,borderRadius:5,borderColor:"#949494"}}>
         <View style={{display:"flex",flexDirection:"row",gap:15,alignItems:"center"}}>
         <View>
         <FontAwesome5 name="mobile-alt" size={25} color="black" />
@@ -22,7 +24,7 @@ const KYC = () => {
         </View>
       </View>
 
-      <View style={{display:"flex",flexDirection:"row",width:"100%",justifyContent:"space-between",padding:10,alignItems:"center",backgroundColor:"#fff",borderWidth:1,borderRadius:5,borderColor:"#949494"}}>
+      <View style={{display:"flex",flexDirection:"row",width:wp("95%"),justifyContent:"space-between",padding:10,alignItems:"center",backgroundColor:"#fff",borderWidth:1,borderRadius:5,borderColor:"#949494"}}>
         <View style={{display:"flex",flexDirection:"row",gap:25,alignItems:"center"}}>
         <View>
         <Fontisto name="email" size={24} color="black" />
@@ -39,7 +41,7 @@ const KYC = () => {
         </View>
       </View>
 
-      <View style={{display:"flex",flexDirection:"row",width:"100%",justifyContent:"space-between",padding:10,alignItems:"center",backgroundColor:"#fff",borderWidth:1,borderRadius:5,borderColor:"#949494"}}>
+      <View style={{display:"flex",flexDirection:"row",width:wp("95%"),justifyContent:"space-between",padding:10,alignItems:"center",backgroundColor:"#fff",borderWidth:1,borderRadius:5,borderColor:"#949494"}}>
         <View style={{display:"flex",flexDirection:"row",gap:25,alignItems:"center"}}>
         <View>
         <FontAwesome5 name="address-card" size={24} color="black" />
@@ -56,7 +58,7 @@ const KYC = () => {
         </View>
       </View>
 
-      <View style={{display:"flex",flexDirection:"row",width:"100%",justifyContent:"space-between",padding:10,alignItems:"center",backgroundColor:"#fff",borderWidth:1,borderRadius:5,borderColor:"#949494"}}>
+      <View style={{display:"flex",flexDirection:"row",width:wp("95%"),justifyContent:"space-between",padding:10,alignItems:"center",backgroundColor:"#fff",borderWidth:1,borderRadius:5,borderColor:"#949494"}}>
         <View style={{display:"flex",flexDirection:"row",gap:25,alignItems:"center"}}>
         <View>
         <MaterialCommunityIcons name="bank-outline" size={24} color="black" />

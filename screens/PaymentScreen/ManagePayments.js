@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, Text, View, ScrollView, Pressable } from "react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const master = require("../../assets/master.png");
 const maestro = require("../../assets/maestro.png");
@@ -22,7 +23,7 @@ const ManagePayments = () => {
         style={{
           display: "flex", 
           flexDirection: "column",
-          width: "100%",
+          width: wp("100%"),
           gap: 5,
         }}
       >
@@ -32,7 +33,7 @@ const ManagePayments = () => {
             backgroundColor: "#dee0df",
           }}
         >
-          <Text style={{ fontWeight: "500" }}>Debit/Credit Cards</Text>
+          <Text style={{ fontWeight: "500", fontSize:hp(2) }}>Debit/Credit Cards</Text>
         </View>
 
         <View
@@ -43,7 +44,7 @@ const ManagePayments = () => {
             gap: 5,
           }}
         >
-          <Text style={{ fontSize: 12 }}>
+          <Text style={{ fontSize: hp(1.7) }}>
             Add a card for convenient payments from payment options
           </Text>
           <View
@@ -59,8 +60,8 @@ const ManagePayments = () => {
                 <Image
                   source={item.img}
                   style={{
-                    width: 35,
-                    height: 35,
+                    width: wp(10),
+                    height: hp(5),
                     resizeMode: "contain",
                   }}
                 />
@@ -72,9 +73,8 @@ const ManagePayments = () => {
         <View style={{  backgroundColor: "#fff"}}>
           <View style={{
                   display: "flex",
-                  flexDirection: "column",
-                 
-                  width:"100%",
+                  flexDirection: "column",    
+                  width: wp("100%"),
                   backgroundColor:"#dee0df"
                 }}>
             <Text style={{padding: 10,}}>Wallets</Text>
@@ -84,7 +84,7 @@ const ManagePayments = () => {
                   flexDirection: "column",
                   justifyContent:"center",
                   alignItems:"center",
-                  width:"100%",
+                  width:wp("100%"),
                   backgroundColor:"#fff",padding: 10,
                   gap:15,
                   paddingTop:20
@@ -96,7 +96,7 @@ const ManagePayments = () => {
                   flexDirection: "row",
                   justifyContent:"space-between",
                   alignItems:"center",
-                  width:"100%",
+                  width:wp("95%"),
                   paddingLeft:10,
                   paddingRight:10
                 }}
@@ -115,8 +115,8 @@ const ManagePayments = () => {
                     <Image
                       source={require("../../assets/amazonpay.png")}
                       style={{
-                        width: 50,
-                        height: 50,
+                        width: wp(12),
+                        height: hp(7),
                         borderRadius: 40,
                       }}
                     />
@@ -139,7 +139,7 @@ const ManagePayments = () => {
                   flexDirection: "row",
                   justifyContent:"space-between",
                   alignItems:"center",
-                  width:"100%",
+                  width: wp("95%"),
                   paddingLeft:10,
                   paddingRight:10
                 }}
@@ -158,8 +158,8 @@ const ManagePayments = () => {
                     <Image
                       source={require("../../assets/Phone Pe.png")}
                       style={{
-                        width: 50,
-                        height: 50,
+                        width: wp(12),
+                        height: hp(7),
                         borderRadius: 40,
                       }}
                     />
@@ -181,7 +181,7 @@ const ManagePayments = () => {
                   flexDirection: "row",
                   justifyContent:"space-between",
                   alignItems:"center",
-                  width:"100%",
+                  width: wp("95%"),
                   paddingLeft:10,
                   paddingRight:10
                 }}
@@ -200,8 +200,8 @@ const ManagePayments = () => {
                     <Image
                       source={require("../../assets/mobikwik.png")}
                       style={{
-                        width: 50,
-                        height: 50,
+                        width: wp(12),
+                        height: hp(7),
                         borderRadius: 40,
                       }}
                     />

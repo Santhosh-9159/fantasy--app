@@ -13,6 +13,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 
 if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -49,7 +50,7 @@ const AddCash = () => {
             <Ionicons name="wallet-outline" size={24} color="#fff" />
           </View>
           <View>
-            <Text style={{ color: "#FFFFFF", fontSize: 16, fontWeight: "700" }}>
+            <Text style={{ color: "#FFFFFF", fontSize: hp(2.4), fontWeight: "700" }}>
               My Balance
             </Text>
           </View>
@@ -85,33 +86,33 @@ const AddCash = () => {
           </View>
         </Pressable>
         {walletDropdown && (
-          <View style={{ width: "50%" }}>
+          <View style={{ width: wp("45%") }}>
             <View style={{ alignItems: "center" }}>
               <View
                 style={{
                   flexDirection: "row",
-                  width: "100%",
+                  width: wp("45%"),
                   justifyContent: "space-between",
                   alignItems: "center",
                 }}
               >
-                <Text style={{ color: "#FFFFFF", fontSize: 14 }}>
+                <Text style={{ color: "#FFFFFF", fontSize: hp(2) }}>
                   Amount unutilised :
                 </Text>
-                <Text style={{ color: "#FFFFFF", fontSize: 14 }}>₹0</Text>
+                <Text style={{ color: "#FFFFFF", fontSize: hp(2) }}>₹0</Text>
               </View>
               <View
                 style={{
                   flexDirection: "row",
-                  width: "100%",
+                  width: wp("45%"),
                   justifyContent: "space-between",
                   alignItems: "center",
                 }}
               >
-                <Text style={{ color: "#FFFFFF", fontSize: 14 }}>
+                <Text style={{ color: "#FFFFFF", fontSize: hp(2)}}>
                   Winnings :
                 </Text>
-                <Text style={{ color: "#FFFFFF", fontSize: 14 }}>₹0</Text>
+                <Text style={{ color: "#FFFFFF", fontSize: hp(2) }}>₹0</Text>
               </View>
               <View
                 style={{
@@ -121,10 +122,10 @@ const AddCash = () => {
                   alignItems: "center",
                 }}
               >
-                <Text style={{ color: "#FFFFFF", fontSize: 14 }}>
+                <Text style={{ color: "#FFFFFF", fontSize: hp(2) }}>
                   Discount :
                 </Text>
-                <Text style={{ color: "#FFFFFF", fontSize: 14 }}>₹ 0</Text>
+                <Text style={{ color: "#FFFFFF", fontSize: hp(2) }}>₹ 0</Text>
               </View>
             </View>
           </View>
@@ -147,11 +148,11 @@ const AddCash = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            width: "100%",
+            width: wp("90%"),
             alignItems: "center",
           }}
         >
-          <Text style={{ fontSize: 18, marginBottom: 10, fontWeight: "600" }}>
+          <Text style={{ fontSize: hp(2.7), marginBottom: 10, fontWeight: "600" }}>
             Add cash
           </Text>
           <View
@@ -159,7 +160,7 @@ const AddCash = () => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
-              width: "40%",
+              width: wp("35%"),
               borderWidth: 2,
               borderColor: "#35b276",
               borderRadius: 5,
@@ -167,19 +168,19 @@ const AddCash = () => {
               padding: 5,
             }}
           >
-            <View style={{ width: "15%" }}>
-              <Text style={{ fontSize: 18, fontWeight: "400" }}>₹ </Text>
+            <View style={{ width: wp("6%") }}>
+              <Text style={{ fontSize: hp(3), fontWeight: "400" }}>₹ </Text>
             </View>
             <TextInput
               style={{
-                width: "65%",
-                fontSize: 18,
+                width:wp("6%"),
+                fontSize: hp(1.8),
               }}
               value={amount}
               onChangeText={handleAmountChange}
               keyboardType="numeric"
             />
-            <View style={{ width: "20%" }}>
+            <View style={{ width: wp("6%") }}>
               <Pressable onPress={() => handleAmountChange("")}>
                 <AntDesign name="closecircleo" size={20} color="black" />
               </Pressable>
@@ -191,7 +192,7 @@ const AddCash = () => {
           style={{
             flexDirection: "column",
             justifyContent: "space-around",
-            width: "100%",
+            width:wp("88%"),
             marginTop: 10,
             gap: 5,
             paddingTop:10,
@@ -204,7 +205,7 @@ const AddCash = () => {
           <View
             style={{
               flexDirection: "row",
-              width: "100%",
+              width: wp("89%"),
               justifyContent: "space-around",
             }}
           >
@@ -212,7 +213,7 @@ const AddCash = () => {
               <TouchableOpacity
                 key={option}
                 style={{
-                  width: "20%",
+                  width: wp("20%"),
                   backgroundColor: "#FFFFFF",
                   padding: 5,
                   borderRadius: 5,
@@ -224,8 +225,8 @@ const AddCash = () => {
                 }}
                 onPress={() => handleAmountChange(option)}
               >
-                <View style={{ width: "15%" }}>
-                  <Text style={{ fontSize: 14, fontWeight: "400" }}>₹ </Text>
+                <View style={{ width: wp("4%") }}>
+                  <Text style={{ fontSize: hp(2), fontWeight: "400" }}>₹ </Text>
                 </View>
                 <Text>{option}</Text>
               </TouchableOpacity>
@@ -240,7 +241,7 @@ const AddCash = () => {
           flexDirection: "column",
           justifyContent: "flex-end",
           alignItems: "flex-end",
-          width: "100%",
+          width: wp("100%"),
           padding: 10,
           position: "absolute",
           bottom: 15,
@@ -251,7 +252,7 @@ const AddCash = () => {
           style={{
             backgroundColor: "#00A000",
             padding: 10,
-            width: "100%",
+            width: wp("95%"),
             alignItems: "center",
             display: "flex",
             flexDirection: "column",
@@ -259,7 +260,7 @@ const AddCash = () => {
             borderRadius: 8,
           }}
         >
-          <Text style={{ color: "#FFFFFF", fontSize: 18, fontWeight: "bold" }}>
+          <Text style={{ color: "#FFFFFF", fontSize: hp(2.5), fontWeight: "bold" }}>
             ADD ₹ {amount}
           </Text>
         </Pressable>

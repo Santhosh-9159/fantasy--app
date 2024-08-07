@@ -14,10 +14,9 @@ import * as Progress from "react-native-progress";
 import { useNavigation } from "@react-navigation/core";
 import ContestFilter from "../../../components/Model/ContestFilter";
 import { FontAwesome5 } from "@expo/vector-icons";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
+
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 const Contest = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
@@ -27,14 +26,14 @@ const Contest = () => {
         <View
           style={{
             flexDirection: "row",
-            width: "100%",
+            width: wp("100%"),
             backgroundColor: "#fff",
           }}
         >
           <View
             style={{
               flexDirection: "row",
-              width: "15%",
+              width: wp("15%"),
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -52,7 +51,7 @@ const Contest = () => {
             />
           </View>
           <View
-            style={{ flexDirection: "row", width: "90%", overflow: "scroll" }}
+            style={{ flexDirection: "row", width: wp("90%"), overflow: "scroll" }}
           >
             <ScrollView
               horizontal
@@ -97,7 +96,7 @@ const Contest = () => {
         <View style={{ gap: 10 }}>
           <View
             style={{
-              width: "90%",
+              width: wp("90%"),
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -111,7 +110,7 @@ const Contest = () => {
           <View style={{ gap: 10, backgroundColor: "#fff" }}>
             <View
               style={{
-                width: "100%",
+                width: wp("100%"),
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -123,7 +122,7 @@ const Contest = () => {
                 style={{
                   borderRadius: 5,
                   overflow: "hidden",
-                  width: "90%",
+                  width: wp("90%"),
                   backgroundColor: "#f27",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -145,7 +144,7 @@ const Contest = () => {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "100%",
+                    width: wp("90%"),
                     justifyContent: "space-between",
                     alignItems: "center",
                     backgroundColor: "#fff",
@@ -159,7 +158,7 @@ const Contest = () => {
                       flexDirection: "row",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("89%"),
                       padding: 5,
                       backgroundColor: "#fff",
                     }}
@@ -171,7 +170,7 @@ const Contest = () => {
                         padding: 5,
                       }}
                     >
-                      <Text style={{ fontSize: 10 }}>Prize Pool</Text>
+                      <Text style={{ fontSize: hp(1.5) }}>Prize Pool</Text>
                       <Text style={{ fontWeight: "700" }}>₹8 Crores</Text>
                     </View>
                     <View style={{ display: "flex", flexDirection: "row" }}>
@@ -182,7 +181,7 @@ const Contest = () => {
                         />
                       </View>
                       <View>
-                        <Text style={{ fontWeight: "bold", fontSize: 16 }}>
+                        <Text style={{ fontWeight: "bold", fontSize: hp(2.3) }}>
                           ₹40 Lakhs
                         </Text>
                         <Text
@@ -210,12 +209,12 @@ const Contest = () => {
                         style={{
                           display: "flex",
                           flexDirection: "row",
-                          width: "100%",
+                          width: wp("15%"),
                           justifyContent: "flex-end",
                           alignItems: "center",
                         }}
                       >
-                        <Text style={{ opacity: 0.5, fontSize: 10 }}>
+                        <Text style={{ opacity: 0.5, fontSize: hp(1.7)}}>
                           Entry
                         </Text>
                       </View>
@@ -223,7 +222,7 @@ const Contest = () => {
                         style={{
                           display: "flex",
                           flexDirection: "row",
-                          width: "100%",
+                          width: wp("16%"),
                           justifyContent: "flex-end",
                           alignItems: "center",
                         }}
@@ -249,14 +248,14 @@ const Contest = () => {
                       flexDirection: "column",
                       justifyContent: "space-between",
                       gap: 10,
-                      width: "100%",
+                      width: wp("87%"),
                       alignItems: "center",
                     }}
                   >
                     <View style={{ padding: 3 }}>
                       <Progress.Bar
                         progress={0.9}
-                        width={300}
+                        width={wp(80)}
                         height={3}
                         borderWidth={0.2}
                         backgroundColor="#ababab"
@@ -267,17 +266,17 @@ const Contest = () => {
                         display: "flex",
                         flexDirection: "row",
                         justifyContent: "space-between",
-                        width: "100%",
+                        width: wp("87%"),
                         padding: 2,
                       }}
                     >
                       <View style={{ paddingLeft: 6 }}>
-                        <Text style={{ color: "red", fontSize: 12 }}>
+                        <Text style={{ color: "red", fontSize: hp(1.5) }}>
                           23,40,021 Spots Left
                         </Text>
                       </View>
                       <View style={{ paddingRight: 5 }}>
-                        <Text style={{ fontSize: 12 }}>28,89,129 Spots</Text>
+                        <Text style={{ fontSize: hp(1.5)}}>28,89,129 Spots</Text>
                       </View>
                     </View>
                   </View>
@@ -290,7 +289,7 @@ const Contest = () => {
                     gap: 10,
                     padding: 5,
                     backgroundColor: "#ebebeb",
-                    width: "100%",
+                    width: wp("100%"),
                     alignItems: "center",
                     paddingLeft: 11,
                   }}
@@ -318,7 +317,7 @@ const Contest = () => {
                         paddingBottom: 0.5,
                       }}
                     >
-                      <Text style={{ fontSize: 9 }}>M</Text>
+                      <Text style={{ fontSize: hp(1.3) }}>M</Text>
                     </View>
                     <View
                       style={{
@@ -329,7 +328,7 @@ const Contest = () => {
                         gap: 5,
                       }}
                     >
-                      <Text style={{ fontSize: 12 }}>Upto 20</Text>
+                      <Text style={{ fontSize: hp(1.5) }}>Upto 20</Text>
                     </View>
                   </View>
                   <View
@@ -360,7 +359,7 @@ const Contest = () => {
                         gap: 5,
                       }}
                     >
-                      <Text style={{ fontSize: 12 }}>62%</Text>
+                      <Text style={{ fontSize:hp(1.5) }}>62%</Text>
                     </View>
                   </View>
                 </View>
@@ -369,7 +368,7 @@ const Contest = () => {
           </View>
           <View
             style={{
-              width: "90%",
+              width: wp("90%"),
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -383,7 +382,7 @@ const Contest = () => {
           <View style={{ gap: 10, backgroundColor: "#fff" }}>
             <View
               style={{
-                width: "100%",
+                width: wp("100%"),
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -394,7 +393,7 @@ const Contest = () => {
                 style={{
                   borderRadius: 5,
                   overflow: "hidden",
-                  width: "90%",
+                  width: wp("90%"),
                   backgroundColor: "#fff",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -416,7 +415,7 @@ const Contest = () => {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "100%",
+                    width: wp("90%"),
                     justifyContent: "space-between",
                     alignItems: "center",
                     backgroundColor: "#fff",
@@ -430,7 +429,7 @@ const Contest = () => {
                       flexDirection: "row",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      width: "100%",
+                      width: wp("88%"),
                       padding: 5,
                       backgroundColor: "#fff",
                     }}
@@ -442,7 +441,7 @@ const Contest = () => {
                         padding: 5,
                       }}
                     >
-                      <Text style={{ fontSize: 10 }}>Prize Pool</Text>
+                      <Text style={{ fontSize:  hp(1.5)  }}>Prize Pool</Text>
                       <Text style={{ fontWeight: "700" }}>₹5.5 Lakhs</Text>
                     </View>
                     <View style={{ display: "flex", flexDirection: "row" }}>
@@ -453,7 +452,7 @@ const Contest = () => {
                         />
                       </View>
                       <View>
-                        <Text style={{ fontWeight: "bold", fontSize: 16 }}>
+                        <Text style={{ fontWeight: "bold", fontSize:  hp(2.5) }}>
                           ₹50,000
                         </Text>
                         <Text
@@ -481,7 +480,7 @@ const Contest = () => {
                         style={{
                           display: "flex",
                           flexDirection: "row",
-                          width: wp("100"),
+                          width: wp("100%"),
                           justifyContent: "flex-end",
                           alignItems: "center",
                         }}
@@ -520,14 +519,14 @@ const Contest = () => {
                       flexDirection: "column",
                       justifyContent: "space-between",
                       gap: 10,
-                      width: "100%",
+                      width: wp("88%"),
                       alignItems: "center",
                     }}
                   >
                     <View style={{ padding: 3 }}>
                       <Progress.Bar
                         progress={0.9}
-                        width={wp(85)}
+                        width={wp(80)}
                         height={3}
                         borderWidth={0.2}
                         backgroundColor="#f27"
@@ -538,17 +537,17 @@ const Contest = () => {
                         display: "flex",
                         flexDirection: "row",
                         justifyContent: "space-between",
-                        width: "100%",
+                        width: wp("88%"),
                         padding: 2,
                       }}
                     >
                       <View style={{ paddingLeft: 6 }}>
-                        <Text style={{ color: "red", fontSize: 12 }}>
+                        <Text style={{ color: "red", fontSize:  hp(1.5) }}>
                           23,40,021 Spots Left
                         </Text>
                       </View>
                       <View style={{ paddingRight: 5 }}>
-                        <Text style={{ fontSize: 12 }}>28,89,129 Spots</Text>
+                        <Text style={{ fontSize:  hp(1.5) }}>28,89,129 Spots</Text>
                       </View>
                     </View>
                   </View>
@@ -561,7 +560,7 @@ const Contest = () => {
                     gap: 10,
                     padding: 5,
                     backgroundColor: "#ebebeb",
-                    width: "100%",
+                    width: wp("100%"),
                     alignItems: "center",
                     paddingLeft: 11,
                   }}
@@ -589,7 +588,7 @@ const Contest = () => {
                         paddingBottom: 0.5,
                       }}
                     >
-                      <Text style={{ fontSize: 9 }}>M</Text>
+                      <Text style={{ fontSize:  hp(1.3) }}>M</Text>
                     </View>
                     <View
                       style={{
@@ -600,7 +599,7 @@ const Contest = () => {
                         gap: 5,
                       }}
                     >
-                      <Text style={{ fontSize: 12 }}>Upto 20</Text>
+                      <Text style={{ fontSize:  hp(1.6) }}>Upto 20</Text>
                     </View>
                   </View>
                   <View
@@ -631,7 +630,7 @@ const Contest = () => {
                         gap: 5,
                       }}
                     >
-                      <Text style={{ fontSize: 12 }}>62%</Text>
+                      <Text style={{ fontSize:  hp(1.6) }}>62%</Text>
                     </View>
                   </View>
                 </View>
@@ -650,7 +649,7 @@ const Contest = () => {
           justifyContent: "space-evenly",
         }}
       >
-        <View style={{ width: "47%" }}>
+        <View style={{ width: wp("45%") }}>
           <Pressable
             onPress={() => navigation.navigate("MYContest")}
             style={{
@@ -658,7 +657,7 @@ const Contest = () => {
               paddingTop: 10,
               paddingBottom: 10,
               borderRadius: 10,
-              width: "100%",
+              width: wp("43%"),
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
@@ -669,13 +668,13 @@ const Contest = () => {
             <View>
               <FontAwesome5 name="ticket-alt" size={20} color="#fff" />
             </View>
-            <Text style={{ fontWeight: "400", color: "#fff", fontSize: 14 }}>
+            <Text style={{ fontWeight: "400", color: "#fff", fontSize: hp(2) }}>
               MY CONTESTS
             </Text>
             <Text style={{ fontWeight: "600", color: "#fff" }}>(1)</Text>
           </Pressable>
         </View>
-        <View style={{ width: "47%" }}>
+        <View style={{ width: wp("43%")}}>
           <Pressable
             onPress={() => navigation.navigate("MYTeam")}
             style={{
@@ -683,7 +682,7 @@ const Contest = () => {
               paddingTop: 8,
               paddingBottom: 8,
               borderRadius: 10,
-              width: "100%",
+              width: wp("43%"),
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
@@ -697,7 +696,7 @@ const Contest = () => {
                 style={{ width: 25, height: 25 }}
               />
             </View>
-            <Text style={{ fontWeight: "400", color: "#fff", fontSize: 14 }}>
+            <Text style={{ fontWeight: "400", color: "#fff", fontSize: hp(2) }}>
               MY TEAM
             </Text>
             <Text style={{ fontWeight: "600", color: "#fff" }}>(1)</Text>
@@ -716,7 +715,7 @@ const styles = StyleSheet.create({
   },
   tab: {
     marginHorizontal: 10,
-    width: "25%",
+    width: wp("25%"),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

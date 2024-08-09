@@ -224,9 +224,10 @@ const HelpAndSupport = () => {
        </View>
       </ScrollView>
           </View>
+          
   )
 }
 
 export default HelpAndSupport
-
+//test
 const styles = StyleSheet.create({})

@@ -1,8 +1,9 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { AntDesign} from '@expo/vector-icons';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const QSignUp = () => {
   const navigation = useNavigation();
@@ -26,28 +27,28 @@ const QSignUp = () => {
       )
   }
   return (
-    <View style={{height:"100%",width:"100%"}}>
-    <View style={{height:"15%",width:"100%",position:"relative"}}>
+    <View style={{height:hp("100%"),width:wp("100%")}}>
+    <View style={{height:hp("18%"),width:wp("100%"),position:"relative"}}>
   <LinearGradient
   style={{
     flex: 1,
   }}
   colors={["#101632", "#2A3A83", "#374DAD"]}
 >
-   <View style={{flexDirection:"column",display:"flex",justifyContent:"center",width:"100%",alignItems:"center",paddingTop:40,gap:20}}>
-   <View style={{width:"90%",flexDirection:"row",justifyContent:"space-between",display:"flex"}}>
+   <View style={{flexDirection:"column",display:"flex",justifyContent:"center",width:wp("100%"),alignItems:"center",paddingTop:40,gap:20}}>
+   <View style={{width:wp("90%"),flexDirection:"row",justifyContent:"space-between",display:"flex"}}>
       <Pressable onPress={()=>navigation.goBack()}>
       <AntDesign name="arrowleft" size={24} color="#fff" />
       </Pressable>
       <View>
-        <Text style={{color:"#fff",fontWeight:"bold",fontSize:15}}>Help & Support</Text>
+        <Text style={{color:"#fff",fontWeight:"bold",fontSize:hp(2.2)}}>Help & Support</Text>
       </View>
       <View>
         
       </View>
   </View>
 
-  <View  style={{width:"90%",flexDirection:"row",justifyContent:"space-between",display:"flex"}}>
+  <View  style={{width:wp("90%"),flexDirection:"row",justifyContent:"space-between",display:"flex"}}>
         <View style={{flexDirection:"row",gap:5,alignItems:"center"}}>
             <Image source={require('../../../../assets/IMPACT11 Logo extended.png')}style={{height:15,width:80}}/>
             <Text style={{fontWeight:"bold",color:"#fff",fontSize:28}}>|</Text>
@@ -59,17 +60,16 @@ const QSignUp = () => {
 
 </View>
 
-
-
-<View style={{width:"100%",flexDirection:"column",display:"flex",justifyContent:"center",alignItems:"center",position:"relative",paddingTop:20,gap:15}}>
-          <View style={{width:"90%",flexDirection:"column",display:"flex",justifyContent:"center",backgroundColor:"#fff",padding:15,gap:15}}>
+<ScrollView>
+<View style={{width:wp("100%"),flexDirection:"column",display:"flex",justifyContent:"center",alignItems:"center",position:"relative",paddingTop:20,gap:15}}>
+          <View style={{width:wp("90%"),flexDirection:"column",display:"flex",justifyContent:"center",backgroundColor:"#fff",padding:15,gap:15}}>
             <View style={{flexDirection:"row",gap:5}}>
-                <Text style={{fontWeight:"bold",fontSize:17}}>Getting Started</Text>
+                <Text style={{fontWeight:"bold",fontSize:hp(2.3)}}>Getting Started</Text>
                 <Text style={{color:"#6F6F6F"}}>/ About us</Text>
             </View>
             <View style={{flexDirection:"column",gap:40}}>
                  <View style={{flexDirection:"column",gap:15}}>
-                    <Text style={{fontWeight:"bold",fontSize:17}}>How do I sign Up?</Text>
+                    <Text style={{fontWeight:"bold",fontSize:hp(2.3)}}>How do I sign Up?</Text>
                     <Text>After downloading Impact11 App, as you head to the landing page there will be "Sign Up" link you can click on that and register your account. Users have to submit their name, mobile number and email address to register. If you have an invite code you can use that to get the bonus.</Text>
                     <Text>And that it! LETS START WINNING!!</Text>
                  </View>
@@ -82,7 +82,7 @@ const QSignUp = () => {
                  </View>
 
                  <View style={{flexDirection:"column",gap:15}}>
-                     <Text style={{fontWeight:"bold",fontSize:17}}>Was this article helpful</Text>
+                     <Text style={{fontWeight:"bold",fontSize:hp(2.3)}}>Was this article helpful</Text>
                      <View style={{flexDirection:"row",gap:20}}>
                      <Pressable onPress={()=>handleLike()}>
                      {
@@ -98,29 +98,30 @@ const QSignUp = () => {
                  </View>
             </View>
           </View>
-          <View style={{flexDirection:"row",width:"90%",display:"flex",justifyContent:"flex-start",alignItems:"center"}}>
+          <View style={{flexDirection:"row",width:wp("90%"),display:"flex",justifyContent:"flex-start",alignItems:"center"}}>
                 <Text style={{fontWeight:"bold"}}>Can't find what you are looking for</Text>
           </View>
-          <View style={{flexDirection:"row",width:"90%",display:"flex",justifyContent:"flex-start",alignItems:"center"}}>
+
+          <View style={{flexDirection:"row",width: wp("90%"),display:"flex",justifyContent:"flex-start",alignItems:"center",paddingBottom:20}}>
           <LinearGradient
           style={{
             flex: 1,borderRadius:10
           }}
           colors={["#101632", "#2A3A83", "#374DAD"]}
         >
-           <View style={{width:"100%",flexDirection:"row",display:"flex",justifyContent:"center",alignItems:"center"}}>
+           <View style={{width: wp("90%"),flexDirection:"row",display:"flex",justifyContent:"center",alignItems:"center"}}>
 
-            <View style={{width:"100%",flexDirection:"row",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+            <View style={{width:wp("90%"),flexDirection:"row",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
             <View style={{flexDirection:"column",gap:10,alignItems:"center",paddingLeft:20}}>
-                <Text style={{fontWeight:"bold",color:"#fff",fontSize:20,}}>We are here to help!</Text>
-                <Pressable style={{borderRadius:5,borderColor:"#fff",borderWidth:1,alignItems:"center",flexDirection:"row",justifyContent:"space-around",width:100,padding:5}}>
-                     <Image source={require('../../../../assets/WriteToUsLogo.png')} style={{height:20,width:20}}/>
-                     <Text style={{fontWeight:"bold",color:"#fff",fontSize:15}}>Write to us</Text>
+                <Text style={{fontWeight:"bold",color:"#fff",fontSize:hp(2.8),}}>We are here to help!</Text>
+                <Pressable style={{borderRadius:5,borderColor:"#fff",borderWidth:1,alignItems:"center",flexDirection:"row",justifyContent:"space-around",width:wp(28),padding:5}}>
+                     <Image source={require('../../../../assets/WriteToUsLogo.png')} style={{height:hp(3),width:wp(5)}}/>
+                     <Text style={{fontWeight:"bold",color:"#fff",fontSize:hp(2)}}>Write to us</Text>
                 </Pressable>
             </View>
 
             <View>
-            <Image source={require('../../../../assets/WriteToUs.png')} style={{width:150,height:150}}/>
+            <Image source={require('../../../../assets/WriteToUs.png')} style={{width: wp(30),height: hp(20)}}/>
             </View> 
             </View> 
 
@@ -128,6 +129,10 @@ const QSignUp = () => {
           </LinearGradient>
           </View>
 </View>
+</ScrollView>
+
+
+
 
 </View>
   )

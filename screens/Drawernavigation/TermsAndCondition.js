@@ -204,6 +204,7 @@ export default function TermsAndCondition(){
         flexDirection: 'row',
         paddingTop: 55,
         paddingLeft: 13,
+        paddingBottom:10
       },
       backButton: {
         width: wp('20%'),
@@ -212,13 +213,13 @@ export default function TermsAndCondition(){
         width: wp('50%'),
         justifyContent: 'center',
         alignItems: 'center',
-        height:hp(5)
+        // height:hp(5)
       },
       title: {
         fontSize: 14,
         color: '#000',
         fontWeight: 'bold',
-        height:hp(4)
+        // height:hp(4)
       },
       scrollViewContent: {
         paddingBottom: 20, // Adjust padding as needed
@@ -230,7 +231,7 @@ export default function TermsAndCondition(){
       },
       sectionTitle: {
         color: '#2B2D33',
-        fontSize: hp(1.8),
+        fontSize: hp(2),
         fontWeight: '800',
         paddingTop: 2,
       },

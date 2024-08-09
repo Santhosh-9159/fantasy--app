@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 55,
     paddingLeft: 13,
+    paddingBottom:10
   },
   backButton: {
     width: wp('20%'),
@@ -136,6 +137,7 @@ const styles = StyleSheet.create({
     width: wp('50%'),
     justifyContent: 'center',
     alignItems: 'center',
+    
   },
   title: {
     fontSize: 14,

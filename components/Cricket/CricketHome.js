@@ -349,7 +349,7 @@ export default function Home() {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        width: wp("30%"),
+                        width: wp("40%"),
                         alignItems: "center",
                         justifyContent: "center",
                         gap: 5,

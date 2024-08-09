@@ -73,6 +73,79 @@ import AboutUs from "./screens/Drawernavigation/AboutUs";
 import More from "./screens/Drawernavigation/More";
 import Legality from "./screens/Drawernavigation/Legality";
 import TermsAndCondition from "./screens/Drawernavigation/TermsAndCondition";
+import GettingStarted from "./screens/Drawernavigation/HelpAndSupport/GettingStarted/GettingStarted";
+import Impact11 from "./screens/Drawernavigation/HelpAndSupport/GettingStarted/Impact11";
+import GetTheApp from "./screens/Drawernavigation/HelpAndSupport/GettingStarted/GetTheApp";
+import QOTP from "./screens/Drawernavigation/HelpAndSupport/GettingStarted/QOTP";
+import QSignUp from "./screens/Drawernavigation/HelpAndSupport/GettingStarted/QSignUp";
+import StillPlay from "./screens/Drawernavigation/HelpAndSupport/GettingStarted/StillPlay";
+import LostNumber from "./screens/Drawernavigation/HelpAndSupport/GettingStarted/LostNumber";
+import EditTeams from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/EditTeams";
+import PlayingOnImpact from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/PlayingOnImpact";
+import EditAfterMatch from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/EditAfterMatch";
+import DeleteTeam from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/DeleteTeam";
+import SwitchTeams from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/SwitchTeams";
+import MultipleTeam from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/MultipleTeam";
+import IncorrectLineup from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/IncorrectLineup";
+import PlayerDoNotPlay from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/PlayerDoNotPlay";
+import ContestJoin from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/ContestJoin";
+import PublicPrivateContest from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/PublicPrivateContest";
+import FlexibileContest from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/FlexibileContest";
+import UnfilledContest from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/UnfilledContest";
+import FindContest from "./screens/Drawernavigation/HelpAndSupport/PlayingOnImpact/FindContest";
+import ScoresAndPoints from "./screens/Drawernavigation/HelpAndSupport/Scores&Points/ScoresAndPoints";
+import ScorePoints from "./screens/Drawernavigation/HelpAndSupport/Scores&Points/ScorePoints";
+import PointsNotUpdated from "./screens/Drawernavigation/HelpAndSupport/Scores&Points/PointsNotUpdated";
+import PointsForSuperOver from "./screens/Drawernavigation/HelpAndSupport/Scores&Points/PointsForSuperOver";
+import SubstitutePlayer from "./screens/Drawernavigation/HelpAndSupport/Scores&Points/SubstitutePlayer";
+import HSMyBalance from "./screens/Drawernavigation/HelpAndSupport/MyBalance/HSMyBalance";
+import WithDrawWinnings from "./screens/Drawernavigation/HelpAndSupport/MyBalance/WithDrawWinnings";
+import WithdrawalRequest from "./screens/Drawernavigation/HelpAndSupport/MyBalance/WithdrawalRequest";
+import WithdrawalRequestCancel from "./screens/Drawernavigation/HelpAndSupport/MyBalance/WithdrawalRequestCancel";
+import WithdrawalBankAccDetails from "./screens/Drawernavigation/HelpAndSupport/MyBalance/WithdrawalBankAccDetails";
+import CheckStatusWithdrawal from "./screens/Drawernavigation/HelpAndSupport/MyBalance/CheckStatusWithdrawal";
+import DiscountBonus from "./screens/Drawernavigation/HelpAndSupport/MyBalance/DiscountBonus";
+import AddCashMyBalance from "./screens/Drawernavigation/HelpAndSupport/MyBalance/AddCashMyBalance";
+import ManageWallets from "./screens/Drawernavigation/HelpAndSupport/MyBalance/ManageWallets";
+import ManageCards from "./screens/Drawernavigation/HelpAndSupport/MyBalance/ManageCards";
+import Winnings from "./screens/Drawernavigation/HelpAndSupport/Winnings/Winnings";
+import InformCashPrize from "./screens/Drawernavigation/HelpAndSupport/Winnings/InformCashPrize";
+import ReceiveMyWinnings from "./screens/Drawernavigation/HelpAndSupport/Winnings/ReceiveMyWinnings";
+import Distributed from "./screens/Drawernavigation/HelpAndSupport/Winnings/Distributed";
+import TaxWinnings from "./screens/Drawernavigation/HelpAndSupport/Winnings/TaxWinnings";
+import ProfileAndVerification from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/ProfileAndVerification";
+import ChangeMobileNumber from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/ChangeMobileNumber";
+import ChangeMailId from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/ChangeMailId";
+import ChangeTeamName from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/ChangeTeamName";
+import ChangeState from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/ChangeState";
+import Calculate from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/Calculate";
+import NotReceivingMail from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/NotReceivingMail";
+import VerifyImapact11P from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/VerifyImapact11P";
+import PanVerify from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/PanVerify";
+import AadharVerifyWhy from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/AadharVerifyWhy";
+import PanReject from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/PanReject";
+import BankAccReject from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/BankAccReject";
+import ChangePan from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/ChangePan";
+import BankAccChange from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/BankAccChange";
+import CompleteVerification from "./screens/Drawernavigation/HelpAndSupport/ProfileAndVerification/CompleteVerification";
+import OffersAndRewards from "./screens/Drawernavigation/HelpAndSupport/OffersAndRewards/OffersAndRewards";
+import InviteFriends from "./screens/Drawernavigation/HelpAndSupport/OffersAndRewards/InviteFriends";
+import Earn from "./screens/Drawernavigation/HelpAndSupport/OffersAndRewards/Earn";
+import MaximumInvite from "./screens/Drawernavigation/HelpAndSupport/OffersAndRewards/MaximumInvite";
+import Security from "./screens/Drawernavigation/HelpAndSupport/Security/Security";
+import AccountSecurity from "./screens/Drawernavigation/HelpAndSupport/Security/AccountSecurity";
+import Ensure from "./screens/Drawernavigation/HelpAndSupport/Security/Ensure";
+import Guide from "./screens/Drawernavigation/HelpAndSupport/Security/Guide";
+import GameLegal from "./screens/Drawernavigation/HelpAndSupport/Legality/GameLegal";
+import Allow from "./screens/Drawernavigation/HelpAndSupport/Legality/Allow";
+import FairPlay from "./screens/Drawernavigation/HelpAndSupport/FairPlay/FairPlay";
+import FairPlayViolation from "./screens/Drawernavigation/HelpAndSupport/FairPlay/FairPlayViolation";
+import Suspicious from "./screens/Drawernavigation/HelpAndSupport/FairPlay/Suspicious";
+import AccessToChangeTeam from "./screens/Drawernavigation/HelpAndSupport/FairPlay/AccessToChangeTeam";
+import MatchDeadline from "./screens/Drawernavigation/HelpAndSupport/FairPlay/MatchDeadline";
+import DetailsSafe from "./screens/Drawernavigation/HelpAndSupport/FairPlay/DetailsSafe";
+import LosingGame from "./screens/Drawernavigation/HelpAndSupport/FairPlay/LosingGame";
+import LegalityScreen from "./screens/Drawernavigation/HelpAndSupport/Legality/LegalityScreen";
 
 const getHeaderRight = (navigation) => (
   <View
@@ -623,6 +696,376 @@ function StackScreen() {
         name="TermsandCondition"
         component={TermsAndCondition}
       />
+
+
+      {/* Help and support */}
+
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="GettingStarted" component={GettingStarted}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="Impact11" component={Impact11}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="GetTheApp" component={GetTheApp}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="QSignUp" component={QSignUp}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="LostNumber" component={LostNumber}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="QOTP" component={QOTP}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="StillPlay" component={StillPlay}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="PlayingOnImpact" component={PlayingOnImpact}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="EditTeams" component={EditTeams}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="EditAfterMatch" component={EditAfterMatch}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="DeleteTeam" component={DeleteTeam}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="SwitchTeams" component={SwitchTeams}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="MultipleTeam" component={MultipleTeam}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="IncorrectLineup" component={IncorrectLineup}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="PlayerDoNotPlay" component={PlayerDoNotPlay}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ContestJoin" component={ContestJoin}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="PublicPrivateContest" component={PublicPrivateContest}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="FlexibileContest" component={FlexibileContest}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="UnfilledContest" component={UnfilledContest}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="FindContest" component={FindContest}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ScoresAndPoints" component={ScoresAndPoints}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ScorePoints" component={ScorePoints}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="PointsNotUpdated" component={PointsNotUpdated}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="PointsForSuperOver" component={PointsForSuperOver}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="SubstitutePlayer" component={SubstitutePlayer}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="HSMyBalance" component={HSMyBalance}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="WithDrawWinnings" component={WithDrawWinnings}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="WithdrawalRequest" component={WithdrawalRequest}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="CheckStatusWithdrawal" component={CheckStatusWithdrawal}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="WithdrawalBankAccDetails" component={WithdrawalBankAccDetails}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="WithdrawalRequestCancel" component={WithdrawalRequestCancel}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="DiscountBonus" component={DiscountBonus}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="AddCashMyBalance" component={AddCashMyBalance}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ManageWallets" component={ManageWallets}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ManageCards" component={ManageCards}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="Winnings" component={Winnings}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="InformCashPrize" component={InformCashPrize}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ReceiveMyWinnings" component={ReceiveMyWinnings}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="Distributed" component={Distributed}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="TaxWinnings" component={TaxWinnings}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ProfileAndVerification" component={ProfileAndVerification}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ChangeMobileNumber" component={ChangeMobileNumber}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ChangeMailId" component={ChangeMailId}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ChangeTeamName" component={ChangeTeamName}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ChangeState" component={ChangeState}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="Calculate" component={Calculate}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="NotReceivingMail" component={NotReceivingMail}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="VerifyImapact11P" component={VerifyImapact11P}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="PanVerify" component={PanVerify}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="AadharVerifyWhy" component={AadharVerifyWhy}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="PanReject" component={PanReject}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="BankAccReject" component={BankAccReject}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="ChangePan" component={ChangePan}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="BankAccChange" component={BankAccChange}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="CompleteVerification" component={CompleteVerification}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="OffersAndRewards" component={OffersAndRewards}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="InviteFriends" component={InviteFriends}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="Earn" component={Earn}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="MaximumInvite" component={MaximumInvite}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="Security" component={Security}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="AccountSecurity" component={AccountSecurity}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="Ensure" component={Ensure}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="Guide" component={Guide}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="LegalityScreen" component={LegalityScreen}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="GameLegal" component={GameLegal}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="Allow" component={Allow}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="FairPlay" component={FairPlay}/>
+      
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="FairPlayViolation" component={FairPlayViolation}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="Suspicious" component={Suspicious}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="AccessToChangeTeam" component={AccessToChangeTeam}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="MatchDeadline" component={MatchDeadline}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="DetailsSafe" component={DetailsSafe}/>
+      <Stack.Screen 
+      options={{
+        headerShown:false
+      }}
+      name="LosingGame" component={LosingGame}/>
     </Stack.Navigator>
   );
 }
